@@ -1,14 +1,13 @@
 import {USERS_URL} from '../../common/constants';
 import {getToken} from '../../common/helpers';
 
-const banUserRequest = async (id=0, body) => {
+const getUserByIdRequest = async (id=0) => {
   const dataJSON = null;
   try {
-    const response = await fetch(`${USERS_URL}/${id}/ban`, {
+    const response = await fetch(`${USERS_URL}/${id}`, {
       headers: {
         'Authorization': `Bearer ${getToken()}`,
       },
-      body: JSON.stringify(body),
     });
     const dataJSON = await response.json();
     console.log(dataJSON);
@@ -19,4 +18,4 @@ const banUserRequest = async (id=0, body) => {
   return dataJSON;
 };
 
-export default banUserRequest;
+export default getUserByIdRequest;

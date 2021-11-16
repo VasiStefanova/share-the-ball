@@ -1,16 +1,19 @@
 import {USERS_URL} from '../../common/constants';
 import {getToken} from '../../common/helpers';
 
-const banUserRequest = async (id=0, body) => {
-  const dataJSON = null;
+const updateUsersRequest = async (body) => {
+  let dataJSON = null;
   try {
-    const response = await fetch(`${USERS_URL}/${id}/ban`, {
+    const response = await fetch(`${USERS_URL}`, {
+      method: 'PUT',
       headers: {
+        'Content-Type': 'application/json',
         'Authorization': `Bearer ${getToken()}`,
       },
       body: JSON.stringify(body),
     });
-    const dataJSON = await response.json();
+
+    dataJSON = await response.json();
     console.log(dataJSON);
   } catch (err) {
     console.error(err);
@@ -19,4 +22,4 @@ const banUserRequest = async (id=0, body) => {
   return dataJSON;
 };
 
-export default banUserRequest;
+export default updateUsersRequest;
