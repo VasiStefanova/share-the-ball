@@ -4,8 +4,8 @@ import { USERS_URL } from "../../common/constants"
 export const getPostsByUserIdRequest = async (id = 0, page = 0, count = 0) => {
   const queryParams = [];
 
-  if (page) queryParams.push(page);
-  if (count) queryParams.push(count);
+  if (page) queryParams.push(`page=${page}`);
+  if (count) queryParams.push(`count=${count}`);
 
   const queryURL = queryParams.length? `?${queryParams.join('&')}` : '';
 
