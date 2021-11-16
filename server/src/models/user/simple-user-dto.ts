@@ -13,4 +13,7 @@ export class SimpleUserDTO {
 
   @ApiPropertyOptional({ type: Number })
   friendshipStatus?: ConnectionStatus;
+
+  @ApiPropertyOptional()
+  canAcceptFriendship?: boolean;
 }

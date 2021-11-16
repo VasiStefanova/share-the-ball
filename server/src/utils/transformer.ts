@@ -1,3 +1,4 @@
+import { SimpleUserDTO } from './../models/user/simple-user-dto';
 import { ReturnCommentDeltaDTO } from './../models/comment/return-comment-delta-dto';
 import { ReturnCommentWithLikesDTO } from './../models/comment/return-comment-with-likes-dto';
 import { SimpleUserReactionDTO } from './../models/user/simple-user-reaction-dto';
@@ -30,13 +31,14 @@ export const toSingleUser = <T extends Partial<User>>(user: T): ReturnUserDTO =>
 };
 
 export const toUserWithFriends = <T extends Partial<User>>(user: T): ReturnUserWithFriendsDTO => {
-  const friends = [];
+  const friends: SimpleUserDTO[] = [];
 
   user.requestedConnections.forEach(c => friends.push({
     id: c.requestedFor.id,
     avatar: c.requestedFor.avatar,
     username: c.requestedFor.username,
     friendshipStatus: c.status,
+    canAcceptFriendship: false,
   }));
 
   user.requestsFromConnections.forEach(c => friends.push({
@@ -44,6 +46,7 @@ export const toUserWithFriends = <T extends Partial<User>>(user: T): ReturnUserW
     avatar: c.requestedBy.avatar,
     username: c.requestedBy.username,
     friendshipStatus: c.status,
+    canAcceptFriendship: c.status === ConnectionStatus.Sent,
   }));
 
   return {
