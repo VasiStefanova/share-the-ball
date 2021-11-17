@@ -1,0 +1,19 @@
+.single-post {
+    border: #b5a9a9 solid 0.5px;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 600px;
+}
+.single-post-image {
+    margin-top: 10px;
+    display: inline-flex;
+}
+
+.single-post-username {
+    margin-left: 5px;
+}
+
+.single-post-button {
+    border: none;
+    margin-bottom: 10px;
+}
