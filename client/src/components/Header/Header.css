@@ -1,3 +1,11 @@
 .headerBox {
+  display: flex;
+  justify-content: space-between;
   min-height: 15vh;
+  background-color: black;
+  align-items: center;
+}
+
+.logoBox {
+  margin-left: 1vw;
 }
