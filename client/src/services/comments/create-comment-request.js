@@ -1,7 +1,11 @@
-import { POSTS_URL } from "../../common/constants";
-import { getToken } from "../common/helpers";
+import {POSTS_URL} from '../../common/constants';
+import {getToken} from '../common/helpers';
 
-export const createCommentRequest = async (id = 0, content = '', embed = '' ) => {
+export const createCommentRequest = async (
+    id = 0,
+    content = '',
+    embed = '',
+) => {
   const formData = new FormData();
 
   if (content) formData.append('content', content);
@@ -12,14 +16,14 @@ export const createCommentRequest = async (id = 0, content = '', embed = '' ) =>
       method: 'POST',
       body: formData,
       headers: {
-        'authorization': `Bearer ${getToken()}`
-      }
+        'authorization': `Bearer ${getToken()}`,
+      },
     });
-  
+
     const commentDetails = await response.json();
-  
+
     return commentDetails;
-  } catch(error) {
+  } catch (error) {
     return error;
   }
-}
+};

@@ -1,5 +1,5 @@
-import { COMMENTS_URL } from "../../common/constants";
-import { getToken } from "../common/helpers";
+import {COMMENTS_URL} from '../../common/constants';
+import {getToken} from '../common/helpers';
 
 export const editCommentRequest = async (id = 0, content = '', embed = '' ) => {
   const formData = new FormData();
@@ -12,14 +12,14 @@ export const editCommentRequest = async (id = 0, content = '', embed = '' ) => {
       method: 'PUT',
       body: formData,
       headers: {
-        'authorization': `Bearer ${getToken()}`
-      }
+        'authorization': `Bearer ${getToken()}`,
+      },
     });
-  
+
     const commentDetails = await response.json();
-  
+
     return commentDetails;
-  } catch(error) {
+  } catch (error) {
     return error;
   }
-}
+};

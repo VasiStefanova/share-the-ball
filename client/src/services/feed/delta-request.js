@@ -1,7 +1,10 @@
-import { FEED_URL } from "../../common/constants";
-import { getToken } from "../../common/helpers";
+import {FEED_URL} from '../../common/constants';
+import {getToken} from '../../common/helpers';
 
-export const deltaRequest = async (createdOrUpdatedAfter = '', trackingPosts = '') => {
+export const deltaRequest = async (
+    createdOrUpdatedAfter = '',
+    trackingPosts = '',
+) => {
   const queryParams = [];
 
   queryParams.push(`createdOrUpdatedAfter=${createdOrUpdatedAfter}`);
@@ -12,14 +15,14 @@ export const deltaRequest = async (createdOrUpdatedAfter = '', trackingPosts = '
   try {
     const response = await fetch(`${FEED_URL}/${queryURL}`, {
       headers: {
-        'authorization': `Bearer ${getToken()}`
-      }
+        'authorization': `Bearer ${getToken()}`,
+      },
     });
-  
+
     const posts = await response.json();
-  
+
     return posts;
-  } catch(error) {
+  } catch (error) {
     return error;
   }
-}
+};
