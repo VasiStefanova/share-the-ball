@@ -1,3 +1,5 @@
+import LoginAccordion from '../../components/LoginAccordion/LoginAccordion';
+import RegisterAccordion from '../../components/RegisterAccordion/RegisterAccordion';
 import './HomePublic.css';
 
 const HomePublic = () => {
@@ -7,7 +9,8 @@ const HomePublic = () => {
         <h1>Left</h1>
       </div>
       <div className='homePublicRight'>
-        <h1>Right</h1>
+        <LoginAccordion />
+        <RegisterAccordion />
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
-import {POSTS_URL} from '../../common/constants';
-import {getToken} from '../common/helpers';
+import { POSTS_URL } from '../../common/constants';
+import { getToken } from '../common/helpers';
 
 export const createCommentRequest = async (
-    id = 0,
-    content = '',
-    embed = '',
+  id = 0,
+  content = '',
+  embed = '',
 ) => {
   const formData = new FormData();
 

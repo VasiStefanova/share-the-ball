@@ -1,0 +1,10 @@
+.registerForm {
+  display: grid;
+  justify-content: center;
+}
+
+.registerInputField {
+  margin-bottom: 1.5vh;
+  width: 15vw;
+}
+

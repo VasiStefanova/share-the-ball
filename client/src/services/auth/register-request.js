@@ -1,20 +1,25 @@
-import {USERS_URL} from '../../common/constants';
+import { USERS_URL } from '../../common/constants';
 
-const registerRequest = async (body) => {
-  let dataJSON = null;
+export const registerRequest = async (credentials = { username: '', password: '', email: '' }) => {
+  const formData = new FormData();
+
+  formData.append('username', credentials.username);
+  formData.append('email', credentials.email);
+  formData.append('password', credentials.password);
+
   try {
     const response = await fetch(`${USERS_URL}`, {
       method: 'POST',
-      body,
+      body: formData
     });
 
-    dataJSON = await response.json();
-  } catch (err) {
-    console.error(err.message);
-  }
+    const userDetails = await response.json();
+    console.log(userDetails);
+    return userDetails;
 
-  return dataJSON;
+  } catch (error) {
+    return error;
+  }
 };
 
-export default registerRequest;
 
