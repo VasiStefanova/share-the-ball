@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Routes} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 
@@ -9,9 +9,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
-        <Routes>
-          {/* <Route exact path="/"><Navigate to="/home" /></Route> */}
-        </Routes>
+        <Switch>
+          <Route exact path="/"><Redirect to="/home" /></Route>
+        </Switch>
       </BrowserRouter>
     </div>
   );

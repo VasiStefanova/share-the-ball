@@ -1,5 +1,5 @@
-import { getToken } from "../../../../../MKBL/client/src/common/helpers"
-import { USERS_URL } from "../../common/constants"
+import {getToken} from '../../../../../MKBL/client/src/common/helpers';
+import {USERS_URL} from '../../common/constants';
 
 export const getPostsByUserIdRequest = async (id = 0, page = 0, count = 0) => {
   const queryParams = [];
@@ -12,14 +12,14 @@ export const getPostsByUserIdRequest = async (id = 0, page = 0, count = 0) => {
   try {
     const response = await fetch(`${USERS_URL}/${id}/posts${queryURL}`, {
       headers: {
-        'authorization': `Bearer ${getToken()}`
-      }
+        'authorization': `Bearer ${getToken()}`,
+      },
     });
-  
+
     const posts = await response.json();
 
     return posts;
   } catch (error) {
     return error;
-  }  
-}
+  }
+};

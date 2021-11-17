@@ -1,7 +1,13 @@
-import { getToken } from "../../../../../MKBL/client/src/common/helpers"
-import { POSTS_URL } from "../../common/constants"
+import {getToken} from '../../../../../MKBL/client/src/common/helpers';
+import {POSTS_URL} from '../../common/constants';
 
-export const createNewPostRequest = async (content = '', embed = '', latitude = 0, longitude = 0, isPublic = false) => {
+export const createNewPostRequest = async (
+    content = '',
+    embed = '',
+    latitude = 0,
+    longitude = 0,
+    isPublic = false,
+) => {
   const formData = new FormData();
 
   if (content) formData.append('content', content);
@@ -15,14 +21,14 @@ export const createNewPostRequest = async (content = '', embed = '', latitude = 
       method: 'POST',
       body: formData,
       headers: {
-        'authorization': `Bearer ${getToken()}`
-      }
+        'authorization': `Bearer ${getToken()}`,
+      },
     });
-  
+
     const postInfo = await response.json();
 
     return postInfo;
   } catch (error) {
     return error;
-  }  
-}
+  }
+};
