@@ -1,0 +1,19 @@
+.loginForm  {
+  display: grid;
+  justify-content: center;
+}
+
+.loginInputField {
+  width: 15vw;
+}
+
+#passwordField {
+  margin-bottom: 1.5vh;
+}
+
+#errorMsg {
+  margin-bottom: 0vh;
+  margin-top: 1vh;
+  font-weight: bold;
+  color: red;
+}

@@ -1,23 +1,18 @@
-import {LOGIN_URL} from '../../common/constants';
+import { LOGIN_URL } from '../../common/constants';
 
-const loginRequest = async (body) => {
-  let dataJSON = null;
+export const loginRequest = async (credentials = { username: '', password: '' }) => {
   try {
     const response = await fetch(`${LOGIN_URL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(credentials),
     });
 
-    dataJSON = await response.json();
-    console.log(dataJSON);
-  } catch (err) {
-    console.error(err.message);
+    const user = await response.json();
+    return user;
+  } catch (error) {
+    return error;
   }
-
-  return dataJSON;
 };
-
-export default loginRequest;

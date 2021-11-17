@@ -1,8 +1,7 @@
-import {LOGOUT_URL} from '../../common/constants';
-import {getToken} from '../../common/helpers';
+import { LOGOUT_URL } from '../../common/constants';
+import { getToken } from '../../common/helpers';
 
-const logoutRequest = async () => {
-  let dataJSON = null;
+export const logoutRequest = async () => {
   try {
     const response = await fetch(`${LOGOUT_URL}`, {
       method: 'POST',
@@ -11,12 +10,9 @@ const logoutRequest = async () => {
       },
     });
     console.log(response);
-    dataJSON = await response.json();
-  } catch (err) {
-    console.error(err.message);
-  }
-
-  return dataJSON;
+    const message = await response.json();
+    return message;
+  } catch (error) {
+    return error;
+  };
 };
-
-export default logoutRequest;

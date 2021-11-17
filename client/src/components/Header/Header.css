@@ -9,3 +9,7 @@
 .logoBox {
   margin-left: 1vw;
 }
+
+.profileBox {
+  display: flex;
+}

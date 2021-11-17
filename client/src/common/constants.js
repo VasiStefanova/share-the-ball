@@ -1,4 +1,6 @@
 export const USERS_URL = 'http://localhost:5000/users';
+export const LOGIN_URL = 'http://localhost:5000/auth/login';
+export const LOGOUT_URL = 'http://localhost:5000/auth/logout';
 export const POSTS_URL = 'http://localhost:5000/posts';
 export const COMMENTS_URL = 'http://localhost:5000/comments';
 export const FEED_URL = 'http://localhost:5000/feed';
