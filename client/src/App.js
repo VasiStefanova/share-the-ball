@@ -5,6 +5,7 @@ import AppContext from './context/AppContext';
 import './App.css';
 import Header from './components/Header/Header';
 import HomePublic from './views/HomePublic/HomePublic';
+import NBAStandingsFeed from './components/NBAStandingsFeed/NBAStandingsFeed';
 
 // eslint-disable-next-line require-jsdoc
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Switch>
             <Route exact path="/"><Redirect to="/home" /></Route>
             <Route exact path="/home" component={HomePublic} />
+            <Route exact path="/NBAstandings" component={NBAStandingsFeed} />
           </Switch>
         </BrowserRouter>
       </AppContext.Provider>

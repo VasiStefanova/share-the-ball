@@ -1,0 +1,21 @@
+.team-logos-names {
+    text-align: left;
+}
+.standings-table {
+    max-width: 400px;
+}
+.single-post-username {
+    margin-left: 10px
+}
+.single-table-row {
+    height: 50px;
+}
+.table-heading {
+    width: 200px;
+}
+.table-heading-sm {
+    width: 35px;
+}
+.table-heading-lg {
+    width: 70px;
+}
