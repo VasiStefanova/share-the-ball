@@ -13,3 +13,7 @@
 .profileBox {
   display: flex;
 }
+
+.navLink {
+  text-decoration: none;
+}

@@ -1,4 +1,5 @@
 import { useContext, React } from 'react';
+import { NavLink } from 'react-router-dom';
 import Avatar from '../../elements/Avatar/Avatax';
 import './Header.css';
 import Button from 'react-bootstrap/Button';
@@ -38,7 +39,7 @@ const Header = () => {
 
   return (
     <div className="headerBox">
-      <NavLink>
+      <NavLink to='/home' className='navLink'>
         <div className='logoBox'>
           {/* replace h3 on next line with real logo */}
           <h3 style={{ color: 'white', margin: '0px' }}>Logo</h3>
