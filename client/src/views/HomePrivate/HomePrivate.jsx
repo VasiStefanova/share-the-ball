@@ -1,5 +1,6 @@
 import './HomePrivate.css';
 import NBAStandingsFeed from '../../components/NBAStandingsFeed/NBAStandingsFeed';
+import CreatePost from '../../components/CreatePost/CreatePost';
 
 const HomePrivate = () => {
   return (
@@ -8,7 +9,7 @@ const HomePrivate = () => {
         <NBAStandingsFeed />
       </div>
       <div className='homePrivateCenter'>
-        <h3>Center</h3>
+        <CreatePost />
       </div>
       <div className='homePrivateRight'>
         <h3>Right</h3>

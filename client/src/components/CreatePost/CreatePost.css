@@ -1,0 +1,37 @@
+.createPostBox {
+  display: grid;
+  justify-content: center;
+  border: black solid 0.1vh;
+  border-radius: 1vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-right: 1vw;
+  margin-left: 1vw;
+}
+
+.postTextArea {
+  width: 45vw;
+  margin-bottom: 1vh;
+}
+
+.headerBar {
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 1vh;
+}
+
+.userDetails {
+  display: flex;
+}
+
+#username {
+  font-weight: bold;
+}
+
+#postButton {
+  width: 5vw;
+}

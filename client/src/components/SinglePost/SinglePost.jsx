@@ -5,7 +5,7 @@ import defaultImg from './default-image.jpg';
 import Button from 'react-bootstrap/Button';
 import './SinglePost.css';
 
-export const SinglePost = () => {
+const SinglePost = () => {
 
   return (
     <>

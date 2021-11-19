@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import AppContext from './context/AppContext';
@@ -27,6 +27,13 @@ function App() {
     longitude: 0,
     friends: []
   });
+
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      setUser(JSON.parse(localStorage.getItem('user')));
+      setLoggedIn(true);
+    }
+  }, []);
 
   return (
     <div className="App">

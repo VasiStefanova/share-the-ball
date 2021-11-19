@@ -12,6 +12,7 @@
 
 .profileBox {
   display: flex;
+  margin-right: 1vw;
 }
 
 .navLink {
