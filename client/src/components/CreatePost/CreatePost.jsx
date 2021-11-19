@@ -33,7 +33,7 @@ const CreatePost = () => {
           <p id="username">{user.username}</p>
         </div>
         <ToggleButtonGroup type="radio" name="options" defaultValue={1} style={{ display: 'flex' }}>
-          <ToggleButton id="privatePostBtn" variant="outline-dark" size="small" value={1} onClick={() => setIsPublic(false)} style={{ verticalAlign: 'center' }}>
+          <ToggleButton id="privatePostBtn" variant="outline-dark" size="small" value={1} onClick={() => setIsPublic(false)}>
             Private post
           </ToggleButton>
           <ToggleButton id="publicPostBtn" variant="outline-dark" value={2} onClick={() => setIsPublic(true)}>
