@@ -7,8 +7,10 @@ import { React, useContext, useState } from 'react';
 import { loginRequest } from '../../services/auth/login-request';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import AppContext from '../../context/AppContext';
+import { useHistory } from 'react-router';
 
 const LoginAccordion = () => {
+  const history = useHistory();
   const { setLoggedIn, setUser } = useContext(AppContext);
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
@@ -30,6 +32,7 @@ const LoginAccordion = () => {
       setLoggedIn(true);
       setCredentials({ username: '', password: '' });
       setError('');
+      history.push('/feed');
     } catch (err) {
       setError(err.message);
     }

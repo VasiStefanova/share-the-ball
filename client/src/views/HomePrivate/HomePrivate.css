@@ -1,0 +1,20 @@
+.homePrivateContainer {
+  display: flex;
+}
+
+.homePrivateLeft {
+  border-right: 1px solid black;
+  width: 25vw;
+  min-height: 85vh;
+}
+
+.homePrivateCenter {
+  width: 50vw;
+  min-height: 85vh;
+}
+
+.homePrivateRight {
+  border-left: 1px solid black;
+  width: 25vw;
+  min-height: 85vh;
+}
