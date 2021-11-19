@@ -1,3 +1,9 @@
 .avatarBox {
   margin-right: 1vw;
 }
+
+.avatarImage {
+  min-height: 5vh;
+  min-width: 5vh;
+  border-radius: 5vh;
+}

@@ -7,7 +7,7 @@ import AppContext from '../../context/AppContext';
 
 
 const Header = () => {
-  const { loggedIn, setLoggedIn, setUser } = useContext(AppContext);
+  const { loggedIn, setLoggedIn, user, setUser } = useContext(AppContext);
 
   const logout = async (ev) => {
     ev.preventDefault();
@@ -38,14 +38,16 @@ const Header = () => {
 
   return (
     <div className="headerBox">
-      <div className='logoBox'>
-        {/* replace h3 on next line with real logo */}
-        <h3 style={{ color: 'white', margin: '0px' }}>Logo</h3>
-      </div>
+      <NavLink>
+        <div className='logoBox'>
+          {/* replace h3 on next line with real logo */}
+          <h3 style={{ color: 'white', margin: '0px' }}>Logo</h3>
+        </div>
+      </NavLink>
       <div className="profileBox">
         {loggedIn &&
           <Button variant="outline-secondary" color='white' style={{ marginRight: '1vw' }} onClick={(ev) => logout(ev)}>Logout</Button>}
-        <Avatar />
+        <Avatar user={user} />
       </div>
     </div>
   );
