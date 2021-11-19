@@ -1,0 +1,31 @@
+.card-style {
+    width: 18rem;
+    transition: box-shadow .7s;
+    display: inline-block;
+    margin: 10px 10px;
+}
+.card-style:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.card-title {
+    cursor: pointer;
+}
+.cover-image {
+    transition: transform .7s; /* Animation */
+    margin: 0 auto;
+    height: 200px;
+}
+
+.cover-image:hover {
+    transform: scale(1.25); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    cursor: pointer;
+
+}
+.img-wrapper {
+    overflow: hidden;
+}
+.card-body {
+    padding: 0.5rem 0.5rem
+}
+
