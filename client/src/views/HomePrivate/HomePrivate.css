@@ -18,3 +18,8 @@
   width: 25vw;
   min-height: 85vh;
 }
+
+.singlePost {
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
