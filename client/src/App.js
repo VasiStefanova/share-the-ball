@@ -8,6 +8,7 @@ import HomePublic from './views/HomePublic/HomePublic';
 import HomePrivate from './views/HomePrivate/HomePrivate';
 import NBAStandingsFeed from './components/NBAStandingsFeed/NBAStandingsFeed';
 import CardLinks from './components/CardLinks/CardLinks';
+import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 
 // eslint-disable-next-line require-jsdoc
 function App() {
@@ -49,6 +50,7 @@ function App() {
             <Route exact path="/feed" component={HomePrivate} />
             <Route exact path="/NBAstandings" component={NBAStandingsFeed} />
             <Route exact path="/CardLinks" component={CardLinks} />
+            <Route exact path="/search" component={SearchTeammatesView} />
           </Switch>
         </BrowserRouter>
       </AppContext.Provider>
