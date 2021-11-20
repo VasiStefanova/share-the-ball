@@ -1,12 +1,12 @@
-import {USERS_URL} from '../../common/constants';
+import { USERS_URL } from '../../common/constants';
 
 const getUsersRequest = async (queryParamsObj={}) => {
   let queryParams = '';
   const paramEntries = Object.entries(queryParamsObj);
   if (paramEntries.length) {
     const queryValues = paramEntries
-        .map((pair) => `${pair[0]}=${pair[1]}`)
-        .join('&');
+      .map((pair) => `${pair[0]}=${pair[1]}`)
+      .join('&');
     queryParams =`?${queryValues}`;
   }
 
