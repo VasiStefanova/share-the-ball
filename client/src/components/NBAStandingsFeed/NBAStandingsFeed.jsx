@@ -15,32 +15,34 @@ const NBAStandingsFeed = () => {
   const [dataTeams, setDataTeams] = useState([]);
   const [buttonPressed, setButtonPressed] = useState(true);
 
+  const getData = async () => {
+
+    const response = await nbaStandingsRequest();
+    // Need to ask a trainer about this piece of code below //
+    // I suspect that setState() is async//
+
+    // setEastData(response.league.standard.conference.east);
+    // setWestData(response.league.standard.conference.west);
+    // setDataTeams(eastDataTeams);
+    const { east, west } = response.league.standard.conference;
+    setEastData(east);
+    setWestData(west);
+    setDataTeams(east);
+  };
   useEffect(() => {
-
-    const getData = async () => {
-
-      const response = await nbaStandingsRequest();
-      // Need to ask a trainer about this piece of code below //
-      // I suspect that setState() is async//
-
-      // setEastData(response.league.standard.conference.east);
-      // setWestData(response.league.standard.conference.west);
-      // setDataTeams(eastDataTeams);
-      const { east, west } = response.league.standard.conference;
-      setEastData(east);
-      setWestData(west);
-      setDataTeams(east);
-    };
-
     getData();
   }, [setDataTeams]);
 
   return (
-    <Container className="standings-feed">
+    <div className='standings-feed'>
       {dataTeams.length ?
         <>
-          <ButtonGroup size="lg">
-            <Button className="standings-button" variant="outline-dark" active={buttonPressed} onClick={() => setDataTeams(eastDataTeams)}>EASTERN</Button>
+          <ButtonGroup className='standings-feed-button-box' size="lg">
+            <Button
+              style={{ marginRight: '1vw' }}
+              className="standings-button" variant="outline-dark" active={buttonPressed} onClick={() => setDataTeams(eastDataTeams)}
+            >EASTERN
+            </Button>
             <Button
               className="standings-button" variant="outline-dark" onClick={() => {
                 setButtonPressed(false);
@@ -52,7 +54,7 @@ const NBAStandingsFeed = () => {
           <NBAStandingsFeedTable dataTeams={dataTeams} />
         </> :
         <LoadingIndicator />}
-    </Container>
+    </div>
   );
 };
 

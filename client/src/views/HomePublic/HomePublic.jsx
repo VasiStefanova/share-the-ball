@@ -18,17 +18,17 @@ const HomePublic = () => {
   }, []);
 
   return (
-    <div className='homePublicContainer'>
-      <div className='homePublicLeft'>
-        <div className="popularPosts">
+    <div className='home-public-container'>
+      <div className='home-public-left'>
+        <div className="popular-posts">
           {posts.map(post => (
-            <div className="singlePost" key={post.id}>
+            <div className="single-post" key={post.id}>
               <SinglePost post={post} />
             </div>
           ))}
         </div>
       </div>
-      <div className='homePublicRight'>
+      <div className='home-public-right'>
         <LoginAccordion />
         <RegisterAccordion />
       </div>

@@ -1,4 +1,4 @@
-.headerBox {
+.header-box {
   display: flex;
   justify-content: space-between;
   min-height: 15vh;
@@ -6,15 +6,15 @@
   align-items: center;
 }
 
-.logoBox {
+.logo-box {
   margin-left: 1vw;
 }
 
-.profileBox {
+.profile-box {
   display: flex;
   margin-right: 1vw;
 }
 
-.navLink {
+.nav-link {
   text-decoration: none;
 }

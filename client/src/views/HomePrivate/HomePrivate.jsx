@@ -20,21 +20,21 @@ const HomePrivate = () => {
   }, [createdPost]);
 
   return (
-    <div className='homePrivateContainer'>
-      <div className='homePrivateLeft'>
+    <div className='home-private-container'>
+      <div className='home-private-left'>
         <NBAStandingsFeed />
       </div>
-      <div className='homePrivateCenter'>
+      <div className='home-private-center'>
         <CreatePost />
-        <div className="privatePosts">
+        <div className="private-posts">
           {posts.map(post => (
-            <div className="singlePost" key={post.id}>
+            <div className="single-post" key={post.id}>
               <SinglePost post={post} />
             </div>
           ))}
         </div>
       </div>
-      <div className='homePrivateRight'>
+      <div className='home-private-right'>
         <h3>Right</h3>
       </div>
     </div>

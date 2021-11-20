@@ -38,14 +38,14 @@ const Header = () => {
   };
 
   return (
-    <div className="headerBox">
-      <NavLink to='/home' className='navLink'>
-        <div className='logoBox'>
+    <div className="header-box">
+      <NavLink to='/home' className='nav-link'>
+        <div className='logo-box'>
           {/* replace h3 on next line with real logo */}
           <h3 style={{ color: 'white', margin: '0px' }}>Logo</h3>
         </div>
       </NavLink>
-      <div className="profileBox">
+      <div className="profile-box">
         {loggedIn &&
           <Button variant="outline-secondary" color='white' style={{ marginRight: '1vw' }} onClick={(ev) => logout(ev)}>Logout</Button>}
         <Avatar user={user} />

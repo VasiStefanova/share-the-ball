@@ -1,25 +1,25 @@
-.homePrivateContainer {
+.home-private-container {
   display: flex;
 }
 
-.homePrivateLeft {
+.home-private-left {
   border-right: 1px solid black;
   width: 25vw;
   min-height: 85vh;
 }
 
-.homePrivateCenter {
+.home-private-center {
   width: 50vw;
   min-height: 85vh;
 }
 
-.homePrivateRight {
+.home-private-right {
   border-left: 1px solid black;
   width: 25vw;
   min-height: 85vh;
 }
 
-.singlePost {
+.single-post {
   padding-top: 1vh;
   padding-bottom: 1vh;
 }

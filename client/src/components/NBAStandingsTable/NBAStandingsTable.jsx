@@ -21,28 +21,28 @@ const NBAStandingsFeedTable = ({ dataTeams }) => {
       </thead>
       <tbody>
         {dataTeams.map(team =>
-          <tr key={team.teamId}>
-            <td className='team-logos-names'>
-              <div className='single-table-row'>
-                <Figure.Image
-                  src={
-                    TEAM_LOGOS_URL.find(teamlogos => teamlogos.teamId === team.teamId) ?
-                      TEAM_LOGOS_URL.find(teamlogos => teamlogos.teamId === team.teamId).logoURL :
-                      null
-                  }
-                  roundedCircle
-                  width={35}
-                  height={35}
-                />
-                <span className='single-post-username'>
-                  {team.teamSitesOnly.teamName}
+          <tr key={team.teamId} className='standings-table-tr'>
+            <td className='standings-table-td-team'>
+              <div className='team-logo-name'>
+                <span className='team-logo-box'>
+                  <img
+                    src={
+                      TEAM_LOGOS_URL.find(teamlogos => teamlogos.teamId === team.teamId) ?
+                        TEAM_LOGOS_URL.find(teamlogos => teamlogos.teamId === team.teamId).logoURL :
+                        null
+                    }
+                    className='team-logo'
+                  />
+                </span>
+                <span className='team-name'>
+                  {team.teamSitesOnly.teamName + ' ' + team.teamSitesOnly.teamNickname}
                 </span>
               </div>
             </td>
-            <td>{team.win}</td>
-            <td>{team.loss}</td>
-            <td>{team.lastTenWin} - {team.lastTenLoss}</td>
-            <td>{team.winPct}</td>
+            <td className='standings-table-td'>{team.win}</td>
+            <td className='standings-table-td'>{team.loss}</td>
+            <td className='standings-table-td'>{team.lastTenWin} - {team.lastTenLoss}</td>
+            <td className='standings-table-td'>{team.winPct}</td>
           </tr>
         )}
       </tbody>

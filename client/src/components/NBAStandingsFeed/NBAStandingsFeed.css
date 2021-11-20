@@ -1,18 +1,22 @@
 .team-logos-names {
-    text-align: left;
+  text-align: left;
 }
+
 .standings-feed {
-    max-width: 400px;
-    margin: 10px 10px;
-    border: black solid 1px;
-    border-radius: 10px;
+  max-width: 23vw;
+  margin: 1vh auto;
+  border: black solid 1px;
+  border-radius: 1vh;
 }
-.single-post-username {
-    margin-left: 10px
+
+.standings-feed-button-box {
+  display: flex;
+  justify-content: space-between;
 }
+
 .standings-button {
-    border: none;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    width: 190px;
+  padding: 0px !important;
+  border: none;
+  margin: 1vh !important;
+  width: 5vw;
 }

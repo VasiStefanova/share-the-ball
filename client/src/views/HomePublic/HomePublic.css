@@ -1,14 +1,14 @@
-.homePublicContainer {
+.home-public-container {
   display: flex;
 }
 
-.homePublicLeft {
+.home-public-left {
   
   width: 67vw;
   min-height: 85vh;
 }
 
-.homePublicRight {
+.home-public-right {
   border-left: 1px solid black;
   width: 33vw;
   min-height: 85vh;
