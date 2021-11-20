@@ -20,7 +20,7 @@ const HomePublic = () => {
   return (
     <div className='homePublicContainer'>
       <div className='homePublicLeft'>
-        <div className="privatePosts">
+        <div className="popularPosts">
           {posts.map(post => (
             <div className="singlePost" key={post.id}>
               <SinglePost post={post} />
