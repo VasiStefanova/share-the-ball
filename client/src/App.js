@@ -28,6 +28,9 @@ function App() {
     friends: []
   });
 
+  // posts
+  const [createdPost, setCreatedPost] = useState(false);
+
   useEffect(() => {
     if (localStorage.getItem('user')) {
       setUser(JSON.parse(localStorage.getItem('user')));
@@ -37,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <AppContext.Provider value={{ loggedIn, setLoggedIn, user, setUser }}>
+      <AppContext.Provider value={{ loggedIn, setLoggedIn, user, setUser, createdPost, setCreatedPost }}>
         <BrowserRouter>
           <Header />
           <Switch>

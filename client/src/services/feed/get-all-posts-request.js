@@ -1,10 +1,10 @@
-import {FEED_URL} from '../../common/constants';
-import {getToken} from '../../common/helpers';
+import { FEED_URL } from '../../common/constants';
+import { getToken } from '../../common/helpers';
 
 export const getAllPostsRequest = async (
-    page = '',
-    count = '',
-    distance = '',
+  page = '',
+  count = '',
+  distance = '',
 ) => {
   const queryParams = [];
 

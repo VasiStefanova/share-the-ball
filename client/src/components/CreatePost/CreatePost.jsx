@@ -9,7 +9,7 @@ import AppContext from '../../context/AppContext';
 import { createNewPostRequest } from '../../services/posts/create-new-post-request';
 
 const CreatePost = () => {
-  const { user } = useContext(AppContext);
+  const { user, createdPost, setCreatedPost } = useContext(AppContext);
   const [content, setContent] = useState('');
   const [isPublic, setIsPublic] = useState(false);
 
@@ -17,8 +17,9 @@ const CreatePost = () => {
     e.preventDefault();
 
     try {
-      await createNewPostRequest(content, '', 0, 0, isPublic.toString());
+      await createNewPostRequest(content, '', 0, 0, isPublic);
       setContent('');
+      setCreatedPost(!createdPost);
     } catch (error) {
       console.error(error);
     }

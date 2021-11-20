@@ -1,4 +1,4 @@
-import {FEED_URL} from '../../common/constants';
+import { FEED_URL } from '../../common/constants';
 
 export const getPopularPostsRequest = async () => {
   try {

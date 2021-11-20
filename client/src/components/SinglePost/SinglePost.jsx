@@ -1,59 +1,36 @@
+/* eslint-disable react/prop-types */
 import Figure from 'react-bootstrap/Figure';
-import Container from 'react-bootstrap/Container';
-import defaultAvatar from './default-avatar.png';
-import defaultImg from './default-image.jpg';
 import Button from 'react-bootstrap/Button';
 import './SinglePost.css';
 
-const SinglePost = () => {
+const SinglePost = ({ post }) => {
 
   return (
     <>
-      <Container className='single-post'>
-        <Figure className='single-post-image'>
-          <Figure.Image
-            src={defaultAvatar}
-            roundedCircle
-            width={50}
-            height={50}
-          />
-          <span className='single-post-username'>
-            Username
-          </span>
-        </Figure>
-        <div>
+      <div className='postContainer'>
+        {post.author &&
+          <Figure className='postImage'>
+            <Figure.Image
+              src={`http://localhost:5000/${post.author.avatar}`}
+              roundedCircle
+              width={50}
+              height={50}
+            />
+            <div className='postUsername'>
+              {post.author.username}
+            </div>
+          </Figure>}
+        <div className="postContent">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Doloremque sapiente velit atque sint at eos facere, quaerat quia,
-            nam asperiores voluptatem reprehenderit ipsum, id explicabo qui ducimus?
-            Deserunt, iste officiis.
+            {post.content}
           </p>
         </div>
-        <Button className="single-post-button" variant="outline-dark">Like</Button>
-        <Button className="single-post-button" variant="outline-dark">Comment</Button>
-      </Container>
-
-      <Container className='single-post'>
-        <Figure className='single-post-image'>
-          <Figure.Image
-            src={defaultAvatar}
-            roundedCircle
-            width={50}
-            height={50}
-          />
-          <span className='single-post-username'>
-            Username
-          </span>
-        </Figure>
-        <div>
-          <Figure.Image
-            src={defaultImg}
-            rounded
-          />
-        </div>
-        <Button className="single-post-button" variant="outline-dark">Like</Button>
-        <Button className="single-post-button" variant="outline-dark">Comment</Button>
-      </Container>
+        {post.author &&
+          <div className="postButtons">
+            <Button variant="outline-dark" style={{ border: 'none' }}>Like</Button>
+            <Button variant="outline-dark" style={{ border: 'none' }}>Comment</Button>
+          </div>}
+      </div>
     </>
   );
 };

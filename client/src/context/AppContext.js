@@ -16,7 +16,9 @@ const AppContext = createContext({
     longitude: 0,
     friends: []
   },
-  setUser() {}
+  setUser() {},
+  createdPost: false,
+  setCreatedPost() {}
 });
 
 export default AppContext;

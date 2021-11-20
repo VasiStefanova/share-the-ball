@@ -14,7 +14,7 @@ export const createNewPostRequest = async (
   if (embed) formData.append('embed', embed);
   if (latitude) formData.append('latitude', latitude);
   if (longitude) formData.append('longitude', longitude);
-  if (isPublic) formData.append('isPublic', isPublic);
+  formData.append('isPublic', isPublic);
 
   try {
     const response = await fetch(`${POSTS_URL}`, {
