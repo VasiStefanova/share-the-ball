@@ -9,10 +9,10 @@ import HomePrivate from './views/HomePrivate/HomePrivate';
 import CardLinks from './components/CardLinks/CardLinks';
 import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 import MyProfile from './views/MyProfile/MyProfile';
+import { getToken } from './common/helpers';
 
 // eslint-disable-next-line require-jsdoc
 function App() {
-
   // User data
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({
@@ -46,10 +46,10 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/"><Redirect to="/home" /></Route>
-            <Route exact path="/home" component={loggedIn ? HomePrivate : HomePublic} /> :
+            <Route exact path="/home" component={loggedIn? HomePrivate : HomePublic} />
             <Route exact path="/CardLinks" component={CardLinks} />
             <Route exact path="/search" component={SearchTeammatesView} />
-            <Route exact path="/my-profile" component={MyProfile} />
+            <Route path="/my-profile" component={MyProfile} />
           </Switch>
         </BrowserRouter>
       </AppContext.Provider>
