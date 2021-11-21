@@ -1,25 +1,21 @@
 /* eslint-disable react/prop-types */
-import Figure from 'react-bootstrap/Figure';
 import Button from 'react-bootstrap/Button';
+import Avatar from '../../elements/Avatar/Avatax';
 import './SinglePost.css';
+import { useContext } from 'react';
+import AppContext from '../../context/AppContext';
 
 const SinglePost = ({ post }) => {
+  const { user } = useContext(AppContext);
 
   return (
     <>
       <div className='post-container'>
         {post.author &&
-          <Figure className='user-avatar'>
-            <Figure.Image
-              src={`http://localhost:5000/${post.author.avatar}`}
-              roundedCircle
-              width={50}
-              height={50}
-            />
-            <div className='post-username'>
-              {post.author.username}
-            </div>
-          </Figure>}
+          <div className='author-details'>
+            <Avatar user={user} />
+            <p id="username">{post.author.username}</p>
+          </div>}
         <div className="post-content">
           <p>
             {post.content}
