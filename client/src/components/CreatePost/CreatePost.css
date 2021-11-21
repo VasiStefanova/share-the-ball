@@ -1,4 +1,4 @@
-.createPostBox {
+.create-post-box {
   display: grid;
   justify-content: center;
   border: black solid 0.1vh;
@@ -13,18 +13,24 @@
   margin-left: 1vw;
 }
 
-.postTextArea {
+.post-text-area {
   width: 45vw;
   margin-bottom: 1vh;
 }
 
-.headerBar {
+.image-preview {
+  display: grid;
+  justify-items: center;
+  margin-bottom: 1vh;
+}
+
+.post-header-bar {
   display:flex;
   justify-content: space-between;
   margin-bottom: 1vh;
 }
 
-.userDetails {
+.user-details {
   display: flex;
 }
 
@@ -32,6 +38,10 @@
   font-weight: bold;
 }
 
-#postButton {
-  width: 5vw;
+#post-button {
+  width: 8vw;
+}
+
+.button-group {
+  display: flex;
 }

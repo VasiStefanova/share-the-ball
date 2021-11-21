@@ -4,6 +4,7 @@ import { POSTS_URL } from '../../common/constants';
 export const createNewPostRequest = async (
   content = '',
   embed = '',
+  file = '',
   latitude = 0,
   longitude = 0,
   isPublic = false,
@@ -12,6 +13,7 @@ export const createNewPostRequest = async (
 
   if (content) formData.append('content', content);
   if (embed) formData.append('embed', embed);
+  if (file) formData.append('file', file);
   if (latitude) formData.append('latitude', latitude);
   if (longitude) formData.append('longitude', longitude);
   formData.append('isPublic', isPublic);
