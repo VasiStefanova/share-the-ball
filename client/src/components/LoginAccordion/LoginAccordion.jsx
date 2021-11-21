@@ -32,7 +32,6 @@ const LoginAccordion = () => {
       setLoggedIn(true);
       setCredentials({ username: '', password: '' });
       setError('');
-      history.push('/feed');
     } catch (err) {
       setError(err.message);
     }

@@ -1,5 +1,21 @@
-.avatarImage {
+.avatar-nav-link {
+  text-decoration-color: red;
+}
+
+.avatar-box {
+  display: flex;
+  align-items: center;
+  
+}
+
+.avatar-username {
+  color: white;
+  margin-right: 0.5vw;
+}
+
+.avatar-image {
   max-height: 4vh;
   max-width: 5vh;
   border-radius: 5vh;
 }
+
