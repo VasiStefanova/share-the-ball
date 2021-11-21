@@ -6,7 +6,6 @@ import './App.css';
 import Header from './components/Header/Header';
 import HomePublic from './views/HomePublic/HomePublic';
 import HomePrivate from './views/HomePrivate/HomePrivate';
-import NBAStandingsFeed from './components/NBAStandingsFeed/NBAStandingsFeed';
 import CardLinks from './components/CardLinks/CardLinks';
 import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 import MyProfile from './views/MyProfile/MyProfile';
@@ -47,9 +46,7 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/"><Redirect to="/home" /></Route>
-            {loggedIn ?
-              <Route exact path="/home" component={HomePrivate} /> :
-              <Route exact path="/home" component={HomePublic} />}
+            <Route exact path="/home" component={loggedIn ? HomePrivate : HomePublic} /> :
             <Route exact path="/CardLinks" component={CardLinks} />
             <Route exact path="/search" component={SearchTeammatesView} />
             <Route exact path="/my-profile" component={MyProfile} />

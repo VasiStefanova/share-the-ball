@@ -5,21 +5,11 @@
   margin-right: 1vw;
   margin-left: 1vw;
 }
-.user-avatar {
-  display: inline-flex;
-  margin-top: 1vh;
+
+.author-details {
+  display: flex;
   margin-left: 1vw;
-}
-
-.post-username {
-  margin-left: 0.1vw;
-  font-weight: bold;
-}
-
-.post-buttons {
-  margin-bottom: 1vh;
-  margin-left: 0.5vw;
-  margin-right: 0.5vw;
+  margin-top: 1vh;
 }
 
 .post-content {
@@ -32,3 +22,12 @@
   justify-items: center;
   margin-bottom: 1vh;
 }
+
+.post-buttons {
+  margin-bottom: 1vh;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+
+
+

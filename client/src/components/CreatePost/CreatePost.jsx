@@ -16,6 +16,7 @@ const CreatePost = () => {
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
+
   const handleFileChange = (e) => {
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
@@ -45,10 +46,10 @@ const CreatePost = () => {
         <div className="button-group">
           <UploadFileButton buttonText={<i className="bi bi-image" />} onChange={(e) => handleFileChange(e)} />
           <ToggleButtonGroup type="radio" name="options" defaultValue={1} style={{ display: 'flex' }}>
-            <ToggleButton id="privatePostBtn" variant="outline-dark" size="small" value={1} onClick={() => setIsPublic(false)}>
+            <ToggleButton id="private-post-button" variant="outline-dark" size="small" value={1} onClick={() => setIsPublic(false)}>
               Private
             </ToggleButton>
-            <ToggleButton id="publicPostBtn" variant="outline-dark" value={2} onClick={() => setIsPublic(true)}>
+            <ToggleButton id="public-post-button" variant="outline-dark" value={2} onClick={() => setIsPublic(true)}>
               Public
             </ToggleButton>
           </ToggleButtonGroup>
@@ -66,8 +67,15 @@ const CreatePost = () => {
           </Form.Group>
         </Form>
         {imagePreview &&
-          <div className="image-preview">
-            <img src={imagePreview} style={{ maxWidth: '30vw', maxHeight: '30vh' }} />
+          <div className="image-preview-container">
+            <img src={imagePreview} id="image-preview" />
+            <Button
+              id="remove-prievew-button" variant="outline-dark" onClick={() => {
+                setImagePreview(false);
+                setFile('');
+              }}
+            ><i className="bi bi-trash" />
+            </Button>
           </div>}
         <Button id="post-button" variant="dark" onClick={(e) => createPost(e)}>Post</Button>
       </div>
