@@ -6,6 +6,7 @@
   align-items: center;
 }
 
+
 .logo-box {
   margin-left: 1vw;
 }
@@ -13,6 +14,16 @@
 .profile-box {
   display: flex;
   margin-right: 1vw;
+}
+
+.avatar-nav-link {
+  display: flex;
+  text-decoration-color: red;
+}
+
+.avatar-username {
+  color: white;
+  margin-right: 0.5vw;
 }
 
 .nav-link {

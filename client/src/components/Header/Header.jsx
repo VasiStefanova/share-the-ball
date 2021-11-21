@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import { logoutRequest } from '../../services/auth/logout-request';
 import AppContext from '../../context/AppContext';
 
-
 const Header = () => {
   const { loggedIn, setLoggedIn, user, setUser } = useContext(AppContext);
 
@@ -48,7 +47,10 @@ const Header = () => {
       <div className="profile-box">
         {loggedIn &&
           <Button variant="outline-secondary" color='white' style={{ marginRight: '1vw' }} onClick={(ev) => logout(ev)}>Logout</Button>}
-        <Avatar user={user} />
+        <NavLink to='my-profile' className='avatar-nav-link'>
+          <h5 className='avatar-username'>{user.username}</h5>
+          <Avatar user={user} />
+        </NavLink>
       </div>
     </div>
   );

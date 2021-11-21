@@ -1,18 +1,14 @@
 /* eslint-disable react/prop-types */
 import './Avatar.css';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
-const Avatar = ({ user }) => {
+const Avatar = ({ user, style }) => {
 
   return (
-    <NavLink to='my-profile' className='avatar-nav-link'>
-      <div className='avatar-box'>
-        <h5 className='avatar-username'>{user.username}</h5>
-        {user.avatar &&
-          <img src={`http://localhost:5000/${user.avatar}`} alt={user.username} className='avatar-image' />}
-      </div>
-    </NavLink>
+    <div className='avatar-box'>
+      {user.avatar &&
+        <img src={`http://localhost:5000/${user.avatar}`} alt={user.username} className='avatar-image' style={style? style : null} />}
+    </div>
   );
 };
 
