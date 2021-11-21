@@ -6,7 +6,6 @@ import './App.css';
 import Header from './components/Header/Header';
 import HomePublic from './views/HomePublic/HomePublic';
 import HomePrivate from './views/HomePrivate/HomePrivate';
-import NBAStandingsFeed from './components/NBAStandingsFeed/NBAStandingsFeed';
 import CardLinks from './components/CardLinks/CardLinks';
 import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 import MyProfile from './views/MyProfile/MyProfile';
