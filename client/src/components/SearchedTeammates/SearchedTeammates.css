@@ -1,0 +1,27 @@
+.teammate-container-box {
+    display: grid;
+    border: black solid 0.1vh;
+    border-radius: 1vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-right: 25vw;
+    margin-left: 25vw;
+  }
+  .teammate-container {
+    text-align: left;
+    display:flex;
+    justify-content: space-between;
+  }
+
+.teammate-username {
+    display:flex;
+    font-weight: bold;
+  }
+.teammate-last-updated {
+    float: inherit;
+    margin-left: 0.1vw;
+}

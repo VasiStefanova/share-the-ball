@@ -5,9 +5,10 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import { useState } from 'react';
 import './SearchTeammates.css';
 import getUsersRequest from '../../services/users/get-users-request';
+import PropTypes from 'prop-types';
 
 
-const SearchTeammates = () => {
+const SearchTeammates = ({ setTeammates }) => {
 
   const [userInput, setUserInput] = useState('');
   const [usernameBtnClicked, setUsernameBtnClicked] = useState(true);
@@ -25,8 +26,8 @@ const SearchTeammates = () => {
     }
 
     const filteredUsers = await getUsersRequest(searchQueries);
+    setTeammates(filteredUsers);
     console.log(filteredUsers);
-
   };
 
   return (
@@ -87,4 +88,7 @@ const SearchTeammates = () => {
   );
 };
 
+SearchTeammates.propTypes = {
+  setTeammates: PropTypes.func,
+};
 export default SearchTeammates;
