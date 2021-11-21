@@ -16,6 +16,7 @@ const CreatePost = () => {
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
+
   const handleFileChange = (e) => {
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
@@ -66,8 +67,9 @@ const CreatePost = () => {
           </Form.Group>
         </Form>
         {imagePreview &&
-          <div className="image-preview">
-            <img src={imagePreview} style={{ maxWidth: '30vw', maxHeight: '30vh' }} />
+          <div className="image-preview-container">
+            <img src={imagePreview} id="image-preview" />
+            <Button id="remove-prievew-button" variant="outline-dark" onClick={() => setImagePreview(false)}><i className="bi bi-trash" /></Button>
           </div>}
         <Button id="post-button" variant="dark" onClick={(e) => createPost(e)}>Post</Button>
       </div>

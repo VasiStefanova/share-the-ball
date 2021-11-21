@@ -13,21 +13,14 @@
   margin-left: 1vw;
 }
 
-.post-text-area {
-  width: 45vw;
-  margin-bottom: 1vh;
-}
-
-.image-preview {
-  display: grid;
-  justify-items: center;
-  margin-bottom: 1vh;
-}
-
 .post-header-bar {
   display:flex;
   justify-content: space-between;
   margin-bottom: 1vh;
+}
+
+.button-group {
+  display: flex;
 }
 
 .user-details {
@@ -38,10 +31,26 @@
   font-weight: bold;
 }
 
+.post-text-area {
+  width: 45vw;
+  margin-bottom: 1vh;
+}
+
+.image-preview-container {
+  display: grid;
+  justify-items: center;
+  margin-bottom: 1vh;
+}
+
+#image-preview {
+  max-width: 30vw;
+  max-height: 30vh;
+}
+
 #post-button {
   width: 8vw;
 }
 
-.button-group {
-  display: flex;
+#remove-prievew-button {
+  margin-top: 1vh;
 }

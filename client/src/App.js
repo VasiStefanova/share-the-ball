@@ -47,9 +47,7 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/"><Redirect to="/home" /></Route>
-            {loggedIn ?
-              <Route exact path="/home" component={HomePrivate} /> :
-              <Route exact path="/home" component={HomePublic} />}
+            <Route exact path="/home" component={loggedIn ? HomePrivate : HomePublic} /> :
             <Route exact path="/CardLinks" component={CardLinks} />
             <Route exact path="/search" component={SearchTeammatesView} />
             <Route exact path="/my-profile" component={MyProfile} />
