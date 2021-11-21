@@ -9,7 +9,6 @@ const getUserDetailsRequest = async (id = 0) => {
       },
     });
     const userDetails = await response.json();
-    console.log(userDetails);
     return userDetails;
   } catch (error) {
     return error;
