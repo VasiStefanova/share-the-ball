@@ -1,0 +1,15 @@
+.user-profile-container {
+  display: flex;
+}
+
+.user-profile-left {
+
+  width: 67vw;
+  min-height: 85vh;
+}
+
+.user-profile-right {
+  border-left: 1px solid black;
+  width: 33vw;
+  min-height: 85vh;
+}
