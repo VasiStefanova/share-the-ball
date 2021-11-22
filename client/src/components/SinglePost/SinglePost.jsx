@@ -4,6 +4,7 @@ import Avatar from '../../elements/Avatar/Avatax';
 import './SinglePost.css';
 import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
+import CommentsAccordion from '../CommentsAccordion/CommentsAccordion';
 
 const SinglePost = ({ post }) => {
   const { user } = useContext(AppContext);
@@ -28,7 +29,10 @@ const SinglePost = ({ post }) => {
         {post.author &&
           <div className="post-buttons">
             <Button variant="outline-dark" style={{ border: 'none' }}>Like</Button>
-            <Button variant="outline-dark" style={{ border: 'none' }}>Comment</Button>
+          </div>}
+        {post.author &&
+          <div className="comments-box">
+            <CommentsAccordion user={user} post={post} />
           </div>}
       </div>
     </>

@@ -1,0 +1,23 @@
+.comment-header-bar {
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 1vh;
+}
+
+.comment-form {
+  display: grid;
+  justify-items: center;
+}
+
+.comment-text-area {
+  width: 45vw;
+  margin-bottom: 1vh;
+}
+
+.create-comment-box {
+  margin: 1vh 1vw 1vh 1vw;
+}
+
+#comment-button {
+  width: 8vw;
+}

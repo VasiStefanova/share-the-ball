@@ -31,7 +31,7 @@ const CreatePost = () => {
       setCreatedPost(!createdPost);
       setImagePreview('');
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
 
   };
@@ -44,7 +44,7 @@ const CreatePost = () => {
           <h6>{user.username}</h6>
         </div>
         <div className="button-group">
-          <UploadFileButton buttonText={<i className="bi bi-image" />} onChange={(e) => handleFileChange(e)} />
+          <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />
           <ToggleButtonGroup type="radio" name="options" defaultValue={1} style={{ display: 'flex' }}>
             <ToggleButton variant="outline-dark" size="small" value={1} onClick={() => setIsPublic(false)}>
               Private
