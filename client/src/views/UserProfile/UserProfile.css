@@ -13,3 +13,12 @@
   width: 33vw;
   min-height: 85vh;
 }
+.left-btns {
+  margin-top: 3vh;
+  margin-left: 2.5vh;
+  text-align: left;
+}
+.nav-button {
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
