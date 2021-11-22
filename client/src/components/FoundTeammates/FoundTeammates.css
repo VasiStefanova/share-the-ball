@@ -1,0 +1,27 @@
+  .teammate-container-box {
+    display: grid;
+    border: black solid 0.1vh;
+    border-radius: 1vh;
+    padding: 1vh 1vw;
+    margin: 1vh auto;
+    max-width: 35vw;
+  }
+
+  .teammate-container {
+    text-align: left;
+    display:flex;
+    justify-content: space-between;
+  }
+
+  .teammate-avatar-and-info {
+    display: flex;
+  }
+
+  .teammate-info {
+    margin: unset;
+  }
+
+  .last-updated {
+    color: gray;
+  }
+  

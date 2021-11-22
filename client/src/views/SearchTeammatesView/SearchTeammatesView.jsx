@@ -1,6 +1,6 @@
 import SearchTeammates from '../../components/SearchTeammates/SearchTeammates';
 import { useState } from 'react';
-import SearchedTeammates from '../../components/SearchedTeammates/SearchedTeammates';
+import FoundTeammates from '../../components/FoundTeammates/FoundTeammates';
 
 const SearchTeammatesView = () => {
   const [teammates, setTeammates] = useState([]);
@@ -11,7 +11,7 @@ const SearchTeammatesView = () => {
     <SearchTeammates setTeammates={setTeammates} /> :
     <>
       <SearchTeammates setTeammates={setTeammates} />
-      <SearchedTeammates teammates={teammates} />
+      <FoundTeammates teammates={teammates} />
     </>;
 };
 

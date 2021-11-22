@@ -1,8 +1,11 @@
-.search-bar {
-    padding-top: 10vh;
-    padding-bottom: 2vh;
-    padding-left: 25vw;
-    padding-right: 25vw;
+.search-bar-box {
+    margin: 10vh auto;
+    max-width: 30vw;
+}
+
+.filter-buttons-box {
+  display: inline-flex;
+  margin-bottom: 1vh;
 }
 
 .filter-btn {
@@ -11,6 +14,7 @@
     margin-right: 0.5vw;
     border-radius: 0.5rem;
 }
+
 .filter-btn:hover {
     background-color: white;
     color: black;

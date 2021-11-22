@@ -2,12 +2,12 @@
 import Figure from 'react-bootstrap/Figure';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
-import './SearchedTeammates.css';
+import './FoundTeammates.css';
 import Avatar from '../../elements/Avatar/Avatax';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
-const SearchedTeammates = ({ teammates }) => {
+const FoundTeammates = ({ teammates }) => {
 
   return (
     <>
@@ -17,10 +17,12 @@ const SearchedTeammates = ({ teammates }) => {
           key={teammate.id}
         >
           <div className='teammate-container'>
-            <div className="teammate-username">
+            <div className='teammate-avatar-and-info'>
               <Avatar user={teammate} />
-              <p className='teammate-username'>{teammate.username}</p>
-              <p className='teammate-last-updated'>last updated: {new Date(teammate.lastUpdated).toLocaleDateString('en-UK')}</p>
+              <div className='teammate-info-box'>
+                <h5 className='teammate-info'>{teammate.username}</h5>
+                <h6 className='teammate-info last-updated'>last updated: {new Date(teammate.lastUpdated).toLocaleDateString('en-UK')}</h6>
+              </div>
             </div>
             <Button variant='outline-dark'>
               view profile
@@ -32,8 +34,8 @@ const SearchedTeammates = ({ teammates }) => {
   );
 };
 
-SearchedTeammates.propTypes = {
+FoundTeammates.propTypes = {
   teammates: PropTypes.array,
 };
 
-export default SearchedTeammates;
+export default FoundTeammates;

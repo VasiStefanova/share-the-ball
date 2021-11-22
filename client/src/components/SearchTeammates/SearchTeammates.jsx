@@ -15,7 +15,7 @@ const SearchTeammates = ({ setTeammates }) => {
   const [emailBtnClicked, setEmailBtnClicked] = useState(false);
   const [inputReadOnly, setInputReadOnly] = useState(false);
 
-  const Search = async () => {
+  const search = async () => {
     const searchQueries = {};
     if (usernameBtnClicked) {
       searchQueries.name=`${userInput}`;
@@ -32,58 +32,59 @@ const SearchTeammates = ({ setTeammates }) => {
 
   return (
     <>
-      <InputGroup className="mb-3 search-bar">
+      <InputGroup className="mb-3 search-bar-box">
         <FormControl
           disabled={inputReadOnly}
           aria-label="Default"
           aria-describedby="inputGroup-sizing-default"
           placeholder="Search teammates"
           onChange={e => setUserInput(e.target.value)}
+          onKeyUp={(e) => e.key === 'Enter' && search()}
         />
         <Button
           className='input-group-append'
           variant="outline-dark"
           disabled={inputReadOnly}
-          onClick={Search}
+          onClick={search}
         >
           Search
         </Button>
       </InputGroup>
-      <span>
-        <p>Filter by |</p>
+      <span className='filter-buttons-box'>
+        <h3>Filter by |</h3>
+        <ToggleButton
+          className='filter-btn'
+          variant="outline-dark"
+          onClick={() => {
+            const toggleClick = !usernameBtnClicked;
+            setUsernameBtnClicked(toggleClick);
+            if (usernameBtnClicked && !emailBtnClicked) {
+              setInputReadOnly(true);
+            } else {
+              setInputReadOnly(false);
+            }
+          }}
+          type="checkbox"
+          checked={usernameBtnClicked}
+        >username
+        </ToggleButton>
+        <ToggleButton
+          className='filter-btn'
+          variant="outline-dark"
+          onClick={() => {
+            const toggleClick = !emailBtnClicked;
+            setEmailBtnClicked(toggleClick);
+            if (!usernameBtnClicked && emailBtnClicked) {
+              setInputReadOnly(true);
+            } else {
+              setInputReadOnly(false);
+            }
+          }}
+          type="checkbox"
+          checked={emailBtnClicked}
+        >email
+        </ToggleButton>
       </span>
-      <ToggleButton
-        className='filter-btn'
-        variant="outline-dark"
-        onClick={() => {
-          const toggleClick = !usernameBtnClicked;
-          setUsernameBtnClicked(toggleClick);
-          if (usernameBtnClicked && !emailBtnClicked) {
-            setInputReadOnly(true);
-          } else {
-            setInputReadOnly(false);
-          }
-        }}
-        type="checkbox"
-        checked={usernameBtnClicked}
-      >username
-      </ToggleButton>
-      <ToggleButton
-        className='filter-btn'
-        variant="outline-dark"
-        onClick={() => {
-          const toggleClick = !emailBtnClicked;
-          setEmailBtnClicked(toggleClick);
-          if (!usernameBtnClicked && emailBtnClicked) {
-            setInputReadOnly(true);
-          } else {
-            setInputReadOnly(false);
-          }
-        }}
-        type="checkbox"
-        checked={emailBtnClicked}
-      >email
-      </ToggleButton>
     </>
   );
 };
