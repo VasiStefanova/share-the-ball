@@ -1,13 +1,12 @@
-/* eslint-disable react/prop-types */
-import Figure from 'react-bootstrap/Figure';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import './FoundTeammates.css';
 import Avatar from '../../elements/Avatar/Avatax';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import ToggleButton from 'react-bootstrap/ToggleButton';
+import { useHistory } from 'react-router';
+
 
 const FoundTeammates = ({ teammates }) => {
+  const history = useHistory();
 
   return (
     <>
@@ -24,7 +23,7 @@ const FoundTeammates = ({ teammates }) => {
                 <h6 className='teammate-info last-updated'>last updated: {new Date(teammate.lastUpdated).toLocaleDateString('en-UK')}</h6>
               </div>
             </div>
-            <Button variant='outline-dark'>
+            <Button variant='outline-dark' onClick={() => history.push(`/user-profile/${teammate.id}`)}>
               view profile
             </Button>
           </div>

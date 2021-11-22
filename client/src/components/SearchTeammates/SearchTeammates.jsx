@@ -13,7 +13,7 @@ const SearchTeammates = ({ setTeammates }) => {
   const [userInput, setUserInput] = useState('');
   const [usernameBtnClicked, setUsernameBtnClicked] = useState(true);
   const [emailBtnClicked, setEmailBtnClicked] = useState(false);
-  const [inputReadOnly, setInputReadOnly] = useState(false);
+  const [inputDisabled, setInputDisabled] = useState(false);
 
   const search = async () => {
     const searchQueries = {};
@@ -34,7 +34,7 @@ const SearchTeammates = ({ setTeammates }) => {
     <>
       <InputGroup className="mb-3 search-bar-box">
         <FormControl
-          disabled={inputReadOnly}
+          disabled={inputDisabled}
           aria-label="Default"
           aria-describedby="inputGroup-sizing-default"
           placeholder="Search teammates"
@@ -44,7 +44,7 @@ const SearchTeammates = ({ setTeammates }) => {
         <Button
           className='input-group-append'
           variant="outline-dark"
-          disabled={inputReadOnly}
+          disabled={inputDisabled}
           onClick={search}
         >
           Search
@@ -59,9 +59,9 @@ const SearchTeammates = ({ setTeammates }) => {
             const toggleClick = !usernameBtnClicked;
             setUsernameBtnClicked(toggleClick);
             if (usernameBtnClicked && !emailBtnClicked) {
-              setInputReadOnly(true);
+              setInputDisabled(true);
             } else {
-              setInputReadOnly(false);
+              setInputDisabled(false);
             }
           }}
           type="checkbox"
@@ -75,9 +75,9 @@ const SearchTeammates = ({ setTeammates }) => {
             const toggleClick = !emailBtnClicked;
             setEmailBtnClicked(toggleClick);
             if (!usernameBtnClicked && emailBtnClicked) {
-              setInputReadOnly(true);
+              setInputDisabled(true);
             } else {
-              setInputReadOnly(false);
+              setInputDisabled(false);
             }
           }}
           type="checkbox"
