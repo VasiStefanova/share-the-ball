@@ -41,15 +41,15 @@ const CreatePost = () => {
       <div className="post-header-bar">
         <div className="user-details">
           <Avatar user={user} />
-          <p id="username">{user.username}</p>
+          <h6>{user.username}</h6>
         </div>
         <div className="button-group">
           <UploadFileButton buttonText={<i className="bi bi-image" />} onChange={(e) => handleFileChange(e)} />
           <ToggleButtonGroup type="radio" name="options" defaultValue={1} style={{ display: 'flex' }}>
-            <ToggleButton id="private-post-button" variant="outline-dark" size="small" value={1} onClick={() => setIsPublic(false)}>
+            <ToggleButton variant="outline-dark" size="small" value={1} onClick={() => setIsPublic(false)}>
               Private
             </ToggleButton>
-            <ToggleButton id="public-post-button" variant="outline-dark" value={2} onClick={() => setIsPublic(true)}>
+            <ToggleButton variant="outline-dark" value={2} onClick={() => setIsPublic(true)}>
               Public
             </ToggleButton>
           </ToggleButtonGroup>

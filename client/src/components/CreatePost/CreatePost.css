@@ -3,14 +3,8 @@
   justify-content: center;
   border: black solid 0.1vh;
   border-radius: 1vh;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  padding-left: 1vw;
-  padding-right: 1vw;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  margin-right: 1vw;
-  margin-left: 1vw;
+  padding: 1vh 1vw 1vh 1vw;
+  margin: 1vh 1vw 1vh 1vw;
 }
 
 .post-header-bar {
@@ -25,10 +19,6 @@
 
 .user-details {
   display: flex;
-}
-
-#username {
-  font-weight: bold;
 }
 
 .post-text-area {
