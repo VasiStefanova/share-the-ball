@@ -14,7 +14,7 @@ const SinglePost = ({ post }) => {
         {post.author &&
           <div className='author-details'>
             <Avatar user={user} />
-            <p id="username">{post.author.username}</p>
+            <h6>{post.author.username}</h6>
           </div>}
         <div className="post-content">
           <p>

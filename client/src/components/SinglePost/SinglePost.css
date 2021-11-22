@@ -2,19 +2,16 @@
   border: black solid 0.1vh;
   border-radius: 1vh;
   text-align: left;
-  margin-right: 1vw;
-  margin-left: 1vw;
+  margin: auto 1vw;
 }
 
 .author-details {
   display: flex;
-  margin-left: 1vw;
-  margin-top: 1vh;
+  margin: 1vh auto auto 1vw;
 }
 
 .post-content {
-  margin-left: 1.2vw;
-  margin-right: 1.2vw;
+  margin: auto 1.2vw;
 }
 
 .post-image {
@@ -24,9 +21,7 @@
 }
 
 .post-buttons {
-  margin-bottom: 1vh;
   margin-left: 0.5vw;
-  margin-right: 0.5vw;
 }
 
 
