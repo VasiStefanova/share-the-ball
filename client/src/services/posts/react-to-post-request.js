@@ -1,5 +1,5 @@
-import {getToken} from '../../../../../MKBL/client/src/common/helpers';
-import {POSTS_URL} from '../../common/constants';
+import { getToken } from '../../common/helpers';
+import { POSTS_URL } from '../../common/constants';
 
 export const reactToPostRequest = async (id = 0, reaction = 0) => {
   try {

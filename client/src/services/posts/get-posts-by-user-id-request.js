@@ -1,5 +1,5 @@
-import {getToken} from '../../../../../MKBL/client/src/common/helpers';
-import {USERS_URL} from '../../common/constants';
+import { getToken } from '../../common/helpers';
+import { USERS_URL } from '../../common/constants';
 
 export const getPostsByUserIdRequest = async (id = 0, page = 0, count = 0) => {
   const queryParams = [];

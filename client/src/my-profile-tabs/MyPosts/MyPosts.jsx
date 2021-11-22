@@ -10,8 +10,12 @@ const MyPosts = () => {
   const [myPosts, setMyPosts] = useState([]);
 
   useEffect(async () => {
-    const posts = await getPostsByUserIdRequest(user.id);
-    setMyPosts(posts);
+    try {
+      const posts = await getPostsByUserIdRequest(user.id, 1, 5);
+      Array.isArray(posts) && setMyPosts(posts);
+    } catch (error) {
+      console.log(error.message);
+    }
   }, []);
 
   return (
