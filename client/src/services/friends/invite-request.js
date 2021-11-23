@@ -1,5 +1,5 @@
-import {getToken} from '../../../../../MKBL/client/src/common/helpers';
-import {USERS_URL} from '../../common/constants';
+import { getToken } from '../../common/helpers';
+import { USERS_URL } from '../../common/constants';
 
 export const inviteRequest = async (id = 0, toId = 0) => {
   try {
