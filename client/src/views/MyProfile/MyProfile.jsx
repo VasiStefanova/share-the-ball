@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ButtonGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { useHistory, useLocation } from 'react-router';
+import AppContext from '../../context/AppContext';
 import MyPosts from '../../my-profile-tabs/MyPosts/MyPosts';
 import MyTeammates from '../../my-profile-tabs/MyTeammates/MyTeammates';
+import UserList from '../../my-profile-tabs/UserList/UserList';
 import './MyProfile.css';
 
 const MyProfile = () => {
+  const { user } = useContext(AppContext);
   const history = useHistory();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(<MyPosts />);
-
   const isCurrentURL = (searchedTab = '') => {
     return location.pathname.split('/')[2] === searchedTab;
   };
@@ -22,6 +24,9 @@ const MyProfile = () => {
       break;
     case 'teammates':
       setActiveTab(<MyTeammates />);
+      break;
+    case 'user_list':
+      setActiveTab(<UserList />);
       break;
 
     default:
@@ -48,12 +53,15 @@ const MyProfile = () => {
               onClick={() => history.push('/my-profile/teammates')}
             >Teammates
             </Button>
-            <Button
-              variant="outline-dark"
-              active={null}
-              className='my-profile-tab'
-            >Create Post
-            </Button>
+            {/* change role on next line to hide from regular users */}
+            {user.role === 1 &&
+              <Button
+                variant="outline-dark"
+                active={isCurrentURL('user_list')}
+                className='my-profile-tab'
+                onClick={() => history.push('/my-profile/user_list')}
+              >User List
+              </Button>}
           </ButtonGroup>
           <div className='my-profile-active-tab'>
             {activeTab}

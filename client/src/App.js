@@ -40,6 +40,7 @@ function App() {
     }
   }, []);
 
+  // style={{ backgroundImage: 'url(/background.png)' }} - add this to App div to set background img
   return (
     <div className="App">
       <AppContext.Provider value={{ loggedIn, setLoggedIn, user, setUser, createdPost, setCreatedPost }}>
