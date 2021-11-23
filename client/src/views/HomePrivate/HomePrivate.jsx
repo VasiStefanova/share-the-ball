@@ -10,13 +10,10 @@ const HomePrivate = () => {
   const { createdPost } = useContext(AppContext);
   const [posts, setPosts] = useState([]);
 
-  useEffect(async () => {
-    try {
-      const allPosts = await getAllPostsRequest();
-      setPosts(allPosts);
-    } catch (error) {
-      console.error(error);
-    }
+  useEffect(() => {
+    getAllPostsRequest()
+      .then(allPosts => setPosts(allPosts))
+      .catch(console.error);
   }, [createdPost]);
 
   return (

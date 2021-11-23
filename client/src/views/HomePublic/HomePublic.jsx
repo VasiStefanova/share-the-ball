@@ -8,13 +8,10 @@ import './HomePublic.css';
 const HomePublic = () => {
   const [posts, setPosts] = useState([]);
 
-  useEffect(async () => {
-    try {
-      const popularPosts = await getPopularPostsRequest();
-      setPosts(popularPosts);
-    } catch (error) {
-      console.error(error);
-    }
+  useEffect(() => {
+    getPopularPostsRequest()
+      .then((popularPosts) => setPosts(popularPosts))
+      .catch(console.error);
   }, []);
 
   return (
