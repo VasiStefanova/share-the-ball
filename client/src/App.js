@@ -33,7 +33,7 @@ function App() {
             <Route exact path="/CardLinks" component={CardLinks} />
             <Route exact path="/search" component={SearchTeammatesView} />
             <Route path="/my-profile" component={MyProfile} />
-            <Route exact path="/user-profile/:id" component={UserProfile} />
+            <Route exact path="/user-profile/id=:id" component={UserProfile} />
           </Switch>
         </BrowserRouter>
       </AppContext.Provider>
