@@ -37,13 +37,13 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="create-post-box">
+    <div className="create-post-box theme-border-style">
       <div className="post-header-bar">
         <div className="user-details">
           <Avatar user={user} />
-          <h6>{user.username}</h6>
+          <h6 className='author-username'>{user.username}</h6>
         </div>
-        <div className="button-group">
+        <div className="button-group theme-button-group-style">
           <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />
           <ToggleButtonGroup type="radio" name="options" defaultValue={1} style={{ display: 'flex' }}>
             <ToggleButton variant="outline-dark" size="small" value={1} onClick={() => setIsPublic(false)}>

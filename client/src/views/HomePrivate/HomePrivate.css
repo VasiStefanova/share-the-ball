@@ -3,7 +3,7 @@
 }
 
 .home-private-left {
-  border-right: 1px solid black;
+  border-right: 1px solid white;
   width: 25vw;
   min-height: 85vh;
 }
@@ -14,7 +14,7 @@
 }
 
 .home-private-right {
-  border-left: 1px solid black;
+  border-left: 1px solid white;
   width: 25vw;
   min-height: 85vh;
 }

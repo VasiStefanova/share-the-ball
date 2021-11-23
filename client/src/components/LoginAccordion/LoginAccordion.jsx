@@ -7,10 +7,8 @@ import { React, useContext, useState } from 'react';
 import { loginRequest } from '../../services/auth/login-request';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import AppContext from '../../context/AppContext';
-import { useHistory } from 'react-router';
 
 const LoginAccordion = () => {
-  const history = useHistory();
   const { setLoggedIn, setUser } = useContext(AppContext);
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
@@ -27,7 +25,7 @@ const LoginAccordion = () => {
       const userId = payload.id;
 
       const userDetails = await getUserDetailsRequest(userId);
-      setUser(userDetails);
+      // setUser(userDetails);
       localStorage.setItem('user', JSON.stringify(userDetails));
       setLoggedIn(true);
       setCredentials({ username: '', password: '' });

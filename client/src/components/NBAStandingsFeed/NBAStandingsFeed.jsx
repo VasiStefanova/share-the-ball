@@ -34,10 +34,10 @@ const NBAStandingsFeed = () => {
   }, [setDataTeams]);
 
   return (
-    <div className='standings-feed'>
+    <div className='standings-feed theme-border-style'>
       {dataTeams.length ?
         <>
-          <ButtonGroup className='standings-feed-button-box' size="lg">
+          <ButtonGroup className='standings-feed-button-box theme-button-group-style' size="lg">
             <Button
               style={{ marginRight: '1vw' }}
               className="standings-button" variant="outline-dark" active={buttonPressed} onClick={() => setDataTeams(eastDataTeams)}

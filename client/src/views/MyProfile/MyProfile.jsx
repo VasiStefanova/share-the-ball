@@ -38,7 +38,7 @@ const MyProfile = () => {
     <div className='my-profile-container'>
       <div className='my-profile-left'>
         <div className='main-my-profile-container'>
-          <ButtonGroup className='my-profile-tabs-bar' size="lg">
+          <ButtonGroup className='my-profile-tabs-bar theme-button-group-style' size="lg">
             <Button
               variant="outline-dark"
               active={isCurrentURL('posts')}

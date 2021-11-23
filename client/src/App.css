@@ -4,3 +4,17 @@
   text-align: center;
   min-height: 100vh;
 }
+
+.theme-button-group-style {
+  background-color: white;
+  border-radius: 0.5vh;
+}
+
+.theme-border-style {
+  border: 2px solid white;
+}
+
+.theme-text-style {
+  color: white;
+  font-size: bold;
+}

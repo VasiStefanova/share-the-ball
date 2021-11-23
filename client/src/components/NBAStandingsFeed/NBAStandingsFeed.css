@@ -5,8 +5,9 @@
 .standings-feed {
   max-width: 23vw;
   margin: 1vh auto;
-  border: black solid 1px;
   border-radius: 1vh;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 .standings-feed-button-box {

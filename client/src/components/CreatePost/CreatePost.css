@@ -1,10 +1,10 @@
 .create-post-box {
   display: grid;
   justify-content: center;
-  border: black solid 0.1vh;
   border-radius: 1vh;
-  padding: 1vh 1vw 1vh 1vw;
-  margin: 1vh 1vw 1vh 1vw;
+  padding: 1vh 1vw;
+  margin: 1vh auto;
+  max-width: 40vw;
 }
 
 .post-header-bar {
@@ -22,7 +22,7 @@
 }
 
 .post-text-area {
-  width: 45vw;
+  width: 35vw;
   margin-bottom: 1vh;
 }
 

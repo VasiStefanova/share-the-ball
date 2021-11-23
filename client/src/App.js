@@ -9,40 +9,21 @@ import HomePrivate from './views/HomePrivate/HomePrivate';
 import CardLinks from './components/CardLinks/CardLinks';
 import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 import MyProfile from './views/MyProfile/MyProfile';
-import { getToken } from './common/helpers';
+import { checkLoginStatus, getLoggedUser, getToken } from './common/helpers';
 import UserProfile from './views/UserProfile/UserProfile';
 
 // eslint-disable-next-line require-jsdoc
 function App() {
   // User data
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState({
-    id: 0,
-    username: '',
-    email: '',
-    role: 0,
-    avatar: '',
-    banDate: '',
-    banReason: '',
-    lastUpdated: '',
-    latitude: 0,
-    longitude: 0,
-    friends: []
-  });
+  const [loggedIn, setLoggedIn] = useState(checkLoginStatus());
+  const [user, setUser] = useState(getLoggedUser());
 
   // posts
   const [createdPost, setCreatedPost] = useState(false);
 
-  useEffect(() => {
-    if (localStorage.getItem('user')) {
-      setUser(JSON.parse(localStorage.getItem('user')));
-      setLoggedIn(true);
-    }
-  }, []);
-
   // style={{ backgroundImage: 'url(/background.png)' }} - add this to App div to set background img
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundImage: 'url(/background.png)' }}>
       <AppContext.Provider value={{ loggedIn, setLoggedIn, user, setUser, createdPost, setCreatedPost }}>
         <BrowserRouter>
           <Header />

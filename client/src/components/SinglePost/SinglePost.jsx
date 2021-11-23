@@ -11,19 +11,19 @@ const SinglePost = ({ post }) => {
 
   return (
     <>
-      <div className='post-container'>
+      <div className='post-container theme-border-style'>
         {post.author &&
           <div className='author-details'>
             <Avatar user={user} />
-            <h6>{post.author.username}</h6>
+            <h6 className='author-username'>{post.author.username}</h6>
           </div>}
-        <div className="post-content">
-          <p>
+        <div className="post-content theme-text-style">
+          <h5>
             {post.content}
-          </p>
+          </h5>
           {post.picture &&
-            <div className="post-image">
-              <img src={`http://localhost:5000/${post.picture}`} style={{ maxWidth: '35vw', maxHeight: '35vh', marginBottom: '1vh' }} />
+            <div className="post-image-box">
+              <img src={`http://localhost:5000/${post.picture}`} className='post-image' />
             </div>}
         </div>
         {post.author &&

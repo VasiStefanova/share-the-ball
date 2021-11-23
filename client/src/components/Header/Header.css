@@ -4,6 +4,8 @@
   min-height: 15vh;
   background-color: black;
   align-items: center;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
 }
 
 

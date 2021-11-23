@@ -1,8 +1,9 @@
 .post-container {
-  border: black solid 0.1vh;
+  max-width: 40vw;
   border-radius: 1vh;
   text-align: left;
-  margin: auto 1vw;
+  margin: 1vh auto;
+  padding: 1vh 1vw;
 }
 
 .author-details {
@@ -11,17 +12,31 @@
 }
 
 .post-content {
-  margin: auto 1.2vw;
+  justify-content: center;
+  max-width: 28vw;
+  margin: 0px auto;
 }
 
-.post-image {
+.post-image-box {
   display: grid;
   justify-items: center;
   margin-bottom: 1vh;
 }
 
+.post-image {
+  max-width: 40vw;
+  max-height: 40vh;
+  margin-bottom: 1vh;
+  border-radius: 1vh;
+}
+
 .post-buttons {
   margin-left: 0.5vw;
+}
+
+.author-username {
+  color: white;
+  font-weight: bold;
 }
 
 
