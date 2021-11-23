@@ -6,7 +6,7 @@ import CreateComment from '../../elements/CreateComment/CreateComment';
 const CommentsAccordion = ({ user, post }) => {
   return (
     <>
-      <Accordion id="comments-accordion">
+      <Accordion id="comments-accordion" className='comments-accordion'>
         <Accordion.Item eventKey="0" style={{ borderRadius: '1vh' }}>
           <Accordion.Header id="accordion-header">Comments</Accordion.Header>
           <Accordion.Body style={{ padding: '0vh' }}>

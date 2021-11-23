@@ -1,3 +1,8 @@
 .accordion-button {
 border-radius: 1vh !important;
 }
+
+.comments-accordion {
+  max-width: 35vw;
+  margin: 0px auto;
+}

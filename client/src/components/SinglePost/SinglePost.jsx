@@ -14,11 +14,11 @@ const SinglePost = ({ post }) => {
       <div className='post-container theme-border-style'>
         {post.author &&
           <div className='author-details'>
-            <Avatar user={user} />
+            <Avatar user={post.author} />
             <h6 className='author-username'>{post.author.username}</h6>
           </div>}
         <div className="post-content theme-text-style">
-          <h5>
+          <h5 className='post-text'>
             {post.content}
           </h5>
           {post.picture &&
