@@ -54,7 +54,7 @@ const UserProfile = ({ match }) => {
         {postsBtnClicked ? <Posts userId={match.params.id} /> : <Teammates teammates={userInfo.friends} />}
       </div>
       <div className='user-profile-right'>
-        <UserDetails userInfo={userInfo} />
+        <UserDetails userId={match.params.id} />
       </div>
     </div>
   );

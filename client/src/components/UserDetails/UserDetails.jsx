@@ -3,14 +3,46 @@ import Figure from 'react-bootstrap/Figure';
 import Avatar from '../../elements/Avatar/Avatax';
 import Button from 'react-bootstrap/Button';
 import './UserDetails.css';
-import { useContext } from 'react';
-import AppContext from '../../context/AppContext';
+import { useState, useEffect } from 'react';
+import { inviteRequest } from '../../services/friends/invite-request';
+import getUserDetailsRequest from '../../services/users/get-user-details-request';
+import { unfriendRequest } from '../../services/friends/unfriend-request';
+import decode from 'jwt-decode';
 
 
-const UserDetails = ({ userInfo }) => {
-  const { user } = useContext(AppContext);
+const UserDetails = ({ userId }) => {
 
-  const friendConnection = user.friends.find(friend => friend.id === userInfo.id);
+  // should use the user from the context below instead of
+  // getting the token from local storage, to be refactored
+  // once the user is set correctly in the context
+
+  const loggedUserToken = localStorage.getItem('token');
+  const loggedUserId = decode(loggedUserToken)?.id;
+
+  const [renderComponent, setRenderComponent] = useState({});
+  const [userInfo, setUserInfo] = useState({});
+  const [loggedUserInfo, setLoggedUserInfo] = useState({});
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      const result = await getUserDetailsRequest(userId);
+      setUserInfo(result);
+      console.log(`current user: ${result.id}`);
+    };
+
+    getUserInfo();
+  }, [userId]);
+
+  useEffect(() => {
+    const getLoggedUserInfo = async () => {
+      const result = await getUserDetailsRequest(loggedUserId);
+      setLoggedUserInfo(result);
+      console.log(`logged user: ${result.id}`);
+    };
+
+    getLoggedUserInfo();
+  }, [renderComponent]);
+  const friendConnection = loggedUserInfo.friends?.find(friend => friend.id === +userId);
   let btnProps = {};
 
   switch (friendConnection?.friendshipStatus) {
@@ -18,22 +50,31 @@ const UserDetails = ({ userInfo }) => {
     btnProps = {
       label: 'pending',
       disabled: true,
-      iconClassName: 'bi bi-send-exclamation-fill'
+      iconClassName: 'bi bi-send-exclamation-fill',
     };
     break;
   case 2:
     btnProps = {
       label: 'remove teammate',
       iconClassName: 'bi bi-person-dash-fill',
-      handleClick: () => console.log('removed!')
+      handleClick: () => unfriendRequest(loggedUserId, userInfo.id)
+        .then(response => {
+          setRenderComponent({});
+          console.log(response);
+        })
+        .catch(err => console.error(err))
     };
-
     break;
   default:
     btnProps = {
       label: 'Add teammate',
       iconClassName: 'bi bi-person-plus-fill',
-      handleClick: () => console.log('added!')
+      handleClick: () => inviteRequest(loggedUserId, userInfo.id)
+        .then(response => {
+          setRenderComponent({});
+          console.log(response);
+        })
+        .catch(err => console.error(err))
     };
   }
 
@@ -62,6 +103,6 @@ const UserDetails = ({ userInfo }) => {
 };
 
 UserDetails.propTypes = {
-  userInfo: PropTypes.object
+  userId: PropTypes.number
 };
 export default UserDetails;

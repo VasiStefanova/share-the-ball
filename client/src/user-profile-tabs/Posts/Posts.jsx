@@ -16,6 +16,7 @@ const Posts = ({ userId }) => {
 
     getUserPosts();
   }, [userId]);
+
   return ( userPosts.length?
     <>
       {userPosts.map(post => <SinglePost key={post.id} post={post} />)}
