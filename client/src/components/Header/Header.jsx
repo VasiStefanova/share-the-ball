@@ -5,7 +5,8 @@ import './Header.css';
 import Button from 'react-bootstrap/Button';
 import { logoutRequest } from '../../services/auth/logout-request';
 import AppContext from '../../context/AppContext';
-
+import FriendRequests from '../FriendRequests/FriendRequests';
+import logo from '../../../src/share-the-ball-logo.jpg';
 const Header = () => {
   const { loggedIn, setLoggedIn, user, setUser } = useContext(AppContext);
 
@@ -40,13 +41,15 @@ const Header = () => {
     <div className="header-box">
       <NavLink to='/home' className='nav-link'>
         <div className='logo-box'>
-          {/* replace h3 on next line with real logo */}
-          <h3 style={{ color: 'white', margin: '0px' }}>Logo</h3>
+          <img style={{ width: '10vw', height: '20vh' }} src={logo} />
         </div>
       </NavLink>
       <div className="profile-box">
         {loggedIn &&
-          <Button variant="outline-secondary" color='white' style={{ marginRight: '1vw' }} onClick={(ev) => logout(ev)}>Logout</Button>}
+          <>
+            <FriendRequests />
+            <Button variant="outline-secondary" color='white' style={{ marginRight: '1vw' }} onClick={(ev) => logout(ev)}>Logout</Button>
+          </>}
         <NavLink to='my-profile' className='avatar-nav-link'>
           <h5 className='avatar-username'>{user.username}</h5>
           <Avatar user={user} />
