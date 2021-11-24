@@ -29,6 +29,23 @@
   border: none;
 }
 
+/* Just for reference - this is the app's complimentary color */
 .logo-color {
   color: rgb(182, 5, 5);
+}
+
+/* Bootstrap classes settings (apply to all elements of the respective type) */
+
+.accordion-button:not(.collapsed) {
+  color: rgb(182, 5, 5);
+  border: 0.3vh solid rgb(182, 5, 5);
+  background-color: white;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b60505'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.form-control:focus {
+  border: 1px solid rgb(182, 5, 5);
 }
