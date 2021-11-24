@@ -1,0 +1,24 @@
+.users-table {
+    margin: 5vh auto;
+    max-width: 60vw;
+}
+
+.accordion-button {
+    background-color: rgba(0,0,0,0);
+    color: #dc3545;
+    border-radius: 0.2rem !important;
+    display: block;
+    text-align: center;
+}
+.accordion-item {
+    background-color: rgba(0,0,0,0);
+}
+.remove-ban {
+    color: white;
+    text-decoration: none
+}
+
+.remove-ban:hover {
+    text-decoration: underline;
+    color: #ffc107;
+}
