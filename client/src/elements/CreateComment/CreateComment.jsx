@@ -22,6 +22,7 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
       await createCommentRequest(post.id, content, '', file);
       setContent(''); ;
       setImagePreview('');
+      setFile('');
       setCreatedComment(!createdComment);
     } catch (error) {
       console.error(error.message);

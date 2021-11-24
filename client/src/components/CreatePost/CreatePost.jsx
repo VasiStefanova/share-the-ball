@@ -31,6 +31,7 @@ const CreatePost = () => {
       setContent('');
       setCreatedPost(!createdPost);
       setImagePreview('');
+      setFile('');
     } catch (error) {
       console.error(error.message);
     }
