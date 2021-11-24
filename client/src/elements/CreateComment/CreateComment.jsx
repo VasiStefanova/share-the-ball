@@ -7,7 +7,7 @@ import './CreateComment.css';
 import { useState } from 'react';
 import { createCommentRequest } from '../../services/comments/create-comment-request';
 
-const CreateComment = ({ user, post }) => {
+const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
   const [content, setContent] = useState('');
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -22,6 +22,8 @@ const CreateComment = ({ user, post }) => {
       await createCommentRequest(post.id, content, '', file);
       setContent(''); ;
       setImagePreview('');
+      setFile('');
+      setCreatedComment(!createdComment);
     } catch (error) {
       console.error(error.message);
     }
@@ -30,7 +32,7 @@ const CreateComment = ({ user, post }) => {
   return (
     <div className="create-comment-box">
       <div className="comment-header-bar">
-        <div className="user-details">
+        <div className="user-details theme-text-style">
           <Avatar user={user} />
           <h6>{user.username}</h6>
         </div>

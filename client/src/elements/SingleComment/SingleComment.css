@@ -1,0 +1,31 @@
+.comment-container {
+  padding: 1vh 1vw;
+  border: 2px solid rgb(182, 5, 5);
+  border-radius: 1vh;
+  margin-bottom: 1vh;
+}
+
+.comment-content {
+  display: grid;
+  justify-content: center;
+  margin: 0px auto;
+  width: 35vw;
+}
+
+.comment-text {
+  width: 33vw;
+  justify-self: center;
+}
+
+.comment-image-box {
+  display: grid;
+  justify-items: center;
+  margin-bottom: 1vh;
+}
+
+.comment-image {
+  width: 25vw;
+  height: 30vh;
+  margin-bottom: 1vh;
+  border-radius: 1vh;
+}

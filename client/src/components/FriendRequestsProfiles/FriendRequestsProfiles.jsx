@@ -2,8 +2,8 @@ import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import './FriendRequestsProfiles.css';
 import Avatar from '../../elements/Avatar/Avatax';
-import { useHistory } from 'react-router';
 import { acceptRequest } from '../../services/friends/accept-request';
+import { unfriendRequest } from '../../services/friends/unfriend-request';
 import { useState } from 'react';
 import decode from 'jwt-decode';
 
@@ -18,10 +18,8 @@ const FriendsRequestsProfiles = ({ teammates }) => {
   const loggedUserId = decode(loggedUserToken)?.id;
 
   const [acceptedFriendRequest, setAcceptedFriendRequest] = useState(false);
-  const [renderComponent, setRenderComponent] = useState({});
 
   const acceptFriendRequest = (loggedUser, otherUser) => {
-
     acceptRequest(loggedUser, otherUser)
       .then(response => {
         setAcceptedFriendRequest(true);
@@ -30,6 +28,14 @@ const FriendsRequestsProfiles = ({ teammates }) => {
       .catch(err => console.error(err));
   };
 
+  const declineFriendRequest = (loggedUser, otherUser) => {
+    unfriendRequest(loggedUser, otherUser)
+      .then(response => {
+        setAcceptedFriendRequest(false);
+        console.log(response);
+      })
+      .catch(err => console.error(err));
+  };
 
   return (
     <>
@@ -51,7 +57,7 @@ const FriendsRequestsProfiles = ({ teammates }) => {
                 <Button variant='outline-dark' onClick={()=>acceptFriendRequest(loggedUserId, teammate.id)}>
                   accept
                 </Button>
-                <Button variant='outline-dark'>
+                <Button variant='outline-dark' onClick={()=>declineFriendRequest(loggedUserId, teammate.id)}>
                   decline
                 </Button>
               </>}

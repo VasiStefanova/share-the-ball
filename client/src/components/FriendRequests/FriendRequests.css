@@ -1,3 +1,22 @@
 .friend-requests-body {
     max-width: none;
 }
+.see-friend-requests-btn {
+    background-color: transparent;
+    border-color: transparent;
+    justify-content: center;
+}
+.see-friend-requests-btn:focus {
+    background-color: transparent;
+    border-color: transparent;
+}
+.see-friend-requests-btn:hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+.bi-people-fill {
+    font-size: 2vh
+}
+.close-teammates-btn {
+    float: right
+}

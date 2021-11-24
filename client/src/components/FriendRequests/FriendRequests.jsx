@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
-import Overlay from 'react-bootstrap/Overlay';
 import Popover from 'react-bootstrap/Popover';
+import CloseButton from 'react-bootstrap/CloseButton';
+import Overlay from 'react-bootstrap/Overlay';
 import decode from 'jwt-decode';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import FriendRequestsProfiles from '../FriendRequestsProfiles/FriendRequestsProfiles';
@@ -13,21 +14,26 @@ const FriendsRequests = () => {
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
   const [loggedUserInfo, setLoggedUserInfo] = useState({});
-  const [renderComponent, setRenderComponent] = useState({});
 
 
   const loggedUserToken = localStorage.getItem('token');
   const loggedUserId = decode(loggedUserToken)?.id;
 
   useEffect(() => {
-    const getLoggedUserInfo = async () => {
-      const result = await getUserDetailsRequest(loggedUserId);
-      setLoggedUserInfo(result);
-      console.log(`logged user: ${result.id}`);
-    };
+    const intervalRequest = () => setInterval(() => {
 
-    getLoggedUserInfo();
-  }, [renderComponent]);
+      const getLoggedUserInfo = async () => {
+        const result = await getUserDetailsRequest(loggedUserId);
+        setLoggedUserInfo(result);
+        console.log(`logged user: ${result.id}`);
+      };
+
+      getLoggedUserInfo();
+    }, 5000);
+
+    intervalRequest();
+    return () => clearInterval(intervalRequest);
+  }, []);
 
   const handleClick = (event) => {
     setShow(!show);
@@ -38,8 +44,13 @@ const FriendsRequests = () => {
 
   return (
     <div ref={ref}>
-      <Button variant="outline-secondary" color='white' style={{ marginRight: '1vw' }} onClick={handleClick}>See friend requests</Button>
-
+      <Button
+        className='see-friend-requests-btn btn btn-outline-secondary'
+        onClick={handleClick}
+      >
+        <i className="bi bi-people-fill fa-3x" />
+        <div style={{ color: 'rgb(182, 5, 5)' }}>{friendRequests?.length ? +friendRequests.length : 0}</div>
+      </Button>
       <Overlay
         show={show}
         target={target}
@@ -48,7 +59,10 @@ const FriendsRequests = () => {
         containerPadding={20}
       >
         <Popover id="popover-contained" className='friend-requests-body'>
-          <Popover.Header as="h3">Teammates Invites</Popover.Header>
+          <Popover.Header as="h3">
+            Teammates Invites
+            <CloseButton className='close-teammates-btn' onClick={handleClick} />
+          </Popover.Header>
           <Popover.Body>
             {friendRequests?.length ?
               <FriendRequestsProfiles teammates={friendRequests} /> :

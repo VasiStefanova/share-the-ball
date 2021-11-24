@@ -12,9 +12,10 @@ import UploadFileButton from '../../elements/UploadFileButton/UploadFileButton';
 const CreatePost = () => {
   const { user, createdPost, setCreatedPost } = useContext(AppContext);
   const [content, setContent] = useState('');
-  const [isPublic, setIsPublic] = useState(false);
+  const [isPublic, setIsPublic] = useState(true);
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [activeButton, setActiveButton] = useState(1);
 
 
   const handleFileChange = (e) => {
@@ -30,6 +31,7 @@ const CreatePost = () => {
       setContent('');
       setCreatedPost(!createdPost);
       setImagePreview('');
+      setFile('');
     } catch (error) {
       console.error(error.message);
     }
@@ -45,11 +47,32 @@ const CreatePost = () => {
         </div>
         <div className="button-group theme-button-group-style">
           <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />
-          <ToggleButtonGroup type="radio" name="options" defaultValue={1} style={{ display: 'flex' }}>
-            <ToggleButton variant="outline-dark" size="small" value={1} onClick={() => setIsPublic(false)}>
+          <ToggleButtonGroup type="radio" name="options" defaultValue={2} style={{ display: 'flex' }}>
+            <ToggleButton
+              variant="outline-dark"
+              type="radio"
+              id="private-post-button"
+              size="small"
+              value={1}
+              checked={activeButton === 1}
+              onClick={(e) => {
+                setActiveButton(e.currentTarget.value);
+                setIsPublic(false);
+              }}
+            >
               Private
             </ToggleButton>
-            <ToggleButton variant="outline-dark" value={2} onClick={() => setIsPublic(true)}>
+            <ToggleButton
+              type="radio"
+              id="public-post-button"
+              variant="outline-dark"
+              value={2}
+              checked={activeButton === 2}
+              onClick={(e) => {
+                setActiveButton(e.currentTarget.value);
+                setIsPublic(true);
+              }}
+            >
               Public
             </ToggleButton>
           </ToggleButtonGroup>

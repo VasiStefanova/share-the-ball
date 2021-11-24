@@ -4,8 +4,9 @@ import FoundTeammates from '../../components/FoundTeammates/FoundTeammates';
 
 const Teammates = ({ teammates }) => {
 
-  return ( teammates.length?
-    <FoundTeammates teammates={teammates} /> :
+  const friends = teammates.filter(friend => friend.friendshipStatus === 2);
+  return ( friends.length?
+    <FoundTeammates teammates={friends} /> :
     'No teammates to show!'
   );
 };

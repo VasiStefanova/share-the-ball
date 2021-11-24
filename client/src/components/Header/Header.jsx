@@ -46,8 +46,8 @@ const Header = () => {
       <div className="profile-box">
         {loggedIn &&
           <>
-            <FriendRequests />
             <Button variant="outline-secondary" color='white' style={{ marginRight: '1vw' }} onClick={(ev) => logout(ev)}>Logout</Button>
+            <FriendRequests />
           </>}
         <NavLink to='my-profile' className='avatar-nav-link'>
           <h5 className='avatar-username'>{user.username}</h5>
