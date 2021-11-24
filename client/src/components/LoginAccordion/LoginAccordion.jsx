@@ -25,7 +25,7 @@ const LoginAccordion = () => {
       const userId = payload.id;
 
       const userDetails = await getUserDetailsRequest(userId);
-      // setUser(userDetails);
+      setUser(userDetails);
       localStorage.setItem('user', JSON.stringify(userDetails));
       setLoggedIn(true);
       setCredentials({ username: '', password: '' });
@@ -36,12 +36,12 @@ const LoginAccordion = () => {
   };
 
   return (
-    <Accordion defaultActiveKey="0">
-      <Accordion.Item eventKey="0">
+    <Accordion defaultActiveKey="0" className='login-accordion'>
+      <Accordion.Item eventKey="0" className='theme-accordion-style'>
         <Accordion.Header>Login</Accordion.Header>
         <Accordion.Body>
-          <Form className="loginForm" onSubmit={(e) => login(e)}>
-            <Form.Group className="loginInputField" id="usernameField">
+          <Form className="login-form" onSubmit={(e) => login(e)}>
+            <Form.Group className="login-input-field" id="username-field">
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text" value={credentials.username} onChange={(e) => {
@@ -50,7 +50,7 @@ const LoginAccordion = () => {
               />
             </Form.Group>
 
-            <Form.Group className="loginInputField" id="passwordField">
+            <Form.Group className="login-input-field" id="password-field">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password" value={credentials.password} onChange={(e) => {
@@ -62,7 +62,7 @@ const LoginAccordion = () => {
               Login
             </Button>
           </Form>
-          <p id="errorMsg">{error}</p>
+          <p id="error-msg">{error}</p>
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>

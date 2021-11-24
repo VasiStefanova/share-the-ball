@@ -19,7 +19,7 @@ const RegisterAccordion = () => {
   return (
     <>
       <Accordion>
-        <Accordion.Item eventKey="0">
+        <Accordion.Item eventKey="0" className='theme-accordion-style'>
           <Accordion.Header>Register</Accordion.Header>
           <Accordion.Body>
             <Form className="registerForm" onSubmit={(e) => register(e)}>
@@ -29,7 +29,7 @@ const RegisterAccordion = () => {
                     setCredentials(prev => ({ ...prev, username: e.target.value }));
                   }}
                 />
-                <Form.Text>
+                <Form.Text className='theme-helper-text-style'>
                   Length must be between 4 and 40 characters
                 </Form.Text>
               </Form.Group>
@@ -40,7 +40,7 @@ const RegisterAccordion = () => {
                     setCredentials(prev => ({ ...prev, password: e.target.value }));
                   }}
                 />
-                <Form.Text>
+                <Form.Text className='theme-helper-text-style'>
                   Length must be between 6 and 40 characters
                 </Form.Text>
               </Form.Group>

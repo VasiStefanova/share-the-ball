@@ -18,3 +18,17 @@
   color: white;
   font-size: bold;
 }
+
+.theme-helper-text-style {
+  color: black;
+  font-size: bold;
+}
+
+.theme-accordion-style {
+  background: transparent;
+  border: none;
+}
+
+.logo-color {
+  color: rgb(182, 5, 5);
+}

@@ -3,7 +3,7 @@
 }
 
 .home-private-left {
-  border-right: 1px solid white;
+  border-right: 3px solid rgb(182, 5, 5);
   width: 25vw;
   min-height: 85vh;
 }
@@ -16,7 +16,7 @@
 }
 
 .home-private-right {
-  border-left: 1px solid white;
+  border-left: 3px solid rgb(182, 5, 5);
   width: 25vw;
   min-height: 85vh;
 }
