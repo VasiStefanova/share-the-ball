@@ -23,7 +23,7 @@ const FoundTeammates = ({ teammates }) => {
                 <h6 className='teammate-info last-updated'>last updated: {new Date(teammate.lastUpdated).toLocaleDateString('en-UK')}</h6>
               </div>
             </div>
-            <Button variant='outline-dark' onClick={() => history.push(`/user-profile/${teammate.id}`)}>
+            <Button variant='outline-dark' onClick={() => history.push(`/user-profile/id=${teammate.id}`)}>
               view profile
             </Button>
           </div>
