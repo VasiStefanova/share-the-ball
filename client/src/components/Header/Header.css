@@ -20,7 +20,7 @@
 
 .avatar-nav-link {
   display: flex;
-  text-decoration-color: red;
+  text-decoration-color: rgb(182, 5, 5);
 }
 
 .avatar-username {
