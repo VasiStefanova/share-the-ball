@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import { logoutRequest } from '../../services/auth/logout-request';
 import AppContext from '../../context/AppContext';
 import FriendRequests from '../FriendRequests/FriendRequests';
-import logo from '../../../src/share-the-ball-logo.jpg';
 const Header = () => {
   const { loggedIn, setLoggedIn, user, setUser } = useContext(AppContext);
 
@@ -41,7 +40,7 @@ const Header = () => {
     <div className="header-box">
       <NavLink to='/home' className='nav-link'>
         <div className='logo-box'>
-          <img style={{ width: '10vw', height: '20vh' }} src={logo} />
+          <img className='app-logo-img' src='/share-the-ball-logo.jpg' />
         </div>
       </NavLink>
       <div className="profile-box">

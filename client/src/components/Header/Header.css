@@ -5,12 +5,15 @@
   background-color: black;
   align-items: center;
   border-bottom: 1px solid rgb(182, 5, 5);
-  border-top: 1px solid rgb(182, 5, 5);
 }
-
 
 .logo-box {
   margin-left: 1vw;
+}
+
+.app-logo-img {
+  width: 10vw;
+  height: 20vh;
 }
 
 .profile-box {
