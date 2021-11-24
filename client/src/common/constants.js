@@ -28,7 +28,7 @@ export const TEAM_LOGOS_URL = [
   },
   {
     'teamId': '1610612739',
-    'logoURL': 'https://logos-world.net/wp-content/uploads/2020/05/Cleveland-Cavaliers-logo.png'
+    'logoURL': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Cleveland_Cavaliers_secondary_logo.svg/1200px-Cleveland_Cavaliers_secondary_logo.svg.png'
   },
   {
     'teamId': '1610612752',

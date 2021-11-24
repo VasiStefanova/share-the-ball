@@ -4,13 +4,13 @@
   padding: 1vh 1vw;
   margin: 1vh auto;
   width: 40vw;
-  max-height: 20vh;
 }
 
 .post-header-bar {
   display:flex;
   justify-content: space-between;
   margin-bottom: 1vh;
+  max-height: 5vh;
 }
 
 .button-group {
@@ -37,8 +37,8 @@
 }
 
 #image-preview {
-  max-width: 30vw;
-  max-height: 30vh;
+  width: 30vw;
+  height: 40vh;
 }
 
 #post-button {

@@ -42,7 +42,7 @@ const CreatePost = () => {
     <div className="create-post-box theme-border-style">
       <div className="post-header-bar">
         <div className="user-details">
-          <Avatar user={user} />
+          <Avatar user={user} style={{ maxWidth: '5vh' }} />
           <h6 className='author-username'>{user.username}</h6>
         </div>
         <div className="button-group theme-button-group-style">

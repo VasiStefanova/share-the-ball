@@ -1,8 +1,8 @@
 .card-style {
-    width: 18rem;
+    max-width: 15vw;
     transition: box-shadow .7s;
-    display: inline-block;
-    margin: 10px 10px;
+    display: inline-flex;
+    margin: 0 0.5vw;
 }
 .card-style:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -14,7 +14,8 @@
 .cover-image {
     transition: transform .7s; /* Animation */
     margin: 0 auto;
-    height: 200px;
+    height: 20vh;
+    width: 15vw;
 }
 
 .cover-image:hover {

@@ -17,13 +17,20 @@
 }
 
 .profile-box {
-  display: flex;
   margin-right: 1vw;
+}
+
+.user-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1vh;
 }
 
 .avatar-nav-link {
   display: flex;
+  align-items: center;
   text-decoration-color: rgb(182, 5, 5);
+  margin-right: 1vw;
 }
 
 .avatar-username {

@@ -43,17 +43,19 @@ const Header = () => {
           <img className='app-logo-img' src='/share-the-ball-logo.jpg' />
         </div>
       </NavLink>
-      <div className="profile-box">
-        {loggedIn &&
-          <>
-            <Button variant="outline-secondary" color='white' style={{ marginRight: '1vw' }} onClick={(ev) => logout(ev)}>Logout</Button>
+      {loggedIn &&
+        <div className="profile-box">
+          <div className='user-box'>
+            <NavLink to='my-profile' className='avatar-nav-link'>
+              <h5 className='avatar-username'>{user.username}</h5>
+              <Avatar user={user} />
+            </NavLink>
             <FriendRequests />
-          </>}
-        <NavLink to='my-profile' className='avatar-nav-link'>
-          <h5 className='avatar-username'>{user.username}</h5>
-          <Avatar user={user} />
-        </NavLink>
-      </div>
+          </div>
+          <div>
+            <Button variant="outline-secondary" color='white' className='logout-button' onClick={(ev) => logout(ev)}>Logout</Button>
+          </div>
+        </div>}
     </div>
   );
 };

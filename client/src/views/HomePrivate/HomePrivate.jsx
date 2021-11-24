@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { getAllPostsRequest } from '../../services/feed/get-all-posts-request';
 import SinglePost from '../../components/SinglePost/SinglePost';
 import AppContext from '../../context/AppContext';
+import CardLinks from '../../components/CardLinks/CardLinks';
 
 const HomePrivate = () => {
   const { createdPost } = useContext(AppContext);
@@ -22,6 +23,7 @@ const HomePrivate = () => {
         <NBAStandingsFeed />
       </div>
       <div className='home-private-center'>
+        <CardLinks />
         <CreatePost />
         <div className="private-posts">
           {posts.map(post => (

@@ -29,6 +29,11 @@
   border: none;
 }
 
+/* Used on every post and comment */
+.author-username {
+  margin: auto 0.5vw;
+}
+
 /* Just for reference - this is the app's complimentary color */
 .logo-color {
   color: rgb(182, 5, 5);

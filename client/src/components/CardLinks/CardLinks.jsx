@@ -1,14 +1,15 @@
 import SingleCard from './SingleCard';
-import Container from 'react-bootstrap/Container';
-import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
+import './CardLinks.css';
 
 
-const CardLinks = ({ history }) => {
+const CardLinks = () => {
+  const history = useHistory();
 
   return (
-    <Container>
+    <div className='card-links-box'>
       <SingleCard
-        redirectFunc={() => history.push('/home')}
+        redirectFunc={() => history.push('/search')}
         imgSrc="https://content.api.news/v3/images/bin/ea14cd233f701e6e29e7ba406203ada1"
         history={history}
         title="Players"
@@ -25,12 +26,10 @@ const CardLinks = ({ history }) => {
         history={history}
         title="News"
       />
-    </Container>
+
+    </div>
   );
 
 };
 
-CardLinks.propTypes = {
-  history: PropTypes.object,
-};
 export default CardLinks;

@@ -10,8 +10,8 @@ const SingleComment = ({ comment }) => {
     <>
       <div className='comment-container'>
         <div className='author-details theme-text-style'>
-          <Avatar user={comment.author} />
-          <h6 className='comment-author-username'>{comment.author.username}</h6>
+          <Avatar user={comment.author} style={{ maxWidth: '5vh' }} />
+          <h6 className='author-username'>{comment.author.username}</h6>
         </div>
         <div className="comment-content">
           <div className="comment-text theme-text-style">

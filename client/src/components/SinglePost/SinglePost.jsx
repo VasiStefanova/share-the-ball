@@ -14,7 +14,7 @@ const SinglePost = ({ post }) => {
       <div className='post-container theme-border-style'>
         {post.author &&
           <div className='author-details'>
-            <Avatar user={post.author} />
+            <Avatar user={post.author} style={{ maxWidth: '5vh' }} />
             <h6 className='author-username'>{post.author.username}</h6>
           </div>}
         <div className="post-content theme-text-style">

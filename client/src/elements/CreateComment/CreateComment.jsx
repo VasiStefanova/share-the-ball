@@ -33,8 +33,8 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
     <div className="create-comment-box">
       <div className="comment-header-bar">
         <div className="user-details theme-text-style">
-          <Avatar user={user} />
-          <h6>{user.username}</h6>
+          <Avatar user={user} style={{ maxWidth: '5vh' }} />
+          <h6 className='author-username'>{user.username}</h6>
         </div>
         <div className="comment-button-group">
           {/* embed button will be added here in the future */}
