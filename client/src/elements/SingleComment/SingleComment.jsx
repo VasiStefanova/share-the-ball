@@ -25,7 +25,8 @@ const SingleComment = ({ comment }) => {
             </div>}
         </div>
         <div className="comment-buttons">
-          <Button variant="outline-dark" style={{ border: 'none' }}>Like</Button>
+          <Button variant="outline-dark" className='comment-like-btn'>Like</Button>
+          <h5 className='comment-likes-number'>/n/ likes</h5>
         </div>
       </div>
     </>

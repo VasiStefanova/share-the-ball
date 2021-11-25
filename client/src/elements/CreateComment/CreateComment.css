@@ -4,6 +4,14 @@
   margin-bottom: 1vh;
 }
 
+.comment-button-group {
+  background-color: white;
+}
+
+.custom-file-upload {
+  border-color: rgb(182, 5, 5);
+}
+
 .comment-form {
   display: grid;
   justify-items: center;

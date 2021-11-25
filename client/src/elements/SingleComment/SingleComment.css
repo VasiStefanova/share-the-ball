@@ -1,19 +1,20 @@
 .comment-container {
   padding: 1vh 1vw;
-  border: 2px solid rgb(182, 5, 5);
+  border: 2px solid white;
   border-radius: 1vh;
   margin-bottom: 1vh;
+  width: 35vw;
 }
 
 .comment-content {
   display: grid;
   justify-content: center;
   margin: 0px auto;
-  width: 35vw;
+  width: fit-content;
 }
 
 .comment-text {
-  width: 33vw;
+  width: 30vw;
   justify-self: center;
 }
 
@@ -24,8 +25,27 @@
 }
 
 .comment-image {
-  width: 25vw;
-  height: 30vh;
+  width: 30vw;
+  height: 35vh;
   margin-bottom: 1vh;
   border-radius: 1vh;
+}
+
+.comment-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 1vh auto;
+  width: 30vw;
+  
+}
+
+.comment-like-btn {
+  padding: 0 1vh;
+  background-color: rgb(182, 5, 5);
+  color: white;
+  font-weight: bold;
+}
+
+.comment-likes-number {
+  margin: 0;
 }

@@ -28,7 +28,8 @@ const SinglePost = ({ post }) => {
         </div>
         {post.author &&
           <div className="post-buttons">
-            <Button variant="outline-dark" style={{ border: 'none' }}>Like</Button>
+            <Button variant="outline-dark" className='post-like-btn'>Like</Button>
+            <h5 className='post-likes-number'>/n/ likes</h5>
           </div>}
         {post.author &&
           <div className="comments-box">

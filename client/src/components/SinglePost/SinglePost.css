@@ -19,7 +19,7 @@
 }
 
 .post-text {
-  width: 33vw;
+  width: 35vw;
   justify-self: center;
 }
 
@@ -37,7 +37,21 @@
 }
 
 .post-buttons {
-  margin-left: 1vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 1vh auto;
+  width: 35vw;
+}
+
+.post-like-btn {
+  padding: 0 1vh;
+  background-color: rgb(182, 5, 5);
+  color: white;
+  font-weight: bold;
+}
+
+.post-likes-number {
+  margin: 0;
 }
 
 .author-username {
