@@ -22,7 +22,7 @@ const SingleCard = ({ redirectFunc, title, imgSrc }) => {
 };
 
 SingleCard.propTypes = {
-  redirectFunc: PropTypes.array,
+  redirectFunc: PropTypes.func,
   title: PropTypes.string,
   imgSrc: PropTypes.string
 };

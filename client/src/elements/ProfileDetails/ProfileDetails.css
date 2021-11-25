@@ -1,0 +1,32 @@
+.profile-details-container {
+  text-align: left;
+}
+
+.edit-email-box {
+  display: flex;
+}
+
+.user-email-box {
+  display: flex;
+}
+
+.edit-email-buttons {
+  margin-left: 0.3vw;
+}
+
+#confirm-edit-button {
+  background: green;
+}
+
+#cancel-edit-button {
+  margin-left: 0.3vw;
+  background: rgb(182, 5, 5)
+}
+
+#edit-email-button {
+  margin-left: 0.3vw;
+}
+
+#upon-update-text {
+  font-style: italic;
+}

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ButtonGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { useHistory, useLocation } from 'react-router';
+import ChangeCredentialsAccordion from '../../components/ChangeCredentialsAccordion/ChangeCredentialsAccordion';
 import AppContext from '../../context/AppContext';
 import MyPosts from '../../my-profile-tabs/MyPosts/MyPosts';
 import MyTeammates from '../../my-profile-tabs/MyTeammates/MyTeammates';
@@ -69,7 +70,7 @@ const MyProfile = () => {
         </div>
       </div>
       <div className='my-profile-right'>
-        <h3>Right</h3>
+        <ChangeCredentialsAccordion />
       </div>
     </div>
   );
