@@ -39,7 +39,7 @@ export class PostsService {
       isDeleted: false,
     };
 
-    if (!(connection1 || connection2)) {
+    if (!(connection1 || connection2 || loggedUser.id === id)) {
       findConditions.isPublic = true;
     }
 

@@ -66,6 +66,8 @@ export class FeedService {
       .getMany();
 
     const postsToReturn = posts
+      .filter(p => p.isPublic)
+      .filter(p => !p.isDeleted)
       .sort((p1: any, p2: any) => p2.likesCount - p1.likesCount)
       .slice(0, 20);
     
@@ -80,6 +82,7 @@ export class FeedService {
         author: {
           id: In(postsForIds),
         },
+        isDeleted: false,
         // updatedOn: MoreThan(createdOrUpdatedAfter),
       },
       relations: ['author', 'likes', 'likes.user', 'comments', 'comments.author', 'comments.likes', 'comments.likes.user'],
@@ -97,6 +100,7 @@ export class FeedService {
         post: {
           id: In(trackingPosts),
         },
+        isDeleted: false,
         // updatedOn: MoreThan(createdOrUpdatedAfter),
       },
       relations: ['author', 'likes', 'likes.user', 'post'],
