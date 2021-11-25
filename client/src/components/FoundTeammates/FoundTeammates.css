@@ -18,10 +18,12 @@
   }
 
   .teammate-info {
+    color: white;
     margin: unset;
+    margin-left: 0.5vw;
   }
 
   .last-updated {
-    color: gray;
+    color: whitesmoke;
   }
   

@@ -17,7 +17,7 @@ const FoundTeammates = ({ teammates }) => {
         >
           <div className='teammate-container'>
             <div className='teammate-avatar-and-info'>
-              <Avatar user={teammate} />
+              <Avatar user={teammate} style={{ maxWidth: '5vh' }} />
               <div className='teammate-info-box'>
                 <h5 className='teammate-info'>{teammate.username}</h5>
                 <h6 className='teammate-info last-updated'>last updated: {new Date(teammate.lastUpdated).toLocaleDateString('en-UK')}</h6>
