@@ -64,7 +64,7 @@ export class CommentsService {
       const connection1 = await this.friendsRepository.findOne({ requestedBy: { id: post.author.id }, requestedFor: { id: loggedUser.id }, status: ConnectionStatus.Approved });
       const connection2 = await this.friendsRepository.findOne({ requestedBy: { id: loggedUser.id }, requestedFor: { id: post.author.id }, status: ConnectionStatus.Approved });
 
-      if (!(connection1 || connection2)) {
+      if (!(connection1 || connection2 || post.author.id === loggedUser.id)) {
         throw new ForbiddenException('You cannot comment on post!');
       }
     }

@@ -10,7 +10,7 @@
   .teammate-container {
     text-align: left;
     display:flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
   }
 
   .teammate-avatar-and-info {
@@ -26,4 +26,16 @@
   .last-updated {
     color: whitesmoke;
   }
-  
+.action-btns-group {
+  margin-left: auto;
+}
+.action-btn {
+  margin-left:0.5vw
+}
+.bi-slash-circle-fill {
+  padding-right: 0.25vw;
+}
+.bi-x-circle-fill {
+  padding-right: 0.25vw;
+
+}

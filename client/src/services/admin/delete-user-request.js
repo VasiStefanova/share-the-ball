@@ -5,6 +5,7 @@ const deleteUserRequest = async (id=0) => {
   let dataJSON = null;
   try {
     const response = await fetch(`${USERS_URL}/${id}`, {
+      method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${getToken()}`,
       },

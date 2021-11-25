@@ -41,6 +41,7 @@ import { FeedModule } from './feed/feed.module';
     TypeOrmModule.forFeature([User, UserPost, Comment, UserPostLikes, UserCommentLikes, UserConnection, Token]),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'upload'),
+      // serveRoot: '/images',
     }),
     AuthModule,
     UsersModule,
