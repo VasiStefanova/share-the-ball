@@ -5,7 +5,9 @@ const banUserRequest = async (id=0, body) => {
   let dataJSON = null;
   try {
     const response = await fetch(`${USERS_URL}/${id}/ban`, {
+      method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         'Authorization': `Bearer ${getToken()}`,
       },
       body: JSON.stringify(body),
