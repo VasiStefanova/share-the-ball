@@ -29,7 +29,7 @@ const SinglePost = ({ post }) => {
         {post.author &&
           <div className="post-buttons">
             <Button variant="outline-dark" className='post-like-btn'>Like</Button>
-            <h5 className='post-likes-number'>/n/ likes</h5>
+            <h5 className='post-likes-number'>{post.likes.length !== 1 ? `${post.likes.length} likes` : '1 like'}</h5>
           </div>}
         {post.author &&
           <div className="comments-box">

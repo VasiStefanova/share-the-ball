@@ -26,7 +26,7 @@ const SingleComment = ({ comment }) => {
         </div>
         <div className="comment-buttons">
           <Button variant="outline-dark" className='comment-like-btn'>Like</Button>
-          <h5 className='comment-likes-number'>/n/ likes</h5>
+          <h5 className='comment-likes-number'>{comment.likes.length !== 1 ? `${comment.likes.length} likes` : '1 like'}</h5>
         </div>
       </div>
     </>
