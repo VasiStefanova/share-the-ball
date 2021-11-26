@@ -1,20 +1,21 @@
 import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
 import PropTypes from 'prop-types';
 import './FoundTeammates.css';
 import Avatar from '../../elements/Avatar/Avatax';
 import { useHistory } from 'react-router';
-import decode from 'jwt-decode';
 import { useContext, useState } from 'react';
-import ConfirmDeleteUser from '../../admin/ConfirmDeleteUserModal';
+import ConfirmDeleteUser from '../../admin/DeleteUserModal/ConfirmDeleteUserModal';
 import AppContext from '../../context/AppContext';
 import { unfriendRequest } from '../../services/friends/unfriend-request';
+import ConfirmBanUser from '../../admin/BanUserModal/ConfirmBanUserModal';
 
 
 const FoundTeammates = ({ teammates, mountedOn = '' }) => {
   const { user, toggleFriendship, setToggleFriendship } = useContext(AppContext);
   const history = useHistory();
-  const [render, setRender] = useState({});
-  const [show, setShow] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showBanModal, setShowBanModal] = useState(false);
 
   // should use the user from the context below instead of
   // getting the token from local storage, to be refactored
@@ -50,17 +51,20 @@ const FoundTeammates = ({ teammates, mountedOn = '' }) => {
             </div>
             {(mountedOn !== '/home' && mountedOn !== 'my-profile/teammates') &&
               <div className='action-btns-group'>
+                {teammate.banReason ?
+                  <Badge bg='danger'>Banned!</Badge> :
+                  <Button
+                    className='action-btn'
+                    variant='outline-dark'
+                    onClick={() => setShowBanModal(true)}
+                  >
+                    <i className="bi bi-slash-circle-fill" />
+                    ban
+                  </Button>}
                 <Button
                   className='action-btn'
                   variant='outline-dark'
-                >
-                  <i className="bi bi-slash-circle-fill" />
-                  ban
-                </Button>
-                <Button
-                  className='action-btn'
-                  variant='outline-dark'
-                  onClick={() => setShow(true)}
+                  onClick={() => setShowDeleteModal(true)}
                 >
                   <i className="bi bi-x-circle-fill" />
                   delete
@@ -76,7 +80,8 @@ const FoundTeammates = ({ teammates, mountedOn = '' }) => {
                 </Button>}
             </div>
           </div>
-          <ConfirmDeleteUser userId={teammate.id} username={teammate.username} show={show} setShow={setShow} />
+          <ConfirmBanUser userId={teammate.id} username={teammate.username} show={showBanModal} setShow={setShowBanModal} />
+          <ConfirmDeleteUser userId={teammate.id} username={teammate.username} show={showDeleteModal} setShow={setShowDeleteModal} />
         </div>
       )}
     </>
