@@ -41,7 +41,7 @@ const FoundTeammates = ({ teammates, mountedOn = '' }) => {
             <div className={mountedOn === '/home' ? 'teammate-avatar-and-info-home' : 'teammate-avatar-and-info'}>
               <Avatar user={teammate} style={{ maxWidth: '5vh' }} />
               <div className={mountedOn === '/home' ? 'teammate-info-box-home' : 'teammate-info-box'}>
-                <h5 className={mountedOn === 'home' ? 'teammate-info-home' : 'teammate-info'}>{teammate.username}</h5>
+                <h5 className={mountedOn === '/home' ? 'teammate-info-home' : 'teammate-info'}>{teammate.username}</h5>
                 {mountedOn !== '/home' &&
                   <h6 className='teammate-info last-updated'>
                     last updated: {new Date(teammate.lastUpdated).toLocaleDateString('en-UK')}
