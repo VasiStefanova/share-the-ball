@@ -19,3 +19,27 @@
     background-color: white;
     color: black;
 }
+
+/* /home */
+
+.search-bar-box-home {
+  max-width: 20vw;
+}
+
+.filter-buttons-box-home {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5vh;
+  margin-bottom: 1vh;
+}
+
+.filter-btn-home {
+  display: inline-block;
+  margin-left: 0.1vw;
+  margin-right: 0.1vw;
+  border-radius: 0.5rem;
+}
+
+
+
+

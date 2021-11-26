@@ -6,6 +6,7 @@ import { getAllPostsRequest } from '../../services/feed/get-all-posts-request';
 import SinglePost from '../../components/SinglePost/SinglePost';
 import AppContext from '../../context/AppContext';
 import CardLinks from '../../components/CardLinks/CardLinks';
+import MyTeammates from '../../my-profile-tabs/MyTeammates/MyTeammates';
 
 const HomePrivate = () => {
   const { createdPost } = useContext(AppContext);
@@ -34,7 +35,9 @@ const HomePrivate = () => {
         </div>
       </div>
       <div className='home-private-right'>
-        <h3>Right</h3>
+        <div className='my-teammates-container'>
+          <MyTeammates mountedOn="/home" />
+        </div>
       </div>
     </div>
   );

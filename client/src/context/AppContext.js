@@ -18,7 +18,9 @@ const AppContext = createContext({
   },
   setUser() {},
   createdPost: false,
-  setCreatedPost() {}
+  setCreatedPost() {},
+  toggleFriendship: false,
+  setToggleFriendship() {}
 });
 
 export default AppContext;

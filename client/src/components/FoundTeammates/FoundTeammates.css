@@ -10,7 +10,7 @@
   .teammate-container {
     text-align: left;
     display:flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
   }
 
   .teammate-avatar-and-info {
@@ -26,16 +26,65 @@
   .last-updated {
     color: whitesmoke;
   }
+
 .action-btns-group {
   margin-left: auto;
 }
+
 .action-btn {
   margin-left:0.5vw
 }
+
 .bi-slash-circle-fill {
   padding-right: 0.25vw;
 }
+
 .bi-x-circle-fill {
   padding-right: 0.25vw;
 
+}
+
+#remove-friend-button {
+  margin-left: 0.5vw;
+}
+
+#add-friend-button {
+  margin-left: 0.5vw;
+}
+
+#view-user-profile-button {
+  margin-left: 0.5vw ;
+}
+
+
+/* /home */
+
+.teammate-container-box-home {
+  display: grid;
+  border: white solid 0.1vh;
+  border-radius: 1vh;
+  padding: 0.5vh 0.5vw;
+  margin: 1vh auto;
+  max-width: 35vw;
+}
+
+.teammate-container-home {
+  text-align: left;
+  display:flex;
+  justify-content: space-between;
+}
+
+.teammate-avatar-and-info-home {
+  display: flex;
+}
+
+.teammate-info-home {
+  color: white;
+  margin: unset;
+  margin-left: 0.5vw;
+}
+
+
+#remove-friend-button-home {
+  margin-left: 0.1vw;
 }

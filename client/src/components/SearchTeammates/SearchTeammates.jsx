@@ -7,8 +7,7 @@ import './SearchTeammates.css';
 import getUsersRequest from '../../services/users/get-users-request';
 import PropTypes from 'prop-types';
 
-
-const SearchTeammates = ({ setTeammates }) => {
+const SearchTeammates = ({ setTeammates, mountedOn = '' }) => {
 
   const [userInput, setUserInput] = useState('');
   const [usernameBtnClicked, setUsernameBtnClicked] = useState(true);
@@ -32,7 +31,7 @@ const SearchTeammates = ({ setTeammates }) => {
 
   return (
     <>
-      <InputGroup className="mb-3 search-bar-box">
+      <InputGroup className={mountedOn === '/home' ? 'mb 3 search-bar-box-home' : 'mb-3 search-bar-box'}>
         <FormControl
           disabled={inputDisabled}
           aria-label="Default"
@@ -42,15 +41,15 @@ const SearchTeammates = ({ setTeammates }) => {
           onKeyUp={(e) => e.key === 'Enter' && search()}
         />
         <Button
-          className='input-group-append'
-          variant="outline-dark"
+          className={mountedOn === '/home' ? 'input-group-append-home' : 'input-group-append'}
+          variant="dark"
           disabled={inputDisabled}
           onClick={search}
         >
           Search
         </Button>
       </InputGroup>
-      <span className='filter-buttons-box'>
+      <span className={mountedOn === '/home' ? 'filter-buttons-box-home' : 'filter-buttons-box'}>
         <h3>Filter by |</h3>
         <ToggleButton
           className='filter-btn'
@@ -69,7 +68,7 @@ const SearchTeammates = ({ setTeammates }) => {
         >username
         </ToggleButton>
         <ToggleButton
-          className='filter-btn'
+          className={mountedOn === '/home' ? 'filter-btn-home' : 'filter-btn'}
           variant="outline-dark"
           onClick={() => {
             const toggleClick = !emailBtnClicked;
@@ -91,5 +90,6 @@ const SearchTeammates = ({ setTeammates }) => {
 
 SearchTeammates.propTypes = {
   setTeammates: PropTypes.func,
+  mountedOn: PropTypes.string
 };
 export default SearchTeammates;

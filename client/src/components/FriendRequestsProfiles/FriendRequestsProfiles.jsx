@@ -4,19 +4,12 @@ import './FriendRequestsProfiles.css';
 import Avatar from '../../elements/Avatar/Avatax';
 import { acceptRequest } from '../../services/friends/accept-request';
 import { unfriendRequest } from '../../services/friends/unfriend-request';
-import { useState } from 'react';
-import decode from 'jwt-decode';
+import { useContext, useState } from 'react';
+import AppContext from '../../context/AppContext';
 
 
 const FriendsRequestsProfiles = ({ teammates }) => {
-
-  // should use the user from the context below instead of
-  // getting the token from local storage, to be refactored
-  // once the user is set correctly in the context
-
-  const loggedUserToken = localStorage.getItem('token');
-  const loggedUserId = decode(loggedUserToken)?.id;
-
+  const { user, toggleFriendship, setToggleFriendship } = useContext(AppContext);
   const [acceptedFriendRequest, setAcceptedFriendRequest] = useState(false);
 
   const acceptFriendRequest = (loggedUser, otherUser) => {
@@ -54,10 +47,15 @@ const FriendsRequestsProfiles = ({ teammates }) => {
             {acceptedFriendRequest ?
               `You and ${teammate.username} are now friends!` :
               <>
-                <Button variant='outline-dark' onClick={()=>acceptFriendRequest(loggedUserId, teammate.id)}>
+                <Button
+                  variant='outline-dark' onClick={() => {
+                    acceptFriendRequest(user.id, teammate.id);
+                    setToggleFriendship(!toggleFriendship);
+                  }}
+                >
                   accept
                 </Button>
-                <Button variant='outline-dark' onClick={()=>declineFriendRequest(loggedUserId, teammate.id)}>
+                <Button variant='outline-dark' onClick={() => declineFriendRequest(user.id, teammate.id)}>
                   decline
                 </Button>
               </>}

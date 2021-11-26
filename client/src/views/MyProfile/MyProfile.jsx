@@ -24,7 +24,7 @@ const MyProfile = () => {
       setActiveTab(<MyPosts />);
       break;
     case 'teammates':
-      setActiveTab(<MyTeammates />);
+      setActiveTab(<MyTeammates mountedOn="my-profile/teammates" />);
       break;
     case 'user_list':
       setActiveTab(<UserList />);

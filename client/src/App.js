@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import AppContext from './context/AppContext';
@@ -9,7 +9,7 @@ import HomePrivate from './views/HomePrivate/HomePrivate';
 import CardLinks from './components/CardLinks/CardLinks';
 import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 import MyProfile from './views/MyProfile/MyProfile';
-import { checkLoginStatus, getLoggedUser, getToken } from './common/helpers';
+import { checkLoginStatus, getLoggedUser } from './common/helpers';
 import UserProfile from './views/UserProfile/UserProfile';
 
 // eslint-disable-next-line require-jsdoc
@@ -21,10 +21,13 @@ function App() {
   // posts
   const [createdPost, setCreatedPost] = useState(false);
 
+  // friends
+  const [toggleFriendship, setToggleFriendship] = useState(false);
+
   // style={{ backgroundImage: 'url(/background.png)' }} - add this to App div to set background img
   return (
     <div className="App" style={{ backgroundImage: 'url(/background.png)' }}>
-      <AppContext.Provider value={{ loggedIn, setLoggedIn, user, setUser, createdPost, setCreatedPost }}>
+      <AppContext.Provider value={{ loggedIn, setLoggedIn, user, setUser, createdPost, setCreatedPost, toggleFriendship, setToggleFriendship }}>
         <BrowserRouter>
           <Header />
           <Switch>
