@@ -1,40 +1,41 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useState } from 'react';
-import deleteUserRequest from '../services/admin/delete-user-request';
+import deleteUserRequest from '../../services/admin/delete-user-request';
 import PropTypes from 'prop-types';
+import './ConfirmDeleteUserModal.css';
+import AppContext from '../../context/AppContext';
+import { useContext } from 'react';
 
 
 const ConfirmDeleteUser = ({ userId, username, show, setShow }) => {
 
+  const { toggleFriendship, setToggleFriendship } = useContext(AppContext);
+
   const handleClose = () => setShow(false);
 
-  const deleteUser = (id) => {
+  const deleteUser = () => {
 
-    deleteUserRequest(id)
+    deleteUserRequest(userId)
       .then(response => {
         console.log(response);
         setShow(false);
+        setToggleFriendship(!toggleFriendship);
       })
       .catch(err => console.error(err));
   };
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal className='modal-warning' show={show} onHide={handleClose} animation backdrop>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Warning!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>`Are you sure you want to delete ${username}!`</Modal.Body>
+        <Modal.Body>{`Are you sure you want to delete ${username}?`}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             No
           </Button>
-          <Button variant="primary" onClick={() => deleteUser(userId)}>
+          <Button variant="primary" onClick={deleteUser}>
             Delete
           </Button>
         </Modal.Footer>
