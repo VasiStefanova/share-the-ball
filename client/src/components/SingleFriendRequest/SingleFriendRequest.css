@@ -1,0 +1,28 @@
+.friend-request-container {
+  display: flex;
+  justify-content: space-between;
+  width: 20vw;
+  margin: 0.6vh 0;
+}
+
+.new-teammate-avatar-and-info {
+  display: flex;
+}
+
+.new-teammate-info-box {
+  align-self: center;
+}
+
+.new-teammate-info {
+  margin-left: 0.5vw;
+}
+
+.friend-request-accept-btn {
+  margin-right: 0.2vw;
+  border: 1px solid rgb(182, 5, 5);
+}
+
+.confirmation-msg {
+  margin: auto auto;
+  width: 20vw;
+}

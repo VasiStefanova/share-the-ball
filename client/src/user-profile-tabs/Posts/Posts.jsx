@@ -27,6 +27,8 @@ const Posts = ({ userId }) => {
 
   useEffect(() => {
     getUserPosts();
+
+    return () => setUserPosts([]);
   }, [userId, render]);
 
   return ( userPosts.length?

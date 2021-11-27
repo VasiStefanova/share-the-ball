@@ -36,7 +36,7 @@ const HomePrivate = () => {
       </div>
       <div className='home-private-right'>
         <div className='my-teammates-container'>
-          <MyTeammates mountedOn="/home" />
+          <MyTeammates />
         </div>
       </div>
     </div>

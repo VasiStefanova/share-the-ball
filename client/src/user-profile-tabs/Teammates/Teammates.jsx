@@ -8,7 +8,7 @@ import getUsersRequest from '../../services/users/get-users-request';
 
 
 const Teammates = ({ userId }) => {
-  const { user, setUser, toggleFriendship } = useContext(AppContext);
+  const { user, toggleFriendship } = useContext(AppContext);
   const [teammates, setTeammates] = useState([]);
 
   // I use userInfo, not just user to avoid react-state-update-warning upon logging out
@@ -18,8 +18,6 @@ const Teammates = ({ userId }) => {
     getUserDetailsRequest(userId)
       .then(userDetails => {
         setUserInfo(userDetails);
-        setUser(userDetails);
-        localStorage.setItem('user', JSON.stringify(user));
       })
       .catch(console.error);
   }, [toggleFriendship]);
@@ -29,7 +27,7 @@ const Teammates = ({ userId }) => {
       .then(allUsers => {
         return allUsers
           .filter(({ id: currUserId }) => userInfo.friends
-            .some(({ id: teammateId }) => currUserId === teammateId));
+            .some(({ id: teammateId, friendshipStatus }) => currUserId === teammateId && friendshipStatus === 2));
       })
       .then(teammatesList => setTeammates(teammatesList))
       .catch(console.error);

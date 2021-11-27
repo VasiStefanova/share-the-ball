@@ -35,6 +35,10 @@ function App() {
   };
 
   useEffect(() => {
+    getUserFriends();
+  }, []);
+
+  useEffect(() => {
     if (loggedIn) {
       if (!interval) setInterval(intervalRequest(getUserFriends));
       console.log('I logged in!');

@@ -6,6 +6,7 @@ import SearchTeammates from '../../components/SearchTeammates/SearchTeammates';
 import AppContext from '../../context/AppContext';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import getUsersRequest from '../../services/users/get-users-request';
+import { setUserInStorage } from '../../common/helpers';
 
 const MyTeammates = () => {
   const { user, setUser, toggleFriendship } = useContext(AppContext);
@@ -19,7 +20,7 @@ const MyTeammates = () => {
       .then(userDetails => {
         setUserInfo(userDetails);
         setUser(userDetails);
-        localStorage.setItem('user', JSON.stringify(user));
+        setUserInStorage(user);
       })
       .catch(console.error);
   }, [toggleFriendship]);
@@ -29,7 +30,7 @@ const MyTeammates = () => {
       .then(allUsers => {
         return allUsers
           .filter(({ id: userId }) => userInfo.friends
-            .some(({ id: teammateId }) => userId === teammateId));
+            .some(({ id: teammateId, friendshipStatus }) => userId === teammateId && friendshipStatus === 2));
       })
       .then(teammatesList => setTeammates(teammatesList))
       .catch(console.error);

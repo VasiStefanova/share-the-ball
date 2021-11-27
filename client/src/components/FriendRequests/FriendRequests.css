@@ -1,3 +1,12 @@
+.popover {
+  max-width: none;
+  text-align: center;
+}
+
+.friend-requests-icon-box {
+  margin-top: 0.8vh;
+}
+
 .friend-requests-body {
     max-width: none;
 }

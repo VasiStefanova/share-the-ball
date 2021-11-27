@@ -1,28 +1,26 @@
-import { useState, useRef, useEffect, useContext } from 'react';
+import { useState, useRef, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
 import CloseButton from 'react-bootstrap/CloseButton';
 import Overlay from 'react-bootstrap/Overlay';
-import getUserDetailsRequest from '../../services/users/get-user-details-request';
-import FriendRequestsProfiles from '../FriendRequestsProfiles/FriendRequestsProfiles';
+import SingleFriendRequest from '../SingleFriendRequest/SingleFriendRequest';
 import './FriendRequests.css';
 import AppContext from '../../context/AppContext';
-import { intervalRequest } from '../../common/helpers';
 
 
 const FriendsRequests = () => {
   const { friendRequests } = useContext(AppContext);
   const [show, setShow] = useState(false);
-  const [target, setTarget] = useState(null);
+  const [target, setTarget] = useState(document.querySelector('#root > div > div.header-box > div > div.user-box > div > button > div'));
   const ref = useRef(null);
 
   const handleClick = (event) => {
     setShow(!show);
-    setTarget(event.target);
+    setTarget(document.querySelector('#root > div > div.header-box > div > div.user-box > div > button > div'));
   };
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className='friend-requests-icon-box'>
       <Button
         className='see-friend-requests-btn btn btn-outline-secondary'
         onClick={handleClick}
@@ -37,17 +35,17 @@ const FriendsRequests = () => {
         container={ref}
         containerPadding={20}
       >
-        <Popover id="popover-contained" className='friend-requests-body'>
+        <Popover id="popover-contained">
           <Popover.Header as="h3">
-            Teammates Invites
+            Teammate Requests
             <CloseButton className='close-teammates-btn' onClick={handleClick} />
           </Popover.Header>
-          <Popover.Body>
-            {friendRequests?.length ?
-              <FriendRequestsProfiles teammates={friendRequests} /> :
-              <p>
-                No friend requests at the moment
-              </p>}
+          <Popover.Body className='friend-requests-body'>
+            {friendRequests.length ?
+              friendRequests.map(newTeammate => <SingleFriendRequest key={newTeammate.id} newTeammate={newTeammate} />) :
+              <h6 className='confirmation-msg'>
+                No new requests at the moment
+              </h6>}
           </Popover.Body>
         </Popover>
       </Overlay>
