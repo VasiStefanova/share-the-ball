@@ -9,9 +9,9 @@ import ConfirmDeleteUser from '../../admin/DeleteUserModal/ConfirmDeleteUserModa
 import AppContext from '../../context/AppContext';
 import { unfriendRequest } from '../../services/friends/unfriend-request';
 import ConfirmBanUser from '../../admin/BanUserModal/ConfirmBanUserModal';
+import { isCurrentURL } from '../../common/helpers';
 
-
-const FoundTeammates = ({ teammates, mountedOn = '' }) => {
+const FoundTeammates = ({ teammates }) => {
   const { user, toggleFriendship, setToggleFriendship } = useContext(AppContext);
   const history = useHistory();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -27,21 +27,21 @@ const FoundTeammates = ({ teammates, mountedOn = '' }) => {
     <>
       {teammates.map(teammate =>
         <div
-          className={mountedOn === '/home' ? 'teammate-container-box-home' : 'teammate-container-box'}
+          className={isCurrentURL('home') ? 'teammate-container-box-home' : 'teammate-container-box'}
           key={teammate.id}
         >
-          <div className={mountedOn === '/home' ? 'teammate-container-home' : 'teammate-container'}>
-            <div className={mountedOn === '/home' ? 'teammate-avatar-and-info-home' : 'teammate-avatar-and-info'}>
+          <div className={isCurrentURL('home') ? 'teammate-container-home' : 'teammate-container'}>
+            <div className={isCurrentURL('home') ? 'teammate-avatar-and-info-home' : 'teammate-avatar-and-info'}>
               <Avatar user={teammate} style={{ maxWidth: '5vh' }} />
-              <div className={mountedOn === '/home' ? 'teammate-info-box-home' : 'teammate-info-box'}>
-                <h5 className={mountedOn === '/home' ? 'teammate-info-home' : 'teammate-info'}>{teammate.username}</h5>
-                {mountedOn !== '/home' &&
+              <div className={isCurrentURL('home') ? 'teammate-info-box-home' : 'teammate-info-box'}>
+                <h5 className={isCurrentURL('home') ? 'teammate-info-home' : 'teammate-info'}>{teammate.username}</h5>
+                {!isCurrentURL('home') &&
                   <h6 className='teammate-info last-updated'>
                     last updated: {new Date(teammate.lastUpdated).toLocaleDateString('en-UK')}
                   </h6>}
               </div>
             </div>
-            {(mountedOn !== '/home' && mountedOn !== 'my-profile/teammates') &&
+            {(!isCurrentURL('home') && !isCurrentURL('teammates')) &&
               <div className='action-btns-group'>
                 {teammate.banReason ?
                   <Badge bg='danger'>Banned!</Badge> :
@@ -62,11 +62,11 @@ const FoundTeammates = ({ teammates, mountedOn = '' }) => {
                   delete
                 </Button>
               </div>}
-            <div className={mountedOn === '/home' ? 'teammate-button-group-home' : 'teammate-button-group'}>
+            <div className={isCurrentURL('home') ? 'teammate-button-group-home' : 'teammate-button-group'}>
               <Button id="view-user-profile-button" variant='light' onClick={() => history.push(`/user-profile/id=${teammate.id}`)}>
                 <i className="bi bi-person-circle" /> View profile
               </Button>
-              {(mountedOn === 'my-profile/teammates' || mountedOn === '/home') &&
+              {(isCurrentURL('teammates') || isCurrentURL('home')) &&
                 <Button id="remove-friend-button" variant='light' onClick={() => handleUnfriend(teammate)}>
                   <i className="bi bi-person-dash-fill" />
                 </Button>}
@@ -82,7 +82,6 @@ const FoundTeammates = ({ teammates, mountedOn = '' }) => {
 
 FoundTeammates.propTypes = {
   teammates: PropTypes.array,
-  mountedOn: PropTypes.string,
 };
 
 export default FoundTeammates;

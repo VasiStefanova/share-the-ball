@@ -6,7 +6,7 @@ import SearchTeammates from '../../components/SearchTeammates/SearchTeammates';
 import AppContext from '../../context/AppContext';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 
-const MyTeammates = ({ mountedOn = '' }) => {
+const MyTeammates = () => {
   const { user, setUser, toggleFriendship } = useContext(AppContext);
   const [teammates, setTeammates] = useState([]);
 
@@ -35,8 +35,8 @@ const MyTeammates = ({ mountedOn = '' }) => {
   return !teammates.length ?
     <h4>You have no teammates yet :(</h4>:
     <>
-      <SearchTeammates setTeammates={setTeammates} mountedOn={mountedOn} />
-      <FoundTeammates teammates={teammates} mountedOn={mountedOn} />
+      <SearchTeammates setTeammates={setTeammates} />
+      <FoundTeammates teammates={teammates} />
     </>;
 };
 
