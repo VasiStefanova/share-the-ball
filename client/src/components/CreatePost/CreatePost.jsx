@@ -8,19 +8,36 @@ import { useContext, useState } from 'react';
 import AppContext from '../../context/AppContext';
 import { createNewPostRequest } from '../../services/posts/create-new-post-request';
 import UploadFileButton from '../../elements/UploadFileButton/UploadFileButton';
+import PropTypes from 'prop-types';
+import { editPostRequest } from '../../services/posts/edit-post-request';
 
-const CreatePost = () => {
-  const { user, createdPost, setCreatedPost } = useContext(AppContext);
-  const [content, setContent] = useState('');
-  const [isPublic, setIsPublic] = useState(true);
+const CreatePost = ({ post, showUpdatePostsObj, setShowUpdatePostsObj, setRender }) => {
+  const { user: userFromContext, createdPost, setCreatedPost } = useContext(AppContext);
+  const [content, setContent] = useState(post?.content ?? '');
+  const [isPublic, setIsPublic] = useState(post?.isPublic ?? true);
   const [file, setFile] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
+  const [imagePreview, setImagePreview] = useState(post?.picture ? `http://localhost:5000/${post.picture}` : null);
   const [activeButton, setActiveButton] = useState(1);
 
+  const user = post?.author ?? userFromContext;
+  const showImg = !post;
 
   const handleFileChange = (e) => {
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
+  };
+
+  const updatePost = async (e) => {
+    e.preventDefault();
+
+    editPostRequest(post.id, content, '', 0, 0, isPublic)
+      .then(response => {
+        console.log(response);
+        showUpdatePostsObj[post.id] = false;
+        setShowUpdatePostsObj({ ...showUpdatePostsObj });
+        setRender({});
+      })
+      .catch(err => console.error(err));
   };
 
   const createPost = async (e) => {
@@ -38,6 +55,9 @@ const CreatePost = () => {
 
   };
 
+  const submitClickHandler = post ? updatePost : createPost;
+  const submitText = post ? 'Update' : 'Post';
+
   return (
     <div className="create-post-box theme-border-style">
       <div className="post-header-bar">
@@ -46,7 +66,7 @@ const CreatePost = () => {
           <h6 className='author-username'>{user.username}</h6>
         </div>
         <div className="button-group theme-button-group-style">
-          <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />
+          {showImg && <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />}
           <ToggleButtonGroup type="radio" name="options" defaultValue={2} style={{ display: 'flex' }}>
             <ToggleButton
               variant="outline-dark"
@@ -92,19 +112,27 @@ const CreatePost = () => {
         {imagePreview &&
           <div className="image-preview-container">
             <img src={imagePreview} id="image-preview" />
-            <Button
-              id="remove-prievew-button" variant="outline-dark" onClick={() => {
-                setImagePreview(false);
-                setFile('');
-              }}
-            ><i className="bi bi-trash" />
-            </Button>
+            {showImg &&
+              <Button
+                id="remove-prievew-button" variant="outline-dark" onClick={() => {
+                  setImagePreview(false);
+                  setFile('');
+                }}
+              >
+                <i className="bi bi-trash" />
+              </Button>}
           </div>}
-        <Button id="post-button" variant="dark" onClick={(e) => createPost(e)}>Post</Button>
+        <Button id="post-button" variant="dark" onClick={submitClickHandler}>{submitText}</Button>
       </div>
     </div>
   );
 };
 
+CreatePost.propTypes = {
+  post: PropTypes.object,
+  showUpdatePostsObj: PropTypes.object,
+  setShowUpdatePostsObj: PropTypes.func,
+  setRender: PropTypes.func
+};
 
 export default CreatePost;

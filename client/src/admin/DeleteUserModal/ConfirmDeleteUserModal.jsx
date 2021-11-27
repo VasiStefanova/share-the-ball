@@ -32,10 +32,10 @@ const ConfirmDeleteUser = ({ userId, username, show, setShow }) => {
         </Modal.Header>
         <Modal.Body>{`Are you sure you want to delete ${username}?`}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="outline-dark" onClick={handleClose}>
             No
           </Button>
-          <Button variant="primary" onClick={deleteUser}>
+          <Button variant="outline-dark" onClick={deleteUser}>
             Delete
           </Button>
         </Modal.Footer>
