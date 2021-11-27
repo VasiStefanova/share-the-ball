@@ -28,5 +28,7 @@
 }
 
 #upon-update-text {
+  border: 1px solid black;
+  padding: 1vh 1vw;
   font-style: italic;
 }

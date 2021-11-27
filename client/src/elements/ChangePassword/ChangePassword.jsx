@@ -45,16 +45,16 @@ const ChangePassword = () => {
           }}
         />
       </div>
-      <div className="change-password-text-box">
+      <div className="change-password-text-box new-password-text-box">
         <Form.Control
           type="password" placeholder="New password" onChange={(e) => {
             setPassword((prev) => ({ ...prev, new: e.target.value }));
           }}
         />
-        <Form.Text className='theme-helper-text-style'>
-          Length must be between 4 and 40 characters
-        </Form.Text>
       </div>
+      <h6 className='theme-helper-text-style helper-text-change-pass'>
+        Between 4 and 40 characters
+      </h6>
       <Button variant="dark" onClick={() => handleConfirm()}>
         Confirm
       </Button>

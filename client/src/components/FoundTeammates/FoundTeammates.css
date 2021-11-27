@@ -77,6 +77,11 @@
   display: flex;
 }
 
+.teammate-info-box-home {
+  align-self: center;
+  margin-bottom: 1vh;
+}
+
 .teammate-info-home {
   color: white;
   margin: unset;

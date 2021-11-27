@@ -83,16 +83,16 @@ const UserDetails = ({ userId }) => {
       <Avatar
         user={userInfo}
         style={{
-          'margin-top': '3vh',
-          'max-height': '30vh',
-          'max-width': '40vh',
-          'border-radius': '30vh'
+          'marginTop': '3vh',
+          'maxHeight': '30vh',
+          'maxWidth': '40vh',
+          'borderRadius': '30vh'
         }}
       />
       <Figure.Caption className='user-info'>
-        <h5 className='theme-text-style'>{userInfo.username}</h5>
-        <p className='user-text theme-text-style'>email: {userInfo.email}</p>
-        <p className='user-text theme-text-style'>last updated on: {new Date(userInfo.lastUpdated).toLocaleDateString('en-UK')}</p>
+        <h4 className='theme-text-style'>{userInfo.username}</h4>
+        <h6 className='user-text theme-text-style'>email: {userInfo.email}</h6>
+        <h6 className='user-text theme-text-style'>last updated on: {new Date(userInfo.lastUpdated).toLocaleDateString('en-UK')}</h6>
       </Figure.Caption>
       <Button variant='dark' disabled={btnProps.disabled} onClick={btnProps.handleClick}>
         <i className={btnProps.iconClassName} />
@@ -103,6 +103,6 @@ const UserDetails = ({ userId }) => {
 };
 
 UserDetails.propTypes = {
-  userId: PropTypes.number
+  userId: PropTypes.string
 };
 export default UserDetails;

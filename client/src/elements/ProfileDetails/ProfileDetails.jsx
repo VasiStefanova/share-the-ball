@@ -42,7 +42,7 @@ const ProfileDetails = () => {
     <>
       <div className="profile-details-container">
         <div className="username-box">
-          <h5>Username: {user.username}</h5>
+          <h5 className='theme-text-style'>Username: {user.username}</h5>
         </div>
         {editButtonClicked ?
           <div className="edit-email-box">
@@ -61,15 +61,15 @@ const ProfileDetails = () => {
             </div>
           </div> :
           <div className="user-email-box">
-            <h5>E-mail: {user.email}</h5>
+            <h5 className='theme-text-style'>E-mail: {user.email}</h5>
             <Button id="edit-email-button" variant="dark" onClick={() => setEditButtonClicked(!editButtonClicked)}>
               <i className="bi bi-pencil" />
             </Button>
           </div>}
         <div className="user-role-box">
-          <h5>Role: {user.role === 1 ? 'user' : 'admin'}</h5>
+          <h5 className='theme-text-style'>Role: {user.role === 1 ? 'user' : 'admin'}</h5>
         </div>
-        <br /><h6 id="upon-update-text">Upon a successful e-mail/password/avatar update you will be automatically logged out.</h6>
+        <h6 id="upon-update-text" className='theme-text-style'>Upon a successful e-mail/password/avatar update you will be automatically logged out.</h6>
       </div>
     </>
   );

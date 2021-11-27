@@ -38,7 +38,7 @@ const SingleUserBox = ({ teammate }) => {
               </h6>}
           </div>
         </div>
-        {(!isCurrentURL('home') && !isCurrentURL('teammates')) &&
+        {isCurrentURL('user_list') && teammate.username !== 'admin' &&
           <div className='action-btns-group'>
             {teammate.banReason ?
               <Badge bg='danger'>Banned!</Badge> :
@@ -60,13 +60,12 @@ const SingleUserBox = ({ teammate }) => {
             </Button>
           </div>}
         <div className={isCurrentURL('home') ? 'teammate-button-group-home' : 'teammate-button-group'}>
-          <Button id="view-user-profile-button" variant='light' onClick={() => history.push(`/user-profile/id=${teammate.id}`)}>
+          <Button id="view-user-profile-button" variant='light' onClick={() => history.push(`/user-profile/id=${teammate.id}/posts`)}>
             <i className="bi bi-person-circle" /> View profile
           </Button>
-          {(isCurrentURL('teammates') || isCurrentURL('home')) &&
-            <Button id="remove-friend-button" variant='light' onClick={() => handleUnfriend(teammate)}>
-              <i className="bi bi-person-dash-fill" />
-            </Button>}
+          <Button id="remove-friend-button" variant='light' onClick={() => handleUnfriend(teammate)}>
+            <i className="bi bi-person-dash-fill" />
+          </Button>
         </div>
       </div>
       <ConfirmBanUser userId={teammate.id} username={teammate.username} show={showBanModal} setShow={setShowBanModal} />
@@ -76,7 +75,7 @@ const SingleUserBox = ({ teammate }) => {
 };
 
 SingleUserBox.propTypes = {
-  teammate: PropTypes.array,
+  teammate: PropTypes.object,
 };
 
 export default SingleUserBox;

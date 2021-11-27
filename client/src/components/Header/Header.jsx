@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { logoutRequest } from '../../services/auth/logout-request';
 import AppContext from '../../context/AppContext';
 import FriendRequests from '../FriendRequests/FriendRequests';
+
 const Header = () => {
   const { loggedIn, setLoggedIn, user, setUser } = useContext(AppContext);
 
@@ -46,7 +47,7 @@ const Header = () => {
       {loggedIn &&
         <div className="profile-box">
           <div className='user-box'>
-            <NavLink to='my-profile' className='avatar-nav-link'>
+            <NavLink to='/my-profile' className='avatar-nav-link'>
               <h5 className='avatar-username'>{user.username}</h5>
               <Avatar user={user} />
             </NavLink>

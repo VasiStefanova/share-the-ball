@@ -7,13 +7,13 @@ const Posts = ({ userId }) => {
 
   const [userPosts, setUserPosts] = useState([]);
 
-  useEffect(() => {
-    const getUserPosts = async () => {
-      const posts = await getPostsByUserIdRequest(userId);
-      setUserPosts(posts);
-      console.log(posts);
-    };
+  const getUserPosts = async () => {
+    const posts = await getPostsByUserIdRequest(userId);
+    setUserPosts(posts);
+    console.log(posts);
+  };
 
+  useEffect(() => {
     getUserPosts();
   }, [userId]);
 
@@ -26,6 +26,6 @@ const Posts = ({ userId }) => {
 };
 
 Posts.propTypes = {
-  userId: PropTypes.number
+  userId: PropTypes.string
 };
 export default Posts;
