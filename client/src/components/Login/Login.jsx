@@ -6,6 +6,7 @@ import { React, useContext, useState } from 'react';
 import { loginRequest } from '../../services/auth/login-request';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import AppContext from '../../context/AppContext';
+import { setUserInStorage } from '../../common/helpers';
 
 const Login = () => {
   const { setLoggedIn, setUser } = useContext(AppContext);
@@ -25,7 +26,7 @@ const Login = () => {
 
       const userDetails = await getUserDetailsRequest(userId);
       setUser(userDetails);
-      localStorage.setItem('user', JSON.stringify(userDetails));
+      setUserInStorage(userDetails);
       setLoggedIn(true);
       setCredentials({ username: '', password: '' });
       setError('');

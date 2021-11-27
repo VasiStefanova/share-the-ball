@@ -11,29 +11,15 @@ import { intervalRequest } from '../../common/helpers';
 
 
 const FriendsRequests = () => {
-  const { user, loggedIn } = useContext(AppContext);
+  const { friendRequests } = useContext(AppContext);
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
-  const [loggedUserInfo, setLoggedUserInfo] = useState({});
-
-  const getLoggedUserInfo = async () => {
-    const result = await getUserDetailsRequest(user.id);
-    setLoggedUserInfo(result);
-    console.log('checked for new friend requests');
-  };
-
-  useEffect(() => {
-    intervalRequest(getLoggedUserInfo);
-    if (!loggedIn) clearInterval(intervalRequest);
-  }, []);
 
   const handleClick = (event) => {
     setShow(!show);
     setTarget(event.target);
   };
-
-  const friendRequests = loggedUserInfo?.friends?.filter(friend => friend.canAcceptFriendship === true);
 
   return (
     <div ref={ref}>

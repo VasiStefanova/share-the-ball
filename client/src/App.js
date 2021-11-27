@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import AppContext from './context/AppContext';
@@ -9,8 +9,9 @@ import HomePrivate from './views/HomePrivate/HomePrivate';
 import CardLinks from './components/CardLinks/CardLinks';
 import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 import MyProfile from './views/MyProfile/MyProfile';
-import { checkLoginStatus, getLoggedUser } from './common/helpers';
+import { checkLoginStatus, getLoggedUser, intervalRequest } from './common/helpers';
 import UserProfile from './views/UserProfile/UserProfile';
+import getUserDetailsRequest from './services/users/get-user-details-request';
 
 // eslint-disable-next-line require-jsdoc
 function App() {
@@ -23,11 +24,30 @@ function App() {
 
   // friends
   const [toggleFriendship, setToggleFriendship] = useState(false);
+  const [friendRequests, setFriendRequests] = useState([]);
+  const [interval, setInterval] = useState(null);
 
-  // style={{ backgroundImage: 'url(/background.png)' }} - add this to App div to set background img
+  const getUserFriends = async () => {
+    const result = await getUserDetailsRequest(user.id);
+    const friends = result.friends?.filter(friend => friend.canAcceptFriendship === true);
+    setFriendRequests(friends);
+    console.log('checked for new friend requests');
+  };
+
+  useEffect(() => {
+    if (loggedIn) {
+      if (!interval) setInterval(intervalRequest(getUserFriends));
+      console.log('I logged in!');
+    } else {
+      clearInterval(interval);
+      setInterval(null);
+      console.log('I logged OUT!');
+    }
+  }, [loggedIn]);
+
   return (
     <div className="App" style={{ backgroundImage: 'url(/background.png)' }}>
-      <AppContext.Provider value={{ loggedIn, setLoggedIn, user, setUser, createdPost, setCreatedPost, toggleFriendship, setToggleFriendship }}>
+      <AppContext.Provider value={{ loggedIn, setLoggedIn, user, setUser, createdPost, setCreatedPost, toggleFriendship, setToggleFriendship, friendRequests }}>
         <BrowserRouter>
           <Header />
           <Switch>

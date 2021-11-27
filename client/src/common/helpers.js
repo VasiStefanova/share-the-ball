@@ -18,4 +18,6 @@ export const isCurrentURL = (searchedTab = '') => {
 
 export const intervalRequest = (func) => setInterval(() => {
   func();
-}, 5000);
+}, 10000);
+
+export const setUserInStorage = (userInfo) => localStorage.setItem('user', JSON.stringify(userInfo));
