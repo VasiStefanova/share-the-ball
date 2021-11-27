@@ -3,7 +3,9 @@ import Accordion from 'react-bootstrap/Accordion';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 
+
 const LoginAccordion = () => {
+
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0" className='login-accordion-item theme-accordion-style'>
