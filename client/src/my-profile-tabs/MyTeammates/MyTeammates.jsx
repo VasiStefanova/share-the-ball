@@ -36,12 +36,16 @@ const MyTeammates = () => {
   }, [userInfo]);
 
 
-  return !teammates.length ?
-    <h4>You have no teammates yet :(</h4>:
+  return (!teammates.length ?
+    <>
+      <SearchTeammates setTeammates={setTeammates} />
+      <h4>No teammates found</h4>
+    </>:
     <>
       <SearchTeammates setTeammates={setTeammates} />
       <FoundTeammates teammates={teammates} />
-    </>;
+    </>
+  );
 };
 
 export default MyTeammates;

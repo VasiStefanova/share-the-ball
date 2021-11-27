@@ -1,29 +1,26 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
 import CloseButton from 'react-bootstrap/CloseButton';
 import Overlay from 'react-bootstrap/Overlay';
-import decode from 'jwt-decode';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import FriendRequestsProfiles from '../FriendRequestsProfiles/FriendRequestsProfiles';
 import './FriendRequests.css';
+import AppContext from '../../context/AppContext';
 
 
 const FriendsRequests = () => {
+  const { user } = useContext(AppContext);
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
   const [loggedUserInfo, setLoggedUserInfo] = useState({});
 
-
-  const loggedUserToken = localStorage.getItem('token');
-  const loggedUserId = decode(loggedUserToken)?.id;
-
   useEffect(() => {
     const intervalRequest = () => setInterval(() => {
 
       const getLoggedUserInfo = async () => {
-        const result = await getUserDetailsRequest(loggedUserId);
+        const result = await getUserDetailsRequest(user.id);
         setLoggedUserInfo(result);
       };
 
