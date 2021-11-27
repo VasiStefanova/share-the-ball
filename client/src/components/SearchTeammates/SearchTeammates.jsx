@@ -3,14 +3,15 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './SearchTeammates.css';
 import getUsersRequest from '../../services/users/get-users-request';
 import PropTypes from 'prop-types';
 import { isCurrentURL } from '../../common/helpers';
+import AppContext from '../../context/AppContext';
 
 const SearchTeammates = ({ setTeammates }) => {
-
+  const { user } = useContext(AppContext);
   const [userInput, setUserInput] = useState('');
   const [usernameBtnClicked, setUsernameBtnClicked] = useState(true);
   const [emailBtnClicked, setEmailBtnClicked] = useState(false);
@@ -27,7 +28,10 @@ const SearchTeammates = ({ setTeammates }) => {
     }
 
     const filteredUsers = await getUsersRequest(searchQueries);
-    setTeammates(filteredUsers);
+    const friends = filteredUsers
+      .filter(({ id: userId }) => user.friends
+        .some(({ id: teammateId }) => userId === teammateId));
+    isCurrentURL('my-teammates') ? setTeammates(friends) : setTeammates(filteredUsers);
     console.log(filteredUsers);
   };
 
@@ -53,7 +57,7 @@ const SearchTeammates = ({ setTeammates }) => {
           Search
         </Button>
       </InputGroup>
-      <span className={isCurrentURL('home') ? 'filter-buttons-box-home' : 'filter-buttons-box'}>
+      <span className="filter-buttons-box">
         <h3>Filter by |</h3>
         <ToggleButton
           className='filter-btn'

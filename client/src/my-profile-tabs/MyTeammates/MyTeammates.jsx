@@ -5,6 +5,7 @@ import FoundTeammates from '../../components/FoundTeammates/FoundTeammates';
 import SearchTeammates from '../../components/SearchTeammates/SearchTeammates';
 import AppContext from '../../context/AppContext';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
+import getUsersRequest from '../../services/users/get-users-request';
 
 const MyTeammates = () => {
   const { user, setUser, toggleFriendship } = useContext(AppContext);
@@ -14,23 +15,26 @@ const MyTeammates = () => {
   const [userInfo, setUserInfo] = useState(user);
 
   useEffect(() => {
-    if (!userInfo.id) return;
-
-    getUserDetailsRequest(userInfo.id)
+    getUserDetailsRequest(user.id)
       .then(userDetails => {
-        setUser(userDetails);
         setUserInfo(userDetails);
-        localStorage.setItem('user', JSON.stringify(userDetails));
+        setUser(userDetails);
+        localStorage.setItem('user', JSON.stringify(user));
       })
       .catch(console.error);
   }, [toggleFriendship]);
 
   useEffect(() => {
-    if (!userInfo.friends) return;
-
-    setTeammates(userInfo.friends
-      .filter(friend => friend.friendshipStatus === 2));
+    getUsersRequest()
+      .then(allUsers => {
+        return allUsers
+          .filter(({ id: userId }) => userInfo.friends
+            .some(({ id: teammateId }) => userId === teammateId));
+      })
+      .then(teammatesList => setTeammates(teammatesList))
+      .catch(console.error);
   }, [userInfo]);
+
 
   return !teammates.length ?
     <h4>You have no teammates yet :(</h4>:
