@@ -41,7 +41,7 @@ const FoundTeammates = ({ teammates }) => {
                   </h6>}
               </div>
             </div>
-            {(!isCurrentURL('home') && !isCurrentURL('teammates')) &&
+            {(!isCurrentURL('home') && !isCurrentURL('my-teammates')) &&
               <div className='action-btns-group'>
                 {teammate.banReason ?
                   <Badge bg='danger'>Banned!</Badge> :
@@ -66,7 +66,7 @@ const FoundTeammates = ({ teammates }) => {
               <Button id="view-user-profile-button" variant='light' onClick={() => history.push(`/user-profile/id=${teammate.id}`)}>
                 <i className="bi bi-person-circle" /> View profile
               </Button>
-              {(isCurrentURL('teammates') || isCurrentURL('home')) &&
+              {(isCurrentURL('my-teammates') || isCurrentURL('home')) &&
                 <Button id="remove-friend-button" variant='light' onClick={() => handleUnfriend(teammate)}>
                   <i className="bi bi-person-dash-fill" />
                 </Button>}
