@@ -2,22 +2,23 @@ import { getToken } from '../../common/helpers';
 import { POSTS_URL } from '../../common/constants';
 
 export const editPostRequest = async (
-  content = '',
-  embed = '',
-  latitude = 0,
-  longitude = 0,
-  isPublic = false,
+  id,
+  content,
+  embed,
+  latitude,
+  longitude,
+  isPublic,
 ) => {
   const formData = new FormData();
 
-  if (content) formData.append('content', content);
   if (embed) formData.append('embed', embed);
   if (latitude) formData.append('latitude', latitude);
   if (longitude) formData.append('longitude', longitude);
-  if (isPublic) formData.append('isPublic', isPublic);
+  formData.append('content', content);
+  formData.append('isPublic', isPublic);
 
   try {
-    const response = await fetch(`${POSTS_URL}`, {
+    const response = await fetch(`${POSTS_URL}/${id}`, {
       method: 'PUT',
       body: formData,
       headers: {
