@@ -31,7 +31,6 @@ function App() {
     const result = await getUserDetailsRequest(user.id);
     const friends = result.friends?.filter(friend => friend.canAcceptFriendship === true);
     setFriendRequests(friends);
-    console.log('checked for new friend requests');
   };
 
   useEffect(() => {
@@ -41,11 +40,9 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       if (!interval) setInterval(intervalRequest(getUserFriends));
-      console.log('I logged in!');
     } else {
       clearInterval(interval);
       setInterval(null);
-      console.log('I logged OUT!');
     }
   }, [loggedIn]);
 

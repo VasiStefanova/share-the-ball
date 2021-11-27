@@ -1,6 +1,6 @@
 .admin-delete-post-btn {
     max-height: 5vh;
     margin-top: auto;
-    margin-left: 3vw;
+    margin: 0.5vh 0.5vw;
     justify-content: center;
 }

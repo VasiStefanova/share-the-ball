@@ -31,15 +31,17 @@ const Teammates = ({ userId }) => {
       })
       .then(teammatesList => setTeammates(teammatesList))
       .catch(console.error);
+
+    return () => setTeammates([]);
   }, [userInfo]);
 
 
-  return !teammates.length ?
-    <h4>You have no teammates yet :(</h4>:
+  return teammates.length ?
     <>
       <SearchTeammates setTeammates={setTeammates} />
       <FoundTeammates teammates={teammates} />
-    </>;
+    </>:
+    <h3 className='theme-text-style' style={{ marginTop: '1vh' }}>You have no teammates yet :(</h3>;
 };
 
 Teammates.propTypes = {

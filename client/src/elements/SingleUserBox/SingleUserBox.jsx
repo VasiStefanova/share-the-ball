@@ -63,9 +63,10 @@ const SingleUserBox = ({ teammate }) => {
           <Button id="view-user-profile-button" variant='light' onClick={() => history.push(`/user-profile/id=${teammate.id}/posts`)}>
             <i className="bi bi-person-circle" /> View profile
           </Button>
-          <Button id="remove-friend-button" variant='light' onClick={() => handleUnfriend(teammate)}>
-            <i className="bi bi-person-dash-fill" />
-          </Button>
+          {!isCurrentURL('search') &&
+            <Button id="remove-friend-button" variant='light' onClick={() => handleUnfriend(teammate)}>
+              <i className="bi bi-person-dash-fill" />
+            </Button>}
         </div>
       </div>
       <ConfirmBanUser userId={teammate.id} username={teammate.username} show={showBanModal} setShow={setShowBanModal} />

@@ -27,7 +27,7 @@ const DeleteUserPost = ({ postId, setRender }) => {
 };
 
 DeleteUserPost.propTypes = {
-  postId: PropTypes.array,
+  postId: PropTypes.number,
   setRender: PropTypes.func
 };
 export default DeleteUserPost;

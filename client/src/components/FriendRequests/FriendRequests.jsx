@@ -14,7 +14,7 @@ const FriendsRequests = () => {
   const [target, setTarget] = useState(document.querySelector('#root > div > div.header-box > div > div.user-box > div > button > div'));
   const ref = useRef(null);
 
-  const handleClick = (event) => {
+  const handleClick = () => {
     setShow(!show);
     setTarget(document.querySelector('#root > div > div.header-box > div > div.user-box > div > button > div'));
   };

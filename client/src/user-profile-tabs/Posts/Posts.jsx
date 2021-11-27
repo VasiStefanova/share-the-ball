@@ -43,14 +43,14 @@ const Posts = ({ userId }) => {
             /> :
             <SinglePost post={post} />}
           {user.role === 2 &&
-            <>
+            <div className='admin-buttons-box'>
               <DeleteUserPost postId={post.id} setRender={setRender} />
               <UpdateUserPost postId={post.id} showUpdatePostsObj={showUpdatePostsObj} setShowUpdatePostsObj={setShowUpdatePostsObj} />
-            </>}
+            </div>}
         </div>
       )}
     </> :
-    'No posts to show!'
+    <h3 className='theme-text-style' style={{ marginTop: '1vh' }}>No posts to show</h3>
   );
 };
 

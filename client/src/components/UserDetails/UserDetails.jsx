@@ -26,7 +26,6 @@ const UserDetails = ({ userId }) => {
   const getUserInfo = async () => {
     const result = await getUserDetailsRequest(userId);
     setUserInfo(result);
-    console.log(`current user: ${result.id}`);
   };
 
   useEffect(() => {
