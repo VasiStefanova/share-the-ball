@@ -28,11 +28,13 @@
   }
 
 .action-btns-group {
-  margin-left: auto;
+  display: flex;
 }
 
 .action-btn {
-  margin-left:0.5vw
+  display: inline-flex;
+  height: 4vh;
+  margin-left: 0.5vw;
 }
 
 .bi-slash-circle-fill {
@@ -41,7 +43,6 @@
 
 .bi-x-circle-fill {
   padding-right: 0.25vw;
-
 }
 
 #remove-friend-button {

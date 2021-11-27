@@ -13,7 +13,8 @@ import { isCurrentURL } from '../../common/helpers';
 const UserProfile = ({ match }) => {
   const history = useHistory();
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState(<Posts />);
+  const [userId, setUserId] = useState(location.pathname.split('/')[2].split('=')[1]);
+  const [activeTab, setActiveTab] = useState(<Posts userId={userId} />);
   const [userInfo, setUserInfo] = useState({});
 
   const getUserInfo = async () => {
@@ -29,14 +30,14 @@ const UserProfile = ({ match }) => {
   useEffect(() => {
     switch (location.pathname.split('/')[2]) {
     case 'posts':
-      setActiveTab(<Posts />);
+      setActiveTab(<Posts userId={userId} />);
       break;
     case 'teammates':
-      setActiveTab(<Teammates mountedOn="my-profile/teammates" />);
+      setActiveTab(<Teammates />);
       break;
 
     default:
-      setActiveTab(<Posts />);
+      setActiveTab(<Posts userId={userId} />);
     }
   }, [location]);
 
@@ -49,14 +50,14 @@ const UserProfile = ({ match }) => {
             className='my-profile-tab'
             variant='outline-dark'
             active={isCurrentURL('my-posts')}
-            onClick={() => history.push(`/user-profile/id=${match.params.id}/posts`)}
+            onClick={() => history.push(`/user-profile/id=${userId}/posts`)}
           >posts
           </Button>
           <Button
             className='my-profile-tab'
             variant='outline-dark'
             active={isCurrentURL('my-teammates')}
-            onClick={() => history.push(`/user-profile/id=${match.params.id}/teammates`)}
+            onClick={() => history.push(`/user-profile/id=${userId}/teammates`)}
           >teammates
           </Button>
         </ButtonGroup>
@@ -65,7 +66,7 @@ const UserProfile = ({ match }) => {
         </div>
       </div>
       <div className='user-profile-right'>
-        <UserDetails userId={match.params.id} />
+        <UserDetails userId={userId} />
       </div>
     </div>
   );
