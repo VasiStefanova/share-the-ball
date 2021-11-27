@@ -52,7 +52,7 @@ const MyProfile = () => {
           >Teammates
           </Button>
           {/* change role on next line to hide from regular users */}
-          {user.role === 1 &&
+          {user.role === 2 &&
             <Button
               variant="outline-dark"
               active={isCurrentURL('user_list')}

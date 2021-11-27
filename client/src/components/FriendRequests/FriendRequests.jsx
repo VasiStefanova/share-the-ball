@@ -7,28 +7,25 @@ import getUserDetailsRequest from '../../services/users/get-user-details-request
 import FriendRequestsProfiles from '../FriendRequestsProfiles/FriendRequestsProfiles';
 import './FriendRequests.css';
 import AppContext from '../../context/AppContext';
+import { intervalRequest } from '../../common/helpers';
 
 
 const FriendsRequests = () => {
-  const { user } = useContext(AppContext);
+  const { user, loggedIn } = useContext(AppContext);
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
   const [loggedUserInfo, setLoggedUserInfo] = useState({});
 
+  const getLoggedUserInfo = async () => {
+    const result = await getUserDetailsRequest(user.id);
+    setLoggedUserInfo(result);
+    console.log('checked for new friend requests');
+  };
+
   useEffect(() => {
-    const intervalRequest = () => setInterval(() => {
-
-      const getLoggedUserInfo = async () => {
-        const result = await getUserDetailsRequest(user.id);
-        setLoggedUserInfo(result);
-      };
-
-      getLoggedUserInfo();
-    }, 5000);
-
-    intervalRequest();
-    return () => clearInterval(intervalRequest);
+    intervalRequest(getLoggedUserInfo);
+    if (!loggedIn) clearInterval(intervalRequest);
   }, []);
 
   const handleClick = (event) => {

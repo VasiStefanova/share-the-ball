@@ -45,7 +45,7 @@ const Teammates = ({ userId }) => {
 };
 
 Teammates.propTypes = {
-  userId: PropTypes.number,
+  userId: PropTypes.string,
 };
 
 export default Teammates;

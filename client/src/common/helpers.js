@@ -15,3 +15,7 @@ export const isCurrentURL = (searchedTab = '') => {
   const lastItem = locArr[locArr.length - 1];
   return lastItem === searchedTab;
 };
+
+export const intervalRequest = (func) => setInterval(() => {
+  func();
+}, 5000);
