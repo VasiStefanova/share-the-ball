@@ -1,26 +1,3 @@
-.login-accordion {
+.login-accordion-item {
   margin-bottom: 1vh;
 }
-
-.login-form  {
-  display: grid;
-  justify-content: center;
-}
-
-.login-input-field {
-  width: 15vw;
-}
-
-#password-field {
-  margin-bottom: 1.5vh;
-}
-
-#error-msg {
-  margin-bottom: 0vh;
-  margin-top: 1vh;
-  font-weight: bold;
-  color: red;
-}
-
-
-
