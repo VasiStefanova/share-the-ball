@@ -17,14 +17,6 @@ const FoundTeammates = ({ teammates, mountedOn = '' }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showBanModal, setShowBanModal] = useState(false);
 
-  // should use the user from the context below instead of
-  // getting the token from local storage, to be refactored
-  // once the user is set correctly in the context
-
-  // const loggedUserToken = localStorage.getItem('token');
-  // const loggedUserId = decode(loggedUserToken)?.id;
-
-
   const handleUnfriend = (toUser) => {
     unfriendRequest(user.id, toUser.id)
       .then(() => setToggleFriendship(!toggleFriendship))

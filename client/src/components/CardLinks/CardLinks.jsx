@@ -1,4 +1,4 @@
-import SingleCard from './SingleCard';
+import SingleCard from '../../elements/SingleCard/SingleCard';
 import { useHistory } from 'react-router';
 import './CardLinks.css';
 
@@ -12,7 +12,7 @@ const CardLinks = () => {
         redirectFunc={() => history.push('/search')}
         imgSrc="https://content.api.news/v3/images/bin/ea14cd233f701e6e29e7ba406203ada1"
         history={history}
-        title="Players"
+        title="Find Teammates"
       />
       <SingleCard
         redirectFunc={() => history.push('/home')}

@@ -3,55 +3,66 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import UserDetails from '../../components/UserDetails/UserDetails';
-import ToggleButton from 'react-bootstrap/ToggleButton';
+import Button from 'react-bootstrap/Button';
 import Posts from '../../user-profile-tabs/Posts/Posts';
 import Teammates from '../../user-profile-tabs/Teammates/Teammates';
+import { ButtonGroup } from 'react-bootstrap';
+import { useHistory, useLocation } from 'react-router';
+import { isCurrentURL } from '../../common/helpers';
 
 const UserProfile = ({ match }) => {
-
+  const history = useHistory();
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(<Posts />);
   const [userInfo, setUserInfo] = useState({});
-  const [postsBtnClicked, setPostsBtnCLicked] = useState(true);
-  const [teammatesBtnClicked, setTeammatesBtnClicked] = useState(false);
+
+  const getUserInfo = async () => {
+    const result = await getUserDetailsRequest(match.params.id);
+    setUserInfo(result);
+    console.log(result);
+  };
 
   useEffect(() => {
-    const getUserInfo = async () => {
-      const result = await getUserDetailsRequest(match.params.id);
-      setUserInfo(result);
-      console.log(result);
-    };
-
     getUserInfo();
   }, [match.params.id]);
+
+  useEffect(() => {
+    switch (location.pathname.split('/')[2]) {
+    case 'posts':
+      setActiveTab(<Posts />);
+      break;
+    case 'teammates':
+      setActiveTab(<Teammates mountedOn="my-profile/teammates" />);
+      break;
+
+    default:
+      setActiveTab(<Posts />);
+    }
+  }, [location]);
 
 
   return (
     <div className='user-profile-container'>
       <div className='user-profile-left'>
-        <div className='left-btns'>
-          <ToggleButton
-            className='nav-button'
+        <ButtonGroup className='my-profile-tabs-bar theme-button-group-style' size="lg">
+          <Button
+            className='my-profile-tab'
             variant='outline-dark'
-            checked={postsBtnClicked}
-            type="checkbox"
-            onClick={() => {
-              setPostsBtnCLicked(true);
-              setTeammatesBtnClicked(false);
-            }}
+            active={isCurrentURL('my-posts')}
+            onClick={() => history.push(`/user-profile/id=${match.params.id}/posts`)}
           >posts
-          </ToggleButton>
-          <ToggleButton
-            className='nav-button'
+          </Button>
+          <Button
+            className='my-profile-tab'
             variant='outline-dark'
-            onClick={() => {
-              setPostsBtnCLicked(false);
-              setTeammatesBtnClicked(true);
-            }}
-            checked={teammatesBtnClicked}
-            type="checkbox"
+            active={isCurrentURL('my-teammates')}
+            onClick={() => history.push(`/user-profile/id=${match.params.id}/teammates`)}
           >teammates
-          </ToggleButton>
+          </Button>
+        </ButtonGroup>
+        <div className='my-profile-active-tab'>
+          {activeTab}
         </div>
-        {postsBtnClicked ? <Posts userId={match.params.id} /> : <Teammates teammates={userInfo.friends} />}
       </div>
       <div className='user-profile-right'>
         <UserDetails userId={match.params.id} />

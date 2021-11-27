@@ -9,3 +9,9 @@ export const getLoggedUser = () => {
 
   return {};
 };
+
+export const isCurrentURL = (searchedTab = '') => {
+  const locArr = location.pathname.split('/');
+  const lastItem = locArr[locArr.length - 1];
+  return lastItem === searchedTab;
+};

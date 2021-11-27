@@ -23,13 +23,13 @@ const UserDetails = ({ userId }) => {
   const [userInfo, setUserInfo] = useState({});
   const [loggedUserInfo, setLoggedUserInfo] = useState({});
 
-  useEffect(() => {
-    const getUserInfo = async () => {
-      const result = await getUserDetailsRequest(userId);
-      setUserInfo(result);
-      console.log(`current user: ${result.id}`);
-    };
+  const getUserInfo = async () => {
+    const result = await getUserDetailsRequest(userId);
+    setUserInfo(result);
+    console.log(`current user: ${result.id}`);
+  };
 
+  useEffect(() => {
     getUserInfo();
   }, [userId]);
 
@@ -90,9 +90,9 @@ const UserDetails = ({ userId }) => {
         }}
       />
       <Figure.Caption className='user-info'>
-        <h5>{userInfo.username}</h5>
-        <p className='user-text'>email: {userInfo.email}</p>
-        <p className='user-text'>last updated on: {new Date(userInfo.lastUpdated).toLocaleDateString('en-UK')}</p>
+        <h5 className='theme-text-style'>{userInfo.username}</h5>
+        <p className='user-text theme-text-style'>email: {userInfo.email}</p>
+        <p className='user-text theme-text-style'>last updated on: {new Date(userInfo.lastUpdated).toLocaleDateString('en-UK')}</p>
       </Figure.Caption>
       <Button variant='dark' disabled={btnProps.disabled} onClick={btnProps.handleClick}>
         <i className={btnProps.iconClassName} />
