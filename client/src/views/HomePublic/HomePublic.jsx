@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import LoginAccordion from '../../components/LoginAccordion/LoginAccordion';
-import RegisterAccordion from '../../components/RegisterAccordion/RegisterAccordion';
 import SinglePost from '../../components/SinglePost/SinglePost';
 import { getPopularPostsRequest } from '../../services/feed/get-popular-posts-request';
 import './HomePublic.css';
@@ -27,7 +26,6 @@ const HomePublic = () => {
       </div>
       <div className='home-public-right'>
         <LoginAccordion />
-        <RegisterAccordion />
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
-.registerForm {
+.register-form {
   display: grid;
   justify-content: center;
 }
 
-.registerInputField {
+.register-input-field {
   margin-bottom: 1.5vh;
   width: 15vw;
 }
