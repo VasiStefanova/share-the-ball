@@ -8,15 +8,13 @@ import MyPosts from '../../my-profile-tabs/MyPosts/MyPosts';
 import MyTeammates from '../../my-profile-tabs/MyTeammates/MyTeammates';
 import UserList from '../../my-profile-tabs/UserList/UserList';
 import './MyProfile.css';
+import { isCurrentURL } from '../../common/helpers';
 
 const MyProfile = () => {
   const { user } = useContext(AppContext);
   const history = useHistory();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(<MyPosts />);
-  const isCurrentURL = (searchedTab = '') => {
-    return location.pathname.split('/')[2] === searchedTab;
-  };
 
   useEffect(() => {
     switch (location.pathname.split('/')[2]) {
@@ -24,7 +22,7 @@ const MyProfile = () => {
       setActiveTab(<MyPosts />);
       break;
     case 'teammates':
-      setActiveTab(<MyTeammates mountedOn="my-profile/teammates" />);
+      setActiveTab(<MyTeammates />);
       break;
     case 'user_list':
       setActiveTab(<UserList />);

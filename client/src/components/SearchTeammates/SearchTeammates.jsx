@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
@@ -6,8 +7,9 @@ import { useState } from 'react';
 import './SearchTeammates.css';
 import getUsersRequest from '../../services/users/get-users-request';
 import PropTypes from 'prop-types';
+import { isCurrentURL } from '../../common/helpers';
 
-const SearchTeammates = ({ setTeammates, mountedOn = '' }) => {
+const SearchTeammates = ({ setTeammates }) => {
 
   const [userInput, setUserInput] = useState('');
   const [usernameBtnClicked, setUsernameBtnClicked] = useState(true);
@@ -29,9 +31,11 @@ const SearchTeammates = ({ setTeammates, mountedOn = '' }) => {
     console.log(filteredUsers);
   };
 
+  if (isCurrentURL('home')) return (null);
+
   return (
     <>
-      <InputGroup className={mountedOn === '/home' ? 'mb 3 search-bar-box-home' : 'mb-3 search-bar-box'}>
+      <InputGroup className='mb-3 search-bar-box'>
         <FormControl
           disabled={inputDisabled}
           aria-label="Default"
@@ -41,7 +45,7 @@ const SearchTeammates = ({ setTeammates, mountedOn = '' }) => {
           onKeyUp={(e) => e.key === 'Enter' && search()}
         />
         <Button
-          className={mountedOn === '/home' ? 'input-group-append-home' : 'input-group-append'}
+          className='input-group-append'
           variant="dark"
           disabled={inputDisabled}
           onClick={search}
@@ -49,7 +53,7 @@ const SearchTeammates = ({ setTeammates, mountedOn = '' }) => {
           Search
         </Button>
       </InputGroup>
-      <span className={mountedOn === '/home' ? 'filter-buttons-box-home' : 'filter-buttons-box'}>
+      <span className={isCurrentURL('home') ? 'filter-buttons-box-home' : 'filter-buttons-box'}>
         <h3>Filter by |</h3>
         <ToggleButton
           className='filter-btn'
@@ -68,7 +72,7 @@ const SearchTeammates = ({ setTeammates, mountedOn = '' }) => {
         >username
         </ToggleButton>
         <ToggleButton
-          className={mountedOn === '/home' ? 'filter-btn-home' : 'filter-btn'}
+          className='filter-btn'
           variant="outline-dark"
           onClick={() => {
             const toggleClick = !emailBtnClicked;
@@ -90,6 +94,5 @@ const SearchTeammates = ({ setTeammates, mountedOn = '' }) => {
 
 SearchTeammates.propTypes = {
   setTeammates: PropTypes.func,
-  mountedOn: PropTypes.string
 };
 export default SearchTeammates;
