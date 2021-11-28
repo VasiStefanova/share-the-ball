@@ -1,3 +1,4 @@
+export const SERVER_URL = 'http://localhost:5000';
 export const USERS_URL = 'http://localhost:5000/users';
 export const LOGIN_URL = 'http://localhost:5000/auth/login';
 export const LOGOUT_URL = 'http://localhost:5000/auth/logout';
