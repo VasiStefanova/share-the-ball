@@ -20,7 +20,7 @@ const SinglePost = ({ post }) => {
               <Link className="author-profile-link" to={`/user-profile/id=${post.author.id}/posts`}>
                 <h6 className='author-username author-username-single-post'>{post.author.username}</h6>
               </Link>
-              <p className="last-updated-on-date">{new Date(post.updatedOn).toLocaleDateString('en-UK')}</p>
+              <p className="additional-author-info">{new Date(post.updatedOn).toLocaleDateString('en-UK')}</p>
             </div>
           </div>}
         <div className="post-content theme-text-style">

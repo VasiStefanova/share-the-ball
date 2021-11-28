@@ -23,7 +23,7 @@ const SingleComment = ({ comment }) => {
               <Link className="author-profile-link" to={`/user-profile/id=${comment.author.id}/posts`}>
                 <h6 className='author-username author-username-single-comment'>{comment.author.username}</h6>
               </Link>
-              <p className="last-updated-on-date">{new Date(comment.updatedOn).toLocaleDateString('en-UK')}</p>
+              <p className="additional-author-info">{new Date(comment.updatedOn).toLocaleDateString('en-UK')}</p>
             </div>
           </div>
           {user.role === 2 && isCurrentURL('posts') &&
