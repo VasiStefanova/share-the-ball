@@ -7,6 +7,7 @@ import AppContext from '../../context/AppContext';
 import DeleteUserPost from '../../admin/DeleteUserPost/DeleteUserPost';
 import UpdateUserPost from '../../admin/UpdateUserPost/UpdateUserPost';
 import { isCurrentURL } from '../../common/helpers';
+import { Link } from 'react-router-dom';
 
 
 const SingleComment = ({ comment }) => {
@@ -18,7 +19,12 @@ const SingleComment = ({ comment }) => {
         <div className='comment-header'>
           <div className='author-details theme-text-style'>
             <Avatar user={comment.author} style={{ maxWidth: '5vh' }} />
-            <h6 className='author-username'>{comment.author.username}</h6>
+            <div className='comment-header-text'>
+              <Link className="author-profile-link" to={`/user-profile/id=${comment.author.id}/posts`}>
+                <h6 className='author-username author-username-single-comment'>{comment.author.username}</h6>
+              </Link>
+              <p className="last-updated-on-date">{new Date(comment.updatedOn).toLocaleDateString('en-UK')}</p>
+            </div>
           </div>
           {user.role === 2 && isCurrentURL('posts') &&
             <div className='admin-buttons-box-comments'>

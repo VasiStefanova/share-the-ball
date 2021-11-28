@@ -11,20 +11,13 @@
   margin-bottom: 1vh;
 }
 
-.single-post-hedar-bar-text {
+.single-post-headar-bar-text {
   display: grid;
   margin-left: 0.5vw;
 }
 
 .author-username-single-post {
   margin: auto 0;
-}
-
-.last-updated-on-date {
-  margin: 0 auto;
-  font-size: 1.1vh;
-  font-style: italic;
-  color: lightgray;
 }
 
 .post-content {

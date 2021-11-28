@@ -11,6 +11,19 @@
   justify-content: space-between;
 }
 
+.author-details {
+  display: flex;
+}
+
+.comment-header-text {
+  display: grid;
+  margin-left: 0.5vw;
+}
+
+.author-username-single-comment {
+  margin: auto 0;
+}
+
 .admin-buttons-box-comments {
   width: fit-content;
   height: fit-content;

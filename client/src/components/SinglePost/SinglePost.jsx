@@ -5,6 +5,7 @@ import './SinglePost.css';
 import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 import CommentsAccordion from '../CommentsAccordion/CommentsAccordion';
+import { Link } from 'react-router-dom';
 
 const SinglePost = ({ post }) => {
   const { user } = useContext(AppContext);
@@ -15,8 +16,10 @@ const SinglePost = ({ post }) => {
         {post.author &&
           <div className="single-post-header-bar">
             <Avatar user={post.author} style={{ maxWidth: '5vh' }} />
-            <div className="single-post-hedar-bar-text">
-              <h6 className='author-username author-username-single-post'>{post.author.username}</h6>
+            <div className="single-post-headar-bar-text">
+              <Link className="author-profile-link" to={`/user-profile/id=${post.author.id}/posts`}>
+                <h6 className='author-username author-username-single-post'>{post.author.username}</h6>
+              </Link>
               <p className="last-updated-on-date">{new Date(post.updatedOn).toLocaleDateString('en-UK')}</p>
             </div>
           </div>}
