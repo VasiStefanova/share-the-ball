@@ -9,9 +9,10 @@ import HomePrivate from './views/HomePrivate/HomePrivate';
 import CardLinks from './components/CardLinks/CardLinks';
 import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 import MyProfile from './views/MyProfile/MyProfile';
-import { checkLoginStatus, getLoggedUser, intervalRequest } from './common/helpers';
+import { checkLoginStatus, getLoggedUser, getUserLocation, intervalRequest } from './common/helpers';
 import UserProfile from './views/UserProfile/UserProfile';
 import getUserDetailsRequest from './services/users/get-user-details-request';
+import { reverseGeocodeLocationRequest } from './services/google-geocoding/reverse-geocode-location-request';
 
 // eslint-disable-next-line require-jsdoc
 function App() {

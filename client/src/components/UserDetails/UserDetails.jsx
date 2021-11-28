@@ -36,7 +36,6 @@ const UserDetails = ({ userId }) => {
     const getLoggedUserInfo = async () => {
       const result = await getUserDetailsRequest(loggedUserId);
       setLoggedUserInfo(result);
-      console.log(`logged user: ${result.id}`);
     };
 
     getLoggedUserInfo();
