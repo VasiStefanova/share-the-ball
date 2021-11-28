@@ -9,8 +9,9 @@ import getUsersRequest from '../../services/users/get-users-request';
 import PropTypes from 'prop-types';
 import { isCurrentURL } from '../../common/helpers';
 import AppContext from '../../context/AppContext';
+import getUserDetailsRequest from '../../services/users/get-user-details-request';
 
-const SearchTeammates = ({ setTeammates }) => {
+const SearchTeammates = ({ setTeammates, targetUserId = '' }) => {
   const { user } = useContext(AppContext);
   const [userInput, setUserInput] = useState('');
   const [usernameBtnClicked, setUsernameBtnClicked] = useState(true);
@@ -27,12 +28,23 @@ const SearchTeammates = ({ setTeammates }) => {
       searchQueries.email=`${userInput}`;
     }
 
-    const filteredUsers = await getUsersRequest(searchQueries);
-    const friends = filteredUsers
+    const foundUsers = await getUsersRequest(searchQueries);
+    const loggedUserFriends = foundUsers
       .filter(({ id: userId }) => user.friends
-        .some(({ id: teammateId }) => userId === teammateId));
-    isCurrentURL('my-teammates') ? setTeammates(friends) : setTeammates(filteredUsers);
-    console.log(filteredUsers);
+        .some(({ id: teammateId, friendshipStatus }) => userId === teammateId && friendshipStatus === 2));
+
+    if (targetUserId) {
+      const targetUserDetails = await getUserDetailsRequest(targetUserId);
+      const targetUserFriends = foundUsers
+        .filter(({ id: userId }) => targetUserDetails.friends
+          .some(({ id: targetTeammateId, friendshipStatus }) => userId === targetTeammateId && friendshipStatus === 2));
+
+      setTeammates(targetUserFriends);
+    }
+
+    if (isCurrentURL('my-teammates')) setTeammates(loggedUserFriends);
+    if (isCurrentURL('user_list') || isCurrentURL('search')) setTeammates(foundUsers);
+
   };
 
   if (isCurrentURL('home')) return (null);
@@ -98,5 +110,6 @@ const SearchTeammates = ({ setTeammates }) => {
 
 SearchTeammates.propTypes = {
   setTeammates: PropTypes.func,
+  targetUserId: PropTypes.string
 };
 export default SearchTeammates;

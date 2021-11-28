@@ -6,13 +6,10 @@ import AppContext from '../../context/AppContext';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import getUsersRequest from '../../services/users/get-users-request';
 
-
 const Teammates = ({ userId }) => {
-  const { user, toggleFriendship } = useContext(AppContext);
+  const { toggleFriendship } = useContext(AppContext);
   const [teammates, setTeammates] = useState([]);
-
-  // I use userInfo, not just user to avoid react-state-update-warning upon logging out
-  const [userInfo, setUserInfo] = useState(user);
+  const [userInfo, setUserInfo] = useState('');
 
   useEffect(() => {
     getUserDetailsRequest(userId)
@@ -23,6 +20,8 @@ const Teammates = ({ userId }) => {
   }, [toggleFriendship]);
 
   useEffect(() => {
+    if (!userInfo) return () => {};
+
     getUsersRequest()
       .then(allUsers => {
         return allUsers
@@ -38,10 +37,10 @@ const Teammates = ({ userId }) => {
 
   return teammates.length ?
     <>
-      <SearchTeammates setTeammates={setTeammates} />
+      <SearchTeammates setTeammates={setTeammates} targetUserId={userId} />
       <FoundTeammates teammates={teammates} />
     </>:
-    <h3 className='theme-text-style' style={{ marginTop: '1vh' }}>You have no teammates yet :(</h3>;
+    <h3 className='theme-text-style' style={{ marginTop: '1vh' }}>No teammates to show</h3>;
 };
 
 Teammates.propTypes = {
