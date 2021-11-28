@@ -7,7 +7,7 @@ const UpdateUserPost = ({ postId, showUpdatePostsObj, setShowUpdatePostsObj }) =
 
   return (
     <Button
-      className='admin-delete-post-btn'
+      className='admin-update-post-btn'
       variant='outline-dark'
       active={btnActive}
       onClick={() => {

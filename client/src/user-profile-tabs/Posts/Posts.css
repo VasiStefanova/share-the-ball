@@ -4,7 +4,9 @@
 
 .admin-buttons-box {
   width: fit-content;
+  height: fit-content;
   background-color: white;
   margin: 1vh auto;
   border-radius: 5px;
+  padding: 2px;
 }

@@ -6,6 +6,19 @@
   width: 35vw;
 }
 
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-buttons-box-comments {
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2px;
+}
+
 .comment-content {
   display: grid;
   justify-content: center;
