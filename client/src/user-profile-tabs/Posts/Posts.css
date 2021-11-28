@@ -1,5 +1,9 @@
 .admin-manage-posts {
-    display: block;
+  display: grid;
+  border-radius: 1vh;
+  padding: auto 1vw;
+  margin: 1vh auto;
+  width: 40vw;
 }
 
 .admin-buttons-box {
