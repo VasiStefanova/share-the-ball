@@ -51,18 +51,10 @@
   justify-content: space-between;
   margin: 1vh auto;
   width: 35vw;
+  background-color: black;
+  border-radius: 7px;
 }
 
-.post-like-btn {
-  padding: 0 1vh;
-  background-color: rgb(182, 5, 5);
-  color: white;
-  font-weight: bold;
-}
-
-.post-likes-number {
-  margin: 0;
-}
 
 
 

@@ -45,6 +45,11 @@ export const getUserLocation = () => {
     });
 };
 
+export const hasUserReacted = (reactions = [], username = '') => {
+  return reactions.some(like => like.username === username);
+};
+
+
 export const updateUserLocation = async () => {
   const [latitude, longitude] = await getUserLocation();
 

@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import Button from 'react-bootstrap/Button';
+import PropTypes from 'prop-types';
 import Avatar from '../../elements/Avatar/Avatax';
 import './SinglePost.css';
 import { useContext, useState } from 'react';
@@ -8,6 +8,7 @@ import CommentsAccordion from '../CommentsAccordion/CommentsAccordion';
 import { Link } from 'react-router-dom';
 import DeleteUserPost from '../../admin/DeleteUserPost/DeleteUserPost';
 import UpdateUserPost from '../../admin/UpdateUserPost/UpdateUserPost';
+import Reactions from '../../elements/Reactions/Reactions';
 
 const SinglePost = ({ post, setRender }) => {
   const { user } = useContext(AppContext);
@@ -40,8 +41,9 @@ const SinglePost = ({ post, setRender }) => {
           </div>
           {post.author &&
             <div className="post-buttons">
-              <Button variant="outline-dark" className='post-like-btn'>Like</Button>
-              <h5 className='post-likes-number'>{post.likes.length !== 1 ? `${post.likes.length} likes` : '1 like'}</h5>
+              <Reactions postId={post.id} />
+              {/* <Button variant="outline-dark" className='post-like-btn'>Like</Button>
+              <h5 className='post-likes-number'>{post.likes.length !== 1 ? `${post.likes.length} likes` : '1 like'}</h5> */}
             </div>}
           {post.author &&
             <div className="comments-box">
@@ -63,5 +65,9 @@ const SinglePost = ({ post, setRender }) => {
   );
 };
 
+SinglePost.propTypes = {
+  post: PropTypes.object,
+  setRender: PropTypes.func
+};
 
 export default SinglePost;

@@ -1,0 +1,33 @@
+.reactions-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 35vw;
+}
+
+.reaction-icons-box {
+  display: flex;
+  justify-content: space-between;
+  width: 7vw;
+  padding: 5px;
+  border-radius: 7px;
+}
+
+.like-reaction-btn {
+  border-radius: 10px;
+}
+
+.laugh-reaction-btn {
+  border-radius: 50%;
+}
+
+.love-reaction-btn {
+  border-radius: 10px;
+}
+
+.all-reactions-btn {
+  font-weight: bold;
+}
+
+.all-reactions-btn:hover {
+  color: rgb(182, 5, 5);
+}
