@@ -25,7 +25,7 @@ const SingleComment = ({ comment, post }) => {
         <div className='comment-container'>
           <div className='comment-header'>
             <div className='author-details theme-text-style'>
-              <Avatar user={comment.author} style={{ maxWidth: '5vh' }} />
+              <Avatar user={comment.author} style={{ width: '5vh', height: '5vh' }} />
               <div className='comment-header-text'>
                 <Link className="author-profile-link" to={`/user-profile/id=${comment.author.id}/posts`}>
                   <h6 className='author-username author-username-single-comment'>{comment.author.username}</h6>

@@ -29,7 +29,7 @@ const SingleUserBox = ({ teammate }) => {
     >
       <div className={isCurrentURL('home') ? 'teammate-container-home' : 'teammate-container'}>
         <div className={isCurrentURL('home') ? 'teammate-avatar-and-info-home' : 'teammate-avatar-and-info'}>
-          <Avatar user={teammate} style={{ maxWidth: '5vh' }} />
+          <Avatar user={teammate} style={{ width: '5vh', height: '5vh' }} />
           <div className={isCurrentURL('home') ? 'teammate-info-box-home' : 'teammate-info-box'}>
             <h5 className={isCurrentURL('home') ? 'teammate-info-home' : 'teammate-info'}>{teammate.username}</h5>
             {!isCurrentURL('home') &&
