@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import './SingleComment.css';
+import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Avatar from '../../elements/Avatar/Avatax';
 import { useContext, useState } from 'react';
@@ -66,6 +66,10 @@ const SingleComment = ({ comment, post }) => {
   );
 };
 
+SingleComment.propTypes = {
+  comment: PropTypes.object,
+  post: PropTypes.object
+};
 
 export default SingleComment;
 
