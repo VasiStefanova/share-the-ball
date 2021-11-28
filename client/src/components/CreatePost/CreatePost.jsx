@@ -10,29 +10,30 @@ import { createNewPostRequest } from '../../services/posts/create-new-post-reque
 import UploadFileButton from '../../elements/UploadFileButton/UploadFileButton';
 import PropTypes from 'prop-types';
 import { editPostRequest } from '../../services/posts/edit-post-request';
+import { SERVER_URL } from '../../common/constants';
 
 const CreatePost = ({ post, showUpdatePostsObj, setShowUpdatePostsObj, setRender }) => {
   const { user: userFromContext, createdPost, setCreatedPost } = useContext(AppContext);
   const [content, setContent] = useState(post?.content ?? '');
   const [isPublic, setIsPublic] = useState(post?.isPublic ?? true);
   const [file, setFile] = useState(null);
-  const [imagePreview, setImagePreview] = useState(post?.picture ? `http://localhost:5000/${post.picture}` : null);
+  const [imagePreview, setImagePreview] = useState(post?.picture ? `${SERVER_URL}/${post.picture}` : null);
   const [activeButton, setActiveButton] = useState(1);
+  const [checkedDisabledBtn, setCheckedDisabledBtn] = useState(false);
 
   const user = post?.author ?? userFromContext;
-  const showImg = !post;
 
   const handleFileChange = (e) => {
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
+    setCheckedDisabledBtn(false);
   };
 
   const updatePost = async (e) => {
     e.preventDefault();
 
-    editPostRequest(post.id, content, '', 0, 0, isPublic)
-      .then(response => {
-        console.log(response);
+    editPostRequest(post.id, content, file, '', 0, 0, isPublic)
+      .then(()=> {
         showUpdatePostsObj[post.id] = false;
         setShowUpdatePostsObj({ ...showUpdatePostsObj });
         setRender({});
@@ -52,7 +53,6 @@ const CreatePost = ({ post, showUpdatePostsObj, setShowUpdatePostsObj, setRender
     } catch (error) {
       console.error(error.message);
     }
-
   };
 
   const submitClickHandler = post ? updatePost : createPost;
@@ -66,7 +66,7 @@ const CreatePost = ({ post, showUpdatePostsObj, setShowUpdatePostsObj, setRender
           <h6 className='author-username'>{user.username}</h6>
         </div>
         <div className="button-group theme-button-group-style">
-          {showImg && <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />}
+          <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />
           <ToggleButtonGroup type="radio" name="options" defaultValue={2} style={{ display: 'flex' }}>
             <ToggleButton
               variant="outline-dark"
@@ -112,17 +112,19 @@ const CreatePost = ({ post, showUpdatePostsObj, setShowUpdatePostsObj, setRender
         {imagePreview &&
           <div className="image-preview-container">
             <img src={imagePreview} id="image-preview" />
-            {showImg &&
-              <Button
-                id="remove-prievew-button" variant="outline-dark" onClick={() => {
-                  setImagePreview(false);
-                  setFile('');
-                }}
-              >
-                <i className="bi bi-trash" />
-              </Button>}
+            <Button
+              id="remove-prievew-button" variant="outline-dark" onClick={() => {
+                setImagePreview(false);
+                setFile('');
+                if (post?.picture) {
+                  setCheckedDisabledBtn(true);
+                }
+              }}
+            >
+              <i className="bi bi-trash" />
+            </Button>
           </div>}
-        <Button id="post-button" variant="dark" onClick={submitClickHandler}>{submitText}</Button>
+        <Button disabled={checkedDisabledBtn} id="post-button" variant="dark" onClick={submitClickHandler}>{submitText}</Button>
       </div>
     </div>
   );

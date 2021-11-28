@@ -4,6 +4,7 @@ import { POSTS_URL } from '../../common/constants';
 export const editPostRequest = async (
   id,
   content,
+  file,
   embed,
   latitude,
   longitude,
@@ -14,7 +15,8 @@ export const editPostRequest = async (
   if (embed) formData.append('embed', embed);
   if (latitude) formData.append('latitude', latitude);
   if (longitude) formData.append('longitude', longitude);
-  formData.append('content', content);
+  if (content) formData.append('content', content);
+  formData.append('file', file);
   formData.append('isPublic', isPublic);
 
   try {
