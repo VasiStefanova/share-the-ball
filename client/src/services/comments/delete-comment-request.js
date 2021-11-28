@@ -1,5 +1,5 @@
-import {COMMENTS_URL} from '../../common/constants';
-import {getToken} from '../common/helpers';
+import { COMMENTS_URL } from '../../common/constants';
+import { getToken } from '../../common/helpers';
 
 export const deleteCommentRequest = async (id = 0) => {
   try {

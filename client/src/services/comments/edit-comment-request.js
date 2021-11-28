@@ -1,11 +1,13 @@
-import {COMMENTS_URL} from '../../common/constants';
-import {getToken} from '../common/helpers';
+import { COMMENTS_URL } from '../../common/constants';
+import { getToken } from '../../common/helpers';
 
-export const editCommentRequest = async (id = 0, content = '', embed = '' ) => {
+export const editCommentRequest = async (id = 0, content = '', embed = '', file) => {
   const formData = new FormData();
 
   if (content) formData.append('content', content);
   if (embed) formData.append('embed', embed);
+  formData.append('file', file);
+
 
   try {
     const response = await fetch(`${COMMENTS_URL}/${id}`, {
