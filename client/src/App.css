@@ -68,6 +68,7 @@
 
 .author-profile-link {
   text-decoration: none;
+  height: fit-content;
 }
 
 .author-profile-link:hover {

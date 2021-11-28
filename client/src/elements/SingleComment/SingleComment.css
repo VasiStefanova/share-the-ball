@@ -16,8 +16,8 @@
 }
 
 .comment-header-text {
-  display: grid;
-  margin-left: 0.5vw;
+  display: block;
+  margin: auto 0.5vw;
 }
 
 .author-username-single-comment {

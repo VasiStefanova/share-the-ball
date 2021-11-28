@@ -82,9 +82,11 @@ const UserDetails = ({ userId }) => {
         user={userInfo}
         style={{
           'marginTop': '3vh',
-          'maxHeight': '30vh',
-          'maxWidth': '40vh',
-          'borderRadius': '30vh'
+          'height': '25vh',
+          'width': '25vh'
+        }}
+        avatarBoxStyle={{
+          'display': 'unset'
         }}
       />
       <Figure.Caption className='user-info'>

@@ -4,7 +4,8 @@
 }
 
 .avatar-image {
-  max-height: 8vh;
+  height: 8vh;
+  width: 8vh;
   border: 1px solid rgb(182, 5, 5);
 }
 

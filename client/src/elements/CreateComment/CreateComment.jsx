@@ -33,12 +33,13 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
     <div className="create-comment-box">
       <div className="comment-header-bar">
         <div className="user-details theme-text-style">
-          <Avatar user={user} style={{ maxWidth: '5vh' }} />
+          <Avatar user={user} style={{ width: '5vh', height: '5vh' }} />
           <h6 className='author-username'>{user.username}</h6>
         </div>
         <div className="comment-button-group">
           {/* embed button will be added here in the future */}
           <UploadFileButton
+            style={{ background: 'white' }}
             buttonText={<i className="bi bi-image" />}
             buttonId={`post-${post.id}-upload-button`}
             onChange={(e) => handleFileChange(e)}

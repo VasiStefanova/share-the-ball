@@ -22,7 +22,7 @@ const SinglePost = ({ post, setRender }) => {
         <div className='post-container theme-border-style'>
           {post.author &&
             <div className="single-post-header-bar">
-              <Avatar user={post.author} style={{ maxWidth: '5vh' }} />
+              <Avatar user={post.author} style={{ width: '5vh', height: '5vh' }} />
               <div className="single-post-headar-bar-text">
                 <Link className="author-profile-link" to={`/user-profile/id=${post.author.id}/posts`}>
                   <h6 className='author-username author-username-single-post'>{post.author.username}</h6>
