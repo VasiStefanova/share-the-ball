@@ -6,9 +6,25 @@
   margin: 0px auto;
 }
 
-.author-details {
+.single-post-header-bar {
   display: flex;
   margin-bottom: 1vh;
+}
+
+.single-post-hedar-bar-text {
+  display: grid;
+  margin-left: 0.5vw;
+}
+
+.author-username-single-post {
+  margin: auto 0;
+}
+
+.last-updated-on-date {
+  margin: 0 auto;
+  font-size: 1.1vh;
+  font-style: italic;
+  color: lightgray;
 }
 
 .post-content {
@@ -54,10 +70,7 @@
   margin: 0;
 }
 
-.author-username {
-  color: white;
-  font-weight: bold;
-}
+
 
 
 

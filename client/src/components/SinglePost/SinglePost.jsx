@@ -13,9 +13,12 @@ const SinglePost = ({ post }) => {
     <>
       <div className='post-container theme-border-style'>
         {post.author &&
-          <div className='author-details'>
+          <div className="single-post-header-bar">
             <Avatar user={post.author} style={{ maxWidth: '5vh' }} />
-            <h6 className='author-username'>{post.author.username}</h6>
+            <div className="single-post-hedar-bar-text">
+              <h6 className='author-username author-username-single-post'>{post.author.username}</h6>
+              <p className="last-updated-on-date">{new Date(post.updatedOn).toLocaleDateString('en-UK')}</p>
+            </div>
           </div>}
         <div className="post-content theme-text-style">
           <h5 className='post-text'>

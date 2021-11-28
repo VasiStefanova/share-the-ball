@@ -13,6 +13,11 @@
   max-height: 5vh;
 }
 
+.author-username {
+  color: white;
+  font-weight: bold;
+}
+
 .button-group {
   display: flex;
 }
