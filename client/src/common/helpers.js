@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 export const getToken = () => localStorage.getItem('token') || '';
 
 export const checkLoginStatus = () => localStorage.getItem('token')? true : false;
@@ -23,7 +22,7 @@ export const intervalRequest = (func) => setInterval(() => {
 
 export const setUserInStorage = (userInfo) => localStorage.setItem('user', JSON.stringify(userInfo));
 
-export const getPosition = (options) => {
+const getPosition = (options) => {
 
   // eslint-disable-next-line no-undef
   return new Promise((resolve, reject) =>
