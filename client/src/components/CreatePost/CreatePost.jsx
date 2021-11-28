@@ -8,37 +8,18 @@ import { useContext, useState } from 'react';
 import AppContext from '../../context/AppContext';
 import { createNewPostRequest } from '../../services/posts/create-new-post-request';
 import UploadFileButton from '../../elements/UploadFileButton/UploadFileButton';
-import PropTypes from 'prop-types';
-import { editPostRequest } from '../../services/posts/edit-post-request';
-import { SERVER_URL } from '../../common/constants';
 
-const CreatePost = ({ post, showUpdatePostsObj, setShowUpdatePostsObj, setRender }) => {
-  const { user: userFromContext, createdPost, setCreatedPost } = useContext(AppContext);
-  const [content, setContent] = useState(post?.content ?? '');
-  const [isPublic, setIsPublic] = useState(post?.isPublic ?? true);
+const CreatePost = () => {
+  const { user, createdPost, setCreatedPost } = useContext(AppContext);
+  const [content, setContent] = useState('');
+  const [isPublic, setIsPublic] = useState(true);
   const [file, setFile] = useState(null);
-  const [imagePreview, setImagePreview] = useState(post?.picture ? `${SERVER_URL}/${post.picture}` : null);
+  const [imagePreview, setImagePreview] = useState(null);
   const [activeButton, setActiveButton] = useState(1);
-  const [checkedDisabledBtn, setCheckedDisabledBtn] = useState(false);
-
-  const user = post?.author ?? userFromContext;
 
   const handleFileChange = (e) => {
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
-    setCheckedDisabledBtn(false);
-  };
-
-  const updatePost = async (e) => {
-    e.preventDefault();
-
-    editPostRequest(post.id, content, file, '', 0, 0, isPublic)
-      .then(()=> {
-        showUpdatePostsObj[post.id] = false;
-        setShowUpdatePostsObj({ ...showUpdatePostsObj });
-        setRender({});
-      })
-      .catch(err => console.error(err));
   };
 
   const createPost = async (e) => {
@@ -55,8 +36,6 @@ const CreatePost = ({ post, showUpdatePostsObj, setShowUpdatePostsObj, setRender
     }
   };
 
-  const submitClickHandler = post ? updatePost : createPost;
-  const submitText = post ? 'Update' : 'Post';
 
   return (
     <div className="create-post-box theme-border-style">
@@ -116,25 +95,15 @@ const CreatePost = ({ post, showUpdatePostsObj, setShowUpdatePostsObj, setRender
               id="remove-prievew-button" variant="outline-dark" onClick={() => {
                 setImagePreview(false);
                 setFile('');
-                if (post?.picture) {
-                  setCheckedDisabledBtn(true);
-                }
               }}
             >
               <i className="bi bi-trash" />
             </Button>
           </div>}
-        <Button disabled={checkedDisabledBtn} id="post-button" variant="dark" onClick={submitClickHandler}>{submitText}</Button>
+        <Button id="post-button" variant="dark" onClick={createPost}>Post</Button>
       </div>
     </div>
   );
-};
-
-CreatePost.propTypes = {
-  post: PropTypes.object,
-  showUpdatePostsObj: PropTypes.object,
-  setShowUpdatePostsObj: PropTypes.func,
-  setRender: PropTypes.func
 };
 
 export default CreatePost;
