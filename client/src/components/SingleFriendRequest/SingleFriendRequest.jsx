@@ -37,7 +37,7 @@ const SingleFriendRequest = ({ newTeammate }) => {
         <h6 className='confirmation-msg'>{confirmation}</h6> :
         <>
           <div className='new-teammate-avatar-and-info'>
-            <Avatar user={newTeammate} style={{ maxWidth: '5vh' }} />
+            <Avatar user={newTeammate} style={{ width: '5vh', height: '5vh' }} />
             <div className='new-teammate-info-box'>
               <h5 className='new-teammate-info'>{newTeammate.username}</h5>
             </div>

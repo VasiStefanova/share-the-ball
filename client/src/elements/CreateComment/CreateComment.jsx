@@ -39,6 +39,7 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
         <div className="comment-button-group">
           {/* embed button will be added here in the future */}
           <UploadFileButton
+            style={{ background: 'white' }}
             buttonText={<i className="bi bi-image" />}
             buttonId={`post-${post.id}-upload-button`}
             onChange={(e) => handleFileChange(e)}
