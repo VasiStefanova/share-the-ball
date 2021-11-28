@@ -41,7 +41,7 @@ const FriendsRequests = () => {
             <CloseButton className='close-teammates-btn' onClick={handleClick} />
           </Popover.Header>
           <Popover.Body className='friend-requests-body'>
-            {friendRequests.length ?
+            {friendRequests && friendRequests.length ?
               friendRequests.map(newTeammate => <SingleFriendRequest key={newTeammate.id} newTeammate={newTeammate} />) :
               <h6 className='confirmation-msg'>
                 No new requests at the moment

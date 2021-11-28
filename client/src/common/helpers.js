@@ -1,3 +1,5 @@
+import { updateUserRequest } from '../services/users/update-user-request';
+
 export const getToken = () => localStorage.getItem('token') || '';
 
 export const checkLoginStatus = () => localStorage.getItem('token')? true : false;
@@ -43,4 +45,10 @@ export const getUserLocation = () => {
     });
 };
 
+export const updateUserLocation = async () => {
+  const [latitude, longitude] = await getUserLocation();
 
+  const userDetails = await updateUserRequest('', '', '', '', latitude, longitude);
+
+  return userDetails;
+};
