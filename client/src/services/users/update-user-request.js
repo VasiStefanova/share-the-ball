@@ -6,8 +6,8 @@ export const updateUserRequest = async (
   newPassword = '',
   email = '',
   file = '',
-  latitude = 0,
-  longitude = 0
+  latitude,
+  longitude
 ) => {
   const formData = new FormData();
 
@@ -19,7 +19,7 @@ export const updateUserRequest = async (
   if (email) formData.append('email', email);
   if (file) formData.append('file', file);
 
-  if (latitude && longitude) {
+  if ((latitude && longitude) || (latitude === 0 && longitude === 0)) {
     formData.append('latitude', latitude);
     formData.append('longitude', longitude);
   }
@@ -33,7 +33,7 @@ export const updateUserRequest = async (
       body: formData
     });
     const userDetails = await response.json();
-    console.log(userDetails);
+
     return userDetails;
   } catch (error) {
     return error;

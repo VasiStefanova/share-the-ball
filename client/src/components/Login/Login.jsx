@@ -6,7 +6,7 @@ import { React, useContext, useState } from 'react';
 import { loginRequest } from '../../services/auth/login-request';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import AppContext from '../../context/AppContext';
-import { setUserInStorage } from '../../common/helpers';
+import { setUserInStorage, updateUserLocation, userHasSetLocation } from '../../common/helpers';
 
 const Login = () => {
   const { setLoggedIn, setUser } = useContext(AppContext);
@@ -25,11 +25,16 @@ const Login = () => {
       const userId = payload.id;
 
       const userDetails = await getUserDetailsRequest(userId);
+
       setUser(userDetails);
       setUserInStorage(userDetails);
       setLoggedIn(true);
       setCredentials({ username: '', password: '' });
       setError('');
+
+      if (!userHasSetLocation(user)) {
+        updateUserLocation(userId, setUser);
+      }
     } catch (err) {
       setError(err.message);
     }

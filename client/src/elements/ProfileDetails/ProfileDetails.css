@@ -27,8 +27,21 @@
   margin-left: 0.3vw;
 }
 
+.user-location-box {
+  display: flex;
+  margin-bottom: 1vh;
+}
+
+.user-location-text {
+  margin: auto 0;
+}
+
 #upon-update-text {
   border: 1px solid black;
   padding: 1vh 1vw;
   font-style: italic;
+}
+
+.profile-details-buttons {
+  margin-left: 1vw;
 }
