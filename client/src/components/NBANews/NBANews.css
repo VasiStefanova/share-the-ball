@@ -1,0 +1,61 @@
+.article-container {
+    width: 45vw;
+    border-radius: 1vh;
+    text-align: left;
+    /* padding: 1vh 1vw; */
+    margin: 1vh auto;
+
+  }
+
+  .single-article-header-bar {
+    display: flex;
+    /* margin-bottom: 1vh; */
+  }
+
+  .single-article-headar-bar-text {
+    display: block;
+    margin: auto 0.5vw;
+  }
+
+  .author-username-single-article {
+    height: fit-content;
+    margin: auto 0;
+  }
+
+  .article-content {
+    display: grid;
+    justify-content: center;
+    margin: 0px auto;
+    width: 35vw;
+  }
+
+  .article-text {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .figure-img-article {
+      margin-bottom: 0rem;
+      border-radius: 1vh;
+  }
+  /* .post-image-box {
+    display: grid;
+    justify-items: center;
+    margin-bottom: 1vh;
+  }
+
+  .post-image {
+    width: 35vw;
+    height: 40vh;
+    margin-bottom: 1vh;
+    border-radius: 1vh;
+  }
+
+  .post-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 1vh auto;
+    width: 35vw;
+    background-color: black;
+    border-radius: 7px;
+  } */
