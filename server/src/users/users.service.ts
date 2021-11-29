@@ -46,7 +46,7 @@ export class UsersService {
     if (username) {
       findConditions.username = Like(`%${username}%`);
     }
-    
+
     if (email) {
       findConditions.email = Like(`%${email}%`);
     }
@@ -65,7 +65,7 @@ export class UsersService {
 
     return users.map(toUserWithFriends);
   }
-  
+
   public async getUserById(id: number) {
     const user = await this.userRepository.findOne({
       where: {
@@ -136,7 +136,7 @@ export class UsersService {
 
     const updatedUser = await this.userRepository.save({
       ...userToUpdate,
-      ...userBody,
+      ...userBody as any,
     });
 
     return toSingleUser(updatedUser);

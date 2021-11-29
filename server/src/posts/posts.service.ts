@@ -75,6 +75,8 @@ export class PostsService {
       throw new NotFoundException('Post does not exist!');
     }
 
+    post.comments = post.comments.filter(c => !c.isDeleted);
+
     return toReturnPostWithCommentsDTO(post);
   }
 
