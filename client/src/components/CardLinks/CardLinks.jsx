@@ -21,7 +21,7 @@ const CardLinks = () => {
         title="Places"
       />
       <SingleCard
-        redirectFunc={() => history.push('/home')}
+        redirectFunc={() => history.push('/nba-news')}
         imgSrc="https://cdn.nba.com/manage/2020/11/GettyImages-458406138-scaled.jpg"
         history={history}
         title="News"

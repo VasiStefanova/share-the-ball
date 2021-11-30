@@ -7,41 +7,56 @@ const NBANews = () => {
 
   const [articles, setArticles] = useState([]);
 
+  const getContentString = (string) => {
+    const stringArray = string.split('');
+    const result = [];
+    for (let i = 43; i < stringArray.length; i++) {
+      if (string[i] === '<') {
+        break;
+      }
+
+      result.push(string[i]);
+    }
+
+    return result.join('').trim();
+  };
   useEffect(() => {
     nbaNewsRequest()
       .then(response => setArticles(response.posts))
       .catch(err => console.error(err));
   }, []);
 
-  // to be completed//
-
-  return articles.length ?
+  return (articles.length ?
     <>
-      <div className='article-container theme-border-style'>
-        <div className="single-article-header-bar">
-          <Figure.Image
-            className='figure-img-article'
-            width={171}
-            height={180}
-            alt="171x180"
-            src="https://stats-prod.nba.com/wp-content/uploads/sites/65/2021/10/chris-paul-860-211022.jpg"
-          />
-          <div className="single-article-headar-bar-text">
-            <h6 className='author-username author-username-single-article'>'Title'</h6>
-            <p className="additional-author-info">'date published'</p>
-            <div className="article-content theme-text-style">
-              <p className='article-text'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quidem neque officia quos ut, earum explicabo velit soluta
-                perspiciatis iste quisquam iusto ab tempora praesentium nulla
-                voluptate reiciendis dolores unde provident?
-              </p>
+      {articles.map(article => (
+        <div
+          key={article.id}
+          className='article-container theme-border-style'
+          onClick={() => window.open(article.meta['beyondthenumber-link'])}
+        >
+          <div className="single-article-header-bar">
+            <Figure.Image
+              className='figure-img-article'
+              width={171}
+              height={180}
+              alt="171x180"
+              src={article.image}
+            />
+            <div className="single-article-headar-bar-text">
+              <h6 className='author-username author-username-single-article'>{article.title}</h6>
+              <p className="additional-author-info">{article.date.substring(0, 10)}</p>
+              <div className="article-content theme-text-style">
+                <p className='article-text'>
+                  {getContentString(article.content)}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </> :
-    null;
+      ))}
+    </>:
+    null);
+
 };
 
 export default NBANews;
