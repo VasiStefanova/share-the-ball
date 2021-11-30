@@ -9,8 +9,7 @@ export const NBA_GENERAL_URL = 'http://data.nba.net/10s/prod/v1/today.json'; // 
 export const NBA_STANDINGS_URL = 'http://data.nba.net/10s/prod/v1/current/standings_conference.json'; // teams-conference
 export const GEOCODING_API_KEY = 'AIzaSyCwEzUnkJGWzwSZdvdL_RdhZ22Rn0vxXjc';
 export const GOOGLE_GEOCODING_URL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng';
-
-// export const NBA_NEWS_URL = 'http://data.nba.net/10s//prod/v1/2021/schedule.json'; // leagueSchedule
+export const NBA_NEWS_URL = 'http://stats-prod.nba.com/wp-json/statscms/v1/type/beyondthenumber/?limit=20&offset=0';
 
 export const TEAM_LOGOS_URL = [
   {

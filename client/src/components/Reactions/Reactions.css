@@ -12,6 +12,12 @@
   border-radius: 7px;
 }
 
+.take-back-reaction-btn {
+  width: 7vw;
+  border-color: rgb(182, 5, 5);
+  font-weight: bold;
+}
+
 .like-reaction-btn {
   border-radius: 10px;
 }

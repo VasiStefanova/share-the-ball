@@ -7,7 +7,6 @@ const nbaStandingsRequest = async () => {
     });
 
     dataJSON = await response.json();
-    console.log(dataJSON);
   } catch (err) {
     console.error(err.message);
   }

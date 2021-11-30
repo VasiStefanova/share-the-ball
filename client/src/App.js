@@ -13,6 +13,7 @@ import { checkLoginStatus, getLoggedUser, getUserLocation, intervalRequest } fro
 import UserProfile from './views/UserProfile/UserProfile';
 import getUserDetailsRequest from './services/users/get-user-details-request';
 import { reverseGeocodeLocationRequest } from './services/google-geocoding/reverse-geocode-location-request';
+import NBANews from './components/NBANews/NBANews';
 
 // eslint-disable-next-line require-jsdoc
 function App() {
@@ -55,8 +56,8 @@ function App() {
           <Switch>
             <Route exact path="/"><Redirect to="/home" /></Route>
             <Route exact path="/home" component={loggedIn ? HomePrivate : HomePublic} />
-            <Route exact path="/CardLinks" component={CardLinks} />
             <Route exact path="/search" component={SearchTeammatesView} />
+            <Route exact path="/nba-news" component={NBANews} />
             <Route path="/my-profile" component={MyProfile} />
             <Route path="/user-profile" component={UserProfile} />
           </Switch>
