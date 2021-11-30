@@ -8,6 +8,7 @@ import { isCurrentURL } from '../../common/helpers';
 import { Link } from 'react-router-dom';
 import DeleteUserComment from '../../admin/DeleteUserComment/DeleteUserComment';
 import UpdateUserComment from '../../admin/UpdateUserComment/UpdateUserComment';
+import VideoEmbed from '../VideoEmbed/VideoEmbed';
 
 
 const SingleComment = ({ comment, post }) => {
@@ -56,6 +57,8 @@ const SingleComment = ({ comment, post }) => {
               <div className="comment-image-box">
                 <img src={`http://localhost:5000/${comment.picture}`} className='comment-image' />
               </div>}
+            {comment.embed &&
+              <VideoEmbed videoUrl={comment.embed} embededVideoClass="embeded-video-single-comment" />}
           </div>
           <div className="comment-buttons">
             <Button variant="outline-dark" className='comment-like-btn'>Like</Button>

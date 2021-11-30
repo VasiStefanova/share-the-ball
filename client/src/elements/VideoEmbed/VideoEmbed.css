@@ -1,0 +1,27 @@
+.video-box {
+  margin-bottom: 1vh;
+}
+
+.embeded-video-create-post {
+  width: 30vw;
+  height: 40vh;
+  border-radius: 1vh;
+}
+
+.embeded-video-create-comment {
+  width: 30vw;
+  height: 40vh;
+  border-radius: 1vh;
+}
+
+.embeded-video-single-post {
+  width: 35vw;
+  height: 40vh;
+  border-radius: 1vh;
+}
+
+.embeded-video-single-comment {
+  width: 30vw;
+  height: 35vh;
+  border-radius: 1vh;
+}

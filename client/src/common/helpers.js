@@ -69,3 +69,19 @@ export const userHasSetLocation = (user) => {
 
   return false;
 };
+
+export const isYouTubeUrl = (url) => {
+  if (url.includes('youtube.com/watch?v=')) return true;
+
+  return false;
+};
+
+export const getVideoId = (videoUrl) => {
+  if (!isYouTubeUrl(videoUrl)) return '';
+
+  const id = videoUrl.split('=')[1].split('&')[0];
+
+  return id;
+};
+
+

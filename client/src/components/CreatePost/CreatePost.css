@@ -20,6 +20,7 @@
 
 .button-group {
   display: flex;
+  margin: auto 0;
 }
 
 .user-details {

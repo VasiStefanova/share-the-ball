@@ -6,23 +6,30 @@ import UploadFileButton from '../UploadFileButton/UploadFileButton';
 import './CreateComment.css';
 import { useState } from 'react';
 import { createCommentRequest } from '../../services/comments/create-comment-request';
+import VideoEmbedPopover from '../VideoEmbedPopover/VideoEmbedPopover';
+import { isYouTubeUrl } from '../../common/helpers';
+import VideoEmbed from '../VideoEmbed/VideoEmbed';
 
 const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
   const [content, setContent] = useState('');
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+  const [videoUrl, setVideoUrl] = useState('');
 
   const handleFileChange = (e) => {
+    if (!e.target.files[0]) return;
+
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
   };
 
   const comment = async () => {
     try {
-      await createCommentRequest(post.id, content, '', file);
+      await createCommentRequest(post.id, content, videoUrl, file);
       setContent(''); ;
       setImagePreview('');
       setFile('');
+      setVideoUrl('');
       setCreatedComment(!createdComment);
     } catch (error) {
       console.error(error.message);
@@ -36,14 +43,16 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
           <Avatar user={user} style={{ width: '5vh', height: '5vh' }} />
           <h6 className='author-username'>{user.username}</h6>
         </div>
-        <div className="comment-button-group">
-          {/* embed button will be added here in the future */}
-          <UploadFileButton
-            style={{ background: 'white' }}
-            buttonText={<i className="bi bi-image" />}
-            buttonId={`post-${post.id}-upload-button`}
-            onChange={(e) => handleFileChange(e)}
-          />
+        <div className="button-group theme-button-group-style">
+          <VideoEmbedPopover videoUrl={videoUrl} setVideoUrl={setVideoUrl} imagePreview={imagePreview} />
+          {isYouTubeUrl(videoUrl) ?
+            <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" style={{ pointerEvents: 'none', opacity: '0.65' }} /> :
+            <UploadFileButton
+              style={{ background: 'white' }}
+              buttonText={<i className="bi bi-image" />}
+              buttonId={`post-${post.id}-upload-button`}
+              onChange={(e) => handleFileChange(e)}
+            />}
         </div>
       </div>
       <div className="comment-form">
@@ -62,13 +71,21 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
             <img src={imagePreview} id="image-preview" />
             <Button
               id="remove-prievew-button" variant="outline-dark" onClick={() => {
-                setImagePreview(false);
+                setImagePreview('');
                 setFile('');
               }}
             ><i className="bi bi-trash" />
             </Button>
           </div>}
-        <Button id="comment-button" variant="dark" onClick={() => comment()}>Comment</Button>
+        {isYouTubeUrl(videoUrl) &&
+          <VideoEmbed videoUrl={videoUrl} embededVideoClass="embeded-video-create-comment" />}
+        <Button
+          id="comment-button"
+          disabled={!content}
+          variant="dark"
+          onClick={() => comment()}
+        >Comment
+        </Button>
       </div>
     </div>
   );
