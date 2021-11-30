@@ -7,7 +7,7 @@ import { reactToCommentRequest } from '../../services/comments/react-to-comment-
 import { hasUserReacted } from '../../common/helpers';
 import { getSinglePostRequest } from '../../services/posts/get-single-post-request';
 import Button from 'react-bootstrap/Button';
-import ReactionsModal from '../ReactionsModal/ReactionsModal';
+import ReactionsModal from '../../elements/ReactionsModal/ReactionsModal';
 
 const Reactions = ({ postId, commentId }) => {
   const { user } = useContext(AppContext);
@@ -16,7 +16,6 @@ const Reactions = ({ postId, commentId }) => {
   const [likeReactions, setLikeReactions] = useState([]);
   const [laughReactions, setLaughReactions] = useState([]);
   const [loveReactions, setLoveReactions] = useState([]);
-  const [refresh, setRefresh] = useState(false);
   const [modalShow, setModalShow] = useState(false);
 
   const targetId = commentId? commentId : postId;
@@ -24,60 +23,70 @@ const Reactions = ({ postId, commentId }) => {
   const getReactions = (contentId) => {
 
     if (commentId) {
-      getSinglePostRequest(contentId)
+      getSinglePostRequest(postId)
         .then(post => post.comments.find(comment => comment.id === contentId))
-        .then(comment => setReactions(comment.likes))
+        .then(comment => setReactions(comment.likes.filter(like => like.reaction < 4)))
         .catch(console.error);
     } else {
-      getSinglePostRequest(contentId)
-        .then(post => setReactions(post.likes))
+      getSinglePostRequest(postId)
+        .then(post => setReactions(post.likes.filter(like => like.reaction < 4)))
         .catch(console.error);
     }
   };
 
   const reactWithLike = (contentId) => {
     if (commentId) {
-      reactToCommentRequest(contentId, 1);
+      reactToCommentRequest(contentId, 1)
+        .then(() => setUserReaction(true))
+        .catch(console.error);
     } else {
-      reactToPostRequest(contentId, 1);
+      reactToPostRequest(contentId, 1)
+        .then(() => setUserReaction(true))
+        .catch(console.error);
     }
-
-    setRefresh(!refresh);
   };
 
   const reactWithLaugh = (contentId) => {
     if (commentId) {
-      reactToCommentRequest(contentId, 2);
+      reactToCommentRequest(contentId, 2)
+        .then(() => setUserReaction(true))
+        .catch(console.error);
     } else {
-      reactToPostRequest(contentId, 2);
+      reactToPostRequest(contentId, 2)
+        .then(() => setUserReaction(true))
+        .catch(console.error);
     }
-
-    setRefresh(!refresh);
   };
 
   const reactWithLove = (contentId) => {
     if (commentId) {
-      reactToCommentRequest(contentId, 3);
+      reactToCommentRequest(contentId, 3)
+        .then(() => setUserReaction(true))
+        .catch(console.error);
     } else {
-      reactToPostRequest(contentId, 3);
+      reactToPostRequest(contentId, 3)
+        .then(() => setUserReaction(true))
+        .catch(console.error);
     }
 
-    setRefresh(!refresh);
   };
 
   const takeBackReaction = (contentId) => {
     if (commentId) {
-      reactToCommentRequest(contentId, 0);
+      reactToCommentRequest(contentId, 4)
+        .then(() => setUserReaction(false))
+        .catch(console.error);
     } else {
-      reactToPostRequest(contentId, 0);
-    }
+      reactToPostRequest(contentId, 4)
+        .then(() => setUserReaction(false))
+        .catch(console.error);
 
-    setRefresh(!refresh);
+    }
   };
 
   useEffect(() => {
-    getReactions(postId);
-  }, []);
+    getReactions(targetId);
+  }, [userReaction]);
 
   useEffect(() => {
     setUserReaction(hasUserReacted(reactions, user.username));
@@ -89,30 +98,42 @@ const Reactions = ({ postId, commentId }) => {
   return (
     <span className='reactions-bar'>
       <span className='reaction-icons-box'>
-        <Button
-          variant="outline-primary"
-          size='sm'
-          className='like-reaction-btn'
-          onClick={() => reactWithLike(targetId)}
-        >
-          <i className="bi bi-hand-thumbs-up-fill" />
-        </Button>
-        <Button
-          variant="outline-warning"
-          size='sm'
-          className='laugh-reaction-btn'
-          onClick={() => reactWithLaugh(targetId)}
-        >
-          <i className="bi bi-emoji-laughing-fill" />
-        </Button>
-        <Button
-          variant="outline-danger"
-          size='sm'
-          className='love-reaction-btn'
-          onClick={() => reactWithLove(targetId)}
-        >
-          <i className="bi bi-heart-fill" />
-        </Button>
+        {userReaction?
+          <Button
+            variant="outline-light"
+            size='sm'
+            className='take-back-reaction-btn'
+            onClick={() => takeBackReaction(targetId)}
+            // onMouseDown={() => takeBackReaction(targetId)}
+          >
+            Take it back!
+          </Button> :
+          <>
+            <Button
+              variant="outline-primary"
+              size='sm'
+              className='like-reaction-btn'
+              onClick={() => reactWithLike(targetId)}
+            >
+              <i className="bi bi-hand-thumbs-up-fill" />
+            </Button>
+            <Button
+              variant="outline-warning"
+              size='sm'
+              className='laugh-reaction-btn'
+              onClick={() => reactWithLaugh(targetId)}
+            >
+              <i className="bi bi-emoji-laughing-fill" />
+            </Button>
+            <Button
+              variant="outline-danger"
+              size='sm'
+              className='love-reaction-btn'
+              onClick={() => reactWithLove(targetId)}
+            >
+              <i className="bi bi-heart-fill" />
+            </Button>
+          </>}
       </span>
       <>
         <Button variant="dark" size='sm' className='all-reactions-btn' onClick={() => setModalShow(true)}>

@@ -8,7 +8,7 @@ import CommentsAccordion from '../CommentsAccordion/CommentsAccordion';
 import { Link } from 'react-router-dom';
 import DeleteUserPost from '../../admin/DeleteUserPost/DeleteUserPost';
 import UpdateUserPost from '../../admin/UpdateUserPost/UpdateUserPost';
-import Reactions from '../../elements/Reactions/Reactions';
+import Reactions from '../../components/Reactions/Reactions';
 
 const SinglePost = ({ post, setRender }) => {
   const { user } = useContext(AppContext);
@@ -42,8 +42,6 @@ const SinglePost = ({ post, setRender }) => {
           {post.author &&
             <div className="post-buttons">
               <Reactions postId={post.id} />
-              {/* <Button variant="outline-dark" className='post-like-btn'>Like</Button>
-              <h5 className='post-likes-number'>{post.likes.length !== 1 ? `${post.likes.length} likes` : '1 like'}</h5> */}
             </div>}
           {post.author &&
             <div className="comments-box">

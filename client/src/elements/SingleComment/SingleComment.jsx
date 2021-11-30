@@ -8,6 +8,7 @@ import { isCurrentURL } from '../../common/helpers';
 import { Link } from 'react-router-dom';
 import DeleteUserComment from '../../admin/DeleteUserComment/DeleteUserComment';
 import UpdateUserComment from '../../admin/UpdateUserComment/UpdateUserComment';
+import Reactions from '../../components/Reactions/Reactions';
 
 
 const SingleComment = ({ comment, post }) => {
@@ -58,8 +59,7 @@ const SingleComment = ({ comment, post }) => {
               </div>}
           </div>
           <div className="comment-buttons">
-            <Button variant="outline-dark" className='comment-like-btn'>Like</Button>
-            <h5 className='comment-likes-number'>{comment.likes.length !== 1 ? `${comment.likes.length} likes` : '1 like'}</h5>
+            <Reactions postId={post.id} commentId={comment.id} />
           </div>
         </div>
       </>

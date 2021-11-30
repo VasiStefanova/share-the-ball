@@ -62,7 +62,8 @@
   justify-content: space-between;
   margin: 1vh auto;
   width: 30vw;
-  
+  background-color: black;
+  border-radius: 7px;
 }
 
 .comment-like-btn {
