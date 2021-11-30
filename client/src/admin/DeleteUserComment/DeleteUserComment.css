@@ -1,0 +1,7 @@
+.admin-delete-comment-btn {
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    border-radius: 5px;
+    padding: 2px;
+}

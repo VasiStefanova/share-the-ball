@@ -26,7 +26,7 @@ const CommentsAccordion = ({ user, post }) => {
             <div className="post-comments">
               {comments.map(comment => (
                 <div className="single-comment" key={comment.id}>
-                  <SingleComment post={post} comment={comment} />
+                  <SingleComment createdComment={createdComment} setCreatedComment={setCreatedComment} comment={comment} />
                 </div>
               ))}
             </div>
