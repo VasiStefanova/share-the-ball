@@ -7,15 +7,15 @@ const NBANews = () => {
 
   const [articles, setArticles] = useState([]);
 
-  const getContentString = (string) => {
-    const stringArray = string.split('');
+  const getContentString = (str) => {
+    const stringArray = str.split('');
     const result = [];
     for (let i = 43; i < stringArray.length; i++) {
-      if (string[i] === '<') {
+      if (str[i] === '<') {
         break;
       }
 
-      result.push(string[i]);
+      result.push(str[i]);
     }
 
     return result.join('').trim();
