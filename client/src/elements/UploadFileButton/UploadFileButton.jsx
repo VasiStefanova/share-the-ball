@@ -7,7 +7,7 @@ const UploadFileButton = ({ buttonText = '', buttonId = '', onChange, style }) =
       <label htmlFor={buttonId} className="custom-file-upload" style={style ? style : null}>
         {buttonText}
       </label>
-      <input id={buttonId} type="file" onChange={onChange} />
+      <input id={buttonId} type="file" accept="image/*" onChange={onChange} />
     </>
   );
 };
