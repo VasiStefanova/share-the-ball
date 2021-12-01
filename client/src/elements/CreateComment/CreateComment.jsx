@@ -48,7 +48,6 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
           {isYouTubeUrl(videoUrl) ?
             <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" style={{ pointerEvents: 'none', opacity: '0.65' }} /> :
             <UploadFileButton
-              style={{ background: 'white' }}
               buttonText={<i className="bi bi-image" />}
               buttonId={`post-${post.id}-upload-button`}
               onChange={(e) => handleFileChange(e)}
