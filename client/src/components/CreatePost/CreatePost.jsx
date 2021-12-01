@@ -8,6 +8,9 @@ import { useContext, useState } from 'react';
 import AppContext from '../../context/AppContext';
 import { createNewPostRequest } from '../../services/posts/create-new-post-request';
 import UploadFileButton from '../../elements/UploadFileButton/UploadFileButton';
+import VideoEmbedPopover from '../../elements/VideoEmbedPopover/VideoEmbedPopover';
+import VideoEmbed from '../../elements/VideoEmbed/VideoEmbed';
+import { isYouTubeUrl } from '../../common/helpers';
 
 const CreatePost = () => {
   const { user, createdPost, setCreatedPost } = useContext(AppContext);
@@ -16,8 +19,11 @@ const CreatePost = () => {
   const [file, setFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [activeButton, setActiveButton] = useState(1);
+  const [videoUrl, setVideoUrl] = useState('');
 
   const handleFileChange = (e) => {
+    if (!e.target.files[0]) return;
+
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
   };
@@ -26,11 +32,12 @@ const CreatePost = () => {
     e.preventDefault();
 
     try {
-      await createNewPostRequest(content, '', file, 0, 0, isPublic);
+      await createNewPostRequest(content, videoUrl, file, 0, 0, isPublic);
       setContent('');
       setCreatedPost(!createdPost);
       setImagePreview('');
       setFile('');
+      setVideoUrl('');
     } catch (error) {
       console.error(error.message);
     }
@@ -45,7 +52,10 @@ const CreatePost = () => {
           <h6 className='author-username'>{user.username}</h6>
         </div>
         <div className="button-group theme-button-group-style">
-          <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />
+          <VideoEmbedPopover videoUrl={videoUrl} setVideoUrl={setVideoUrl} imagePreview={imagePreview} />
+          {isYouTubeUrl(videoUrl) ?
+            <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" style={{ pointerEvents: 'none', opacity: '0.65' }} /> :
+            <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />}
           <ToggleButtonGroup type="radio" name="options" defaultValue={2} style={{ display: 'flex' }}>
             <ToggleButton
               variant="outline-dark"
@@ -93,13 +103,15 @@ const CreatePost = () => {
             <img src={imagePreview} id="image-preview" />
             <Button
               id="remove-prievew-button" variant="outline-dark" onClick={() => {
-                setImagePreview(false);
+                setImagePreview('');
                 setFile('');
               }}
             >
               <i className="bi bi-trash" />
             </Button>
           </div>}
+        {isYouTubeUrl(videoUrl) &&
+          <VideoEmbed videoUrl={videoUrl} embededVideoClass="embeded-video-create-post" />}
         <Button id="post-button" variant="dark" onClick={createPost}>Post</Button>
       </div>
     </div>
