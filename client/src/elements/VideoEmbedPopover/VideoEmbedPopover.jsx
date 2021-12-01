@@ -52,6 +52,7 @@ const VideoEmbedPopover = ({ videoUrl, setVideoUrl, imagePreview }) => {
       >
         <Button
           variant="outline-dark"
+          id="embed-popover-button"
           disabled={imagePreview}
           style={{ color: showPopover && 'white', background: showPopover && 'black' }}
           onClick={() => {

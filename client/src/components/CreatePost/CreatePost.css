@@ -37,6 +37,11 @@
   justify-self: center;
 }
 
+input#private-post-button + label  {
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+}
+
 .image-preview-container {
   display: grid;
   justify-items: center;

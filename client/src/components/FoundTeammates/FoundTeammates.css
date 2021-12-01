@@ -1,31 +1,31 @@
-  .teammate-container-box {
-    display: grid;
-    border: black solid 0.1vh;
-    border-radius: 1vh;
-    padding: 1vh 1vw;
-    margin: 1vh auto;
-    max-width: 35vw;
-  }
+.teammate-container-box {
+  display: grid;
+  border: black solid 0.1vh;
+  border-radius: 1vh;
+  padding: 1vh 1vw;
+  margin: 1vh auto;
+  max-width: 35vw;
+}
 
-  .teammate-container {
-    text-align: left;
-    display:flex;
-    justify-content: space-between;
-  }
+.teammate-container {
+  text-align: left;
+  display:flex;
+  justify-content: space-between;
+}
 
   .teammate-avatar-and-info {
     display: flex;
   }
 
-  .teammate-info {
-    color: white;
-    margin: unset;
-    margin-left: 0.5vw;
-  }
+.teammate-info {
+  color: white;
+  margin: unset;
+  margin-left: 0.5vw;
+}
 
-  .last-updated {
-    color: whitesmoke;
-  }
+.last-updated {
+  color: whitesmoke;
+}
 
 .action-btns-group {
   display: flex;
@@ -46,7 +46,13 @@
 }
 
 #remove-friend-button {
+  background-color: white;
   margin-left: 0.5vw;
+}
+
+#remove-friend-button:hover {
+  background-color: black;
+  color: white;
 }
 
 #add-friend-button {
@@ -54,7 +60,17 @@
 }
 
 #view-user-profile-button {
+  background-color: white;
   margin-left: 0.5vw ;
+}
+
+#view-user-profile-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.teammate-button-group {
+  margin: auto 0
 }
 
 /* /home */
@@ -89,7 +105,6 @@
   margin-left: 0.5vw;
 }
 
-
-#remove-friend-button-home {
-  margin-left: 0.1vw;
+.teammate-button-group-home {
+  margin: auto 0
 }
