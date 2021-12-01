@@ -1,9 +1,9 @@
-import {FEED_URL} from '../../common/constants';
-import {getToken} from '../../common/helpers';
+import { FEED_URL } from '../../common/constants';
+import { getToken } from '../../common/helpers';
 
 export const deltaRequest = async (
-    createdOrUpdatedAfter = '',
-    trackingPosts = '',
+  createdOrUpdatedAfter = '',
+  trackingPosts = '',
 ) => {
   const queryParams = [];
 
