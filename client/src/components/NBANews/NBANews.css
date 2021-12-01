@@ -1,17 +1,29 @@
+.nba-news-container {
+  display: grid;
+    /* auto auto is telling the browser to render two rows, if needed */
+    grid-template-rows: auto auto auto;
+    grid-auto-flow: column;
+    overflow-x: scroll;
+    padding: 2vh 1vw;
+    height: 78.2vh;
+}
+
 .article-container {
-    width: 45vw;
+    width: 43vw;
     border-radius: 1vh;
     text-align: left;
-    /* padding: 1vh 1vw; */
     margin: 2vh auto;
     transition: box-shadow .7s;
     overflow: hidden;
     cursor: pointer;
+    padding: 1vh 0.5vw;
+    margin: 1vh 1vw;
+    background-color: black;
   }
+
   .article-container:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
+  }
 
   .single-article-header-bar {
     display: flex;
@@ -19,7 +31,9 @@
 
   .single-article-headar-bar-text {
     display: block;
-    margin: auto 0.5vw;
+    margin: 0 0.5vw;
+    padding-top: 0.5vh;
+    padding-left: 0.5vw;
   }
 
   .author-username-single-article {
@@ -28,10 +42,9 @@
   }
 
   .article-content {
-    display: grid;
-    justify-content: center;
     margin: 0px auto;
-    width: 35vw;
+    width: 30vw;
+    text-align: justify;
   }
 
   .article-text {
@@ -40,10 +53,12 @@
   }
 
   .figure-img-article {
-      margin-bottom: 0rem;
-      border-radius: 1vh;
-      transition: transform .7s; /* Animation */
-
+    margin-bottom: 0rem;
+    border-radius: 1vh;
+    border: 1px solid rgb(182, 5, 5);
+    transition: transform .7s; /* Animation */
+    height: 19.7vh;
+    width: 10vw;
   }
 
 .figure-img-article:hover {

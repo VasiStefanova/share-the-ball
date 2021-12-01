@@ -27,7 +27,7 @@ const NBANews = () => {
   }, []);
 
   return (articles.length ?
-    <>
+    <div className='nba-news-container'>
       {articles.map(article => (
         <div
           key={article.id}
@@ -54,7 +54,7 @@ const NBANews = () => {
           </div>
         </div>
       ))}
-    </>:
+    </div>:
     null);
 
 };
