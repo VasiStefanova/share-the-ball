@@ -4,10 +4,6 @@
   margin-bottom: 1vh;
 }
 
-.custom-file-upload {
-  border-color: rgb(182, 5, 5);
-}
-
 .comment-form {
   display: grid;
   justify-items: center;
