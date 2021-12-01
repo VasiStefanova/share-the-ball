@@ -16,7 +16,12 @@ export const editPostRequest = async (
   if (latitude) formData.append('latitude', latitude);
   if (longitude) formData.append('longitude', longitude);
   if (content) formData.append('content', content);
-  formData.append('file', file);
+  if (file) {
+    formData.append('file', file);
+  } else if (!embed) {
+    formData.append('embed', 'deleted');
+  }
+
   formData.append('isPublic', isPublic);
 
   try {

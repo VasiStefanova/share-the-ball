@@ -10,6 +10,7 @@ import DeleteUserPost from '../../admin/DeleteUserPost/DeleteUserPost';
 import UpdateUserPost from '../../admin/UpdateUserPost/UpdateUserPost';
 import Reactions from '../../components/Reactions/Reactions';
 import VideoEmbed from '../../elements/VideoEmbed/VideoEmbed';
+import { isYouTubeUrl } from '../../common/helpers';
 
 const SinglePost = ({ post, setRender }) => {
   const { user } = useContext(AppContext);
@@ -39,7 +40,7 @@ const SinglePost = ({ post, setRender }) => {
               <div className="post-image-box">
                 <img src={`http://localhost:5000/${post.picture}`} className='post-image' />
               </div>}
-            {post.embed &&
+            {isYouTubeUrl(post.embed) &&
               <VideoEmbed videoUrl={post.embed} embededVideoClass="embeded-video-single-post" />}
           </div>
           {post.author &&

@@ -8,6 +8,9 @@ import UploadFileButton from '../../elements/UploadFileButton/UploadFileButton';
 import PropTypes from 'prop-types';
 import { editPostRequest } from '../../services/posts/edit-post-request';
 import { SERVER_URL } from '../../common/constants';
+import VideoEmbedPopover from '../../elements/VideoEmbedPopover/VideoEmbedPopover';
+import { isYouTubeUrl } from '../../common/helpers';
+import VideoEmbed from '../../elements/VideoEmbed/VideoEmbed';
 
 const UpdateUserPost = ({ post, setRender }) => {
   const [content, setContent] = useState(post.content);
@@ -17,20 +20,21 @@ const UpdateUserPost = ({ post, setRender }) => {
   const [activeButton, setActiveButton] = useState(1);
   const [checkedDisabledBtn, setCheckedDisabledBtn] = useState(false);
 
+  const [videoUrl, setVideoUrl] = useState(post.embed === 'deleted' ? '' : post.embed);
+
 
   const handleFileChange = (e) => {
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
+    setVideoUrl('');
     setCheckedDisabledBtn(false);
   };
 
   const updatePost = async (e) => {
     e.preventDefault();
 
-    editPostRequest(post.id, content, file, '', 0, 0, isPublic)
-      .then(()=> {
-        setRender({});
-      })
+    editPostRequest(post.id, content, file, videoUrl, 0, 0, isPublic)
+      .then(()=> setRender({}))
       .catch(err => console.error(err));
   };
 
@@ -39,11 +43,26 @@ const UpdateUserPost = ({ post, setRender }) => {
     <div className="create-post-box theme-border-style">
       <div className="post-header-bar">
         <div className="user-details">
-          <Avatar user={post.author} style={{ maxWidth: '5vh' }} />
+          <Avatar user={post.author} style={{ width: '5vh', height: '5vh' }} />
           <h6 className='author-username'>{post.author.username}</h6>
         </div>
         <div className="button-group theme-button-group-style">
-          <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />
+          <VideoEmbedPopover
+            videoUrl={videoUrl}
+            setVideoUrl={setVideoUrl}
+            imagePreview={imagePreview}
+          />
+          {(isYouTubeUrl(videoUrl)) ?
+            <UploadFileButton
+              buttonText={<i className="bi bi-image" />}
+              buttonId="create-post-upload-button"
+              style={{ pointerEvents: 'none', opacity: '0.65' }}
+            /> :
+            <UploadFileButton
+              buttonText={<i className="bi bi-image" />}
+              buttonId="create-post-upload-button"
+              onChange={(e) => handleFileChange(e)}
+            />}
           <ToggleButtonGroup type="radio" name="options" defaultValue={2} style={{ display: 'flex' }}>
             <ToggleButton
               variant="outline-dark"
@@ -94,13 +113,15 @@ const UpdateUserPost = ({ post, setRender }) => {
                 setImagePreview(false);
                 setFile('');
                 if (post?.picture) {
-                  setCheckedDisabledBtn(true);
+                  // setCheckedDisabledBtn(true);
                 }
               }}
             >
               <i className="bi bi-trash" />
             </Button>
           </div>}
+        {(isYouTubeUrl(videoUrl)) &&
+          <VideoEmbed videoUrl={videoUrl} embededVideoClass="embeded-video-create-post" />}
         <Button disabled={checkedDisabledBtn} id="post-button" variant="dark" onClick={updatePost}>Update</Button>
       </div>
     </div>

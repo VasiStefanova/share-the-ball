@@ -71,7 +71,7 @@ export const userHasSetLocation = (user) => {
 };
 
 export const isYouTubeUrl = (url) => {
-  if (url.includes('youtube.com/watch?v=')) return true;
+  if (url?.includes('youtube.com/watch?v=')) return true;
 
   return false;
 };
