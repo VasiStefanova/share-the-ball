@@ -9,7 +9,7 @@ export const logoutRequest = async () => {
         'Authorization': `Bearer ${getToken()}`,
       },
     });
-    console.log(response);
+
     const message = await response.json();
     return message;
   } catch (error) {

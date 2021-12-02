@@ -6,22 +6,25 @@ import { React, useContext, useState } from 'react';
 import { loginRequest } from '../../services/auth/login-request';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import AppContext from '../../context/AppContext';
-import { setUserInStorage, updateUserLocation, userHasSetLocation } from '../../common/helpers';
+import { getLoggedUser, setUserInStorage, updateUserLocation, userHasSetLocation } from '../../common/helpers';
+import { useHistory } from 'react-router';
 
 const Login = () => {
   const { setLoggedIn, setUser } = useContext(AppContext);
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
+  const history = useHistory();
+
 
   const login = async (e) => {
     e.preventDefault();
 
     try {
-      const user = await loginRequest(credentials);
-      if (!user.token) throw new Error('Invalid username or password!');
+      const loggedUser = await loginRequest(credentials);
+      if (!loggedUser.token) throw new Error('Invalid username or password!');
 
-      localStorage.setItem('token', user.token);
-      const payload = decode(user.token);
+      localStorage.setItem('token', loggedUser.token);
+      const payload = decode(loggedUser.token);
       const userId = payload.id;
 
       const userDetails = await getUserDetailsRequest(userId);
@@ -32,9 +35,12 @@ const Login = () => {
       setCredentials({ username: '', password: '' });
       setError('');
 
-      if (!userHasSetLocation(user)) {
+      if (!userHasSetLocation(getLoggedUser())) {
         updateUserLocation(userId, setUser);
       }
+
+      history.push('/home');
+
     } catch (err) {
       setError(err.message);
     }
