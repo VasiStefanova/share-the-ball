@@ -7,16 +7,33 @@ import SinglePost from '../../components/SinglePost/SinglePost';
 import AppContext from '../../context/AppContext';
 import CardLinks from '../../components/CardLinks/CardLinks';
 import MyTeammates from '../../my-profile-tabs/MyTeammates/MyTeammates';
+import { intervalRequest } from '../../common/helpers';
 
 const HomePrivate = () => {
   const { createdPost } = useContext(AppContext);
   const [posts, setPosts] = useState([]);
+  const [interval, setInterval] = useState(null);
 
-  useEffect(() => {
+  const getAllPosts = () => {
     getAllPostsRequest()
       .then(allPosts => setPosts(allPosts))
       .catch(console.error);
+  };
+
+  useEffect(() => {
+    getAllPosts();
   }, [createdPost]);
+
+  useEffect(() => {
+    if (posts.length) {
+      if (!interval) setInterval(intervalRequest(getAllPosts, 10000));
+    }
+
+    return () => {
+      clearInterval(interval);
+      setInterval(null);
+    };
+  }, [posts]);
 
   return (
     <div className='home-private-container'>

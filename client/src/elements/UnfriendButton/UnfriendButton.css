@@ -1,0 +1,9 @@
+#unfriend-button {
+  background-color: white;
+  margin-left: 0.5vw;
+}
+
+#unfriend-button:hover {
+  background-color: black;
+  color: white;
+}

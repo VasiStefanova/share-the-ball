@@ -13,15 +13,15 @@ export const deltaRequest = async (
   const queryURL = `?${queryParams.join('&')}`;
 
   try {
-    const response = await fetch(`${FEED_URL}/${queryURL}`, {
+    const response = await fetch(`${FEED_URL}/delta/${queryURL}`, {
       headers: {
         'authorization': `Bearer ${getToken()}`,
       },
     });
 
-    const posts = await response.json();
+    const data = await response.json();
 
-    return posts;
+    return data.posts;
   } catch (error) {
     return error;
   }

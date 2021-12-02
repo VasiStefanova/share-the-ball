@@ -45,15 +45,6 @@
   padding-right: 0.25vw;
 }
 
-#remove-friend-button {
-  background-color: white;
-  margin-left: 0.5vw;
-}
-
-#remove-friend-button:hover {
-  background-color: black;
-  color: white;
-}
 
 #add-friend-button {
   margin-left: 0.5vw;

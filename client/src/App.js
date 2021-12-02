@@ -6,13 +6,11 @@ import './App.css';
 import Header from './components/Header/Header';
 import HomePublic from './views/HomePublic/HomePublic';
 import HomePrivate from './views/HomePrivate/HomePrivate';
-import CardLinks from './components/CardLinks/CardLinks';
 import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 import MyProfile from './views/MyProfile/MyProfile';
-import { checkLoginStatus, getLoggedUser, getUserLocation, intervalRequest } from './common/helpers';
+import { checkLoginStatus, getLoggedUser, intervalRequest } from './common/helpers';
 import UserProfile from './views/UserProfile/UserProfile';
 import getUserDetailsRequest from './services/users/get-user-details-request';
-import { reverseGeocodeLocationRequest } from './services/google-geocoding/reverse-geocode-location-request';
 import NBANews from './components/NBANews/NBANews';
 
 // eslint-disable-next-line require-jsdoc
@@ -41,7 +39,7 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      if (!interval) setInterval(intervalRequest(getUserFriends));
+      if (!interval) setInterval(intervalRequest(getUserFriends, 5000));
     } else {
       clearInterval(interval);
       setInterval(null);

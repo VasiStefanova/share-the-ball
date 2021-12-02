@@ -19,9 +19,9 @@ export const isCurrentURL = (searchedTab = '') => {
   return lastItem === searchedTab;
 };
 
-export const intervalRequest = (func) => setInterval(() => {
+export const intervalRequest = (func, milliseconds) => setInterval(() => {
   func();
-}, 5000);
+}, milliseconds);
 
 export const setUserInStorage = (userInfo) => localStorage.setItem('user', JSON.stringify(userInfo));
 
