@@ -3,19 +3,22 @@
 }
 
 .home-private-left {
-  border-right: 3px solid rgb(182, 5, 5);
+  padding: 1vh 0;
   width: 25vw;
   min-height: 85vh;
 }
 
 .home-private-center {
+  padding: 1vh 0;
   width: 50vw;
   min-height: 85vh;
   justify-content: center;
+  border-left: 3px solid rgb(182, 5, 5);
+  border-right: 3px solid rgb(182, 5, 5);
 }
 
 .home-private-right {
-  border-left: 3px solid rgb(182, 5, 5);
+  padding: 2vh 1vh;
   width: 25vw;
   min-height: 85vh;
 }
@@ -23,10 +26,6 @@
 .single-post {
   padding-top: 1vh;
   padding-bottom: 1vh;
-}
-
-.home-private-right {
-  padding: 1vh 1vw;
 }
 
 .my-teammates-container {

@@ -79,7 +79,7 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
         {isYouTubeUrl(videoUrl) &&
           <VideoEmbed videoUrl={videoUrl} embededVideoClass="embeded-video-create-comment" />}
         <Button
-          id="comment-button"
+          className="comment-button, theme-btn-style"
           disabled={!content}
           variant="dark"
           onClick={() => comment()}

@@ -14,7 +14,7 @@ const ToggleFriendshipButton = ({ user, targetUser }) => {
   case 1:
     return (
       <Button
-        className="toggle-friendship-button"
+        className="theme-btn-style"
         variant='outline-dark'
         disabled
         style={{ background: 'white' }}
@@ -26,7 +26,7 @@ const ToggleFriendshipButton = ({ user, targetUser }) => {
   case 2:
     return (
       <Button
-        className="toggle-friendship-button"
+        className="theme-btn-style"
         variant='outline-dark'
         disabled style={{ background: 'white' }}
       >
@@ -38,7 +38,7 @@ const ToggleFriendshipButton = ({ user, targetUser }) => {
   default:
     return (
       <Button
-        className="toggle-friendship-button"
+        className="theme-btn-style"
         variant='outline-dark'
         onClick={() => {
           inviteRequest(user.id, targetUser.id)

@@ -50,15 +50,15 @@
   margin-left: 0.5vw;
 }
 
-#view-user-profile-button {
+.view-user-profile-button {
   background-color: white;
   margin-left: 0.5vw ;
 }
 
-#view-user-profile-button:hover {
+/* #view-user-profile-button:hover {
   background-color: black;
   color: white;
-}
+} */
 
 .teammate-button-group {
   margin: auto 0
@@ -71,7 +71,7 @@
   border: white solid 0.1vh;
   border-radius: 1vh;
   padding: 0.5vh 0.5vw;
-  max-width: 35vw;
+  max-width: 20vw;
   margin-bottom: 1vh;
 }
 

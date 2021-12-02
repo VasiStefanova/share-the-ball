@@ -58,7 +58,7 @@ const Header = () => {
             <FriendRequests />
           </div>
           <div>
-            <Button variant="outline-secondary" color='white' className='logout-button' onClick={(ev) => logout(ev)}>Logout</Button>
+            <Button variant="outline-light" className='logout-button' onClick={(ev) => logout(ev)}>Logout</Button>
           </div>
         </div>}
     </div>

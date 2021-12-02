@@ -15,7 +15,7 @@ const UnfriendButton = ({ user, targetUser }) => {
   };
 
   return (
-    <Button id="unfriend-button" variant='outline-dark' onClick={() => handleUnfriend()}>
+    <Button className="unfriend-button theme-btn-style" variant='outline-dark' onClick={() => handleUnfriend()}>
       <i className="bi bi-person-dash-fill" />
     </Button>
   );

@@ -21,7 +21,7 @@ const SinglePost = ({ post, setRender }) => {
     updatePostBtnClicked ?
       <UpdateUserPost post={post} setRender={setRender} /> :
       <>
-        <div className='post-container theme-border-style'>
+        <div className='post-container theme-border-style theme-background-color'>
           {post.author &&
             <div className="single-post-header-bar">
               <Avatar user={post.author} style={{ width: '5vh', height: '5vh' }} />

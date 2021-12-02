@@ -70,9 +70,9 @@ const SearchTeammates = ({ setTeammates, targetUserId = '' }) => {
         </Button>
       </InputGroup>
       <span className="filter-buttons-box">
-        <h3>Filter by |</h3>
+        <h3 className='filter-by-text'>Filter by |</h3>
         <ToggleButton
-          className='filter-btn'
+          className='filter-btn theme-btn-style'
           variant="outline-dark"
           onClick={() => {
             const toggleClick = !usernameBtnClicked;
@@ -85,10 +85,10 @@ const SearchTeammates = ({ setTeammates, targetUserId = '' }) => {
           }}
           type="checkbox"
           checked={usernameBtnClicked}
-        >username
+        >Username
         </ToggleButton>
         <ToggleButton
-          className='filter-btn'
+          className='filter-btn theme-btn-style'
           variant="outline-dark"
           onClick={() => {
             const toggleClick = !emailBtnClicked;
@@ -101,7 +101,7 @@ const SearchTeammates = ({ setTeammates, targetUserId = '' }) => {
           }}
           type="checkbox"
           checked={emailBtnClicked}
-        >email
+        >Email
         </ToggleButton>
       </span>
     </>

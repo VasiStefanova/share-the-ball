@@ -45,14 +45,14 @@ const UserProfile = () => {
             variant='outline-dark'
             active={isCurrentURL('posts')}
             onClick={() => history.push(`/user-profile/id=${userId}/posts`)}
-          >posts
+          >Posts
           </Button>
           <Button
             className='my-profile-tab'
             variant='outline-dark'
             active={isCurrentURL('teammates')}
             onClick={() => history.push(`/user-profile/id=${userId}/teammates`)}
-          >teammates
+          >Teammates
           </Button>
         </ButtonGroup>
         <div className='my-profile-active-tab'>

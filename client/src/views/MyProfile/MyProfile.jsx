@@ -42,14 +42,14 @@ const MyProfile = () => {
             active={isCurrentURL('my-posts')}
             className='my-profile-tab'
             onClick={() => history.push('/my-profile/my-posts')}
-          >Posts
+          >My Posts
           </Button>
           <Button
             variant="outline-dark"
             active={isCurrentURL('my-teammates')}
             className='my-profile-tab'
             onClick={() => history.push('/my-profile/my-teammates')}
-          >Teammates
+          >My Teammates
           </Button>
           {/* change role on next line to hide from regular users */}
           {user.role === 2 &&

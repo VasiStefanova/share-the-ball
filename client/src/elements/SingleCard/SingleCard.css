@@ -14,8 +14,8 @@
 .cover-image {
     transition: transform .7s; /* Animation */
     margin: 0 auto;
-    height: 20vh;
-    width: 15vw;
+    height: 18vh;
+    width: 12.5vw;
 }
 
 .cover-image:hover {

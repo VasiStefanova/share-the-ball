@@ -39,7 +39,7 @@ const SingleUserBox = ({ teammate }) => {
 
   return (
     <div
-      className={isCurrentURL('home') ? 'teammate-container-box-home' : 'teammate-container-box'}
+      className={isCurrentURL('home') ? 'teammate-container-box-home theme-background-color' : 'teammate-container-box theme-background-color'}
       key={teammate.id}
     >
       <div className={isCurrentURL('home') ? 'teammate-container-home' : 'teammate-container'}>
@@ -77,7 +77,7 @@ const SingleUserBox = ({ teammate }) => {
         <div className={isCurrentURL('home') ? 'teammate-button-group-home' : 'teammate-button-group'}>
           {isCurrentURL('search') &&
             <ToggleFriendshipButton user={user} targetUser={person} />}
-          <Button id="view-user-profile-button" variant='outline-dark' onClick={() => history.push(`/user-profile/id=${teammate.id}/posts`)}>
+          <Button className="view-user-profile-button theme-btn-style" variant='outline-dark' onClick={() => history.push(`/user-profile/id=${teammate.id}/posts`)}>
             <i className="bi bi-person-circle" /> View profile
           </Button>
           {isCurrentURL('my-teammates') &&

@@ -29,14 +29,33 @@
   border: none;
 }
 
+.theme-background-color {
+  background-color: rgba(0, 0, 0, 0.692);
+}
+
+.theme-btn-style {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+
+.theme-btn-style:hover {
+  background-color: #6c757d;
+  color: white;
+}
+
 /* Used on every post and comment */
 .author-username {
   margin: auto 0.5vw;
 }
 
-/* Just for reference - this is the app's complimentary color */
+/* Just for reference - this are the app's complimentary colors */
 .logo-color {
   color: rgb(182, 5, 5);
+}
+
+.specific-gray-color {
+  color: rgb(83, 83, 83);
 }
 
 /* Bootstrap classes settings (apply to all elements of the respective type) */

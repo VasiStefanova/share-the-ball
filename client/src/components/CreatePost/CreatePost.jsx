@@ -45,7 +45,7 @@ const CreatePost = () => {
 
 
   return (
-    <div className="create-post-box theme-border-style">
+    <div className="create-post-box">
       <div className="post-header-bar">
         <div className="user-details">
           <Avatar user={user} style={{ width: '5vh', height: '5vh' }} />
@@ -102,7 +102,7 @@ const CreatePost = () => {
           <div className="image-preview-container">
             <img src={imagePreview} id="image-preview" />
             <Button
-              id="remove-prievew-button" variant="outline-dark" onClick={() => {
+              className="remove-prievew-button theme-btn-style" variant="outline-dark" onClick={() => {
                 setImagePreview('');
                 setFile('');
               }}
@@ -112,7 +112,7 @@ const CreatePost = () => {
           </div>}
         {isYouTubeUrl(videoUrl) &&
           <VideoEmbed videoUrl={videoUrl} embededVideoClass="embeded-video-create-post" />}
-        <Button id="post-button" variant="dark" onClick={createPost}>Post</Button>
+        <Button className="post-button theme-btn-style" variant="dark" onClick={createPost}>Post</Button>
       </div>
     </div>
   );
