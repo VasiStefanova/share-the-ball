@@ -4,11 +4,6 @@ import Figure from 'react-bootstrap/Figure';
 import './NBANews.css';
 
 const NBANews = () => {
-  const scrollContainer = document.querySelector('.nba-news-container');
-
-  scrollContainer.addEventListener('wheel', (ev) => {
-    scrollContainer.scrollLeft += ev.deltaY;
-  });
 
   const [articles, setArticles] = useState([]);
 
@@ -34,7 +29,10 @@ const NBANews = () => {
   }, []);
 
   return (articles.length ?
-    <div className='nba-news-container'>
+    <div
+      className='nba-news-container'
+      onWheel={(ev) => ev.target.scrollLeft += ev.deltaY}
+    >
       {articles.map(article => (
         <div
           key={article.id}
