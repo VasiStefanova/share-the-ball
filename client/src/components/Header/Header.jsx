@@ -35,7 +35,7 @@ const Header = () => {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
 
-      history.push('/home');
+      history.push('/home-public');
     } catch (e) {
       console.error(e);
     }
@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <div className="header-box">
-      <NavLink to='/home' className='nav-link'>
+      <NavLink to={loggedIn ? '/home' : '/home-public'} className='nav-link'>
         <div className='logo-box'>
           <img className='app-logo-img' src='/share-the-ball-logo.jpg' />
         </div>
