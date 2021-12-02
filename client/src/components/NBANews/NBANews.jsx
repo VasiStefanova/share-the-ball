@@ -4,6 +4,11 @@ import Figure from 'react-bootstrap/Figure';
 import './NBANews.css';
 
 const NBANews = () => {
+  const scrollContainer = document.querySelector('.nba-news-container');
+
+  scrollContainer.addEventListener('wheel', (ev) => {
+    scrollContainer.scrollLeft += ev.deltaY;
+  });
 
   const [articles, setArticles] = useState([]);
 
@@ -20,6 +25,8 @@ const NBANews = () => {
 
     return result.join('').trim();
   };
+
+
   useEffect(() => {
     nbaNewsRequest()
       .then(response => setArticles(response.posts))

@@ -22,6 +22,7 @@ export const getAllPostsRequest = async (
     });
 
     const posts = await response.json();
+    console.log(posts);
 
     return posts;
   } catch (error) {
