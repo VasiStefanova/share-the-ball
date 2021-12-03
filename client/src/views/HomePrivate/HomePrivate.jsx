@@ -7,14 +7,16 @@ import SinglePost from '../../components/SinglePost/SinglePost';
 import AppContext from '../../context/AppContext';
 import CardLinks from '../../components/CardLinks/CardLinks';
 import MyTeammates from '../../my-profile-tabs/MyTeammates/MyTeammates';
-import { intervalRequest } from '../../common/helpers';
+import { intervalRequest, isCurrentURL } from '../../common/helpers';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { POSTS_PER_PAGE } from '../../common/constants';
+import { deltaRequest } from '../../services/feed/delta-request';
 
 const HomePrivate = () => {
-  const { createdPost } = useContext(AppContext);
+  const { user, createdPost, setNewPosts } = useContext(AppContext);
   const [posts, setPosts] = useState([]);
   const [interval, setInterval] = useState(null);
+  const [date, setDate] = useState(Date.now());
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
@@ -42,22 +44,30 @@ const HomePrivate = () => {
       .catch(console.error);
   };
 
+  const checkForNewPosts = () => {
+
+    deltaRequest(date)
+      .then(newPosts => newPosts.length &&
+        newPosts.find(post => post.author.id !== user.id) &&
+        setNewPosts(true))
+      .catch(console.error);
+  };
+
   useEffect(() => {
     setPage(1);
     setHasMore(true);
+    setNewPosts(false);
     getInitialPosts();
   }, [createdPost]);
 
-  // useEffect(() => {
-  //   if (posts.length) {
-  //     if (!interval) setInterval(intervalRequest(getInitialPosts, 10000));
-  //   }
+  useEffect(() => {
+    !interval && setInterval(intervalRequest(checkForNewPosts, 10000));
 
-  //   return () => {
-  //     clearInterval(interval);
-  //     setInterval(null);
-  //   };
-  // }, [posts]);
+    return () => {
+      clearInterval(interval);
+      setInterval(null);
+    };
+  }, [posts, createdPost]);
 
   return (
     <div className='home-private-container'>

@@ -21,7 +21,7 @@ function App() {
 
   // posts
   const [createdPost, setCreatedPost] = useState(false);
-  const [newPosts, setNewPosts] = useState([]);
+  const [newPosts, setNewPosts] = useState(false);
 
   // friends
   const [toggleFriendship, setToggleFriendship] = useState(false);

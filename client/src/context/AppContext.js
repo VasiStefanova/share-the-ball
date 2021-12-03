@@ -19,7 +19,7 @@ const AppContext = createContext({
   setUser() {},
   createdPost: false,
   setCreatedPost() {},
-  newPosts: [],
+  newPosts: false,
   setNewPosts() {},
   toggleFriendship: false,
   setToggleFriendship() {}
