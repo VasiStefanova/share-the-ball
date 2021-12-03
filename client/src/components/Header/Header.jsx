@@ -1,4 +1,4 @@
-import { useContext, React } from 'react';
+import { useContext, React, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import Avatar from '../../elements/Avatar/Avatax';
 import './Header.css';
@@ -9,8 +9,9 @@ import FriendRequests from '../FriendRequests/FriendRequests';
 import { useHistory } from 'react-router';
 
 const Header = () => {
-  const { loggedIn, setLoggedIn, user, setUser } = useContext(AppContext);
+  const { loggedIn, setLoggedIn, user, setUser, newPosts } = useContext(AppContext);
   const history = useHistory();
+  const [showUpdateMsg, setShowUpdateMsg] = useState(false);
 
   const logout = async (ev) => {
     ev.preventDefault();
@@ -41,13 +42,24 @@ const Header = () => {
     }
   };
 
+  useEffect(() => {
+    if (newPosts.length) setShowUpdateMsg(true);
+  }, [newPosts]);
+
   return (
     <div className="header-box">
-      <NavLink to={loggedIn ? '/home' : '/home-public'} className='nav-link'>
-        <div className='logo-box'>
-          <img className='app-logo-img' src='/share-the-ball-logo.jpg' />
-        </div>
-      </NavLink>
+      <div className='header-left-container'>
+        <NavLink to={loggedIn ? '/home' : '/home-public'} className='nav-link'>
+          <div className='logo-box'>
+            <img className='app-logo-img' src='/share-the-ball-logo.jpg' />
+          </div>
+        </NavLink>
+        {showUpdateMsg &&
+          <div className='new-posts-msg-box'>
+            <h5 className='new-posts-msg-first-line'>New posts are available!</h5>
+            <h6 className='new-posts-msg-second-line'>(Click the ball to update your feed)</h6>
+          </div>}
+      </div>
       {loggedIn &&
         <div className="profile-box">
           <div className='user-box'>

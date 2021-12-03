@@ -7,6 +7,25 @@
   border-bottom: 1px solid rgb(182, 5, 5);
 }
 
+.header-left-container {
+  display: flex;
+  align-items: center;
+}
+
+.new-posts-msg-box {
+
+}
+
+.new-posts-msg-first-line {
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.new-posts-msg-second-line {
+  color: silver;
+}
+
 .logo-box {
   margin-left: 1vw;
 }

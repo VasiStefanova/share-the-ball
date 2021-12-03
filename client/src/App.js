@@ -21,6 +21,7 @@ function App() {
 
   // posts
   const [createdPost, setCreatedPost] = useState(false);
+  const [newPosts, setNewPosts] = useState([]);
 
   // friends
   const [toggleFriendship, setToggleFriendship] = useState(false);
@@ -48,7 +49,19 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundImage: 'url(/background.png)' }}>
-      <AppContext.Provider value={{ loggedIn, setLoggedIn, user, setUser, createdPost, setCreatedPost, toggleFriendship, setToggleFriendship, friendRequests }}>
+      <AppContext.Provider value={{
+        loggedIn,
+        setLoggedIn,
+        user,
+        setUser,
+        createdPost,
+        setCreatedPost,
+        newPosts,
+        setNewPosts,
+        toggleFriendship,
+        setToggleFriendship,
+        friendRequests }}
+      >
         <BrowserRouter>
           <Header />
           <Switch>
