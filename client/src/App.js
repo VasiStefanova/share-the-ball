@@ -12,6 +12,7 @@ import { checkLoginStatus, getLoggedUser, intervalRequest } from './common/helpe
 import UserProfile from './views/UserProfile/UserProfile';
 import getUserDetailsRequest from './services/users/get-user-details-request';
 import NBANews from './components/NBANews/NBANews';
+import AboutUs from './views/AboutUs/About.us';
 
 // eslint-disable-next-line require-jsdoc
 function App() {
@@ -71,6 +72,7 @@ function App() {
             <Route exact path="/nba-news" component={NBANews} />
             <Route path="/my-profile" component={MyProfile} />
             <Route path="/user-profile" component={UserProfile} />
+            <Route path="/about-us" component={AboutUs} />
           </Switch>
         </BrowserRouter>
       </AppContext.Provider>

@@ -21,8 +21,8 @@ const CardLinks = () => {
         title="Find Teammates"
       />
       <SingleCard
-        redirectFunc={() => history.push('/home')}
-        imgSrc="https://media.newyorker.com/photos/5f472a24704116b9739daa94/master/pass/Cunningham-MilwaukeeBucks.jpg"
+        redirectFunc={() => history.push('/about-us')}
+        imgSrc="/jordan-rodman-pippen.png"
         history={history}
         title="About Us"
       />

@@ -1,0 +1,82 @@
+.about-us-container {
+  padding: 2vh 0;
+}
+
+.theme-background-box {
+  display: grid;
+  justify-content: center;
+}
+
+.cards-container {
+  margin-top: 4vh;
+  display: flex;
+  width: 70vw;
+  justify-content: space-between;
+}
+
+.single-card {
+  width: 15vw;
+  padding: 1vh;
+  border-radius: 1vh;
+  margin: auto;
+}
+
+.single-card-text {
+  margin-top: 1.5vh;
+}
+
+.primary-card-text {
+  margin-bottom: unset;
+}
+
+.secondary-card-text {
+  font-style: italic;
+}
+
+.eighth-wonder-logo-box {
+  display: grid;
+  justify-content: center;
+  margin-bottom: 2vh;
+}
+
+.eighth-wonder-logo-image {
+  width: 30vw;
+  height: 17vh;
+  border-radius: 1vh;
+}
+
+.single-card-image {
+  width: 16vh;
+  height: 16vh;
+}
+
+.about-us-main-text-box {
+  margin-top:2vh
+}
+
+.about-us-main-text {
+  font-style: italic;
+}
+
+.social-medias-box {
+display: grid;
+justify-content: right;
+margin-right: 8vw;
+margin-top: 3vh;
+}
+
+.social-medias-header-text {
+  font-style: italic;
+}
+
+.social-medias {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-media-logo {
+  width: 3vw;
+  height: 4vh;
+}
+
+
