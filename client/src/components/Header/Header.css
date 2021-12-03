@@ -5,15 +5,17 @@
   background-color: black;
   align-items: center;
   border-bottom: 1px solid rgb(182, 5, 5);
+  padding: 0 2vw;
 }
 
 .header-left-container {
+  margin: 1vh 0;
   display: flex;
   align-items: center;
 }
 
 .new-posts-msg-box {
-
+  margin-left: 1vw;
 }
 
 .new-posts-msg-first-line {
@@ -26,37 +28,65 @@
   color: silver;
 }
 
-.logo-box {
-  margin-left: 1vw;
-}
-
 .app-logo-img {
   width: 8vw;
   height: 15vh;
 }
 
 .profile-box {
-  margin-right: 1vw;
+  margin: 1vh 0;
+  display: flex;
+  align-items: center;
+}
+
+.notifications-box {
+  display: flex;
+  align-content: center;
+  margin: 0 1vw;
 }
 
 .user-box {
   display: flex;
-  justify-content: center;
-  margin-bottom: 1vh;
 }
+
+.username-and-notifications {
+  text-align: right;
+}
+
+.username-box {
+  height: fit-content;
+  margin: 2vh 0;
+}
+
 
 .avatar-nav-link {
   display: flex;
   align-items: center;
-  text-decoration-color: rgb(182, 5, 5);
-  margin-right: 1vw;
+  margin-bottom: 1vw;
 }
 
 .avatar-username {
   color: white;
-  margin-right: 0.5vw;
+  font-weight: bold;
+  margin: 0;
 }
 
-.nav-link {
+.avatar-and-logout {
+  margin-left: 1vw;
+}
+
+.logo-nav-link {
   text-decoration: none;
+  padding: 0;
+}
+
+.header-wallpapers-container {
+  display: flex;
+  justify-content: space-between;
+  width: 15vw;
+}
+
+.header-wallpaper {
+  height: 16vh;
+  width: 5vw;
 }

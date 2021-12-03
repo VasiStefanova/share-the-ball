@@ -11,12 +11,12 @@ import AppContext from '../../context/AppContext';
 const FriendsRequests = () => {
   const { friendRequests } = useContext(AppContext);
   const [show, setShow] = useState(false);
-  const [target, setTarget] = useState(document.querySelector('#root > div > div.header-box > div > div.user-box > div > button > div'));
+  const [target, setTarget] = useState(document.querySelector('button.see-friend-requests-btn.btn.btn-outline-secondary.btn-primary'));
   const ref = useRef(null);
 
   const handleClick = () => {
     setShow(!show);
-    setTarget(document.querySelector('#root > div > div.header-box > div > div.user-box > div > button > div'));
+    setTarget(document.querySelector('button.see-friend-requests-btn.btn.btn-outline-secondary.btn-primary'));
   };
 
   return (

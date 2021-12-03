@@ -1,5 +1,5 @@
 import { useContext, React, useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import Avatar from '../../elements/Avatar/Avatax';
 import './Header.css';
 import Button from 'react-bootstrap/Button';
@@ -48,12 +48,10 @@ const Header = () => {
     <div className="header-box">
       <div className='header-left-container'>
         <NavLink
-          to='/home' className='nav-link'
+          to='/home' className='logo-nav-link'
           onClick={() => loggedIn && isCurrentURL('home') && window.location.reload()}
         >
-          <div className='logo-box'>
-            <img className='app-logo-img' src='/share-the-ball-logo.jpg' />
-          </div>
+          <img className='app-logo-img' src='/share-the-ball-logo.jpg' />
         </NavLink>
         {showUpdateMsg &&
           <div className='new-posts-msg-box'>
@@ -61,18 +59,31 @@ const Header = () => {
             <h6 className='new-posts-msg-second-line'>(Click the ball to update your feed)</h6>
           </div>}
       </div>
+      <div className='header-wallpapers-container'>
+        <img src="/kobe-fadeaway.png" alt="kobe-fadeaway" className='header-wallpaper' />
+        <img src="/jordan-fadeaway.png" alt="jordan-fadeaway" className='header-wallpaper' />
+      </div>
       {loggedIn &&
         <div className="profile-box">
           <div className='user-box'>
-            <NavLink to='/my-profile' className='avatar-nav-link'>
-              <h5 className='avatar-username'>{user.username}</h5>
-              <Avatar user={user} />
-            </NavLink>
-            <FriendRequests />
+            <div className='username-and-notifications'>
+              <div className='username-box'>
+                <Link className="author-profile-link" to='/my-profile'>
+                  <h5 className='avatar-username'>{user.username}</h5>
+                </Link>
+              </div>
+              <div className='notifications-box'>
+                <FriendRequests />
+              </div>
+            </div>
+            <div className='avatar-and-logout'>
+              <NavLink to='/my-profile' className='avatar-nav-link'>
+                <Avatar user={user} />
+              </NavLink>
+              <Button variant="outline-light" className='logout-button' onClick={(ev) => logout(ev)}>Logout</Button>
+            </div>
           </div>
-          <div>
-            <Button variant="outline-light" className='logout-button' onClick={(ev) => logout(ev)}>Logout</Button>
-          </div>
+          <div />
         </div>}
     </div>
   );
