@@ -65,9 +65,8 @@ function App() {
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route exact path="/"><Redirect to={loggedIn ? '/home' : 'home-public'} /></Route>
-            <Route exact path="/home" component={HomePrivate} />
-            <Route exact path="/home-public" component={HomePublic} />
+            <Route exact path="/"><Redirect to="/home" /></Route>
+            <Route exact path="/home" component={loggedIn ? HomePrivate : HomePublic} />
             <Route exact path="/search" component={SearchTeammatesView} />
             <Route exact path="/nba-news" component={NBANews} />
             <Route path="/my-profile" component={MyProfile} />

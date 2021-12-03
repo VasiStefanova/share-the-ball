@@ -6,12 +6,10 @@ import Button from 'react-bootstrap/Button';
 import { logoutRequest } from '../../services/auth/logout-request';
 import AppContext from '../../context/AppContext';
 import FriendRequests from '../FriendRequests/FriendRequests';
-import { useHistory } from 'react-router';
 import { isCurrentURL } from '../../common/helpers';
 
 const Header = () => {
   const { loggedIn, setLoggedIn, user, setUser, newPosts } = useContext(AppContext);
-  const history = useHistory();
   const [showUpdateMsg, setShowUpdateMsg] = useState(false);
 
   const logout = async (ev) => {
@@ -37,7 +35,6 @@ const Header = () => {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
 
-      history.push('/home-public');
     } catch (e) {
       console.error(e);
     }

@@ -7,14 +7,11 @@ import { loginRequest } from '../../services/auth/login-request';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import AppContext from '../../context/AppContext';
 import { getLoggedUser, setUserInStorage, updateUserLocation, userHasSetLocation } from '../../common/helpers';
-import { useHistory } from 'react-router';
 
 const Login = () => {
   const { setLoggedIn, setUser } = useContext(AppContext);
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
-  const history = useHistory();
-
 
   const login = async (e) => {
     e.preventDefault();
@@ -38,8 +35,6 @@ const Login = () => {
       if (!userHasSetLocation(getLoggedUser())) {
         updateUserLocation(userId, setUser);
       }
-
-      history.push('/home');
 
     } catch (err) {
       setError(err.message);
