@@ -11,6 +11,9 @@ export const NBA_STANDINGS_URL = 'http://data.nba.net/10s/prod/v1/current/standi
 export const GEOCODING_API_KEY = 'AIzaSyCwEzUnkJGWzwSZdvdL_RdhZ22Rn0vxXjc';
 export const GOOGLE_GEOCODING_URL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng';
 export const NBA_NEWS_URL = 'http://stats-prod.nba.com/wp-json/statscms/v1/type/beyondthenumber/?limit=20&offset=0';
+export const SHARE_THE_BALL_FACEBOOK_URL = 'https://www.facebook.com/shareTheBall21/?ref=page_internal';
+export const SHARE_THE_BALL_INSTAGRAM_URL = 'https://www.instagram.com/sharetheball21/?fbclid=IwAR2ixjzkAM1a-7o-Y44j7OHfPWtMzNM5s0os82dwAjyDQkyXT4uqhGPGPBc';
+export const SHARE_THE_BALL_TWITTER_URL = 'https://twitter.com/sharetheball21?fbclid=IwAR1EmakBIBWSlEoMM-nRQK6IBd_ctDNY9_lHCOxxZQILsnj4e1dKlTmaMYs';
 
 export const TEAM_LOGOS_URL = [
   {

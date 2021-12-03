@@ -1,18 +1,30 @@
 import './ReactedUserBox.css';
 import PropTypes from 'prop-types';
 import Avatar from '../Avatar/Avatax';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
-import Button from 'react-bootstrap/Button';
+import AppContext from '../../context/AppContext';
+import { setUserInStorage } from '../../common/helpers';
+import ToggleFriendshipButton from '../ToggleFriendshipButton/ToggleFriendshipButton';
 
 const ReactedUserBox = ({ userId }) => {
   const [user, setUser] = useState({ username: '' });
+  const { user: loggedUser, setUser: setLoggedUser, toggleFriendship } = useContext(AppContext);
 
   useEffect(() => {
     getUserDetailsRequest(userId)
       .then(details => setUser(details))
       .catch(console.error);
-  }, []);
+  }, [toggleFriendship]);
+
+  useEffect(() => {
+    getUserDetailsRequest(loggedUser.id)
+      .then(details => {
+        setLoggedUser(details);
+        setUserInStorage(loggedUser);
+      })
+      .catch(console.error);
+  }, [toggleFriendship]);
 
   return (
     <div className='reacted-user-container'>
@@ -22,7 +34,7 @@ const ReactedUserBox = ({ userId }) => {
           <h5 className='teammate-info-home'>{user.username}</h5>
         </div>
       </div>
-      <Button type="button" size="sm" className="btn btn-success">Add friend</Button>
+      <ToggleFriendshipButton user={loggedUser} targetUser={user} />
     </div>
   );
 };
