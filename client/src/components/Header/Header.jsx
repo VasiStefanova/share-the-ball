@@ -6,11 +6,10 @@ import Button from 'react-bootstrap/Button';
 import { logoutRequest } from '../../services/auth/logout-request';
 import AppContext from '../../context/AppContext';
 import FriendRequests from '../FriendRequests/FriendRequests';
-import { useHistory } from 'react-router';
+
 
 const Header = () => {
   const { loggedIn, setLoggedIn, user, setUser, newPosts } = useContext(AppContext);
-  const history = useHistory();
   const [showUpdateMsg, setShowUpdateMsg] = useState(false);
 
   const logout = async (ev) => {
@@ -36,7 +35,6 @@ const Header = () => {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
 
-      history.push('/home-public');
     } catch (e) {
       console.error(e);
     }
@@ -49,7 +47,7 @@ const Header = () => {
   return (
     <div className="header-box">
       <div className='header-left-container'>
-        <NavLink to={loggedIn ? '/home' : '/home-public'} className='nav-link'>
+        <NavLink to="/home" className='nav-link'>
           <div className='logo-box'>
             <img className='app-logo-img' src='/share-the-ball-logo.jpg' />
           </div>
