@@ -2,7 +2,7 @@ import { FEED_URL } from '../../common/constants';
 import { getToken } from '../../common/helpers';
 
 export const deltaRequest = async (
-  createdOrUpdatedAfter = '',
+  createdOrUpdatedAfter = Date.now(),
   trackingPosts = '',
 ) => {
   const queryParams = [];

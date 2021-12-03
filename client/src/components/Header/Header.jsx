@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { logoutRequest } from '../../services/auth/logout-request';
 import AppContext from '../../context/AppContext';
 import FriendRequests from '../FriendRequests/FriendRequests';
-
+import { isCurrentURL } from '../../common/helpers';
 
 const Header = () => {
   const { loggedIn, setLoggedIn, user, setUser, newPosts } = useContext(AppContext);
@@ -41,13 +41,16 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (newPosts.length) setShowUpdateMsg(true);
+    if (newPosts) setShowUpdateMsg(true);
   }, [newPosts]);
 
   return (
     <div className="header-box">
       <div className='header-left-container'>
-        <NavLink to="/home" className='nav-link'>
+        <NavLink
+          to='/home' className='nav-link'
+          onClick={() => loggedIn && isCurrentURL('home') && window.location.reload()}
+        >
           <div className='logo-box'>
             <img className='app-logo-img' src='/share-the-ball-logo.jpg' />
           </div>
