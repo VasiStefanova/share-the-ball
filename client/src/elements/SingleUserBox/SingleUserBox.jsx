@@ -49,28 +49,28 @@ const SingleUserBox = ({ teammate }) => {
             <h5 className={isCurrentURL('home') ? 'teammate-info-home' : 'teammate-info'}>{teammate.username}</h5>
           </div>
         </div>
-        {isCurrentURL('user_list') && teammate.username !== 'admin' &&
-          <div className='action-btns-group'>
-            {teammate.banReason ?
-              <Badge bg='danger'>Banned!</Badge> :
-              <Button
-                className='action-btn'
-                variant='outline-dark'
-                onClick={() => setShowBanModal(true)}
-              >
-                <i className="bi bi-slash-circle-fill" />
-                ban
-              </Button>}
-            <Button
-              className='action-btn'
-              variant='outline-dark'
-              onClick={() => setShowDeleteModal(true)}
-            >
-              <i className="bi bi-x-circle-fill" />
-              delete
-            </Button>
-          </div>}
         <div className={isCurrentURL('home') ? 'teammate-button-group-home' : 'teammate-button-group'}>
+          {isCurrentURL('user_list') && teammate.username !== 'admin' &&
+            <div className='action-btns-group'>
+              {teammate.banReason ?
+                <Badge className="banned-user-badge" bg='danger'>Banned!</Badge> :
+                <Button
+                  className='action-btn theme-btn-style'
+                  variant='outline-dark'
+                  onClick={() => setShowBanModal(true)}
+                >
+                  <i className="bi bi-slash-circle-fill" />
+                  ban
+                </Button>}
+              <Button
+                className='action-btn theme-btn-style'
+                variant='outline-dark'
+                onClick={() => setShowDeleteModal(true)}
+              >
+                <i className="bi bi-x-circle-fill" />
+                delete
+              </Button>
+            </div>}
           {isCurrentURL('search') &&
             <ToggleFriendshipButton user={user} targetUser={person} />}
           <Button className="view-user-profile-button theme-btn-style" variant='outline-dark' onClick={() => history.push(`/user-profile/id=${teammate.id}/posts`)}>

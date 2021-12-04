@@ -26,6 +26,12 @@ const Login = () => {
 
       const userDetails = await getUserDetailsRequest(userId);
 
+      if (userDetails.message) {
+        localStorage.removeItem('token');
+        console.log();
+        throw new Error(`You have been banned! Reason: ${userDetails.message.split(',')[1].split(':')[1]}`);
+      }
+
       setUser(userDetails);
       setUserInStorage(userDetails);
       setLoggedIn(true);

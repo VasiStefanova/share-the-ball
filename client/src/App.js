@@ -60,7 +60,7 @@ function App() {
     if (friends && friends.length !== user.friends.length) {
       setUser(userDetails);
       setUserInStorage(userDetails);
-    };
+    }
   };
 
   useEffect(() => {
