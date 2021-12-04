@@ -59,13 +59,13 @@
   margin-left: 0.5vw ;
 }
 
-/* #view-user-profile-button:hover {
-  background-color: black;
-  color: white;
-} */
-
 .teammate-button-group {
+  display: flex;
   margin: auto 0
+}
+
+.banned-user-badge {
+  margin: auto;
 }
 
 /* /home */
@@ -101,5 +101,6 @@
 }
 
 .teammate-button-group-home {
+  display: flex;
   margin: auto 0
 }

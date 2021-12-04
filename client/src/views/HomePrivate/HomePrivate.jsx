@@ -11,6 +11,7 @@ import { intervalRequest, isCurrentURL } from '../../common/helpers';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { POSTS_PER_PAGE } from '../../common/constants';
 import { deltaRequest } from '../../services/feed/delta-request';
+import BackToTopButton from '../../elements/BackToTopButton/BackToTopButton';
 
 const HomePrivate = () => {
   const { user, createdPost, setNewPosts } = useContext(AppContext);
@@ -103,6 +104,7 @@ const HomePrivate = () => {
           <MyTeammates />
         </div>
       </div>
+      <BackToTopButton offsetLeft="10vw" />
     </div>
   );
 };

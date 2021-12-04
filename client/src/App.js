@@ -35,10 +35,11 @@ function App() {
     setFriendRequests(potentialFriends);
 
     const friends = userDetails.friends?.filter(friend => friend.friendshipStatus === 2);
-    if (friends.length !== user.friends.length) {
+
+    if (friends && friends.length !== user.friends.length) {
       setUser(userDetails);
       setUserInStorage(userDetails);
-    };
+    }
   };
 
 
