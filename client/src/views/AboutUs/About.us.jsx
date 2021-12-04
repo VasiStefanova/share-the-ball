@@ -46,9 +46,9 @@ const AboutUs = () => {
         </div>
         <div className="social-medias-box">
           <h3 className="social-medias-header-text theme-text-style">Share the Ball on:</h3>
-          <div className="social-medias">
+          <div className="social-media-icons-box">
             <a href={SHARE_THE_BALL_FACEBOOK_URL} target="_blank" rel="noreferrer">
-              <img className="social-media-logo" src='/facebook-logo.png' alt="facebook-logo" />
+              <img className="fb-logo" src='/facebook-logo.png' alt="facebook-logo" />
             </a>
             <a href={SHARE_THE_BALL_INSTAGRAM_URL} target="_blank" rel="noreferrer">
               <img className="social-media-logo" src='/instagram-logo.png' alt="instagram-logo" />

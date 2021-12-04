@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import './SingleFriendRequest.css';
-import Avatar from '../../elements/Avatar/Avatax';
+import Avatar from '../Avatar/Avatax';
 import { acceptRequest } from '../../services/friends/accept-request';
 import { unfriendRequest } from '../../services/friends/unfriend-request';
 import { useContext, useState } from 'react';

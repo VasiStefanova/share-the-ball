@@ -1,15 +1,14 @@
+import './Notifications.css';
 import { useState, useRef, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Popover from 'react-bootstrap/Popover';
 import CloseButton from 'react-bootstrap/CloseButton';
 import Overlay from 'react-bootstrap/Overlay';
-import SingleFriendRequest from '../../elements/SingleFriendRequest/SingleFriendRequest';
-import './FriendRequests.css';
 import AppContext from '../../context/AppContext';
+import SingleNotification from '../../elements/SingleNotification/SingleNotification';
 
-
-const FriendsRequests = () => {
-  const { friendRequests } = useContext(AppContext);
+const Notifications = () => {
+  const { notifications } = useContext(AppContext);
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(document.querySelector('button.see-friend-requests-btn.btn.btn-outline-secondary.btn-primary'));
   const ref = useRef(null);
@@ -20,13 +19,13 @@ const FriendsRequests = () => {
   };
 
   return (
-    <div ref={ref} className='friend-requests-icon-box'>
+    <div ref={ref} className='notifications-icon-box'>
       <Button
-        className='see-friend-requests-btn btn btn-outline-secondary'
+        className='see-notifications-btn btn btn-outline-secondary'
         onClick={handleClick}
       >
         <i className="bi bi-people-fill fa-3x" />
-        <div style={{ color: 'rgb(182, 5, 5)' }}>{friendRequests?.length ? +friendRequests.length : 0}</div>
+        <div style={{ color: 'rgb(182, 5, 5)' }}>{notifications?.length ? +notifications.length : 0}</div>
       </Button>
       <Overlay
         show={show}
@@ -41,8 +40,8 @@ const FriendsRequests = () => {
             <CloseButton className='close-teammates-btn' onClick={handleClick} />
           </Popover.Header>
           <Popover.Body className='friend-requests-body'>
-            {friendRequests && friendRequests.length ?
-              friendRequests.map(newTeammate => <SingleFriendRequest key={newTeammate.id} newTeammate={newTeammate} />) :
+            {notifications && notifications.length ?
+              notifications.map(notification => <SingleNotification key={notification.itemId} newTeammate={notification} />) :
               <h6 className='confirmation-msg'>
                 No new requests at the moment
               </h6>}
@@ -53,4 +52,4 @@ const FriendsRequests = () => {
   );
 };
 
-export default FriendsRequests;
+export default Notifications;

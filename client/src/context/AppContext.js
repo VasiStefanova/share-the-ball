@@ -21,8 +21,10 @@ const AppContext = createContext({
   setCreatedPost() {},
   newPosts: false,
   setNewPosts() {},
+  notifications: [],
   toggleFriendship: false,
-  setToggleFriendship() {}
+  setToggleFriendship() {},
+  friendRequests: [],
 });
 
 export default AppContext;

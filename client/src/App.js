@@ -13,11 +13,13 @@ import UserProfile from './views/UserProfile/UserProfile';
 import getUserDetailsRequest from './services/users/get-user-details-request';
 import NBANews from './components/NBANews/NBANews';
 import AboutUs from './views/AboutUs/About.us';
+import { getPostsByUserIdRequest } from './services/posts/get-posts-by-user-id-request';
+import { getUserNotificationsRequest } from './services/feed/get-user-notifications-request';
 
 // eslint-disable-next-line require-jsdoc
 function App() {
   // User data
-  const [loggedIn, setLoggedIn] = useState(checkLoginStatus());
+  const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(getLoggedUser());
 
   // posts
@@ -27,11 +29,27 @@ function App() {
   // notifications
   const [userCurrentPosts, setUserCurrentPosts] = useState([]);
   const [notifications, setNotifications] = useState([]);
+  const [notificationsInterval, setNotificationsInterval] = useState([]);
 
   // friends
   const [toggleFriendship, setToggleFriendship] = useState(false);
   const [friendRequests, setFriendRequests] = useState([]);
   const [interval, setInterval] = useState(null);
+
+  const getUserPosts = () => {
+    getPostsByUserIdRequest(user.id, null, 100)
+      .then(posts => Array.isArray(posts) && setUserCurrentPosts(posts))
+      .catch(console.error);
+  };
+
+  const getNotifications = () => {
+    getUserNotificationsRequest(user.id, userCurrentPosts)
+      .then(newNotifications => {
+        console.log(newNotifications);
+        newNotifications.length && setNotifications(newNotifications);
+      })
+      .catch(console.error);
+  };
 
   const getUserFriends = async () => {
     const userDetails = await getUserDetailsRequest(user.id);
@@ -45,19 +63,32 @@ function App() {
     };
   };
 
-
   useEffect(() => {
-    getUserFriends();
+    setLoggedIn(checkLoginStatus());
   }, []);
 
   useEffect(() => {
     if (loggedIn) {
+      getUserPosts();
+      getUserFriends();
+
       if (!interval) setInterval(intervalRequest(getUserFriends, 5000));
     } else {
       clearInterval(interval);
       setInterval(null);
+      clearInterval(notificationsInterval);
+      setNotificationsInterval(null);
     }
   }, [loggedIn]);
+
+  useEffect(() => {
+    if (!notificationsInterval) setNotificationsInterval(intervalRequest(getNotifications, 15000));
+  }, [userCurrentPosts]);
+
+  useEffect(() => {
+    console.log(notifications);
+  }, [notifications]);
+
 
   return (
     <div className="App" style={{ backgroundImage: 'url(/background.png)' }}>
@@ -70,6 +101,7 @@ function App() {
         setCreatedPost,
         newPosts,
         setNewPosts,
+        notifications,
         toggleFriendship,
         setToggleFriendship,
         friendRequests }}

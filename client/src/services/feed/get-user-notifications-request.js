@@ -1,11 +1,10 @@
 import { getPostsByUserIdRequest } from '../posts/get-posts-by-user-id-request';
 
 export const getUserNotificationsRequest = async (userId = 0, currentPosts = []) => {
-  const newPosts = await getPostsByUserIdRequest(userId);
+  const newPosts = await getPostsByUserIdRequest(userId, null, 100);
 
   const notifications = (() => {
-    const newComments = [];
-    const newLikes = [];
+    const newNotifications = [];
 
     currentPosts.forEach(currentPost => {
       const newPost = newPosts.find(post => post.id === currentPost.id);
@@ -14,22 +13,24 @@ export const getUserNotificationsRequest = async (userId = 0, currentPosts = [])
       if (currentPost.comments.length !== newPost.comments.length) {
         const newOnes = newPost.comments.slice(currentPost.comments.length);
         newOnes.forEach(newOne => {
-          const newComment = { postId: currentPost.id, ...newOne };
-          newComments.push(newComment);
+          const newComment = { itemId: (newNotifications.length + 1), postId: currentPost.id, ...newOne };
+          newNotifications.push(newComment);
         });
       }
 
       // get new likes
-      if (currentPost.likes.length !== newPost.likes.length) {
-        const newOnes = newPost.likes.slice(currentPost.likes.length);
+      const currentLikes = currentPost.likes.filter(like => like.reaction < 4);
+      const newLikes = newPost.likes.filter(like => like.reaction < 4);
+      if (currentLikes.length !== newLikes.length) {
+        const newOnes = newLikes.slice(currentLikes.length);
         newOnes.forEach(newOne => {
-          const newLike = { postId: currentPost.id, ...newOne };
-          newLikes.push(newLike);
+          const newLike = { itemId: (newNotifications.length + 1), postId: currentPost.id, ...newOne };
+          newNotifications.push(newLike);
         });
       }
     });
 
-    return { newComments, newLikes };
+    return newNotifications;
   })();
 
   return notifications;

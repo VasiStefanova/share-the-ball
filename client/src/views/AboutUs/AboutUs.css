@@ -59,7 +59,7 @@
 }
 
 .social-medias-box {
-display: grid;
+display: flex;
 justify-content: right;
 margin-right: 8vw;
 margin-top: 3vh;
@@ -69,14 +69,22 @@ margin-top: 3vh;
   font-style: italic;
 }
 
-.social-medias {
+.social-media-icons-box {
   display: flex;
   justify-content: space-between;
+  width: 10vw;
+  margin-left: 2vw;
 }
 
 .social-media-logo {
-  width: 3vw;
+  width: 2vw;
   height: 4vh;
+}
+
+.fb-logo {
+  width: 2.3vw;
+  height: 4.6vh;
+  margin-top: -0.2vh;
 }
 
 

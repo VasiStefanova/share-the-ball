@@ -7,6 +7,7 @@ import { logoutRequest } from '../../services/auth/logout-request';
 import AppContext from '../../context/AppContext';
 import FriendRequests from '../FriendRequests/FriendRequests';
 import { isCurrentURL } from '../../common/helpers';
+import Notifications from '../Notifications/Notifications';
 
 const Header = () => {
   const { loggedIn, setLoggedIn, user, setUser, newPosts } = useContext(AppContext);
@@ -66,7 +67,7 @@ const Header = () => {
         <img src="/kobe-fadeaway.png" alt="kobe-fadeaway" className='header-wallpaper' />
         <img src="/jordan-fadeaway.png" alt="jordan-fadeaway" className='header-wallpaper' />
       </div>
-      {loggedIn &&
+      {loggedIn?
         <div className="profile-box">
           <div className='user-box'>
             <div className='username-and-notifications'>
@@ -76,6 +77,7 @@ const Header = () => {
                 </Link>
               </div>
               <div className='notifications-box'>
+                <Notifications />
                 <FriendRequests />
               </div>
             </div>
@@ -87,7 +89,8 @@ const Header = () => {
             </div>
           </div>
           <div />
-        </div>}
+        </div>:
+        <div style={{ width: '12vw' }} />}
     </div>
   );
 };
