@@ -30,9 +30,9 @@ const SingleUserBox = ({ teammate }) => {
 
   useEffect(() => {
     getUserDetailsRequest(user.id)
-      .then(userdetails => {
-        setUser(userdetails);
-        setUserInStorage(userdetails);
+      .then(userDetails => {
+        setUser(userDetails);
+        setUserInStorage(userDetails);
       })
       .catch(console.error);
   }, [toggleFriendship]);
@@ -47,10 +47,6 @@ const SingleUserBox = ({ teammate }) => {
           <Avatar user={teammate} style={{ width: '5vh', height: '5vh' }} />
           <div className={isCurrentURL('home') ? 'teammate-info-box-home' : 'teammate-info-box'}>
             <h5 className={isCurrentURL('home') ? 'teammate-info-home' : 'teammate-info'}>{teammate.username}</h5>
-            {!isCurrentURL('home') &&
-              <h6 className='teammate-info last-updated'>
-                last updated: {new Date(teammate.lastUpdated).toLocaleDateString('en-UK')}
-              </h6>}
           </div>
         </div>
         {isCurrentURL('user_list') && teammate.username !== 'admin' &&

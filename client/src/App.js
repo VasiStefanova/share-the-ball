@@ -8,7 +8,7 @@ import HomePublic from './views/HomePublic/HomePublic';
 import HomePrivate from './views/HomePrivate/HomePrivate';
 import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 import MyProfile from './views/MyProfile/MyProfile';
-import { checkLoginStatus, getLoggedUser, intervalRequest } from './common/helpers';
+import { checkLoginStatus, getLoggedUser, intervalRequest, setUserInStorage } from './common/helpers';
 import UserProfile from './views/UserProfile/UserProfile';
 import getUserDetailsRequest from './services/users/get-user-details-request';
 import NBANews from './components/NBANews/NBANews';
@@ -30,10 +30,17 @@ function App() {
   const [interval, setInterval] = useState(null);
 
   const getUserFriends = async () => {
-    const result = await getUserDetailsRequest(user.id);
-    const friends = result.friends?.filter(friend => friend.canAcceptFriendship === true);
-    setFriendRequests(friends);
+    const userDetails = await getUserDetailsRequest(user.id);
+    const potentialFriends = userDetails.friends?.filter(friend => friend.canAcceptFriendship === true);
+    setFriendRequests(potentialFriends);
+
+    const friends = userDetails.friends?.filter(friend => friend.friendshipStatus === 2);
+    if (friends.length !== user.friends.length) {
+      setUser(userDetails);
+      setUserInStorage(userDetails);
+    };
   };
+
 
   useEffect(() => {
     getUserFriends();

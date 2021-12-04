@@ -4,7 +4,6 @@ import FoundTeammates from '../../components/FoundTeammates/FoundTeammates';
 import SearchTeammates from '../../components/SearchTeammates/SearchTeammates';
 import AppContext from '../../context/AppContext';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
-import getUsersRequest from '../../services/users/get-users-request';
 
 const Teammates = ({ userId }) => {
   const { toggleFriendship } = useContext(AppContext);
@@ -20,16 +19,10 @@ const Teammates = ({ userId }) => {
   }, [toggleFriendship]);
 
   useEffect(() => {
-    if (!userInfo) return () => {};
+    if (!userInfo.friends) return () => {};
 
-    getUsersRequest()
-      .then(allUsers => {
-        return allUsers
-          .filter(({ id: currUserId }) => userInfo.friends
-            .some(({ id: teammateId, friendshipStatus }) => currUserId === teammateId && friendshipStatus === 2));
-      })
-      .then(teammatesList => setTeammates(teammatesList))
-      .catch(console.error);
+    const targetUserFriends = userInfo.friends.filter(friend => friend.friendshipStatus === 2);
+    setTeammates(targetUserFriends);
 
     return () => setTeammates([]);
   }, [userInfo]);
