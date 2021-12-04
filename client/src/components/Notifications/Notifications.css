@@ -1,0 +1,30 @@
+.notifications-icon-box {
+  height: fit-content;
+}
+
+.see-notifications-btn {
+  background-color: transparent;
+  border-color: transparent;
+  justify-content: center;
+}
+.see-notifications-btn:focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+.see-notifications-btn:hover {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.bi-bell-fill {
+  color: white;
+  font-size: 2vh;
+}
+
+.notifications-body {
+    max-width: none;
+    padding: 1vh 0.5vw;
+}
+.close-notifications-btn {
+    float: right
+}

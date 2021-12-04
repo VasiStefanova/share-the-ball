@@ -14,6 +14,11 @@ const Header = () => {
   const [showUpdateMsg, setShowUpdateMsg] = useState(false);
   const history = useHistory();
 
+  // notifications and friend requests
+
+  const [show, setShow] = useState(false); // friend requests
+  const [showNotifications, setShowNotifications] = useState(false);
+
   const logout = async (ev) => {
     ev.preventDefault();
 
@@ -77,8 +82,16 @@ const Header = () => {
                 </Link>
               </div>
               <div className='notifications-box'>
-                <Notifications />
-                <FriendRequests />
+                <Notifications
+                  setShow={setShow}
+                  showNotifications={showNotifications}
+                  setShowNotifications={setShowNotifications}
+                />
+                <FriendRequests
+                  show={show}
+                  setShow={setShow}
+                  setShowNotifications={setShowNotifications}
+                />
               </div>
             </div>
             <div className='avatar-and-logout'>

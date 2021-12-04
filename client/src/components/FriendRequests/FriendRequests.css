@@ -9,6 +9,7 @@
 
 .friend-requests-body {
     max-width: none;
+    padding: 1vh 0.5vw;
 }
 .see-friend-requests-btn {
     background-color: transparent;
@@ -24,6 +25,7 @@
     border-color: transparent;
 }
 .bi-people-fill {
+  color: white;
     font-size: 2vh
 }
 .close-teammates-btn {

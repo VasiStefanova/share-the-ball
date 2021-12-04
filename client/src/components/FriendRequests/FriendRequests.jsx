@@ -6,15 +6,17 @@ import Overlay from 'react-bootstrap/Overlay';
 import SingleFriendRequest from '../../elements/SingleFriendRequest/SingleFriendRequest';
 import './FriendRequests.css';
 import AppContext from '../../context/AppContext';
+import PropTypes from 'prop-types';
 
 
-const FriendsRequests = () => {
+const FriendsRequests = ({ show, setShow, setShowNotifications }) => {
   const { friendRequests } = useContext(AppContext);
-  const [show, setShow] = useState(false);
+
   const [target, setTarget] = useState(document.querySelector('button.see-friend-requests-btn.btn.btn-outline-secondary.btn-primary'));
   const ref = useRef(null);
 
   const handleClick = () => {
+    setShowNotifications(false);
     setShow(!show);
     setTarget(document.querySelector('button.see-friend-requests-btn.btn.btn-outline-secondary.btn-primary'));
   };
@@ -26,7 +28,7 @@ const FriendsRequests = () => {
         onClick={handleClick}
       >
         <i className="bi bi-people-fill fa-3x" />
-        <div style={{ color: 'rgb(182, 5, 5)' }}>{friendRequests?.length ? +friendRequests.length : 0}</div>
+        <h5 style={friendRequests?.length? { color: 'rgb(182, 5, 5)' } : null}>{friendRequests?.length ? +friendRequests.length : 0}</h5>
       </Button>
       <Overlay
         show={show}
@@ -51,6 +53,12 @@ const FriendsRequests = () => {
       </Overlay>
     </div>
   );
+};
+
+FriendsRequests.propTypes = {
+  show: PropTypes.bool,
+  setShow: PropTypes.func,
+  setShowNotifications: PropTypes.func
 };
 
 export default FriendsRequests;

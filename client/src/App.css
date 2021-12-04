@@ -114,3 +114,9 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.scroll-end-msg {
+  color: white;
+  font-weight: bold;
+  font-size: 20pt;
+}

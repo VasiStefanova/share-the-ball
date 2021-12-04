@@ -6,16 +6,18 @@ import CloseButton from 'react-bootstrap/CloseButton';
 import Overlay from 'react-bootstrap/Overlay';
 import AppContext from '../../context/AppContext';
 import SingleNotification from '../../elements/SingleNotification/SingleNotification';
+import PropTypes from 'prop-types';
 
-const Notifications = () => {
+const Notifications = ({ setShow, showNotifications, setShowNotifications }) => {
   const { notifications } = useContext(AppContext);
-  const [show, setShow] = useState(false);
-  const [target, setTarget] = useState(document.querySelector('button.see-friend-requests-btn.btn.btn-outline-secondary.btn-primary'));
+
+  const [target, setTarget] = useState(document.querySelector('button.see-notifications-btn.btn.btn-outline-secondary.btn-primary'));
   const ref = useRef(null);
 
   const handleClick = () => {
-    setShow(!show);
-    setTarget(document.querySelector('button.see-friend-requests-btn.btn.btn-outline-secondary.btn-primary'));
+    setShow(false);
+    setShowNotifications(!showNotifications);
+    setTarget(document.querySelector('button.see-notifications-btn.btn.btn-outline-secondary.btn-primary'));
   };
 
   return (
@@ -24,11 +26,11 @@ const Notifications = () => {
         className='see-notifications-btn btn btn-outline-secondary'
         onClick={handleClick}
       >
-        <i className="bi bi-people-fill fa-3x" />
-        <div style={{ color: 'rgb(182, 5, 5)' }}>{notifications?.length ? +notifications.length : 0}</div>
+        <i className="bi bi-bell-fill" />
+        <h5 style={notifications?.length? { color: 'rgb(182, 5, 5)' } : null}>{notifications?.length ? +notifications.length : 0}</h5>
       </Button>
       <Overlay
-        show={show}
+        show={showNotifications}
         target={target}
         placement="bottom"
         container={ref}
@@ -36,14 +38,14 @@ const Notifications = () => {
       >
         <Popover id="popover-contained">
           <Popover.Header as="h3">
-            Teammate Requests
-            <CloseButton className='close-teammates-btn' onClick={handleClick} />
+            Notifications
+            <CloseButton className='close-notifications-btn' onClick={handleClick} />
           </Popover.Header>
-          <Popover.Body className='friend-requests-body'>
+          <Popover.Body className='notifications-body'>
             {notifications && notifications.length ?
-              notifications.map(notification => <SingleNotification key={notification.itemId} newTeammate={notification} />) :
+              notifications.map(notification => <SingleNotification key={notification.itemId} notification={notification} />) :
               <h6 className='confirmation-msg'>
-                No new requests at the moment
+                No new notifications at the moment
               </h6>}
           </Popover.Body>
         </Popover>
@@ -52,4 +54,9 @@ const Notifications = () => {
   );
 };
 
+Notifications.propTypes = {
+  setShow: PropTypes.func,
+  showNotifications: PropTypes.bool,
+  setShowNotifications: PropTypes.func
+};
 export default Notifications;

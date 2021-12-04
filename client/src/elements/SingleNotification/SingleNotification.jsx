@@ -13,14 +13,16 @@ const SingleNotification = ({ notification }) => {
       />
       {notification.reaction?
         <>
-          <h4>{notification.username} reacted to your post!</h4>
+          <p className='notification-text'>
+            {notification.username} reacted to your post!
+          </p>
           {notification.reaction === 1?
-            <i className="bi bi-hand-thumbs-up-fill" />:
+            <i className="bi bi-hand-thumbs-up-fill like-icon" />:
             notification.reaction === 2?
-              <i className="bi bi-emoji-laughing-fill" />:
-              <i className="bi bi-heart-fill" />}
+              <i className="bi bi-emoji-laughing-fill laugh-icon" />:
+              <i className="bi bi-heart-fill heart-icon" />}
         </>:
-        <h4>{notification.author.username} commented on your post!</h4>}
+        <p className='notification-text'>{notification.author.username} commented on your post!</p>}
     </div>
   );
 };
