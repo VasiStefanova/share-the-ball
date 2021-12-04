@@ -52,7 +52,7 @@ const ChangePassword = () => {
           }}
         />
       </div>
-      <h6 className='theme-helper-text-style helper-text-change-pass'>
+      <h6 className='theme-helper-text-style helper-text-change-pass theme-background-color'>
         Between 4 and 40 characters
       </h6>
       <Button variant="dark" onClick={() => handleConfirm()}>

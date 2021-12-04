@@ -2,11 +2,27 @@
   text-align: left;
 }
 
-.edit-email-box {
-  display: flex;
+.profile-details-table {
+  width: 27vw;
+  height: fit-content;
+  margin: 1vh auto;
 }
 
-.user-email-box {
+.profile-details-table-row {
+  height: 8vh;
+}
+
+.profile-details-table-row td {
+  vertical-align: middle;
+  padding: 0 0.5vw;
+}
+
+.profile-details-table-row h5 {
+  margin: 0;
+}
+
+/* email */
+.edit-email-box {
   display: flex;
 }
 
@@ -24,24 +40,21 @@
 }
 
 #edit-email-button {
+  height: fit-content;
   margin-left: 0.3vw;
 }
 
+/* location */
 .user-location-box {
   display: flex;
   margin-bottom: 1vh;
 }
 
-.user-location-text {
-  margin: auto 0;
-}
-
-#upon-update-text {
-  border: 1px solid black;
+.upon-update-text {
+  border: 1px solid white;
+  border-radius: 3px;
   padding: 1vh 1vw;
+  margin: 0 auto;
   font-style: italic;
-}
-
-.profile-details-buttons {
-  margin-left: 1vw;
+  width: 20vw;
 }

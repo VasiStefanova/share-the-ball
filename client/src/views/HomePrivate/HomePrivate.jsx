@@ -7,7 +7,7 @@ import SinglePost from '../../components/SinglePost/SinglePost';
 import AppContext from '../../context/AppContext';
 import CardLinks from '../../components/CardLinks/CardLinks';
 import MyTeammates from '../../my-profile-tabs/MyTeammates/MyTeammates';
-import { intervalRequest, isCurrentURL } from '../../common/helpers';
+import { intervalRequest } from '../../common/helpers';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { POSTS_PER_PAGE } from '../../common/constants';
 import { deltaRequest } from '../../services/feed/delta-request';
@@ -17,7 +17,7 @@ const HomePrivate = () => {
   const { user, createdPost, setNewPosts } = useContext(AppContext);
   const [posts, setPosts] = useState([]);
   const [interval, setInterval] = useState(null);
-  const [date, setDate] = useState(Date.now());
+  const [date] = useState(Date.now());
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
