@@ -1,5 +1,5 @@
 import { useContext, React, useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 import Avatar from '../../elements/Avatar/Avatax';
 import './Header.css';
 import Button from 'react-bootstrap/Button';
@@ -11,6 +11,7 @@ import { isCurrentURL } from '../../common/helpers';
 const Header = () => {
   const { loggedIn, setLoggedIn, user, setUser, newPosts } = useContext(AppContext);
   const [showUpdateMsg, setShowUpdateMsg] = useState(false);
+  const history = useHistory();
 
   const logout = async (ev) => {
     ev.preventDefault();
@@ -34,6 +35,8 @@ const Header = () => {
 
       localStorage.removeItem('user');
       localStorage.removeItem('token');
+
+      history.push('/home');
 
     } catch (e) {
       console.error(e);
