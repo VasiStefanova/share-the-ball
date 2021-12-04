@@ -71,7 +71,7 @@ const Header = () => {
           <div className='user-box'>
             <div className='username-and-notifications'>
               <div className='username-box'>
-                <Link className="author-profile-link" to='/my-profile'>
+                <Link className="author-profile-link" to='/my-profile/my-posts'>
                   <h5 className='avatar-username'>{user.username}</h5>
                 </Link>
               </div>
@@ -80,7 +80,7 @@ const Header = () => {
               </div>
             </div>
             <div className='avatar-and-logout'>
-              <NavLink to='/my-profile' className='avatar-nav-link'>
+              <NavLink to='/my-profile/my-posts' className='avatar-nav-link'>
                 <Avatar user={user} />
               </NavLink>
               <Button variant="outline-light" className='logout-button' onClick={(ev) => logout(ev)}>Logout</Button>

@@ -24,6 +24,10 @@ function App() {
   const [createdPost, setCreatedPost] = useState(false);
   const [newPosts, setNewPosts] = useState(false);
 
+  // notifications
+  const [userCurrentPosts, setUserCurrentPosts] = useState([]);
+  const [notifications, setNotifications] = useState([]);
+
   // friends
   const [toggleFriendship, setToggleFriendship] = useState(false);
   const [friendRequests, setFriendRequests] = useState([]);
@@ -35,7 +39,7 @@ function App() {
     setFriendRequests(potentialFriends);
 
     const friends = userDetails.friends?.filter(friend => friend.friendshipStatus === 2);
-    if (friends.length !== user.friends.length) {
+    if (friends && friends.length !== user.friends.length) {
       setUser(userDetails);
       setUserInStorage(userDetails);
     };
