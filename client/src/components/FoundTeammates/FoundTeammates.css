@@ -17,6 +17,10 @@
     display: flex;
   }
 
+.teammate-info-box {
+  align-self: center;
+}
+
 .teammate-info {
   color: white;
   margin: unset;

@@ -5,20 +5,16 @@ import FoundTeammates from '../../components/FoundTeammates/FoundTeammates';
 import SearchTeammates from '../../components/SearchTeammates/SearchTeammates';
 import AppContext from '../../context/AppContext';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
-import getUsersRequest from '../../services/users/get-users-request';
+
 import { setUserInStorage } from '../../common/helpers';
 
 const MyTeammates = () => {
   const { user, setUser, toggleFriendship } = useContext(AppContext);
   const [teammates, setTeammates] = useState([]);
 
-  // I use userInfo, not just user to avoid react-state-update-warning upon logging out
-  const [userInfo, setUserInfo] = useState(user);
-
   useEffect(() => {
     getUserDetailsRequest(user.id)
       .then(userDetails => {
-        setUserInfo(userDetails);
         setUser(userDetails);
         setUserInStorage(user);
       })
@@ -26,15 +22,10 @@ const MyTeammates = () => {
   }, [toggleFriendship]);
 
   useEffect(() => {
-    getUsersRequest()
-      .then(allUsers => {
-        return allUsers
-          .filter(({ id: userId }) => userInfo.friends
-            .some(({ id: teammateId, friendshipStatus }) => userId === teammateId && friendshipStatus === 2));
-      })
-      .then(teammatesList => setTeammates(teammatesList))
-      .catch(console.error);
-  }, [userInfo]);
+    if (!user) return;
+    const friends = user.friends.filter(teammate => teammate.friendshipStatus === 2);
+    setTeammates(friends);
+  }, [user]);
 
 
   return (!teammates.length ?
