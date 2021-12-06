@@ -4,7 +4,6 @@ import Figure from 'react-bootstrap/Figure';
 import './NBANews.css';
 
 const NBANews = () => {
-
   const [articles, setArticles] = useState([]);
 
   const getContentString = (str) => {
@@ -21,6 +20,11 @@ const NBANews = () => {
     return result.join('').trim();
   };
 
+  const handleScroll = (ev) => {
+    const target = document.querySelector('div.nba-news-container');
+    target.scrollLeft += ev.deltaY;
+  };
+
 
   useEffect(() => {
     nbaNewsRequest()
@@ -31,7 +35,7 @@ const NBANews = () => {
   return (articles.length ?
     <div
       className='nba-news-container'
-      onWheel={(ev) => ev.target.scrollLeft += ev.deltaY}
+      onWheel={handleScroll}
     >
       {articles.map(article => (
         <div

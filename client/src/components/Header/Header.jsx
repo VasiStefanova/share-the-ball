@@ -69,8 +69,10 @@ const Header = () => {
           </div>}
       </div>
       <div className='header-wallpapers-container'>
-        <img src="/kobe-fadeaway.png" alt="kobe-fadeaway" className='header-wallpaper' />
         <img src="/jordan-fadeaway.png" alt="jordan-fadeaway" className='header-wallpaper' />
+        <img src="/jordan-dunk.png" alt="jordan-dunk" className='header-wallpaper' />
+        <img src="/kobe-dunk.png" alt="kobe-dunk" className='header-wallpaper' />
+        <img src="/kobe-fadeaway.png" alt="kobe-fadeaway" className='header-wallpaper' />
       </div>
       {loggedIn?
         <div className="profile-box">

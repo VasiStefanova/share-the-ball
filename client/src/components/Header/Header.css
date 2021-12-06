@@ -1,7 +1,7 @@
 .header-box {
   display: flex;
   justify-content: space-between;
-  min-height: 15vh;
+  height: 16vh;
   background-color: black;
   align-items: center;
   border-bottom: 1px solid rgb(182, 5, 5);
@@ -85,7 +85,7 @@
 .header-wallpapers-container {
   display: flex;
   justify-content: space-between;
-  width: 15vw;
+  width: 26vw;
   margin-right: 10vw;
 }
 
