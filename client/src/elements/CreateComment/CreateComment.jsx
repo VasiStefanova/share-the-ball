@@ -46,8 +46,13 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
         <div className="button-group theme-button-group-style">
           <VideoEmbedPopover videoUrl={videoUrl} setVideoUrl={setVideoUrl} imagePreview={imagePreview} />
           {isYouTubeUrl(videoUrl) ?
-            <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" style={{ pointerEvents: 'none', opacity: '0.65' }} /> :
             <UploadFileButton
+              buttonText={<i className="bi bi-image" />}
+              buttonId="create-comment-upload-button"
+              applyClass="upload-image-button-disabled"
+            /> :
+            <UploadFileButton
+              applyClass="upload-image-button"
               buttonText={<i className="bi bi-image" />}
               buttonId={`post-${post.id}-upload-button`}
               onChange={(e) => handleFileChange(e)}

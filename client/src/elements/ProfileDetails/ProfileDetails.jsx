@@ -88,7 +88,7 @@ const ProfileDetails = () => {
                   </Form>
                   <div className="edit-email-buttons">
                     <Button
-                      id="confirm-edit-button" variant="dark" onClick={() => handleEmailUpdate()}
+                      id="confirm-edit-button" variant="outline-dark" onClick={() => handleEmailUpdate()}
                     >
                       <i className="bi bi-check-square" />
                     </Button>
@@ -100,9 +100,10 @@ const ProfileDetails = () => {
                 <h5 className='theme-text-style '>{user.email}</h5>}
             </td>
             <td>
-              <Button id="edit-email-button" variant="dark" onClick={() => setEditButtonClicked(!editButtonClicked)}>
-                <i className="bi bi-pencil" />
-              </Button>
+              {!editButtonClicked &&
+                <Button id="edit-email-button" className="theme-btn-style" variant="dark" onClick={() => setEditButtonClicked(!editButtonClicked)}>
+                  <i className="bi bi-pencil" />
+                </Button>}
             </td>
           </tr>
           <tr className='profile-details-table-row'>
@@ -116,10 +117,10 @@ const ProfileDetails = () => {
             </td>
             <td>
               {userHasSetLocation(user) ?
-                <Button className="profile-details-buttons" variant="dark" onClick={() => forgetLocation()}>
+                <Button className="profile-details-buttons theme-btn-style" variant="dark" onClick={() => forgetLocation()}>
                   Forget!
                 </Button> :
-                <Button className="profile-details-buttons" variant="dark" disabled={updatingLocation} onClick={() => handleLocationUpdate()}>
+                <Button className="profile-details-buttons theme-btn-style" variant="dark" disabled={updatingLocation} onClick={() => handleLocationUpdate()}>
                   {updatingLocation ? 'Getting your location...' : 'Update!'}
                 </Button>}
             </td>

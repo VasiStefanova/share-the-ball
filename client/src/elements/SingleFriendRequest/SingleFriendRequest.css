@@ -26,3 +26,21 @@
   margin: auto auto;
   width: 20vw;
 }
+
+.new-teammate-profile-link {
+  text-decoration: none;
+  height: fit-content;
+  color:black
+}
+
+.new-teammate-profile-link:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(182, 5, 5);
+  text-underline-offset: 0.15vh;
+  text-decoration-thickness: 0.3vh;
+  color:black
+}
+
+.single-friend-request-btn-group {
+  margin: auto 0;
+}

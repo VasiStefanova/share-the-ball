@@ -8,13 +8,13 @@ const BackToTopButton = ({ offsetRight = '', offsetLeft = '' }) => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 2700) {
+      if (window.pageYOffset > 1850) {
         setShowBackToTopButton(true);
       } else {
         setShowBackToTopButton(false);
       }
     });
-  }, []);
+  }, [showBackToTopButton]);
 
   // This function will scroll the window to the top
   const scrollToTop = () => {

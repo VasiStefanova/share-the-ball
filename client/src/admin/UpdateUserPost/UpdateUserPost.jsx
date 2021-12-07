@@ -56,12 +56,13 @@ const UpdateUserPost = ({ post, setRender }) => {
             <UploadFileButton
               buttonText={<i className="bi bi-image" />}
               buttonId="create-post-upload-button"
-              style={{ pointerEvents: 'none', opacity: '0.65' }}
+              applyClass="upload-image-button-disabled"
             /> :
             <UploadFileButton
               buttonText={<i className="bi bi-image" />}
               buttonId="create-post-upload-button"
               onChange={(e) => handleFileChange(e)}
+              applyClass="upload-image-button"
             />}
           <ToggleButtonGroup type="radio" name="options" defaultValue={2} style={{ display: 'flex' }}>
             <ToggleButton
@@ -109,7 +110,10 @@ const UpdateUserPost = ({ post, setRender }) => {
           <div className="image-preview-container">
             <img src={imagePreview} id="image-preview" />
             <Button
-              id="remove-prievew-button" variant="outline-dark" onClick={() => {
+              id="remove-prievew-button"
+              className="theme-btn-style"
+              variant="outline-dark"
+              onClick={() => {
                 setImagePreview(false);
                 setFile('');
                 if (post?.picture) {
@@ -122,7 +126,7 @@ const UpdateUserPost = ({ post, setRender }) => {
           </div>}
         {(isYouTubeUrl(videoUrl)) &&
           <VideoEmbed videoUrl={videoUrl} embededVideoClass="embeded-video-create-post" />}
-        <Button disabled={checkedDisabledBtn} id="post-button" variant="dark" onClick={updatePost}>Update</Button>
+        <Button disabled={checkedDisabledBtn} id="post-button" className="theme-btn-style" variant="dark" onClick={updatePost}>Update</Button>
       </div>
     </div>
   );

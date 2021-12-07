@@ -54,8 +54,17 @@ const CreatePost = () => {
         <div className="button-group theme-button-group-style">
           <VideoEmbedPopover videoUrl={videoUrl} setVideoUrl={setVideoUrl} imagePreview={imagePreview} />
           {isYouTubeUrl(videoUrl) ?
-            <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" style={{ pointerEvents: 'none', opacity: '0.65' }} /> :
-            <UploadFileButton buttonText={<i className="bi bi-image" />} buttonId="create-post-upload-button" onChange={(e) => handleFileChange(e)} />}
+            <UploadFileButton
+              buttonText={<i className="bi bi-image" />}
+              buttonId="create-post-upload-button"
+              applyClass="upload-image-button-disabled"
+            /> :
+            <UploadFileButton
+              buttonText={<i className="bi bi-image" />}
+              buttonId="create-post-upload-button"
+              onChange={(e) => handleFileChange(e)}
+              applyClass="upload-image-button"
+            />}
           <ToggleButtonGroup type="radio" name="options" defaultValue={2} style={{ display: 'flex' }}>
             <ToggleButton
               variant="outline-dark"

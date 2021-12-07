@@ -30,7 +30,7 @@ const VideoEmbedPopover = ({ videoUrl, setVideoUrl, imagePreview }) => {
                   />
                 </Form>
                 <Button
-                  id="confirm-embed-button" variant="dark"
+                  id={isYouTubeUrl(videoUrl) ? 'confirm-embed-button' : 'confirm-embed-button-disabled'} variant="dark"
                   disabled={!isYouTubeUrl(videoUrl)}
                   onClick={() => setShowPopover(!showPopover)}
                 >

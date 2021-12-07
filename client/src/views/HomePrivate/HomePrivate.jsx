@@ -104,7 +104,7 @@ const HomePrivate = () => {
           <MyTeammates />
         </div>
       </div>
-      <BackToTopButton offsetLeft="10vw" />
+      <BackToTopButton offsetRight="8vw" />
     </div>
   );
 };

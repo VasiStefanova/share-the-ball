@@ -84,4 +84,18 @@ export const getVideoId = (videoUrl) => {
   return id;
 };
 
+export const getUserFromStorage = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
 
+  return user;
+};
+
+export const validateInput = (inputValue, minLength, maxLength) => {
+  let isValid = false;
+
+  if (inputValue.length >= minLength && inputValue.length <= maxLength) {
+    isValid = true;
+  }
+
+  return isValid;
+};

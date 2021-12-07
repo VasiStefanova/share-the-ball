@@ -16,6 +16,8 @@ const ChangeAvatar = () => {
   const history = useHistory();
 
   const handleFileChange = (e) => {
+    if (!e.target.files[0]) return;
+
     setAvatarPreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
   };
@@ -60,19 +62,19 @@ const ChangeAvatar = () => {
         <UploadFileButton
           buttonText="Choose file"
           buttonId="change-avatar-upload-button"
-          style={{ background: 'black', color: 'white' }}
           onChange={(e) => handleFileChange(e)}
+          applyClass="theme-btn-style change-avatar-button"
         />
         {avatarPreview &&
           <Button
-            id="remove-prievew-button" variant="dark" onClick={() => {
+            id="remove-prievew-button" className="theme-btn-style" variant="dark" onClick={() => {
               setAvatarPreview(null);
               setFile(null);
             }}
           ><i className="bi bi-trash" />
           </Button>}
         {avatarPreview &&
-          <Button id="confirm-avatar-change-button" variant="dark" onClick={() => handleConfirm()}>Confirm</Button>}
+          <Button className="theme-btn-style" id="confirm-avatar-change-button" variant="dark" onClick={() => handleConfirm()}>Confirm</Button>}
       </div>
     </>
   );

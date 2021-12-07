@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import './UploadFileButton.css';
 
-const UploadFileButton = ({ buttonText = '', buttonId = '', onChange, style }) => {
+const UploadFileButton = ({ buttonText = '', buttonId = '', onChange, style, applyClass }) => {
   return (
     <>
-      <label htmlFor={buttonId} className="custom-file-upload" style={style ? style : null}>
+      <label htmlFor={buttonId} className={applyClass} style={style ? style : null}>
         {buttonText}
       </label>
       <input id={buttonId} type="file" accept="image/*" onChange={onChange} />

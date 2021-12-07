@@ -31,6 +31,7 @@
 }
 
 #confirm-edit-button {
+  color:white;
   background: green;
 }
 
@@ -57,4 +58,14 @@
   margin: 0 auto;
   font-style: italic;
   width: 20vw;
+}
+
+.profile-details-buttons:focus {
+  background: white;
+  color: black;
+}
+
+.profile-details-buttons:focus:hover {
+  background-color: #6c757d;
+  color: white;
 }

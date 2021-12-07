@@ -51,7 +51,7 @@ const SingleUserBox = ({ teammate }) => {
         </div>
         <div className={isCurrentURL('home') ? 'teammate-button-group-home' : 'teammate-button-group'}>
           {isCurrentURL('user_list') && teammate.username !== 'admin' &&
-            <div className='action-btns-group'>
+            <>
               {teammate.banReason ?
                 <Badge className="banned-user-badge" bg='danger'>Banned!</Badge> :
                 <Button
@@ -60,7 +60,7 @@ const SingleUserBox = ({ teammate }) => {
                   onClick={() => setShowBanModal(true)}
                 >
                   <i className="bi bi-slash-circle-fill" />
-                  ban
+                  Ban
                 </Button>}
               <Button
                 className='action-btn theme-btn-style'
@@ -68,9 +68,9 @@ const SingleUserBox = ({ teammate }) => {
                 onClick={() => setShowDeleteModal(true)}
               >
                 <i className="bi bi-x-circle-fill" />
-                delete
+                Delete
               </Button>
-            </div>}
+            </>}
           {isCurrentURL('search') &&
             <ToggleFriendshipButton user={user} targetUser={person} />}
           <Button className="view-user-profile-button theme-btn-style" variant='outline-dark' onClick={() => history.push(`/user-profile/id=${teammate.id}/posts`)}>

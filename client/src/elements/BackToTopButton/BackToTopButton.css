@@ -1,4 +1,5 @@
 .back-to-top-button {
   position: fixed;
   bottom: 50vh;
+  width: 9vw;
 }

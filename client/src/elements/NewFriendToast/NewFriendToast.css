@@ -1,0 +1,17 @@
+.new-friend-toast {
+  display: grid; 
+  position: absolute;
+  bottom: 5vh !important;
+  border-radius: 1vh;
+  right: 9.5vh !important;
+}
+
+.toast-header {
+  background-color: white;
+  border-top-right-radius: 1vh;
+  border-top-left-radius: 1vh;
+}
+
+.toast-body {
+  color: white;
+}

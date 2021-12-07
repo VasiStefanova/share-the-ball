@@ -30,4 +30,5 @@
 
 .my-teammates-container {
   text-align: -webkit-center;
+  text-align: -moz-center;
 }

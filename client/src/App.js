@@ -8,13 +8,14 @@ import HomePublic from './views/HomePublic/HomePublic';
 import HomePrivate from './views/HomePrivate/HomePrivate';
 import SearchTeammatesView from './views/SearchTeammatesView/SearchTeammatesView';
 import MyProfile from './views/MyProfile/MyProfile';
-import { checkLoginStatus, getLoggedUser, intervalRequest, setUserInStorage } from './common/helpers';
+import { checkLoginStatus, getLoggedUser, getUserFromStorage, intervalRequest, setUserInStorage } from './common/helpers';
 import UserProfile from './views/UserProfile/UserProfile';
 import getUserDetailsRequest from './services/users/get-user-details-request';
 import NBANews from './components/NBANews/NBANews';
 import AboutUs from './views/AboutUs/About.us';
 import { getPostsByUserIdRequest } from './services/posts/get-posts-by-user-id-request';
 import { getUserNotificationsRequest } from './services/feed/get-user-notifications-request';
+import NewFriendToast from './elements/NewFriendToast/NewFriendToast';
 
 // eslint-disable-next-line require-jsdoc
 function App() {
@@ -35,6 +36,7 @@ function App() {
   const [toggleFriendship, setToggleFriendship] = useState(false);
   const [friendRequests, setFriendRequests] = useState([]);
   const [interval, setInterval] = useState(null);
+  const [newFriend, setNewFriend] = useState(null);
 
   const getUserPosts = () => {
     getPostsByUserIdRequest(user.id, null, 100)
@@ -56,10 +58,18 @@ function App() {
     const potentialFriends = userDetails.friends?.filter(friend => friend.canAcceptFriendship === true);
     setFriendRequests(potentialFriends);
 
-    const friends = userDetails.friends?.filter(friend => friend.friendshipStatus === 2);
-    if (friends && friends.length !== user.friends.length) {
+    const friendsFromResponse = userDetails.friends.filter(friend => friend.friendshipStatus === 2);
+    const loggedUserFriends = getUserFromStorage().friends.filter(friend => friend.friendshipStatus === 2);
+
+    if (friendsFromResponse.length !== loggedUserFriends.length) {
       setUser(userDetails);
       setUserInStorage(userDetails);
+
+      if (friendsFromResponse.length > loggedUserFriends.length) {
+        setNewFriend(friendsFromResponse
+          .filter(({ id: friendFromResponseId }) => !loggedUserFriends
+            .some(({ id: loggedUserFriendId }) => friendFromResponseId === loggedUserFriendId))[0]);
+      }
     }
   };
 
@@ -117,6 +127,7 @@ function App() {
             <Route path="/user-profile" component={UserProfile} />
             <Route path="/about-us" component={AboutUs} />
           </Switch>
+          <NewFriendToast newFriend={newFriend} setNewFriend={setNewFriend} />
         </BrowserRouter>
       </AppContext.Provider>
     </div>

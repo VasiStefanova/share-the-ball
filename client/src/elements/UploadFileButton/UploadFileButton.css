@@ -1,14 +1,29 @@
 input[type="file"] {
   display: none;
 }
-.custom-file-upload {
+
+.upload-image-button {
   border: 0.1vh solid black;
   display: inline-block;
   padding: 0.5vh 0.5vw;
   cursor: pointer;
 }
 
-.custom-file-upload:hover {
+.upload-image-button-disabled {
+  border: 0.1vh solid black;
+  display: inline-block;
+  padding: 0.5vh 0.5vw;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.upload-image-button:hover {
   background: black;
   color:white
+}
+
+.change-avatar-button {
+  border: 0.1vh solid black;
+  display: inline-block;
+  padding: 0.5vh 0.5vw;
 }

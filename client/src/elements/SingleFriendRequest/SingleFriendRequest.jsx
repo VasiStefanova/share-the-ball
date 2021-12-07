@@ -6,6 +6,7 @@ import { acceptRequest } from '../../services/friends/accept-request';
 import { unfriendRequest } from '../../services/friends/unfriend-request';
 import { useContext, useState } from 'react';
 import AppContext from '../../context/AppContext';
+import { Link } from 'react-router-dom';
 
 
 const SingleFriendRequest = ({ newTeammate }) => {
@@ -39,10 +40,12 @@ const SingleFriendRequest = ({ newTeammate }) => {
           <div className='new-teammate-avatar-and-info'>
             <Avatar user={newTeammate} style={{ width: '5vh', height: '5vh' }} />
             <div className='new-teammate-info-box'>
-              <h5 className='new-teammate-info'>{newTeammate.username}</h5>
+              <Link className="new-teammate-profile-link" to={`/user-profile/id=${newTeammate.id}/posts`}>
+                <h5 className='new-teammate-info'>{newTeammate.username}</h5>
+              </Link>
             </div>
           </div>
-          <div>
+          <div className="single-friend-request-btn-group">
             <Button
               variant='outline-dark'
               className='friend-request-accept-btn'
