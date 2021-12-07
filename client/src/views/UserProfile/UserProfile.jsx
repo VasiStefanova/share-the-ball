@@ -8,6 +8,7 @@ import Teammates from '../../user-profile-tabs/Teammates/Teammates';
 import { ButtonGroup } from 'react-bootstrap';
 import { useHistory, useLocation } from 'react-router';
 import { isCurrentURL } from '../../common/helpers';
+import BackToTopButton from '../../elements/BackToTopButton/BackToTopButton';
 
 const UserProfile = () => {
   const history = useHistory();
@@ -62,6 +63,7 @@ const UserProfile = () => {
       <div className='user-profile-right'>
         <UserDetails userId={userId} />
       </div>
+      <BackToTopButton offsetRight="10vw" />
     </div>
   );
 };

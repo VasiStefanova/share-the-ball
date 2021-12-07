@@ -5,6 +5,7 @@ import { useHistory, useLocation } from 'react-router';
 import { isCurrentURL } from '../../common/helpers';
 import ChangeCredentialsAccordion from '../../components/ChangeCredentialsAccordion/ChangeCredentialsAccordion';
 import AppContext from '../../context/AppContext';
+import BackToTopButton from '../../elements/BackToTopButton/BackToTopButton';
 import MyPosts from '../../my-profile-tabs/MyPosts/MyPosts';
 import MyTeammates from '../../my-profile-tabs/MyTeammates/MyTeammates';
 import UserList from '../../my-profile-tabs/UserList/UserList';
@@ -68,6 +69,7 @@ const MyProfile = () => {
       <div className='my-profile-right'>
         <ChangeCredentialsAccordion />
       </div>
+      <BackToTopButton offsetRight="10vw" />
     </div>
   );
 };
