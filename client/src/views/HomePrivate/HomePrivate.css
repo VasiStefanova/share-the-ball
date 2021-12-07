@@ -5,13 +5,13 @@
 .home-private-left {
   padding: 1vh 0;
   width: 25vw;
-  min-height: 85vh;
+  min-height: 84vh;
 }
 
 .home-private-center {
   padding: 1vh 0;
   width: 50vw;
-  min-height: 85vh;
+  min-height: 84vh;
   justify-content: center;
   border-left: 3px solid rgb(182, 5, 5);
   border-right: 3px solid rgb(182, 5, 5);
@@ -20,7 +20,7 @@
 .home-private-right {
   padding: 2vh 1vh;
   width: 25vw;
-  min-height: 85vh;
+  min-height: 84vh;
 }
 
 .single-post {

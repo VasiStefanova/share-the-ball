@@ -8,10 +8,12 @@ import AppContext from '../../context/AppContext';
 import { setUserInStorage } from '../../common/helpers';
 import ToggleFriendshipButton from '../../elements/ToggleFriendshipButton/ToggleFriendshipButton';
 import UnfriendButton from '../../elements/UnfriendButton/UnfriendButton';
+import { reverseGeocodeLocationRequest } from '../../services/google-geocoding/reverse-geocode-location-request';
 
 const UserDetails = ({ userId: targetUserId }) => {
   const { user, setUser, toggleFriendship } = useContext(AppContext);
   const [targetUser, setTargetUser] = useState({});
+  const [location, setLocation] = useState('');
 
   useEffect(() => {
     getUserDetailsRequest(targetUserId)
@@ -27,6 +29,14 @@ const UserDetails = ({ userId: targetUserId }) => {
       })
       .catch(console.error);
   }, [toggleFriendship]);
+
+  useEffect(() => {
+    // if (targetUser.latitude) {
+    //   const latLng = [targetUser.latitude, targetUser.longitude];
+    //   reverseGeocodeLocationRequest(latLng)
+    //     .then(city => setLocation(city));
+    // }
+  }, [targetUser]);
 
   const targetIsFriend = user.friends.some(friend => friend.id === +targetUser.id && friend.friendshipStatus === 2);
 
@@ -44,11 +54,13 @@ const UserDetails = ({ userId: targetUserId }) => {
           'display': 'unset'
         }}
       />
-      <Figure.Caption className='user-info'>
+      <div className='user-info theme-background-color'>
         <h4 className='theme-text-style'>{targetUser.username}</h4>
-        <h6 className='user-text theme-text-style'>email: {targetUser.email}</h6>
-        <h6 className='user-text theme-text-style'>last updated on: {new Date(targetUser.lastUpdated).toLocaleDateString('en-UK')}</h6>
-      </Figure.Caption>
+        <h6 className='user-text theme-text-style'>Email: {targetUser.email}</h6>
+        <h6 className='user-text theme-text-style'>Last updated on: {new Date(targetUser.lastUpdated).toLocaleDateString('en-UK')}</h6>
+        {targetUser.latitude &&
+          <h6 className='user-text theme-text-style'>Location: {location || '*Turn on location service!*'}</h6>}
+      </div>
       <ToggleFriendshipButton user={user} targetUser={targetUser} />
       {targetIsFriend &&
         <UnfriendButton user={user} targetUser={targetUser} />}

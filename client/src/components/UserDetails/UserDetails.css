@@ -1,8 +1,11 @@
 .user-info {
-    padding: 5vh 5vh;
+    padding: 1vh 1vw;
+    margin: 3vh 1vw;
+    border-radius: 6px;
 }
 .user-text {
-    margin-bottom: 1vh
+    margin-bottom: 1vh;
+    text-align: left;
 }
 .bi-person-plus-fill {
     padding-right: 0.5vw;

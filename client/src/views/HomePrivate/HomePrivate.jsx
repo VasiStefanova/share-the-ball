@@ -85,8 +85,10 @@ const HomePrivate = () => {
             hasMore={hasMore}
             loader={<h4>Loading...</h4>}
             endMessage={
-              <p style={{ textAlign: 'center' }}>
-                <b>Yay! You have seen it all</b>
+              <p className='theme-background-color' style={{ textAlign: 'center', marginTop: '1vh' }}>
+                {posts.length?
+                  <b className='scroll-end-msg'>Yay! You have seen it all.</b>:
+                  <b className='scroll-end-msg'>No posts to show...</b>}
               </p>
             }
           >

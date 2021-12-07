@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import Avatar from '../../elements/Avatar/Avatax';
 import './SinglePost.css';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AppContext from '../../context/AppContext';
 import CommentsAccordion from '../CommentsAccordion/CommentsAccordion';
 import { Link } from 'react-router-dom';
@@ -15,6 +15,16 @@ import { isYouTubeUrl } from '../../common/helpers';
 const SinglePost = ({ post, setRender }) => {
   const { user } = useContext(AppContext);
   const [updatePostBtnClicked, setUpdatePostBtnCLicked] = useState(false);
+
+  // The next few lines are for example purposes. We have a way to translate coordinates to a city,
+  // but it is paid after a certain amount of requests
+  const cities = ['София, България', 'Русе, България', 'Пловдив, България'];
+  const [location, setLocation] = useState('');
+
+  useEffect(() => {
+    const index = Math.floor(Math.random() * 3);
+    setLocation(cities[index]);
+  }, []);
 
 
   return (
@@ -29,7 +39,8 @@ const SinglePost = ({ post, setRender }) => {
                 <Link className="author-profile-link" to={`/user-profile/id=${post.author.id}/posts`}>
                   <h6 className='author-username author-username-single-post'>{post.author.username}</h6>
                 </Link>
-                <p className="additional-author-info">{new Date(post.updatedOn).toLocaleDateString('en-UK')}</p>
+                {/* Here you can set what location is shown in posts for example purposes. */}
+                <p className="additional-author-info">{`${new Date(post.updatedOn).toLocaleDateString('en-UK')} - ${location}`}</p>
               </div>
             </div>}
           <div className="post-content theme-text-style">

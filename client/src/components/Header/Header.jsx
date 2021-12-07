@@ -14,6 +14,11 @@ const Header = () => {
   const [showUpdateMsg, setShowUpdateMsg] = useState(false);
   const history = useHistory();
 
+  // notifications and friend requests
+
+  const [show, setShow] = useState(false); // friend requests
+  const [showNotifications, setShowNotifications] = useState(false);
+
   const logout = async (ev) => {
     ev.preventDefault();
 
@@ -64,8 +69,10 @@ const Header = () => {
           </div>}
       </div>
       <div className='header-wallpapers-container'>
-        <img src="/kobe-fadeaway.png" alt="kobe-fadeaway" className='header-wallpaper' />
         <img src="/jordan-fadeaway.png" alt="jordan-fadeaway" className='header-wallpaper' />
+        <img src="/jordan-dunk.png" alt="jordan-dunk" className='header-wallpaper' />
+        <img src="/kobe-dunk.png" alt="kobe-dunk" className='header-wallpaper' />
+        <img src="/kobe-fadeaway.png" alt="kobe-fadeaway" className='header-wallpaper' />
       </div>
       {loggedIn?
         <div className="profile-box">
@@ -77,8 +84,16 @@ const Header = () => {
                 </Link>
               </div>
               <div className='notifications-box'>
-                <Notifications />
-                <FriendRequests />
+                <Notifications
+                  setShow={setShow}
+                  showNotifications={showNotifications}
+                  setShowNotifications={setShowNotifications}
+                />
+                <FriendRequests
+                  show={show}
+                  setShow={setShow}
+                  setShowNotifications={setShowNotifications}
+                />
               </div>
             </div>
             <div className='avatar-and-logout'>

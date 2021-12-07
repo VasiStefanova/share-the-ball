@@ -5,13 +5,13 @@
 .my-profile-left {
   
   width: 67vw;
-  min-height: 85vh;
+  min-height: 84vh;
 }
 
 .my-profile-right {
   border-left: 3px solid rgb(182, 5, 5);
   width: 33vw;
-  min-height: 85vh;
+  min-height: 84vh;
   padding: 1vh 1vw;
 }
 

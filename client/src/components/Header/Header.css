@@ -1,7 +1,7 @@
 .header-box {
   display: flex;
   justify-content: space-between;
-  min-height: 15vh;
+  height: 16vh;
   background-color: black;
   align-items: center;
   border-bottom: 1px solid rgb(182, 5, 5);
@@ -12,7 +12,7 @@
   margin: 1vh 0;
   display: flex;
   align-items: center;
-  width: 22vw;
+  width: 23vw;
 }
 
 .new-posts-msg-box {
@@ -85,8 +85,8 @@
 .header-wallpapers-container {
   display: flex;
   justify-content: space-between;
-  width: 15vw;
-  margin-right: 10vw;
+  width: 26vw;
+  margin-right: 12vw;
 }
 
 .header-wallpaper {

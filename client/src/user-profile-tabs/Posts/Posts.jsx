@@ -42,27 +42,26 @@ const Posts = ({ userId }) => {
     return () => setUserPosts({});
   }, [userId, render]);
 
-  return ( userPosts.length?
-    <>
-      <InfiniteScroll
-        dataLength={userPosts.length} // This is important field to render the next data
-        next={getMorePosts}
-        hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
-        endMessage={
-          <p style={{ textAlign: 'center' }}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }
-      >
-        {userPosts.map(post =>
-          <div className='single-post' key={post.id}>
-            <SinglePost post={post} setRender={setRender} />
-          </div>
-        )}
-      </InfiniteScroll>
-    </> :
-    <h3 className='theme-text-style' style={{ marginTop: '1vh' }}>No posts to show</h3>
+  return (
+    <InfiniteScroll
+      dataLength={userPosts.length} // This is important field to render the next data
+      next={getMorePosts}
+      hasMore={hasMore}
+      loader={<h4>Loading...</h4>}
+      endMessage={
+        <p className='theme-background-color' style={{ textAlign: 'center', marginTop: '1vh' }}>
+          {userPosts.length?
+            <b className='scroll-end-msg'>Yay! You have seen it all.</b>:
+            <b className='scroll-end-msg'>No posts to show...</b>}
+        </p>
+      }
+    >
+      {userPosts.map(post =>
+        <div className='single-post' key={post.id}>
+          <SinglePost post={post} setRender={setRender} />
+        </div>
+      )}
+    </InfiniteScroll>
   );
 };
 
