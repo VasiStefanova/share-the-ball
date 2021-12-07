@@ -9,7 +9,7 @@ import AppContext from '../../context/AppContext';
 import { Link } from 'react-router-dom';
 
 
-const SingleFriendRequest = ({ newTeammate }) => {
+const SingleFriendRequest = ({ newTeammate, setShowFriendRequestPopover }) => {
   const { user, toggleFriendship, setToggleFriendship } = useContext(AppContext);
   const [buttonClicked, setButtonClicked] = useState(false);
   const [confirmation, setConfirmation] = useState(false);
@@ -40,7 +40,11 @@ const SingleFriendRequest = ({ newTeammate }) => {
           <div className='new-teammate-avatar-and-info'>
             <Avatar user={newTeammate} style={{ width: '5vh', height: '5vh' }} />
             <div className='new-teammate-info-box'>
-              <Link className="new-teammate-profile-link" to={`/user-profile/id=${newTeammate.id}/posts`}>
+              <Link
+                className="new-teammate-profile-link"
+                to={`/user-profile/id=${newTeammate.id}/posts`}
+                onClick={() => setShowFriendRequestPopover(false)}
+              >
                 <h5 className='new-teammate-info'>{newTeammate.username}</h5>
               </Link>
             </div>
@@ -72,7 +76,8 @@ const SingleFriendRequest = ({ newTeammate }) => {
 };
 
 SingleFriendRequest.propTypes = {
-  newTeammate: PropTypes.object
+  newTeammate: PropTypes.object,
+  setShowFriendRequestPopover: PropTypes.func
 };
 
 export default SingleFriendRequest;

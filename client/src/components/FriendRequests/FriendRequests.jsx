@@ -44,7 +44,7 @@ const FriendsRequests = ({ show, setShow, setShowNotifications }) => {
           </Popover.Header>
           <Popover.Body className='friend-requests-body'>
             {friendRequests && friendRequests.length ?
-              friendRequests.map(newTeammate => <SingleFriendRequest key={newTeammate.id} newTeammate={newTeammate} />) :
+              friendRequests.map(newTeammate => <SingleFriendRequest key={newTeammate.id} newTeammate={newTeammate} setShowFriendRequestPopover={setShow} />) :
               <h6 className='confirmation-msg'>
                 No new requests at the moment
               </h6>}

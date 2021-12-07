@@ -15,8 +15,8 @@ const MyTeammates = () => {
   useEffect(() => {
     getUserDetailsRequest(user.id)
       .then(userDetails => {
+        setUserInStorage(userDetails);
         setUser(userDetails);
-        setUserInStorage(user);
       })
       .catch(console.error);
   }, [toggleFriendship]);
