@@ -20,6 +20,8 @@ const SearchTeammates = ({ setTeammates, targetUserId = '' }) => {
 
   const search = async () => {
     const searchQueries = {};
+    searchQueries.count = 100;
+
     if (usernameBtnClicked) {
       searchQueries.name=`${userInput}`;
     }
