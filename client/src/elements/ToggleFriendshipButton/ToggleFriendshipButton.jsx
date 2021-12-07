@@ -19,8 +19,9 @@ const ToggleFriendshipButton = ({ user, targetUser }) => {
         className="toggle-friendship-button theme-btn-style"
         variant='outline-dark'
         onClick={() => {
-          acceptRequest(user.id, targetUser.id);
-          setToggleFriendship(!toggleFriendship);
+          acceptRequest(user.id, targetUser.id)
+            .then(() => setToggleFriendship(!toggleFriendship))
+            .catch(console.error);
         }}
       >
         <i className="bi bi-check-lg" />

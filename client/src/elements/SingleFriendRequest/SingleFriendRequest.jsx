@@ -17,6 +17,7 @@ const SingleFriendRequest = ({ newTeammate, setShowFriendRequestPopover }) => {
   const acceptFriendRequest = (loggedUser, otherUser) => {
     acceptRequest(loggedUser, otherUser)
       .then(() => {
+        setToggleFriendship(!toggleFriendship);
         setButtonClicked(true);
         setConfirmation(`You and ${newTeammate.username} are now teammates!`);
       })
@@ -26,6 +27,7 @@ const SingleFriendRequest = ({ newTeammate, setShowFriendRequestPopover }) => {
   const declineFriendRequest = (loggedUser, otherUser) => {
     unfriendRequest(loggedUser, otherUser)
       .then(() => {
+        setToggleFriendship(!toggleFriendship);
         setButtonClicked(true);
         setConfirmation(`You have declined ${newTeammate.username}'s invite...`);
       })
@@ -53,19 +55,13 @@ const SingleFriendRequest = ({ newTeammate, setShowFriendRequestPopover }) => {
             <Button
               variant='outline-dark'
               className='friend-request-accept-btn'
-              onClick={() => {
-                acceptFriendRequest(user.id, newTeammate.id);
-                setToggleFriendship(!toggleFriendship);
-              }}
+              onClick={() => acceptFriendRequest(user.id, newTeammate.id)}
             >
               Accept
             </Button>
             <Button
               variant='outline-dark'
-              onClick={() => {
-                declineFriendRequest(user.id, newTeammate.id);
-                setToggleFriendship(!toggleFriendship);
-              }}
+              onClick={() => declineFriendRequest(user.id, newTeammate.id)}
             >
               Decline
             </Button>
