@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AppContext from '../../context/AppContext';
 import './ProfileDetails.css';
 import Button from 'react-bootstrap/Button';
@@ -8,6 +8,7 @@ import { logoutRequest } from '../../services/auth/logout-request';
 import { useHistory } from 'react-router';
 import { setUserInStorage, updateUserLocation, userHasSetLocation } from '../../common/helpers';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
+import { reverseGeocodeLocationRequest } from '../../services/google-geocoding/reverse-geocode-location-request';
 
 const ProfileDetails = () => {
   const { user, setUser, setLoggedIn } = useContext(AppContext);
@@ -15,7 +16,7 @@ const ProfileDetails = () => {
   const [email, setEmail] = useState(user.email);
   const [updatingLocation, setUpdatingLocation] = useState(false);
   const history = useHistory();
-
+  const [location, setLocation] = useState('');
 
   const handleEmailUpdate = async () => {
     await updateUserRequest('', '', email);
@@ -53,6 +54,14 @@ const ProfileDetails = () => {
     setUser(userDetails);
     setUserInStorage(userDetails);
   };
+
+  useEffect(() => {
+    // if (user.latitude) {
+    //   const latLng = [user.latitude, user.longitude];
+    //   reverseGeocodeLocationRequest(latLng)
+    //     .then(city => setLocation(city));
+    // }
+  }, [user]);
 
   return (
     <div className='profile-details-container'>
@@ -111,7 +120,7 @@ const ProfileDetails = () => {
             </td>
             <td>
               {userHasSetLocation(user) ?
-                <h5 className='theme-text-style '>*Put location here* </h5>:
+                <h5 className='theme-text-style '>{location || '*Turn on location service!*'}</h5>:
                 <h5 className='theme-text-style'>No location set </h5>}
             </td>
             <td>
