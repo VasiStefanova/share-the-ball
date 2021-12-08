@@ -42,7 +42,7 @@ const Posts = ({ userId }) => {
     setHasMore(true);
     getInitialPosts();
 
-    return () => setUserPosts({});
+    return () => setUserPosts([]);
   }, [userId, render]);
 
   return (
