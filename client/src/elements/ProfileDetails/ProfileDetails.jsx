@@ -117,12 +117,12 @@ const ProfileDetails = () => {
           </tr>
           <tr className='profile-details-table-row'>
             <td>
-              <h5 className='theme-text-style '>Location:</h5>
+              <h5 className='theme-text-style'>Location:</h5>
             </td>
             <td>
               {userHasSetLocation(user) ?
-                <h5 className='theme-text-style '>{location || '*Turn on location service!*'}</h5>:
-                <h5 className='theme-text-style'>No location set </h5>}
+                <h5 className='theme-text-style location-box'>{location || '*Turn on location service!*'}</h5>:
+                <h5 className='theme-text-style location-box'>No location set </h5>}
             </td>
             <td>
               {userHasSetLocation(user) ?

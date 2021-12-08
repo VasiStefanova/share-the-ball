@@ -55,6 +55,10 @@
 }
 
 /* location */
+.location-box {
+  width: 15vw;
+}
+
 .user-location-box {
   display: flex;
   margin-bottom: 1vh;
@@ -67,6 +71,10 @@
   margin: 0 auto;
   font-style: italic;
   width: 20vw;
+}
+
+.profile-details-buttons {
+  width: 5vw;
 }
 
 .profile-details-buttons:focus {
