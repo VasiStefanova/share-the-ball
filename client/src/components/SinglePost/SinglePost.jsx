@@ -18,7 +18,7 @@ const SinglePost = ({ post, setRender }) => {
 
   // The next few lines are for example purposes. We have a way to translate coordinates to a city,
   // but it is paid after a certain amount of requests
-  const cities = ['София, България', 'Русе, България', 'Пловдив, България'];
+  const cities = ['Sofia, Bulgaria', 'Ruse, Bulgaria', 'Plovdiv, Bulgaria'];
   const [location, setLocation] = useState('');
 
   useEffect(() => {
