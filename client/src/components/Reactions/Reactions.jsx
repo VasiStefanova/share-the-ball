@@ -21,7 +21,6 @@ const Reactions = ({ postId, commentId }) => {
   const targetId = commentId? commentId : postId;
 
   const getReactions = (contentId) => {
-
     if (commentId) {
       getSinglePostRequest(postId)
         .then(post => post.comments.find(comment => comment.id === contentId))
@@ -80,7 +79,6 @@ const Reactions = ({ postId, commentId }) => {
       reactToPostRequest(contentId, 4)
         .then(() => setUserReaction(false))
         .catch(console.error);
-
     }
   };
 
@@ -139,7 +137,6 @@ const Reactions = ({ postId, commentId }) => {
         <Button variant="dark" size='sm' className='all-reactions-btn' onClick={() => setModalShow(true)}>
           Reactions ({reactions.length})
         </Button>
-
         <ReactionsModal
           show={modalShow}
           onHide={() => setModalShow(false)}

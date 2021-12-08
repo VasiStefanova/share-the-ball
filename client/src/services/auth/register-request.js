@@ -21,5 +21,3 @@ export const registerRequest = async (credentials = { username: '', password: ''
     return error;
   }
 };
-
-

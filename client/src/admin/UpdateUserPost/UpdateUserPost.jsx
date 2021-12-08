@@ -22,7 +22,6 @@ const UpdateUserPost = ({ post, setRender }) => {
 
   const [videoUrl, setVideoUrl] = useState(post.embed === 'deleted' ? '' : post.embed);
 
-
   const handleFileChange = (e) => {
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
@@ -37,7 +36,6 @@ const UpdateUserPost = ({ post, setRender }) => {
       .then(()=> setRender({}))
       .catch(err => console.error(err));
   };
-
 
   return (
     <div className="create-post-box theme-border-style">
@@ -116,9 +114,6 @@ const UpdateUserPost = ({ post, setRender }) => {
               onClick={() => {
                 setImagePreview(false);
                 setFile('');
-                if (post?.picture) {
-                  // setCheckedDisabledBtn(true);
-                }
               }}
             >
               <i className="bi bi-trash" />

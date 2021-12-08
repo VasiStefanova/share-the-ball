@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import Toast from 'react-bootstrap/Toast';
 import './NewFriendToast.css';
+import PropTypes from 'prop-types';
 
 const NewFriendToast = ({ newFriend, setNewFriend }) => {
   const [showNewFriendToast, setShowNewFriendToast] = useState(false);
@@ -32,7 +32,11 @@ const NewFriendToast = ({ newFriend, setNewFriend }) => {
   }
 
   return null;
+};
 
+NewFriendToast.propTypes = {
+  newFriend: PropTypes.object,
+  setNewFriend: PropTypes.func
 };
 
 export default NewFriendToast;

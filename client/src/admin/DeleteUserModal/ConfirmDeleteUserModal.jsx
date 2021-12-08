@@ -6,7 +6,6 @@ import './ConfirmDeleteUserModal.css';
 import AppContext from '../../context/AppContext';
 import { useContext } from 'react';
 
-
 const ConfirmDeleteUser = ({ userId, username, show, setShow }) => {
 
   const { toggleFriendship, setToggleFriendship } = useContext(AppContext);

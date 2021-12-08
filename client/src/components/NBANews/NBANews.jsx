@@ -5,15 +5,20 @@ import './NBANews.css';
 
 const NBANews = () => {
   const [articles, setArticles] = useState([]);
+  const dateAsStringStartIndex = 0;
+  const dateAsStringCutOffIndex = 10;
+
+  // This function below takes out just the content of the article we need
+  // as it comes as an HTML string from the endpoint
 
   const getContentString = (str) => {
-    const stringArray = str.split('');
+    const startingSymbol = 43;
+    const stringAsArray = str.split('');
     const result = [];
-    for (let i = 43; i < stringArray.length; i++) {
+    for (let i = startingSymbol; i < stringAsArray.length; i++) {
       if (str[i] === '<') {
         break;
       }
-
       result.push(str[i]);
     }
 
@@ -24,7 +29,6 @@ const NBANews = () => {
     const target = document.querySelector('div.nba-news-container');
     target.scrollLeft += ev.deltaY;
   };
-
 
   useEffect(() => {
     nbaNewsRequest()
@@ -53,7 +57,7 @@ const NBANews = () => {
             />
             <div className="single-article-headar-bar-text">
               <h6 className='author-username author-username-single-article'>{article.title}</h6>
-              <p className="additional-author-info">{article.date.substring(0, 10)}</p>
+              <p className="additional-author-info">{article.date.substring(dateAsStringStartIndex, dateAsStringCutOffIndex)}</p>
               <div className="article-content theme-text-style">
                 <p className='article-text'>
                   {getContentString(article.content)}
@@ -65,7 +69,6 @@ const NBANews = () => {
       ))}
     </div>:
     null);
-
 };
 
 export default NBANews;

@@ -5,6 +5,7 @@ import ChangePassword from '../../elements/ChangePassword/ChangePassword';
 import ChangeAvatar from '../../elements/ChangeAvatar/ChangeAvatar';
 
 const ChangeCredentialsAccordion = () => {
+
   return (
     <Accordion defaultActiveKey="0" className='change-credentials-accordion'>
       <Accordion.Item eventKey="0" className='change-credentials-accordion-item theme-accordion-style'>

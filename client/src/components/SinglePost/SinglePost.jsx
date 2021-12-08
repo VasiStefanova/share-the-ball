@@ -11,6 +11,7 @@ import UpdateUserPost from '../../admin/UpdateUserPost/UpdateUserPost';
 import Reactions from '../../components/Reactions/Reactions';
 import VideoEmbed from '../../elements/VideoEmbed/VideoEmbed';
 import { isYouTubeUrl } from '../../common/helpers';
+import { SERVER_URL, USER_ROLES } from '../../common/constants';
 
 const SinglePost = ({ post, setRender }) => {
   const { user } = useContext(AppContext);
@@ -25,7 +26,6 @@ const SinglePost = ({ post, setRender }) => {
     const index = Math.floor(Math.random() * 3);
     setLocation(cities[index]);
   }, []);
-
 
   return (
     updatePostBtnClicked ?
@@ -49,7 +49,7 @@ const SinglePost = ({ post, setRender }) => {
             </h5>
             {post.picture &&
               <div className="post-image-box">
-                <img src={`http://localhost:5000/${post.picture}`} className='post-image' />
+                <img src={`${SERVER_URL}/${post.picture}`} className='post-image' />
               </div>}
             {isYouTubeUrl(post.embed) &&
               <VideoEmbed videoUrl={post.embed} embededVideoClass="embeded-video-single-post" />}
@@ -62,7 +62,7 @@ const SinglePost = ({ post, setRender }) => {
             <div className="comments-box">
               <CommentsAccordion user={user} post={post} />
             </div>}
-          {user.role === 2 &&
+          {user.role === USER_ROLES.admin &&
             <div className='admin-buttons-box'>
               <DeleteUserPost postId={post.id} setRender={setRender} />
               <Button

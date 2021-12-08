@@ -42,4 +42,5 @@ const ReactedUserBox = ({ userId }) => {
 ReactedUserBox.propTypes = {
   userId: PropTypes.number
 };
+
 export default ReactedUserBox;

@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import DeleteUserComment from '../../admin/DeleteUserComment/DeleteUserComment';
 import Reactions from '../../components/Reactions/Reactions';
 import VideoEmbed from '../VideoEmbed/VideoEmbed';
+import { SERVER_URL, USER_ROLES } from '../../common/constants';
 
 const SingleComment = ({ post, comment, createdComment, setCreatedComment }) => {
   const { user } = useContext(AppContext);
@@ -25,7 +26,7 @@ const SingleComment = ({ post, comment, createdComment, setCreatedComment }) => 
               <p className="additional-author-info">{new Date(comment.updatedOn).toLocaleDateString('en-UK')}</p>
             </div>
           </div>
-          {user.role === 2 && isCurrentURL('posts') &&
+          {user.role === USER_ROLES.admin && isCurrentURL('posts') &&
             <div className='admin-buttons-box-comments'>
               <DeleteUserComment createdComment={createdComment} setCreatedComment={setCreatedComment} commentId={comment.id} />
             </div>}
@@ -38,7 +39,7 @@ const SingleComment = ({ post, comment, createdComment, setCreatedComment }) => 
           </div>
           {comment.picture &&
             <div className="comment-image-box">
-              <img src={`http://localhost:5000/${comment.picture}`} className='comment-image' />
+              <img src={`${SERVER_URL}/${comment.picture}`} className='comment-image' />
             </div>}
           {comment.embed &&
             <VideoEmbed videoUrl={comment.embed} embededVideoClass="embeded-video-single-comment" />}
@@ -59,4 +60,3 @@ SingleComment.propTypes = {
 };
 
 export default SingleComment;
-

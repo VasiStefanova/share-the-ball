@@ -32,6 +32,7 @@ export const createNewPostRequest = async (
 
     return postInfo;
   } catch (error) {
+
     return error;
   }
 };

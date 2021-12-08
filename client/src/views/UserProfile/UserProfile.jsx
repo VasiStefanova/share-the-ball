@@ -36,7 +36,6 @@ const UserProfile = () => {
     getUserInfo();
   }, [userId]);
 
-
   return (
     <div className='user-profile-container'>
       <div className='user-profile-left'>

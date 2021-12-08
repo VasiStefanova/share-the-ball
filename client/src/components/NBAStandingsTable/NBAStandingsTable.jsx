@@ -1,12 +1,9 @@
 import Table from 'react-bootstrap/Table';
-import Figure from 'react-bootstrap/Figure';
 import { TEAM_LOGOS_URL } from '../../common/constants.js';
 import './NBAStandingsTable.css';
 import PropTypes from 'prop-types';
 
-
 const NBAStandingsFeedTable = ({ dataTeams }) => {
-
 
   return (
     <Table className='standings-table' striped bordered hover variant="dark" size='sm'>

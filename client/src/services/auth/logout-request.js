@@ -11,8 +11,10 @@ export const logoutRequest = async () => {
     });
 
     const message = await response.json();
+
     return message;
   } catch (error) {
+
     return error;
   };
 };

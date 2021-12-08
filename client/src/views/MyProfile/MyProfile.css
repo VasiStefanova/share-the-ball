@@ -3,7 +3,7 @@
 }
 
 .my-profile-left {
-  
+
   width: 67vw;
   min-height: 84vh;
 }
@@ -15,18 +15,6 @@
   padding: 1vh 1vw;
 }
 
-.main-my-profile-container {
-
-}
-
 .my-profile-tabs-bar {
   margin: 1vh;
-}
-
-.my-profile-tab {
-  
-}
-
-.my-profile-active-tab {
-
 }

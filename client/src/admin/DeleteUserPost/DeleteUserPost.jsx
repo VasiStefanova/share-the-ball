@@ -30,4 +30,5 @@ DeleteUserPost.propTypes = {
   postId: PropTypes.number,
   setRender: PropTypes.func
 };
+
 export default DeleteUserPost;

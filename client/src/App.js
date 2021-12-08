@@ -12,12 +12,12 @@ import { checkLoginStatus, getLoggedUser, getUserFromStorage, intervalRequest, s
 import UserProfile from './views/UserProfile/UserProfile';
 import getUserDetailsRequest from './services/users/get-user-details-request';
 import NBANews from './components/NBANews/NBANews';
-import AboutUs from './views/AboutUs/About.us';
+import AboutUs from './views/AboutUs/AboutUs';
 import { getPostsByUserIdRequest } from './services/posts/get-posts-by-user-id-request';
 import { getUserNotificationsRequest } from './services/feed/get-user-notifications-request';
 import NewFriendToast from './elements/NewFriendToast/NewFriendToast';
+import { FRIENDSHIP_STATUS } from './common/constants';
 
-// eslint-disable-next-line require-jsdoc
 function App() {
   // User data
   const [loggedIn, setLoggedIn] = useState(false);
@@ -58,8 +58,8 @@ function App() {
     const potentialFriends = userDetails.friends?.filter(friend => friend.canAcceptFriendship === true);
     setFriendRequests(potentialFriends);
 
-    const friendsFromResponse = userDetails.friends.filter(friend => friend.friendshipStatus === 2);
-    const loggedUserFriends = getUserFromStorage().friends.filter(friend => friend.friendshipStatus === 2);
+    const friendsFromResponse = userDetails.friends.filter(friend => friend.friendshipStatus === FRIENDSHIP_STATUS.connected);
+    const loggedUserFriends = getUserFromStorage().friends.filter(friend => friend.friendshipStatus === FRIENDSHIP_STATUS.connected);
 
     if (friendsFromResponse.length !== loggedUserFriends.length) {
       setUser(userDetails);
@@ -98,7 +98,6 @@ function App() {
   useEffect(() => {
     console.log(notifications);
   }, [notifications]);
-
 
   return (
     <div className="App" style={{ backgroundImage: 'url(/background.png)' }}>

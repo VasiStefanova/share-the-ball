@@ -9,6 +9,7 @@ import { useHistory } from 'react-router';
 import { setUserInStorage, updateUserLocation, userHasSetLocation } from '../../common/helpers';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
 import { reverseGeocodeLocationRequest } from '../../services/google-geocoding/reverse-geocode-location-request';
+import { USER_ROLES } from '../../common/constants';
 
 const ProfileDetails = () => {
   const { user, setUser, setLoggedIn } = useContext(AppContext);
@@ -81,7 +82,7 @@ const ProfileDetails = () => {
               <h5 className='theme-text-style '>Role:</h5>
             </td>
             <td>
-              <h5 className='theme-text-style '>{user.role === 1 ? 'User' : 'Admin'}</h5>
+              <h5 className='theme-text-style '>{user.role === USER_ROLES.basic ? 'User' : 'Admin'}</h5>
             </td>
             <td />
           </tr>

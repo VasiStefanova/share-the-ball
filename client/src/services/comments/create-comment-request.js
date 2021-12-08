@@ -24,8 +24,10 @@ export const createCommentRequest = async (
 
     const commentDetails = await response.json();
     console.log(commentDetails);
+
     return commentDetails;
   } catch (error) {
+
     return error;
   }
 };

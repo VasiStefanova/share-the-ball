@@ -13,9 +13,9 @@
   justify-content: space-between;
 }
 
-  .teammate-avatar-and-info {
+.teammate-avatar-and-info {
     display: flex;
-  }
+}
 
 .teammate-info-box {
   align-self: center;
@@ -46,7 +46,6 @@
 .bi-x-circle-fill {
   padding-right: 0.25vw;
 }
-
 
 #add-friend-button {
   margin-left: 0.5vw;

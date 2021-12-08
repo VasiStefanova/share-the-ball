@@ -8,7 +8,6 @@ export const editCommentRequest = async (id = 0, content = '', embed = '', file)
   if (embed) formData.append('embed', embed);
   formData.append('file', file);
 
-
   try {
     const response = await fetch(`${COMMENTS_URL}/${id}`, {
       method: 'PUT',
@@ -22,6 +21,7 @@ export const editCommentRequest = async (id = 0, content = '', embed = '', file)
 
     return commentDetails;
   } catch (error) {
+
     return error;
   }
 };

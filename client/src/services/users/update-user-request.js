@@ -36,6 +36,7 @@ export const updateUserRequest = async (
 
     return userDetails;
   } catch (error) {
+
     return error;
   }
 };

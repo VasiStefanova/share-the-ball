@@ -14,6 +14,7 @@ export const unfriendRequest = async (id = 0, toId = 0) => {
 
     return message;
   } catch (error) {
+
     return error;
   }
 };

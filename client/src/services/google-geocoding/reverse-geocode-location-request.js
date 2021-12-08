@@ -9,8 +9,10 @@ export const reverseGeocodeLocationRequest = async (coords = []) => {
     const city = await response.json();
 
     console.log(city.results[0].formatted_address);
+
     return city.results[0].formatted_address;
   } catch (error) {
+
     return error;
   }
 };

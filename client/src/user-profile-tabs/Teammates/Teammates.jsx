@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
+import { FRIENDSHIP_STATUS } from '../../common/constants';
 import FoundTeammates from '../../components/FoundTeammates/FoundTeammates';
 import SearchTeammates from '../../components/SearchTeammates/SearchTeammates';
 import AppContext from '../../context/AppContext';
@@ -21,12 +22,11 @@ const Teammates = ({ userId }) => {
   useEffect(() => {
     if (!userInfo.friends) return () => {};
 
-    const targetUserFriends = userInfo.friends.filter(friend => friend.friendshipStatus === 2);
+    const targetUserFriends = userInfo.friends.filter(friend => friend.friendshipStatus === FRIENDSHIP_STATUS.connected);
     setTeammates(targetUserFriends);
 
     return () => setTeammates([]);
   }, [userInfo]);
-
 
   return teammates.length ?
     <>

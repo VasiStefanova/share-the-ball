@@ -9,6 +9,7 @@ import { setUserInStorage } from '../../common/helpers';
 import ToggleFriendshipButton from '../../elements/ToggleFriendshipButton/ToggleFriendshipButton';
 import UnfriendButton from '../../elements/UnfriendButton/UnfriendButton';
 import { reverseGeocodeLocationRequest } from '../../services/google-geocoding/reverse-geocode-location-request';
+import { FRIENDSHIP_STATUS } from '../../common/constants';
 
 const UserDetails = ({ userId: targetUserId }) => {
   const { user, setUser, toggleFriendship } = useContext(AppContext);
@@ -38,8 +39,7 @@ const UserDetails = ({ userId: targetUserId }) => {
     // }
   }, [targetUser]);
 
-  const targetIsFriend = user.friends.some(friend => friend.id === +targetUser.id && friend.friendshipStatus === 2);
-
+  const targetIsFriend = user.friends.some(friend => friend.id === +targetUser.id && friend.friendshipStatus === FRIENDSHIP_STATUS.connected);
 
   return (
     <Figure>

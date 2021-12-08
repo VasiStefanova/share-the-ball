@@ -27,4 +27,3 @@ UnfriendButton.propTypes = {
 };
 
 export default UnfriendButton;
-

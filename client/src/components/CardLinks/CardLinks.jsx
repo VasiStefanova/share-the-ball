@@ -2,7 +2,6 @@ import SingleCard from '../../elements/SingleCard/SingleCard';
 import { useHistory } from 'react-router';
 import './CardLinks.css';
 
-
 const CardLinks = () => {
   const history = useHistory();
 
@@ -28,7 +27,6 @@ const CardLinks = () => {
       />
     </div>
   );
-
 };
 
 export default CardLinks;

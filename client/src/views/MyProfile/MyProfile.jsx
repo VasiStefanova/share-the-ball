@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ButtonGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { useHistory, useLocation } from 'react-router';
+import { USER_ROLES } from '../../common/constants';
 import { isCurrentURL } from '../../common/helpers';
 import ChangeCredentialsAccordion from '../../components/ChangeCredentialsAccordion/ChangeCredentialsAccordion';
 import AppContext from '../../context/AppContext';
@@ -52,8 +53,7 @@ const MyProfile = () => {
             onClick={() => history.push('/my-profile/my-teammates')}
           >My Teammates
           </Button>
-          {/* change role on next line to hide from regular users */}
-          {user.role === 2 &&
+          {user.role === USER_ROLES.admin &&
             <Button
               variant="outline-dark"
               active={isCurrentURL('user_list')}

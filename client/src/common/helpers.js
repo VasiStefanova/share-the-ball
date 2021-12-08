@@ -7,6 +7,7 @@ export const checkLoginStatus = () => localStorage.getItem('token')? true : fals
 
 export const getLoggedUser = () => {
   if (localStorage.getItem('user')) {
+
     return JSON.parse(localStorage.getItem('user'));
   }
 
@@ -16,6 +17,7 @@ export const getLoggedUser = () => {
 export const isCurrentURL = (searchedTab = '') => {
   const locArr = location.pathname.split('/');
   const lastItem = locArr[locArr.length - 1];
+
   return lastItem === searchedTab;
 };
 
@@ -27,7 +29,6 @@ export const setUserInStorage = (userInfo) => localStorage.setItem('user', JSON.
 
 const getPosition = (options) => {
 
-  // eslint-disable-next-line no-undef
   return new Promise((resolve, reject) =>
     navigator.geolocation.getCurrentPosition(resolve, reject, options)
   );
@@ -42,6 +43,7 @@ export const getUserLocation = () => {
   return getPosition(options)
     .then(position => {
       const coords = [position.coords.latitude, position.coords.longitude];
+
       return coords;
     })
     .catch(error => console.log(error.message));
@@ -57,7 +59,6 @@ export const updateUserLocation = async (userId, setUser) => {
 
   // if the user accepts use of his location
   const [latitude, longitude] = await getUserLocation();
-
   await updateUserRequest('', '', '', '', latitude, longitude);
   const userDetails = await getUserDetailsRequest(userId);
   setUser(userDetails);
@@ -78,7 +79,6 @@ export const isYouTubeUrl = (url) => {
 
 export const getVideoId = (videoUrl) => {
   if (!isYouTubeUrl(videoUrl)) return '';
-
   const id = videoUrl.split('=')[1].split('&')[0];
 
   return id;
@@ -92,7 +92,6 @@ export const getUserFromStorage = () => {
 
 export const validateInput = (inputValue, minLength, maxLength) => {
   let isValid = false;
-
   if (inputValue.length >= minLength && inputValue.length <= maxLength) {
     isValid = true;
   }

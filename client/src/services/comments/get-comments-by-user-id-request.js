@@ -1,5 +1,5 @@
-import {USERS_URL} from '../../common/constants';
-import {getToken} from '../common/helpers';
+import { USERS_URL } from '../../common/constants';
+import { getToken } from '../common/helpers';
 
 export const getCommentsByUserIdRequest = async (id = 0) => {
   try {
@@ -13,6 +13,7 @@ export const getCommentsByUserIdRequest = async (id = 0) => {
 
     return comments;
   } catch (error) {
+
     return error;
   }
 };

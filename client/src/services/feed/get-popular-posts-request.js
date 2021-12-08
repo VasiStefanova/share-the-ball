@@ -8,6 +8,7 @@ export const getPopularPostsRequest = async () => {
 
     return posts;
   } catch (error) {
+
     return error;
   }
 };

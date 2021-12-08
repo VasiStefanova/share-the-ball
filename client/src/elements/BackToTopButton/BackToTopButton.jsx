@@ -19,6 +19,7 @@ const BackToTopButton = ({ offsetRight = '', offsetLeft = '' }) => {
   }, [showBackToTopButton]);
 
   // This function will scroll the window to the top
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -47,5 +48,3 @@ BackToTopButton.propTypes = {
 };
 
 export default BackToTopButton;
-
-

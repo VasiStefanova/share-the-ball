@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Avatar from '../Avatar/Avatax';
@@ -9,6 +8,7 @@ import { createCommentRequest } from '../../services/comments/create-comment-req
 import VideoEmbedPopover from '../VideoEmbedPopover/VideoEmbedPopover';
 import { isYouTubeUrl } from '../../common/helpers';
 import VideoEmbed from '../VideoEmbed/VideoEmbed';
+import PropTypes from 'prop-types';
 
 const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
   const [content, setContent] = useState('');
@@ -93,6 +93,13 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
       </div>
     </div>
   );
+};
+
+CreateComment.propTypes = {
+  user: PropTypes.object,
+  post: PropTypes.object,
+  createdComment: PropTypes.bool,
+  setCreatedComment: PropTypes.func
 };
 
 export default CreateComment;

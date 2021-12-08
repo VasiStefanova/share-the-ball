@@ -23,7 +23,6 @@ const Login = () => {
       localStorage.setItem('token', loggedUser.token);
       const payload = decode(loggedUser.token);
       const userId = payload.id;
-
       const userDetails = await getUserDetailsRequest(userId);
 
       if (userDetails.message) {

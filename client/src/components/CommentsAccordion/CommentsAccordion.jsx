@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import './CommentsAccordion.css';
 import Accordion from 'react-bootstrap/Accordion';
 import CreateComment from '../../elements/CreateComment/CreateComment';
 import SingleComment from '../../elements/SingleComment/SingleComment';
 import { useEffect, useState } from 'react';
 import { getSinglePostRequest } from '../../services/posts/get-single-post-request';
+import PropTypes from 'prop-types';
 
 const CommentsAccordion = ({ user, post }) => {
   const [comments, setComments] = useState(post.comments);
@@ -35,6 +35,11 @@ const CommentsAccordion = ({ user, post }) => {
       </Accordion>
     </>
   );
+};
+
+CommentsAccordion.propTypes = {
+  user: PropTypes.object,
+  post: PropTypes.object
 };
 
 export default CommentsAccordion;

@@ -42,7 +42,6 @@ const NotificationModal = ({ show, onHide, notification }) => {
   );
 };
 
-
 NotificationModal.propTypes = {
   show: PropTypes.bool,
   onHide: PropTypes.func,

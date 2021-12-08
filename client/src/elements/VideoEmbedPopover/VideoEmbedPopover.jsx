@@ -7,7 +7,6 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { isYouTubeUrl } from '../../common/helpers';
 
-
 const VideoEmbedPopover = ({ videoUrl, setVideoUrl, imagePreview }) => {
   const [showPopover, setShowPopover] = useState(false);
 

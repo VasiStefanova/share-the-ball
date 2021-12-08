@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { updateUserRequest } from '../../services/users/update-user-request';
 import { useHistory } from 'react-router';
 import { logoutRequest } from '../../services/auth/logout-request';
-
+import { SERVER_URL } from '../../common/constants';
 
 const ChangeAvatar = () => {
   const { user, setUser, setLoggedIn } = useContext(AppContext);
@@ -26,7 +26,6 @@ const ChangeAvatar = () => {
     await updateUserRequest('', '', '', file);
     setFile(null);
     setAvatarPreview(null);
-
     await logoutRequest();
     setUser({
       id: 0,
@@ -56,7 +55,7 @@ const ChangeAvatar = () => {
           <Image roundedCircle src={avatarPreview} alt={user.username} className="avatar-preview" />
         </div>:
         <div className="current-avatar-container">
-          <Image roundedCircle src={`http://localhost:5000/${user.avatar}`} alt={user.username} className="avatar-preview" />
+          <Image roundedCircle src={`${SERVER_URL}/${user.avatar}`} alt={user.username} className="avatar-preview" />
         </div>}
       <div className="change-avatar-button-group">
         <UploadFileButton
@@ -78,7 +77,6 @@ const ChangeAvatar = () => {
       </div>
     </>
   );
-
 };
 
 export default ChangeAvatar;

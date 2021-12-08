@@ -14,6 +14,7 @@ export const deleteCommentRequest = async (id = 0) => {
 
     return message;
   } catch (error) {
+
     return error;
   }
 };

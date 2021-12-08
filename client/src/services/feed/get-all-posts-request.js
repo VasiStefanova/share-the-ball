@@ -26,6 +26,7 @@ export const getAllPostsRequest = async (
 
     return posts;
   } catch (error) {
+
     return error;
   }
 };

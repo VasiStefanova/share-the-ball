@@ -7,7 +7,6 @@ import { useContext, useState } from 'react';
 import banUserRequest from '../../services/admin/ban-user-request';
 import Form from 'react-bootstrap/Form';
 
-
 const ConfirmBanUser = ({ userId, username, show, setShow }) => {
 
   const { toggleFriendship, setToggleFriendship } = useContext(AppContext);
@@ -66,7 +65,6 @@ const ConfirmBanUser = ({ userId, username, show, setShow }) => {
                 Invalid reason! Reason must be at least 4 characters long!
               </Form.Control.Feedback>
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Ban Until</Form.Label>
               <Form.Control
@@ -89,7 +87,6 @@ const ConfirmBanUser = ({ userId, username, show, setShow }) => {
             </Modal.Footer>
           </Form>
         </Modal.Body>
-
       </Modal>
     </>
   );

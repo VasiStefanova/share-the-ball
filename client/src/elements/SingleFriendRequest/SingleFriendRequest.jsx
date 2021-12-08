@@ -8,7 +8,6 @@ import { useContext, useState } from 'react';
 import AppContext from '../../context/AppContext';
 import { Link } from 'react-router-dom';
 
-
 const SingleFriendRequest = ({ newTeammate, setShowFriendRequestPopover }) => {
   const { user, toggleFriendship, setToggleFriendship } = useContext(AppContext);
   const [buttonClicked, setButtonClicked] = useState(false);

@@ -1,3 +1,5 @@
+export const USER_ROLES = { 'basic': 1, 'admin': 2 };
+export const FRIENDSHIP_STATUS = { 'pending': 1, 'connected': 2 };
 export const POSTS_PER_PAGE = 10;
 export const SERVER_URL = 'http://localhost:5000';
 export const USERS_URL = 'http://localhost:5000/users';
@@ -6,8 +8,8 @@ export const LOGOUT_URL = 'http://localhost:5000/auth/logout';
 export const POSTS_URL = 'http://localhost:5000/posts';
 export const COMMENTS_URL = 'http://localhost:5000/comments';
 export const FEED_URL = 'http://localhost:5000/feed';
-export const NBA_GENERAL_URL = 'http://data.nba.net/10s/prod/v1/today.json'; // general//
-export const NBA_STANDINGS_URL = 'http://data.nba.net/10s/prod/v1/current/standings_conference.json'; // teams-conference
+export const NBA_GENERAL_URL = 'http://data.nba.net/10s/prod/v1/today.json';
+export const NBA_STANDINGS_URL = 'http://data.nba.net/10s/prod/v1/current/standings_conference.json';
 export const GEOCODING_API_KEY = 'AIzaSyCwEzUnkJGWzwSZdvdL_RdhZ22Rn0vxXjc';
 export const GOOGLE_GEOCODING_URL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng';
 export const NBA_NEWS_URL = 'http://stats-prod.nba.com/wp-json/statscms/v1/type/beyondthenumber/?limit=20&offset=0';
@@ -16,7 +18,6 @@ export const SHARE_THE_BALL_INSTAGRAM_URL = 'https://www.instagram.com/sharetheb
 export const SHARE_THE_BALL_TWITTER_URL = 'https://twitter.com/sharetheball21?fbclid=IwAR1EmakBIBWSlEoMM-nRQK6IBd_ctDNY9_lHCOxxZQILsnj4e1dKlTmaMYs';
 export const MIN_PASSWORD_LENGTH = 4;
 export const MAX_PASSWORD_LENGTH = 40;
-
 export const TEAM_LOGOS_URL = [
   {
     'teamId': '1610612764',

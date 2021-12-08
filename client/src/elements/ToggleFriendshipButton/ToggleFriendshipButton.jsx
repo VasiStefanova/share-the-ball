@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import AppContext from '../../context/AppContext';
 import { acceptRequest } from '../../services/friends/accept-request';
+import { FRIENDSHIP_STATUS } from '../../common/constants';
 
 const ToggleFriendshipButton = ({ user, targetUser }) => {
   const { toggleFriendship, setToggleFriendship } = useContext(AppContext);
@@ -13,7 +14,8 @@ const ToggleFriendshipButton = ({ user, targetUser }) => {
 
   if (user.id === targetUser.id) return null;
 
-  if (potentialFriend?.friendshipStatus === 1 && potentialFriend?.canAcceptFriendship === true) {
+  if (potentialFriend?.friendshipStatus === FRIENDSHIP_STATUS.pending && potentialFriend?.canAcceptFriendship === true) {
+
     return (
       <Button
         className="toggle-friendship-button theme-btn-style"
@@ -28,7 +30,8 @@ const ToggleFriendshipButton = ({ user, targetUser }) => {
         Accept teammate request
       </Button>
     );
-  } else if (potentialFriend?.friendshipStatus === 1) {
+  } else if (potentialFriend?.friendshipStatus === FRIENDSHIP_STATUS.pending) {
+
     return (
       <Button
         className="toggle-friendship-button theme-btn-style"
@@ -40,7 +43,8 @@ const ToggleFriendshipButton = ({ user, targetUser }) => {
         Pending
       </Button>
     );
-  } else if (potentialFriend?.friendshipStatus === 2) {
+  } else if (potentialFriend?.friendshipStatus === FRIENDSHIP_STATUS.connected) {
+
     return (
       <Button
         className="toggle-friendship-button theme-btn-style"
@@ -52,6 +56,7 @@ const ToggleFriendshipButton = ({ user, targetUser }) => {
       </Button>
     );
   } else {
+
     return (
       <Button
         className="toggle-friendship-button theme-btn-style"

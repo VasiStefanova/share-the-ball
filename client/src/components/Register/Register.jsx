@@ -13,7 +13,6 @@ const Register = () => {
 
     const userDetails = await registerRequest(credentials);
     setCredentials({ username: '', password: '', email: '' });
-
     if (!userDetails.message) setRegistrationSuccess(true);
   };
 

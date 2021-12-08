@@ -11,8 +11,10 @@ export const loginRequest = async (credentials = { username: '', password: '' })
     });
 
     const user = await response.json();
+
     return user;
   } catch (error) {
+
     return error;
   }
 };

@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import './UploadFileButton.css';
+import PropTypes from 'prop-types';
 
 const UploadFileButton = ({ buttonText = '', buttonId = '', onChange, style, applyClass }) => {
   return (
@@ -12,4 +12,11 @@ const UploadFileButton = ({ buttonText = '', buttonId = '', onChange, style, app
   );
 };
 
+UploadFileButton.propTypes = {
+  buttonText: PropTypes.string,
+  buttonId: PropTypes.string,
+  onChange: PropTypes.func,
+  style: PropTypes.object,
+  applyClass: PropTypes.string
+};
 export default UploadFileButton;

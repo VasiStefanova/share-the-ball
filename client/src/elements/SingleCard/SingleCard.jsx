@@ -2,7 +2,6 @@ import Card from 'react-bootstrap/Card';
 import './SingleCard.css';
 import PropTypes from 'prop-types';
 
-
 const SingleCard = ({ redirectFunc, title, imgSrc }) => {
 
   return (

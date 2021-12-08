@@ -4,29 +4,32 @@
     display: inline-flex;
     margin: 0 0.5vw;
 }
+
 .card-style:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
+
 .card-title {
     cursor: pointer;
 }
+
 .cover-image {
-    transition: transform .7s; /* Animation */
+    transition: transform .7s;
     margin: 0 auto;
     height: 18vh;
     width: 12.5vw;
 }
 
 .cover-image:hover {
-    transform: scale(1.25); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.25);
     cursor: pointer;
-
 }
+
 .img-wrapper {
     overflow: hidden;
 }
+
 .card-body {
     padding: 0.5rem 0.5rem
 }
-

@@ -38,7 +38,7 @@
 }
 
 /* disable scroll for chrome */
-.my-teammates-container::-webkit-scrollbar { 
+.my-teammates-container::-webkit-scrollbar {
   width: 0;
   height: 0;
 }

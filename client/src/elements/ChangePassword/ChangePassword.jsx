@@ -46,8 +46,6 @@ const ChangePassword = () => {
     } catch (err) {
       setError(err.message);
     }
-
-
   };
 
   return (
@@ -78,6 +76,5 @@ const ChangePassword = () => {
     </>
   );
 };
-
 
 export default ChangePassword;

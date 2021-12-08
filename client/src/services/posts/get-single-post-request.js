@@ -13,6 +13,7 @@ export const getSinglePostRequest = async (id = 0) => {
 
     return post;
   } catch (error) {
+
     return error;
   }
 };

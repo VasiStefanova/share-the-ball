@@ -17,6 +17,7 @@ export const reactToPostRequest = async (id = 0, reaction = 0) => {
 
     return post;
   } catch (error) {
+
     return error;
   }
 };

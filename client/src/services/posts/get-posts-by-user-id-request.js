@@ -20,6 +20,7 @@ export const getPostsByUserIdRequest = async (id = 0, page = 0, count = 0) => {
 
     return posts;
   } catch (error) {
+
     return error;
   }
 };

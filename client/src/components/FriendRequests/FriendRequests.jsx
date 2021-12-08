@@ -8,10 +8,8 @@ import './FriendRequests.css';
 import AppContext from '../../context/AppContext';
 import PropTypes from 'prop-types';
 
-
 const FriendsRequests = ({ show, setShow, setShowNotifications }) => {
   const { friendRequests } = useContext(AppContext);
-
   const [target, setTarget] = useState(document.querySelector('button.see-friend-requests-btn.btn.btn-outline-secondary.btn-primary'));
   const ref = useRef(null);
 

@@ -23,7 +23,6 @@ const CreatePost = () => {
 
   const handleFileChange = (e) => {
     if (!e.target.files[0]) return;
-
     setImagePreview(URL.createObjectURL(e.target.files[0]));
     setFile(e.target.files[0]);
   };
@@ -42,7 +41,6 @@ const CreatePost = () => {
       console.error(error.message);
     }
   };
-
 
   return (
     <div className="create-post-box">

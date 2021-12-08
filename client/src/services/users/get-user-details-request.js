@@ -9,8 +9,10 @@ const getUserDetailsRequest = async (id = 0) => {
       },
     });
     const userDetails = await response.json();
+
     return userDetails;
   } catch (error) {
+
     return error;
   }
 };

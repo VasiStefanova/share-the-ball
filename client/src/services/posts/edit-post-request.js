@@ -37,6 +37,7 @@ export const editPostRequest = async (
 
     return postInfo;
   } catch (error) {
+
     return error;
   }
 };

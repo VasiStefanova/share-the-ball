@@ -7,10 +7,12 @@
   border-color: transparent;
   justify-content: center;
 }
+
 .see-notifications-btn:focus {
   background-color: transparent;
   border-color: transparent;
 }
+
 .see-notifications-btn:hover {
   background-color: transparent;
   border-color: transparent;
@@ -25,6 +27,7 @@
     max-width: none;
     padding: 1vh 0.5vw;
 }
+
 .close-notifications-btn {
     float: right
 }

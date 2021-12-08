@@ -23,6 +23,7 @@ export const deltaRequest = async (
 
     return data.posts;
   } catch (error) {
+
     return error;
   }
 };

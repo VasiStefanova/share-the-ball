@@ -16,6 +16,7 @@ export const reactToCommentRequest = async (id = 0, reaction = 0) => {
 
     return message;
   } catch (error) {
+
     return error;
   }
 };

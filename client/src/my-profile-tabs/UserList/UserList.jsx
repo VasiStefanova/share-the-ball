@@ -23,7 +23,6 @@ const UserList = () => {
       <FoundTeammates teammates={users} />
       <BackToTopButton offsetRight="10vw" />
     </>;
-
 };
 
 export default UserList;

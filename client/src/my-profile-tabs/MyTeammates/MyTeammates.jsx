@@ -1,12 +1,11 @@
-/* eslint-disable react/prop-types */
 import './MyTeammates.css';
 import { useContext, useEffect, useState } from 'react';
 import FoundTeammates from '../../components/FoundTeammates/FoundTeammates';
 import SearchTeammates from '../../components/SearchTeammates/SearchTeammates';
 import AppContext from '../../context/AppContext';
 import getUserDetailsRequest from '../../services/users/get-user-details-request';
-
 import { setUserInStorage } from '../../common/helpers';
+import { FRIENDSHIP_STATUS } from '../../common/constants';
 
 const MyTeammates = () => {
   const { user, setUser, toggleFriendship } = useContext(AppContext);
@@ -23,10 +22,9 @@ const MyTeammates = () => {
 
   useEffect(() => {
     if (!user) return;
-    const friends = user.friends.filter(teammate => teammate.friendshipStatus === 2);
+    const friends = user.friends.filter(teammate => teammate.friendshipStatus === FRIENDSHIP_STATUS.connected);
     setTeammates(friends);
   }, [user]);
-
 
   return (!teammates.length ?
     <>
