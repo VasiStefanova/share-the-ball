@@ -31,4 +31,14 @@
 .my-teammates-container {
   text-align: -webkit-center;
   text-align: -moz-center;
+  max-height: 82vh;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+/* disable scroll for chrome */
+.my-teammates-container::-webkit-scrollbar { 
+  width: 0;
+  height: 0;
 }

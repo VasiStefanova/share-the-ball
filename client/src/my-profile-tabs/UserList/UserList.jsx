@@ -4,6 +4,7 @@ import SearchTeammates from '../../components/SearchTeammates/SearchTeammates';
 import getUsersRequest from '../../services/users/get-users-request';
 import './UserList.css';
 import AppContext from '../../context/AppContext';
+import BackToTopButton from '../../elements/BackToTopButton/BackToTopButton';
 
 const UserList = () => {
 
@@ -20,6 +21,7 @@ const UserList = () => {
     <>
       <SearchTeammates setTeammates={setUsers} />
       <FoundTeammates teammates={users} />
+      <BackToTopButton offsetRight="10vw" />
     </>;
 
 };

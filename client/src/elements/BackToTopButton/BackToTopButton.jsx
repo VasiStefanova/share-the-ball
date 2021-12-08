@@ -8,11 +8,13 @@ const BackToTopButton = ({ offsetRight = '', offsetLeft = '' }) => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 1850) {
+      if (window.pageYOffset > 1400) {
         setShowBackToTopButton(true);
       } else {
         setShowBackToTopButton(false);
       }
+
+      return () => {};
     });
   }, [showBackToTopButton]);
 
