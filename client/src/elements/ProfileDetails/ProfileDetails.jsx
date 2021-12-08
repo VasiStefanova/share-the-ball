@@ -93,7 +93,7 @@ const ProfileDetails = () => {
               {editButtonClicked ?
                 <div className="edit-email-box">
                   <Form className="change-email-form">
-                    <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <Form.Control type="email" value={email} className='email-change-field' onChange={(e) => setEmail(e.target.value)} />
                   </Form>
                   <div className="edit-email-buttons">
                     <Button
@@ -106,7 +106,7 @@ const ProfileDetails = () => {
                     </Button>
                   </div>
                 </div> :
-                <h5 className='theme-text-style '>{user.email}</h5>}
+                <h5 className='theme-text-style email-box'>{user.email}</h5>}
             </td>
             <td>
               {!editButtonClicked &&

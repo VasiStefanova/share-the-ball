@@ -24,6 +24,15 @@
 /* email */
 .edit-email-box {
   display: flex;
+  width: 15vw;
+}
+
+.email-box {
+  width: 15vw;
+}
+
+.email-change-field {
+  width: 9vw;
 }
 
 .edit-email-buttons {
