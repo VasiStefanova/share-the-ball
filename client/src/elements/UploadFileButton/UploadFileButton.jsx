@@ -13,7 +13,7 @@ const UploadFileButton = ({ buttonText = '', buttonId = '', onChange, style, app
 };
 
 UploadFileButton.propTypes = {
-  buttonText: PropTypes.string,
+  buttonText: PropTypes.object,
   buttonId: PropTypes.string,
   onChange: PropTypes.func,
   style: PropTypes.object,
