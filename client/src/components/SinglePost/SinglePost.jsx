@@ -29,7 +29,7 @@ const SinglePost = ({ post, setRender }) => {
 
   return (
     updatePostBtnClicked ?
-      <UpdateUserPost post={post} setRender={setRender} /> :
+      <UpdateUserPost post={post} setRender={setRender} setUpdatePostBtnCLicked={setUpdatePostBtnCLicked} updatePostBtnClicked={updatePostBtnClicked} /> :
       <>
         <div className='post-container theme-border-style theme-background-color'>
           {post.author &&

@@ -12,7 +12,7 @@ import VideoEmbedPopover from '../../elements/VideoEmbedPopover/VideoEmbedPopove
 import { isYouTubeUrl } from '../../common/helpers';
 import VideoEmbed from '../../elements/VideoEmbed/VideoEmbed';
 
-const UpdateUserPost = ({ post, setRender }) => {
+const UpdateUserPost = ({ post, setRender, updatePostBtnClicked, setUpdatePostBtnCLicked }) => {
   const [content, setContent] = useState(post.content);
   const [isPublic, setIsPublic] = useState(post.isPublic);
   const [file, setFile] = useState(null);
@@ -33,7 +33,10 @@ const UpdateUserPost = ({ post, setRender }) => {
     e.preventDefault();
 
     editPostRequest(post.id, content, file, videoUrl, 0, 0, isPublic)
-      .then(()=> setRender({}))
+      .then(()=> {
+        setUpdatePostBtnCLicked(!updatePostBtnClicked);
+        setRender({});
+      })
       .catch(err => console.error(err));
   };
 
@@ -129,7 +132,9 @@ const UpdateUserPost = ({ post, setRender }) => {
 
 UpdateUserPost.propTypes = {
   post: PropTypes.object,
-  setRender: PropTypes.func
+  setRender: PropTypes.func,
+  updatePostBtnClicked: PropTypes.bool,
+  setUpdatePostBtnCLicked: PropTypes.func
 };
 
 export default UpdateUserPost;
