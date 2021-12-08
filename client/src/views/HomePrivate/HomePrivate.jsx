@@ -102,8 +102,8 @@ const HomePrivate = () => {
         </div>
       </div>
       <div className='home-private-right'>
+        <h3 className='theme-text-style'>Teammates</h3>
         <div className='my-teammates-container'>
-          <h3 className='theme-text-style'>Teammates</h3>
           <MyTeammates />
         </div>
       </div>
