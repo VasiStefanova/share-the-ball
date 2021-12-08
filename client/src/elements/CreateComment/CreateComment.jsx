@@ -74,7 +74,7 @@ const CreateComment = ({ user, post, createdComment, setCreatedComment }) => {
           <div className="image-preview-container">
             <img src={imagePreview} id="image-preview" />
             <Button
-              id="remove-prievew-button" variant="outline-dark" onClick={() => {
+              id="remove-prievew-button" className="theme-btn-style" variant="outline-dark" onClick={() => {
                 setImagePreview('');
                 setFile('');
               }}
