@@ -25,6 +25,7 @@ const HomePrivate = () => {
     getAllPostsRequest(0, POSTS_PER_PAGE)
       .then(initialPosts => {
         setPosts(initialPosts);
+        !initialPosts.length && setHasMore(false);
       })
       .catch(console.error);
   };

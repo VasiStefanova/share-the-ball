@@ -15,7 +15,10 @@ const MyPosts = () => {
 
   const getInitialPosts = () => {
     getPostsByUserIdRequest(user.id, 0, POSTS_PER_PAGE)
-      .then(posts => Array.isArray(posts) && setMyPosts(posts))
+      .then(posts => {
+        setMyPosts(posts);
+        !posts.length && setHasMore(false);
+      })
       .catch(console.error);
   };
 
@@ -39,6 +42,7 @@ const MyPosts = () => {
     setPage(1);
     setHasMore(true);
     getInitialPosts();
+    console.log(myPosts);
   }, [createdPost]);
 
   return (
@@ -63,7 +67,7 @@ const MyPosts = () => {
               <SinglePost post={post} />
             </div>
           ))}
-        </InfiniteScroll>
+        </InfiniteScroll>:
       </div>
     </>
   );

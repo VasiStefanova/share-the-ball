@@ -14,7 +14,10 @@ const Posts = ({ userId }) => {
 
   const getInitialPosts = () => {
     getPostsByUserIdRequest(userId, 0, POSTS_PER_PAGE)
-      .then(posts => setUserPosts(posts))
+      .then(posts => {
+        setUserPosts(posts);
+        !posts.length && setHasMore(false);
+      })
       .catch(console.error);
   };
 
