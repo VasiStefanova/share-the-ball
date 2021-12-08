@@ -2,6 +2,19 @@
 
 The Final Project of "8th Wonder" (Alpha 32, Team 8)
 
+## Project Setup
+To get the project up and running, follow these steps:
+### 1. Setting up the server
+- Go inside the `server` folder.
+- Run `npm install` to restore all dependencies.
+- Run `npm start` to start the server.
+
+### 2. Setting up the client
+- Go inside the `client` folder.
+- Run `npm install` to restore all dependencies.
+- Run `npm start` to start the client.
+- Enjoy our application.
+
 ## Project Guidelines
 
 ### Module Structure
