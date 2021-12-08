@@ -13,6 +13,7 @@ To get the project up and running, follow these steps:
 - Go inside the `client` folder.
 - Run `npm install` to restore all dependencies.
 - Run `npm start` to start the client.
+- To view the application in action with some mock content, log in with `username: CrossoverKing1` and `password: 123456`
 - Enjoy our application.
 
 ## Project Guidelines
