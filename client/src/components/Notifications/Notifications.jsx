@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 
 const Notifications = ({ setShow, showNotifications, setShowNotifications }) => {
   const { notifications } = useContext(AppContext);
-
   const [target, setTarget] = useState(document.querySelector('button.see-notifications-btn.btn.btn-outline-secondary.btn-primary'));
   const ref = useRef(null);
 

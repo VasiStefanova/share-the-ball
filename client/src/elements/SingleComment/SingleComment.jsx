@@ -27,7 +27,6 @@ const SingleComment = ({ post, comment, createdComment, setCreatedComment }) => 
           </div>
           {user.role === 2 && isCurrentURL('posts') &&
             <div className='admin-buttons-box-comments'>
-              {/* Make new components for comments (identical to those for posts) and replace those for posts on next two lines. Use the same classes for the buttons! */}
               <DeleteUserComment createdComment={createdComment} setCreatedComment={setCreatedComment} commentId={comment.id} />
             </div>}
         </div>

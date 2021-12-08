@@ -20,7 +20,7 @@ const CommentsAccordion = ({ user, post }) => {
     <>
       <Accordion id="comments-accordion" className='comments-accordion'>
         <Accordion.Item eventKey="0" style={{ borderRadius: '1vh' }} className='theme-accordion-style'>
-          <Accordion.Header id="accordion-header">Comments</Accordion.Header>
+          <Accordion.Header id="accordion-header">Comments {comments.length? `(${comments.length})` : ''}</Accordion.Header>
           <Accordion.Body style={{ padding: '0vh' }}>
             <CreateComment user={user} post={post} createdComment={createdComment} setCreatedComment={setCreatedComment} />
             <div className="post-comments">

@@ -1,0 +1,31 @@
+.notification-modal .modal-content {
+  margin-right: 1vw;
+  padding: 1vh 2vw;
+  width: 100vw !important;
+  background: black;
+  border: 2px solid white;
+  max-height: 90vh;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.modal-content::-webkit-scrollbar { 
+  width: 0;
+  height: 0;
+}
+
+.notification-modal {
+  background-color: rgba(211, 211, 211, 0.678);
+}
+
+.notification-modal-body .comment-container {
+  margin: 0vh auto;
+  margin-bottom: 2vh;
+  background-color: rgba(0, 0, 0, 0.692);
+}
+
+.modal-text-style {
+  color: white;
+}
+
