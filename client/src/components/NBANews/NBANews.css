@@ -4,7 +4,7 @@
     grid-template-rows: auto auto auto;
     grid-auto-flow: column;
     overflow-x: scroll;
-    padding: 19px 19px;
+    padding: 2vh 19px;
     height: 84vh;
 }
 
@@ -16,8 +16,8 @@
     transition: box-shadow .7s;
     overflow: hidden;
     cursor: pointer;
-    padding: 10px 10px;
-    margin: 10px 20px;
+    padding: 1vh 10px;
+    margin: 1.5vh 20px;
     background-color: black;
     /* height: 224px; */
   }
@@ -54,7 +54,7 @@
   border-radius: 3px;
   border: 1px solid rgb(182, 5, 5);
   transition: transform .7s;
-  height: 272px;
+  height: 20.7vh;
   width: 272px;
 }
 
