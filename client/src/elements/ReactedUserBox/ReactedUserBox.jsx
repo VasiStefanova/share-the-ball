@@ -6,6 +6,7 @@ import getUserDetailsRequest from '../../services/users/get-user-details-request
 import AppContext from '../../context/AppContext';
 import { setUserInStorage } from '../../common/helpers';
 import ToggleFriendshipButton from '../ToggleFriendshipButton/ToggleFriendshipButton';
+import { Link } from 'react-router-dom';
 
 const ReactedUserBox = ({ userId }) => {
   const [user, setUser] = useState({ username: '' });
@@ -31,7 +32,9 @@ const ReactedUserBox = ({ userId }) => {
       <div className='teammate-avatar-and-info-home'>
         <Avatar user={user} style={{ width: '5vh', height: '5vh' }} />
         <div className='teammate-info-box-home'>
-          <h5 className='teammate-info-home'>{user.username}</h5>
+          <Link className="author-profile-link" to={`/user-profile/id=${user.id}/posts`}>
+            <h5 className='teammate-info-home'>{user.username}</h5>
+          </Link>
         </div>
       </div>
       <ToggleFriendshipButton user={loggedUser} targetUser={user} />

@@ -19,6 +19,7 @@
     padding: 10px 10px;
     margin: 10px 20px;
     background-color: black;
+    /* height: 224px; */
   }
 
 .article-container:hover {
@@ -41,7 +42,7 @@
 }
 .article-content {
   margin: 0px auto;
-  width: 585px;
+  width: 510px;
   text-align: justify;
 }
 .article-text {
@@ -53,8 +54,8 @@
   border-radius: 3px;
   border: 1px solid rgb(182, 5, 5);
   transition: transform .7s;
-  height: 200px;
-  width: 210px;
+  height: 272px;
+  width: 272px;
 }
 
 .figure-img-article:hover {
