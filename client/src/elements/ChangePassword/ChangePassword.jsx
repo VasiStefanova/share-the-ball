@@ -66,7 +66,7 @@ const ChangePassword = () => {
           />
         </div>
         <h6 className='theme-helper-text-style helper-text-change-pass theme-background-color'>
-          Between 4 and 40 characters
+          Between 6 and 14 characters
         </h6>
         <Button className={isFormValid ?'confirm-pass-change-btn theme-btn-style' : 'confirm-pass-change-btn-disabled'} variant="dark" onClick={() => handleConfirm()}>
           Confirm

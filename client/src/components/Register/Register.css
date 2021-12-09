@@ -7,3 +7,10 @@
   margin-bottom: 1.5vh;
   width: 15vw;
 }
+
+.register-button-disabled {
+  background-color: black;
+  color:white;
+  opacity: 0.60;
+  pointer-events: none;
+}
